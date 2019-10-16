@@ -1,5 +1,4 @@
 {
-  "homepage": "https://eden-project.github.io/Final-Project/",
   "dependencies": {
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
