@@ -9,17 +9,11 @@ const config = require('config');
 router.post(
   '/',
   [
-    check('lastname', 'Enter valid Firstname')
+    check('Name', 'הכנס שם תקין')
       .not()
       .isEmpty(),
-    check('firstname', 'Enter valid Lastname')
-      .not()
-      .isEmpty(),
-    check('email', 'Please enter valid email').isEmail(),
-    check(
-      'password',
-      'please enter a password with 6 or more characters'
-    ).isLength({ min: 6 })
+    check('email', 'הכנס דואר אלקטרוני תקין').isEmail(),
+    check('password', 'הכנס סיסמה עם 6 תווים או יותר').isLength({ min: 6 })
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -27,7 +21,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { firstname, lastname, email, password } = req.body;
+    const { Name, email, password } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -39,8 +33,7 @@ router.post(
       }
 
       user = new User({
-        lastname,
-        firstname,
+        Name,
         email,
         password
       });
