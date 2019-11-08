@@ -26,7 +26,6 @@ body {
 
 /* Logo Attributes */
 #Mobile-img {
-    height: 75px;
     position: relative;
 }
 
@@ -128,11 +127,11 @@ body {
     height: unset !important;
 }
 
-.carousel-control-next-icon {
+.Mobile .carousel-control-next-icon {
     background-image: unset;
 }
 
-.carousel-control-prev-icon {
+.Mobile .carousel-control-prev-icon {
     background-image: unset;
 }
 
