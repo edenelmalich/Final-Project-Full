@@ -24,6 +24,7 @@
     "nodemon": "^1.19.2"
   },
   "name": "maxfit",
+  "homepage": "http://edenelmalich.github.io/Final-Project-Full",
   "version": "1.0.0",
   "description": "social network for developer",
   "main": "server.js",
