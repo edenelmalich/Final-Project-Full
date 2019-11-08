@@ -1,0 +1,102 @@
+.DashBoard-Margin {
+    margin-top: 40px;
+}
+
+.Dash-Box-Att {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5rem;
+}
+
+
+.DashBoard-Text {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+.DashBoard-Text-info {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 26px;
+    text-decoration: none;
+    display: block;
+    padding: 0 1.25rem;
+}
+
+.BoxStat {
+    height: 300px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 0 0 45%;
+    text-align: right;
+}
+
+.BoxTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #353c3f;
+    padding: 1.25rem;
+}
+
+.fa-3x {
+    color: #353c3f;
+}
+
+/* Cards attributes */
+.Dashboard .card {
+    text-align: right;
+    height: 25vh;
+    border-radius: 1rem;
+    background: #f8f9fa;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+    overflow: auto;
+}
+
+#Card-size {
+    height: 50vh;
+}
+
+/* Dashboard table */
+.table-bordered {
+    border: 1px solid #353c3f;
+}
+
+.table {
+    width: 95%;
+    margin-bottom: 1rem;
+    color: #f8f9fa;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: right;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #f8f9fa;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #353c3f;
+    color: #353c3f;
+}
+
+.table-sm td,
+.table-sm th {
+    padding: .3rem;
+    color: #353c3f;
+}
+
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #353c3f;
+}

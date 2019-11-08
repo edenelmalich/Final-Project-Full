@@ -1,0 +1,228 @@
+.Plan-Padding {
+    padding-bottom: 2rem;
+}
+
+.BackPage {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    color: #555;
+    font-size: 16px;
+    text-decoration: none;
+    left: 20%;
+    margin-top: 15px;
+}
+
+.BackPage:hover {
+    color: #333;
+}
+
+.Form-Plan {
+    color: #555;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 1.25rem;
+}
+
+.Plan-Flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Build-Exe-Header {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #555;
+}
+
+.Form-Plan input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.Form-Plan label {
+    margin-right: 25px;
+}
+
+.Display-Button {
+    height: 200px;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.Plan-Button {
+    height: 55px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: #cfcfcf;
+    text-align: center;
+    color: #555;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    flex: 0 0 30%;
+    word-wrap: break-word;
+}
+
+.Plan-Button:hover {
+    background: #9a9a9a;
+}
+
+.PlanBox {
+    width: 80%;
+    height: 500px;
+    margin-top: 40px;
+    margin-right: 10%;
+    background: #f5f5f5;
+}
+
+.PlanHeader {
+    font-size: 30px;
+    color: #555;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+}
+
+/*Attributes of icon Exercises List and List Box*/
+.Icon-List {
+    position: absolute;
+    font-size: 30px;
+    color: #555;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    left: 0;
+    margin-top: 15px;
+    margin-left: 22%;
+    display: inline-block;
+}
+
+.Quantity {
+    position: absolute;
+    display: inline-block;
+    left: 23%;
+    padding-top: 1px;
+    height: 18px;
+    width: 18px;
+    line-height: 15px;
+    text-align: center;
+    background: #ff4b5a;
+    color: #fff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    font-size: 12px;
+}
+
+.ListBox-Att {
+    color: #555;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 0.2rem;
+}
+
+.Header-Padding {
+    padding-bottom: 20px;
+}
+
+.HeaderList {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 5px;
+}
+
+.ExercisesText-Box {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    padding-bottom: 15px;
+}
+
+.ExercisesText-Att {
+    overflow: auto;
+}
+
+.ExercisesText {
+    border-bottom: 1px solid #f2f2f2;
+    color: #fff;
+    padding: 15px 15px;
+    padding-bottom: 14px;
+    display: flex;
+    margin-left: 10px;
+}
+
+
+.DeleteItem {
+    position: absolute;
+    left: 5%;
+    color: #ffffff;
+    font-size: 18px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.ListBox-Button-Display {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    margin-top: 15px;
+}
+
+.Buttons-ListBox {
+    color: #333;
+    height: 35px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    flex: 0 0 48%;
+}
+
+.List-Box-Flex {
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ListBox {
+    position: absolute;
+    width: 24%;
+    max-height: 430px;
+    background: #555;
+    margin-top: 55px;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 0.5rem;
+    z-index: 3;
+    left: 10%;
+}
+
+.ListBox::before {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 19px;
+    border-bottom: 9px solid #555;
+    border-top: 9px solid transparent;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    position: absolute;
+    top: -17px;
+    float: left;
+    right: 43%;
+    z-index: 3;
+}

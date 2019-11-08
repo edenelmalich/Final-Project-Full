@@ -1,0 +1,361 @@
+body {
+    box-sizing: border-box;
+    font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+}
+
+.Mobile .main {
+    padding: 2rem;
+    background: #353c3f;
+
+    min-height: 100vh;
+}
+
+.App {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.Mobile {
+    text-align: right;
+}
+
+
+/* Logo Attributes */
+#Mobile-img {
+    height: 75px;
+    position: relative;
+}
+
+.Mobile-Header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    height: 75px;
+    background: #f8f9fa;
+}
+
+.Mobile-Main-Title {
+    color: #f8f9fa;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.Mobile-Main-Text {
+    font-size: 20px;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 1rem;
+}
+
+.Mobile-Main-Text button {
+    width: 120px;
+    color: #353c3f;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #f8f9fa;
+    border-radius: 1.5rem;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Navbar attributes */
+.Mobile .navbar {
+    text-align: right;
+}
+
+.navbar-brand {
+    text-align: left;
+    margin-right: unset;
+}
+
+#MobileNav-img {
+    height: 75px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #353c3f;
+}
+
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+    position: relative;
+    padding-bottom: .5rem;
+    font-weight: 600;
+}
+
+.navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+    border: 1px solid #353c3f;
+    background: #f8f9fa;
+    text-align: right;
+}
+
+.Nav-Setting {
+    font-weight: 600;
+}
+
+/* Carousel attributes */
+.carousel {
+    position: unset;
+}
+
+.carousel-item {
+    position: unset;
+}
+
+.carousel-indicators {
+    position: unset;
+}
+
+.Mobile-Carousel-content {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.Mobile-Carousel-content img {
+    height: unset !important;
+}
+
+/* Footer Attributes */
+.Mobile-footer {
+    position: relative;
+    bottom: 0;
+    text-align: left;
+    padding-top: 10px;
+    height: 45px;
+    font-size: 1rem;
+    width: 100%;
+    color: #353c3f;
+}
+
+.Footer-top {
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgba(0, 0, 0, .125);
+}
+
+.Footer-Padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media only screen and (min-width:768px),
+(max-width:1024px) {
+    .Mobile-Main-Text button {
+        margin-right: 15px;
+    }
+}
+
+/* Mobile Main cards */
+.Mobile-Card-size {
+    width: unset;
+    height: unset;
+}
+
+#Dash-Card-Size {
+    height: 18vh;
+}
+
+#Table-Card-size {
+    height: 30vh;
+    overflow: auto;
+}
+
+#Table-Clients-Card-size {
+    height: 75vh;
+    overflow: auto;
+}
+
+/* Main Mobile form attributes */
+.Mobile-Form {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: right;
+}
+
+.Mobile-Form input[type=text],
+[type=email] {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    outline: none;
+    color: #353c3f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.Mobile-Form input[type=password] {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    outline: none;
+    color: #353c3f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+}
+
+.Mobile-Form input[type=submit] {
+    display: block;
+    width: 150px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    background-color: #353c3f;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
+    outline: none;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.Mobile-Form ::placeholder {
+    color: #353c3f;
+}
+
+.Mobile-Form label {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    color: #353c3f;
+}
+
+.Mobile-Main-Icon {
+    color: #353c3f;
+    font-size: 2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Mobile-Button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Mobile-LoginApp-text {
+    font-size: 14px;
+    color: #353c3f;
+    text-align: center;
+    white-space: nowrap;
+    padding: 1rem;
+}
+
+#Mobile-text {
+    font-size: 22px;
+}
+
+/* Mobile Dashboard Attributes */
+.Mobile-BoxTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: #353c3f;
+    padding-bottom: 1.25rem;
+}
+
+.Mobile-DashBoard-Text-info {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    display: block;
+    padding: 0 0.5rem 0 1rem;
+}
+
+.Mobile-Dash-Box-Att {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1.25rem;
+}
+
+.Mobile-DashBoard-Text {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    display: block;
+}
+
+#Mobile-icon {
+    font-size: 1.5rem;
+}
+
+/* Dashboard Table */
+.Mobile .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #353c3f;
+    color: #353c3f;
+    font-size: 11px;
+}
+
+.Mobile .table-bordered td,
+.table-bordered th {
+    border: 1px solid #353c3f;
+    font-size: 11px;
+}
+
+/* Mobile Settings Attributes */
+.Mobile-Settings .nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    background: #f8f9fa;
+    color: #353c3f;
+    font-size: 20px;
+}
+
+.Mobile-Settings .dropdown-menu {
+    background: #f8f9fa;
+    width: 100%;
+    text-align: right;
+}
+
+.Mobile-Page-Header {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 1.25rem;
+}
+
+.Mobile .Form-Settings {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+    padding: 1.25rem;
+}

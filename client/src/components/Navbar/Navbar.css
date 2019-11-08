@@ -1,0 +1,257 @@
+.sidebar {
+    position: fixed;
+    width: 300px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #f8f9fa;
+    overflow-y: auto;
+}
+
+.sidebar .logo {
+    background: #f8f9fa;
+    padding: 0 35px;
+    height: 75px;
+    margin: 0;
+    top: 0;
+    display: flex;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #e5e5e5;
+    align-items: center;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    border-bottom: 1px solid #353c3f;
+    padding: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #353c3f;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar__AttText {
+    position: relative;
+    padding-right: 10px;
+    text-align: right;
+}
+
+.Navbar img {
+    display: flex;
+    max-width: 100%;
+    height: 85px;
+
+}
+
+a.nav_link:hover {
+    cursor: pointer;
+    color: #A9A9A9;
+}
+
+a.active {
+    font-weight: bold;
+    color: #A9A9A9;
+}
+
+li:hover a,
+li#selected a {
+    font-weight: bold;
+    color: #A9A9A9;
+}
+
+.IconPadding {
+    padding-right: 10px;
+}
+
+.header-desktop {
+    background: #f8f9fa;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 300px;
+    height: 75px;
+    z-index: 3;
+}
+
+/*The Attributes of Notification box*/
+.NotiBox {
+    position: absolute;
+    background: #f8f9fa;
+    border: 1px solid #353c3f;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 67px;
+
+}
+
+.NotiBox:before {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 19px;
+    border-bottom: 9px solid #f8f9fa;
+    border-top: 9px solid transparent;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    position: absolute;
+    top: -17px;
+    right: 120px;
+    z-index: 3;
+}
+
+.AccBox:before {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 19px;
+    border-bottom: 9px solid #fff;
+    border-top: 9px solid transparent;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    position: absolute;
+    top: -17px;
+    left: 10px;
+    z-index: 3;
+}
+
+*,
+::before {
+    box-sizing: border-box;
+}
+
+.Notification-Title {
+    padding: 22px;
+    border-bottom: 1px solid #353c3f;
+    color: #353c3f;
+    text-align: right;
+    font-weight: 600;
+}
+
+.Notification-item {
+    border-bottom: 1px solid #353c3f;
+    color: #353c3f;
+    padding: 19px 22px;
+    padding-bottom: 14px;
+    display: flex;
+}
+
+.Notification-Footer {
+    border-bottom: 1px solid #353c3f;
+    color: #353c3f;
+    font-weight: 600;
+    padding: 19px 22px;
+    padding-bottom: 14px;
+    text-decoration: none;
+    display: flex;
+}
+
+.Notification-Footer:hover {
+    color: #A9A9A9;
+}
+
+.AccBox {
+    width: 150px;
+    position: absolute;
+    background: #f8f9fa;
+    border: 1px solid #353c3f;
+    left: 0;
+    margin-left: 32px;
+    margin-top: 20px;
+    flex: 0 0 25%;
+}
+
+.Settings-Title {
+    padding: 12px;
+    border-bottom: 1px solid #353c3f;
+    color: #353c3f;
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+}
+
+.Settings-item {
+    border-bottom: 1px solid #353c3f;
+    color: #353c3f;
+    padding: 12px;
+    padding-bottom: 14px;
+    display: flex;
+    text-decoration: none;
+}
+
+.Logout-item {
+
+    color: #353c3f;
+    padding: 12px;
+    padding-bottom: 14px;
+    display: flex;
+    text-decoration: none;
+}
+
+.Settings-item:hover {
+    color: #A9A9A9;
+}
+
+.Logout-item:hover {
+    color: #A9A9A9;
+}
+
+/*all The Object in Main Header*/
+.Object-Att {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.Accname {
+    font-size: 18px;
+    color: #353c3f;
+    font-weight: 600;
+}
+
+.icon-acc {
+    color: #353c3f;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.Navbar button {
+    outline: none;
+}
+
+.Notifications {
+    color: #353c3f;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: auto;
+    padding-left: 15px;
+    margin-bottom: 3px;
+
+}
+
+.Notifications:hover {
+    color: #6e6e6e;
+}
+
+.icon-acc:hover {
+    color: #6e6e6e;
+}

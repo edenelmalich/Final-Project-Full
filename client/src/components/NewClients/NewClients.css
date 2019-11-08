@@ -1,0 +1,65 @@
+.Nclient-FormAtt {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 1.25rem;
+}
+
+.Form-Flex {
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.Nclient-FormAtt input[type=text] {
+    width: 40%;
+    height: 30px;
+    text-indent: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    border: 1px solid #353c3f;
+    outline: none;
+}
+
+.Nclient-FormAtt input[type=submit] {
+    font-size: 16px;
+    width: 120px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    background: #353c3f;
+    color: #f8f9fa;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Nclient-FormAtt input[type="radio"] {
+    cursor: pointer;
+    margin-right: 5px;
+    border: 1px solid #353c3f;
+}
+
+.Nclient-FormAtt ::placeholder {
+    color: #353c3f;
+}
+
+.Radio-Text {
+    display: inline-block;
+    color: #353c3f;
+    margin-right: 15px;
+}
+
+.Nclient-FormAtt label {
+    color: #353c3f;
+    padding: 12px 27px 12px 0;
+    display: inline-block;
+}
+
+.calculation {
+    margin-right: 10px;
+    font-weight: 600;
+    color: #353c3f;
+}

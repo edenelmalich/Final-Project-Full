@@ -1,0 +1,59 @@
+.Form-Update {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 1.25rem;
+}
+
+.Form-Update input[type="text"] {
+    width: 60%;
+    height: 40px;
+    font-size: 16px;
+    color: #353c3f;
+    text-indent: 25px;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    outline: none;
+    border: 1px solid #353c3f;
+
+
+}
+
+.Form-Update input[type="submit"] {
+    font-size: 16px;
+    width: 120px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    background: #353c3f;
+    color: #f8f9fa;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Form-Update label {
+    text-align: center;
+    font-weight: 600;
+    display: block;
+    color: #353c3f;
+}
+
+.Form-Update ::placeholder {
+    color: #353c3f;
+}
+
+textarea {
+    width: 50%;
+    height: 150px;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #353c3f;
+    outline: none;
+}
