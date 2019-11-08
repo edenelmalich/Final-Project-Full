@@ -37,26 +37,28 @@ const App = () => {
     <Provider store={store}>
       <div className='App'>
         <Router>
-          <Switch>
-            <Route path='/' component={MainPage} exact />
-            <Route path='/registarApp' component={Registar} />
-            <Route path='/LoginApp' component={LoginApp} />
-            <Route path='/Dashboard' component={Dashboard} />
-            <Route path='/AllClients' component={AllClients} />
-            <Route path='/statistics' component={Statistics} />
-            <Route path='/healthp' component={HealthP} />
-            <Route path='/nclients' component={Nclients} />
-            <Route path='/exeplan' component={ExePlan} />
-            <Route path='/buildPlan' component={BuildPlan} />
-            <Route path='/notifications' component={Notifications} />
-            <Route path='/updates' component={Updates} />
+          <div id='App-flex'>
+            <Switch>
+              <Route path='/' component={MainPage} exact />
+              <Route path='/registarApp' component={Registar} />
+              <Route path='/LoginApp' component={LoginApp} />
+              <Route path='/Dashboard' component={Dashboard} />
+              <Route path='/AllClients' component={AllClients} />
+              <Route path='/statistics' component={Statistics} />
+              <Route path='/healthp' component={HealthP} />
+              <Route path='/nclients' component={Nclients} />
+              <Route path='/exeplan' component={ExePlan} />
+              <Route path='/buildPlan' component={BuildPlan} />
+              <Route path='/notifications' component={Notifications} />
+              <Route path='/updates' component={Updates} />
 
-            <Route path='/forgotPass' component={ForgotPass} />
-            {/* Settings Routes */}
-            <Route path='/personalDetails' component={PersonalDetails} />
-            <Route path='/changePass' component={ChangePass} />
-            <Route path='/changeEmail' component={ChangeEmail} />
-          </Switch>
+              <Route path='/forgotPass' component={ForgotPass} />
+              {/* Settings Routes */}
+              <Route path='/personalDetails' component={PersonalDetails} />
+              <Route path='/changePass' component={ChangePass} />
+              <Route path='/changeEmail' component={ChangeEmail} />
+            </Switch>
+          </div>
         </Router>
       </div>
     </Provider>

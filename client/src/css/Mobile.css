@@ -9,12 +9,17 @@ body {
 .Mobile .main {
     padding: 2rem;
     background: #353c3f;
+    max-width: 38rem;
 }
 
 .App {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+}
+
+#App-flex {
+    flex: 1;
 }
 
 .Mobile {
