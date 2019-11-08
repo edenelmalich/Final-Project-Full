@@ -158,12 +158,6 @@ body {
     padding-right: 1rem;
 }
 
-@media only screen and (min-width:768px),
-(max-width:1024px) {
-    .Mobile-Main-Text button {
-        margin-right: 15px;
-    }
-}
 
 /* Mobile Main cards */
 .Mobile-Card-size {
@@ -365,4 +359,23 @@ body {
     font-size: 16px;
     text-align: right;
     padding: 1.25rem;
+}
+
+@media only screen and (min-width:768px) {
+    .Mobile-Main-Text button {
+        margin-right: 15px;
+    }
+}
+
+@media only screen and (width:360px) {
+    .Mobile-DashBoard-Text {
+        font-size: 12px;
+    }
+
+    .Mobile-Main-Text button {
+        width: 120px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 }
