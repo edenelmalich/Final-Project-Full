@@ -168,8 +168,13 @@ body {
     flex: 0 0 45%;
 }
 
+#Dash-card-Stat {
+    flex: 0 0 95%;
+}
+
 #Table-Card-size {
-    height: 30vh;
+    flex: 0 0 95%;
+
 }
 
 #Table-Clients-Card-size {

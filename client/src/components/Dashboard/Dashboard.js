@@ -150,7 +150,7 @@ const MobileDash = ({ getClients }) => (
     <main className='main'>
       <h2 id='Mobile-text'>סקירה כללית</h2>
       <div className='Mobile-Dash-Box-Att'>
-        <Card id='Dash-Card-Size' style={{ width: '8.7rem' }}>
+        <Card id='Dash-Card-Size'>
           <Card.Body>
             <Link to='/AllClients'>
               <FontAwesomeIcon id='Mobile-icon' icon={faUser} size='3x' />
@@ -163,7 +163,7 @@ const MobileDash = ({ getClients }) => (
           </Card.Body>
         </Card>
 
-        <Card id='Dash-Card-Size' style={{ width: '8.7rem' }}>
+        <Card id='Dash-Card-Size'>
           <Card.Body>
             <a href='#NewClients'>
               <FontAwesomeIcon id='Mobile-icon' icon={faUserPlus} size='3x' />
@@ -173,7 +173,7 @@ const MobileDash = ({ getClients }) => (
             </div>
           </Card.Body>
         </Card>
-        <Card id='Dash-Card-Size' style={{ width: '8.7rem' }}>
+        <Card id='Dash-Card-Size'>
           <Card.Body>
             <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
             <div className='Mobile-DashBoard-Text'>
@@ -181,7 +181,7 @@ const MobileDash = ({ getClients }) => (
             </div>
           </Card.Body>
         </Card>
-        <Card id='Dash-Card-Size' style={{ width: '8.7rem' }}>
+        <Card id='Dash-Card-Size'>
           <Card.Body>
             <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
 
@@ -192,51 +192,53 @@ const MobileDash = ({ getClients }) => (
         </Card>
       </div>
       <div className='Mobile-Dash-Box-Att'>
-        <Card bg='light' style={{ width: '18rem' }}>
+        <Card bg='light' id='Dash-card-Stat'>
           <Card.Body>
             <div className='Mobile-BoxTitle'>סטטיסטיקת מנויים</div>
           </Card.Body>
         </Card>
-        <Card bg='light' style={{ width: '18rem' }}>
+        <Card bg='light' id='Dash-card-Stat'>
           <Card.Body>
             <div className='Mobile-BoxTitle'>סטטיסטיקת חידוש מנויים</div>
           </Card.Body>
         </Card>
       </div>
-      <Card id='Table-Card-size' style={{ width: '100%' }}>
-        <Card.Body>
-          <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
-          <Table id='NewClients' striped bordered hover size='sm'>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>שם פרטי</th>
-                <th>שם משפחה</th>
-                <th>דואר אלקטרוני</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>עדן</td>
-                <td>אלמליח</td>
-                <td>eelmalich2@gmail.com</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colSpan='2'>Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
+      <div className='Mobile-Dash-Box-Att'>
+        <Card id='Table-Card-size'>
+          <Card.Body>
+            <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
+            <Table id='NewClients' striped bordered hover size='sm'>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>שם פרטי</th>
+                  <th>שם משפחה</th>
+                  <th>דואר אלקטרוני</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>עדן</td>
+                  <td>אלמליח</td>
+                  <td>eelmalich2@gmail.com</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td colSpan='2'>Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>
