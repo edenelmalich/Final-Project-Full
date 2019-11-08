@@ -137,7 +137,7 @@ const MobileForgotPass = ({
                 icon={faUnlockAlt}
               />
               <header className='Main-Title'> איפוס סיסמה</header>
-              <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
+              <form className='Mobile-Form'>
                 <label>דואר אלקטרוני</label>
                 <input
                   type='text'
@@ -170,6 +170,7 @@ const MobileForgotPass = ({
                   type='submit'
                   name='Password'
                   value='איפוס סיסמה'
+                  onSubmit={e => onSubmit(e)}
                 />
 
                 <div className='Main-Border'></div>
