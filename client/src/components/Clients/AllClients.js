@@ -81,7 +81,7 @@ const MobileClients = ({ getClients }) => (
     <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>לקוחות</h2>
-      <Card id='Table-Clients-Card-size' style={{ width: '100%' }}>
+      <Card id='Table-Clients-Card-size'>
         <Card.Body>
           <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
           <Table striped bordered hover size='sm'>

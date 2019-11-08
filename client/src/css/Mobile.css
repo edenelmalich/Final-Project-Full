@@ -181,7 +181,8 @@ body {
 }
 
 #Table-Clients-Card-size {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: scroll;
 }
 
 /* Main Mobile form attributes */
