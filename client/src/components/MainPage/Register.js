@@ -150,7 +150,7 @@ const MobileRegister = ({
         <Card.Body>
           <FontAwesomeIcon className='Mobile-Main-Icon' icon={FasAddressCard} />
           <header className='Main-Title'> הרשמה</header>
-          <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
+          <form className='Mobile-Form'>
             <label> שם מלא</label>
             <input
               type='text'
@@ -184,7 +184,12 @@ const MobileRegister = ({
               onChange={e => onChange(e)}
               placeholder='אימות סיסמה'
             />
-            <input type='submit' name='register' value='הרשמה' />
+            <input
+              type='submit'
+              name='register'
+              value='הרשמה'
+              onSubmit={e => onSubmit(e)}
+            />
             <div className='Main-Border'></div>
             <div className='Mobile-Button-content '>
               <div className='Mobile-LoginApp-text'>
