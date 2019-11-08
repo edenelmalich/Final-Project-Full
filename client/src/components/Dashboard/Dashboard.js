@@ -151,92 +151,76 @@ const MobileDash = ({ getClients }) => (
       <h2 id='Mobile-text'>סקירה כללית</h2>
       <div className='Mobile-Dash-Box-Att'>
         <Card id='Dash-Card-Size'>
-          <Card.Body>
-            <Link to='/AllClients'>
-              <FontAwesomeIcon id='Mobile-icon' icon={faUser} size='3x' />
+          <Link to='/AllClients'>
+            <FontAwesomeIcon id='Mobile-icon' icon={faUser} size='3x' />
 
-              <div className='Mobile-DashBoard-Text'>לקוחות</div>
-            </Link>
-            <div className='Mobile-DashBoard-Text-info'>
-              {getClients.length}
-            </div>
-          </Card.Body>
+            <div className='Mobile-DashBoard-Text'>לקוחות</div>
+          </Link>
+          <div className='Mobile-DashBoard-Text-info'>{getClients.length}</div>
         </Card>
 
         <Card id='Dash-Card-Size'>
-          <Card.Body>
-            <a href='#NewClients'>
-              <FontAwesomeIcon id='Mobile-icon' icon={faUserPlus} size='3x' />
-            </a>
-            <div className='Mobile-DashBoard-Text'>
-              <span>לקוחות חדשים</span>
-            </div>
-          </Card.Body>
+          <a href='#NewClients'>
+            <FontAwesomeIcon id='Mobile-icon' icon={faUserPlus} size='3x' />
+          </a>
+          <div className='Mobile-DashBoard-Text'>
+            <span>לקוחות חדשים</span>
+          </div>
         </Card>
         <Card id='Dash-Card-Size'>
-          <Card.Body>
-            <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
-            <div className='Mobile-DashBoard-Text'>
-              <span>חידוש מנויים</span>
-            </div>
-          </Card.Body>
+          <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
+          <div className='Mobile-DashBoard-Text'>
+            <span>חידוש מנויים</span>
+          </div>
         </Card>
         <Card id='Dash-Card-Size'>
-          <Card.Body>
-            <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
+          <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
 
-            <div className='Mobile-DashBoard-Text'>
-              <span>סטטיסטיקת מנויים</span>
-            </div>
-          </Card.Body>
+          <div className='Mobile-DashBoard-Text'>
+            <span>סטטיסטיקת מנויים</span>
+          </div>
         </Card>
       </div>
       <div className='Mobile-Dash-Box-Att'>
         <Card bg='light' id='Dash-card-Stat'>
-          <Card.Body>
-            <div className='Mobile-BoxTitle'>סטטיסטיקת מנויים</div>
-          </Card.Body>
+          <div className='Mobile-BoxTitle'>סטטיסטיקת מנויים</div>
         </Card>
         <Card bg='light' id='Dash-card-Stat'>
-          <Card.Body>
-            <div className='Mobile-BoxTitle'>סטטיסטיקת חידוש מנויים</div>
-          </Card.Body>
+          <div className='Mobile-BoxTitle'>סטטיסטיקת חידוש מנויים</div>
         </Card>
       </div>
       <div className='Mobile-Dash-Box-Att'>
         <Card id='Table-Card-size'>
-          <Card.Body>
-            <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
-            <Table id='NewClients' striped bordered hover size='sm'>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>שם פרטי</th>
-                  <th>שם משפחה</th>
-                  <th>דואר אלקטרוני</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>עדן</td>
-                  <td>אלמליח</td>
-                  <td>eelmalich2@gmail.com</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td colSpan='2'>Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Card.Body>
+          <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
+          <Table id='NewClients' striped bordered hover size='sm'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>שם פרטי</th>
+                <th>שם משפחה</th>
+                <th>דואר אלקטרוני</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>עדן</td>
+                <td>אלמליח</td>
+                <td>eelmalich2@gmail.com</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td colSpan='2'>Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </Table>
         </Card>
       </div>
     </main>

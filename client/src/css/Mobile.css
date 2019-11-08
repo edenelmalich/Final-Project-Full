@@ -166,19 +166,21 @@ body {
 
 #Dash-Card-Size {
     flex: 0 0 45%;
+    padding: 1.25rem;
+
 }
 
 #Dash-card-Stat {
     flex: 0 0 95%;
+    padding: 1.25rem;
+
 }
 
 #Table-Card-size {
     flex: 0 0 95%;
-
-}
-
-.Mobile .card-body {
     padding: 1.25rem;
+    height: auto;
+
 }
 
 #Table-Clients-Card-size {
