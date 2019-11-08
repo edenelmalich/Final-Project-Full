@@ -52,6 +52,7 @@
 
 /* Cards attributes */
 .Dashboard .card {
+    position: unset;
     text-align: right;
     height: 25vh;
     border-radius: 1rem;
