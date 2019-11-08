@@ -171,14 +171,14 @@ body {
 #Dash-Card-Size {
     flex: 0 0 45%;
     padding: 1.25rem;
-    min-height: 25vh;
+    height: auto;
 
 }
 
 #Dash-card-Stat {
     flex: 0 0 95%;
     padding: 1.25rem;
-    min-height: 30vh;
+    height: auto;
 
 }
 

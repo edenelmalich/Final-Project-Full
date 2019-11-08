@@ -163,22 +163,20 @@ const MobileDash = ({ getClients }) => (
           <a href='#NewClients'>
             <FontAwesomeIcon id='Mobile-icon' icon={faUserPlus} size='3x' />
           </a>
-          <div className='Mobile-DashBoard-Text'>
-            <span>לקוחות חדשים</span>
-          </div>
+          <div className='Mobile-DashBoard-Text'>לקוחות חדשים</div>
+          <div className='Mobile-DashBoard-Text-info'>4</div>
         </Card>
         <Card id='Dash-Card-Size'>
           <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
-          <div className='Mobile-DashBoard-Text'>
-            <span>חידוש מנויים</span>
-          </div>
+
+          <div className='Mobile-DashBoard-Text'>חידוש מנויים</div>
+          <div className='Mobile-DashBoard-Text-info'>2</div>
         </Card>
         <Card id='Dash-Card-Size'>
           <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
 
-          <div className='Mobile-DashBoard-Text'>
-            <span>סטטיסטיקת מנויים</span>
-          </div>
+          <div className='Mobile-DashBoard-Text'>סטטיסטיקת מנויים</div>
+          <div className='Mobile-DashBoard-Text-info'>4.5</div>
         </Card>
       </div>
       <div className='Mobile-Dash-Box-Att'>
