@@ -56,7 +56,7 @@ const LoginApp = ({ isAuth, login }) => {
                 <Card.Body>
                   <FontAwesomeIcon className='Main-Icon' icon={FasUser} />
                   <header className='Main-Title'> התחברות</header>
-                  <form className='MainPage-Form'>
+                  <form className='MainPage-Form' onSubmit={e => onSubmit(e)}>
                     <label> דואר אלקטרוני</label>
                     <input
                       type='text'

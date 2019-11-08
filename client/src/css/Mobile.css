@@ -9,7 +9,6 @@ body {
 .Mobile .main {
     padding: 2rem;
     background: #353c3f;
-
     min-height: 100vh;
 }
 
@@ -136,7 +135,7 @@ body {
 }
 
 /* Footer Attributes */
-.Mobile-footer {
+.Mobile .Mobile-footer {
     position: relative;
     bottom: 0;
     text-align: left;
@@ -147,13 +146,13 @@ body {
     color: #353c3f;
 }
 
-.Footer-top {
+.Mobile .Footer-top {
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color: rgba(0, 0, 0, .125);
 }
 
-.Footer-Padding {
+.Mobile .Footer-Padding {
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -166,12 +165,11 @@ body {
 }
 
 #Dash-Card-Size {
-    height: 20vh;
+    flex: 0 0 45%;
 }
 
 #Table-Card-size {
     height: 30vh;
-    overflow: auto;
 }
 
 #Table-Clients-Card-size {

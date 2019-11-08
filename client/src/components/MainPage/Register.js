@@ -34,9 +34,9 @@ const Register = ({ setAlert, register, isAuth }) => {
       register(Name, Email, Password);
     }
   };
-  // if (isAuth) {
-  //   return <Redirect to='/LoginApp' />;
-  // }
+  if (isAuth) {
+    return <Redirect to='/LoginApp' />;
+  }
   return (
     <div className='MainPage'>
       <MediaQuery maxDeviceWidth={1024}>
@@ -150,7 +150,7 @@ const MobileRegister = ({
         <Card.Body>
           <FontAwesomeIcon className='Mobile-Main-Icon' icon={FasAddressCard} />
           <header className='Main-Title'> הרשמה</header>
-          <form className='Mobile-Form'>
+          <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
             <label> שם מלא</label>
             <input
               type='text'
@@ -184,12 +184,7 @@ const MobileRegister = ({
               onChange={e => onChange(e)}
               placeholder='אימות סיסמה'
             />
-            <input
-              type='submit'
-              name='register'
-              value='הרשמה'
-              onSubmit={e => onSubmit(e)}
-            />
+            <input type='submit' name='register' value='הרשמה' />
             <div className='Main-Border'></div>
             <div className='Mobile-Button-content '>
               <div className='Mobile-LoginApp-text'>
