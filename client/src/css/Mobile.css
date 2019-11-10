@@ -39,6 +39,7 @@ body {
     display: flex;
     height: 75px;
     background: #f8f9fa;
+    box-shadow: 0px 2px 5px 0px #282828;
 }
 
 .Mobile-Main-Title {
@@ -75,6 +76,8 @@ body {
     text-align: right;
     position: fixed;
     width: 100%;
+    box-shadow: 0px 2px 5px 0px #282828;
+
 }
 
 .navbar-brand {
@@ -178,7 +181,7 @@ body {
 .Mobile .Dash-Card-Size {
     flex: 0 0 45%;
     padding: 1.25rem;
-    height: 20vh;
+    height: 135px;
     position: unset;
     text-align: right;
     border-radius: 1rem;
