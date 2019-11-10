@@ -44,7 +44,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                   <h2>סקירה כללית</h2>
                   <div className='DashBoard-Margin'>
                     <div className='Dash-Box-Att'>
-                      <Card style={{ width: '15rem' }}>
+                      <Card id='DashClient' style={{ width: '15rem' }}>
                         <Card.Body>
                           <Link to='/AllClients'>
                             <div className='DashBoard-Icon'>
@@ -58,7 +58,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                         </Card.Body>
                       </Card>
 
-                      <Card style={{ width: '15rem' }}>
+                      <Card id='DashNewClient' style={{ width: '15rem' }}>
                         <Card.Body>
                           <a href='#NewClients'>
                             <div className='DashBoard-Icon'>
@@ -70,7 +70,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           </div>
                         </Card.Body>
                       </Card>
-                      <Card style={{ width: '15rem' }}>
+                      <Card id='DashSub' style={{ width: '15rem' }}>
                         <Card.Body>
                           <div className='DashBoard-Icon'>
                             <FontAwesomeIcon icon={faUserClock} size='3x' />
@@ -80,7 +80,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           </div>
                         </Card.Body>
                       </Card>
-                      <Card style={{ width: '15rem' }}>
+                      <Card id='DashSubStat' style={{ width: '15rem' }}>
                         <Card.Body>
                           <div className='DashBoard-Icon'>
                             <FontAwesomeIcon icon={faChartBar} size='3x' />
@@ -150,7 +150,7 @@ const MobileDash = ({ getClients }) => (
     <main className='main'>
       <h2 id='Mobile-text'>סקירה כללית</h2>
       <div className='Mobile-Dash-Box-Att'>
-        <Card id='Dash-Card-Size'>
+        <Card id='DashClient' className='Dash-Card-Size'>
           <Link to='/AllClients'>
             <FontAwesomeIcon id='Mobile-icon' icon={faUser} size='3x' />
 
@@ -159,20 +159,20 @@ const MobileDash = ({ getClients }) => (
           <div className='Mobile-DashBoard-Text-info'>{getClients.length}</div>
         </Card>
 
-        <Card id='Dash-Card-Size'>
+        <Card id='DashNewClient' className='Dash-Card-Size'>
           <a href='#NewClients'>
             <FontAwesomeIcon id='Mobile-icon' icon={faUserPlus} size='3x' />
           </a>
           <div className='Mobile-DashBoard-Text'>לקוחות חדשים</div>
           <div className='Mobile-DashBoard-Text-info'>4</div>
         </Card>
-        <Card id='Dash-Card-Size'>
+        <Card id='DashSub' className='Dash-Card-Size'>
           <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
 
           <div className='Mobile-DashBoard-Text'>חידוש מנויים</div>
           <div className='Mobile-DashBoard-Text-info'>2</div>
         </Card>
-        <Card id='Dash-Card-Size'>
+        <Card id='DashSubStat' className='Dash-Card-Size'>
           <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
 
           <div className='Mobile-DashBoard-Text'>סטטיסטיקת מנויים</div>

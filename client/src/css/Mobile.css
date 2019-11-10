@@ -10,6 +10,7 @@ body {
     padding: 2rem;
     background: #353c3f;
     max-width: 38rem;
+    padding-top: 116px;
 }
 
 .App {
@@ -33,7 +34,7 @@ body {
 }
 
 .Mobile-Header {
-    position: relative;
+    position: fixed;
     width: 100%;
     display: flex;
     height: 75px;
@@ -72,6 +73,8 @@ body {
 /* Navbar attributes */
 .Mobile .navbar {
     text-align: right;
+    position: fixed;
+    width: 100%;
 }
 
 .navbar-brand {
@@ -168,12 +171,25 @@ body {
     height: unset;
 }
 
-#Dash-Card-Size {
+.card {
+    position: unset;
+}
+
+.Mobile .Dash-Card-Size {
     flex: 0 0 45%;
     padding: 1.25rem;
-    height: auto;
+    height: 20vh;
+    position: unset;
+    text-align: right;
+    border-radius: 1rem;
+    background: #f8f9fa;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .5rem;
+    overflow: hidden;
 
 }
+
 
 #Dash-card-Stat {
     flex: 0 0 95%;
@@ -303,7 +319,7 @@ body {
 }
 
 .Mobile-DashBoard-Text-info {
-    color: #353c3f;
+    color: #f8f9fa;
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
@@ -320,7 +336,7 @@ body {
 }
 
 .Mobile-DashBoard-Text {
-    color: #353c3f;
+    color: #f8f9fa;
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
