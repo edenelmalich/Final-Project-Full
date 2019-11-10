@@ -480,9 +480,16 @@ body {
     font-size: 12px;
 }
 
+.Mobile .Radio-Text {
+
+    margin-right: 10px;
+}
+
 /* Stat Page Attributes */
 .Mobile .Stat-Form input[type="text"] {
     width: unset;
+    padding: unset;
+    text-indent: 5px;
 }
 
 .Mobile .Stat-content .card {
