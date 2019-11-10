@@ -9,7 +9,6 @@ body {
 .Mobile .main {
     padding: 2rem;
     background: #353c3f;
-    max-width: 38rem;
     padding-top: 116px;
 }
 
@@ -197,7 +196,7 @@ body {
 #Dash-card-Stat {
     flex: 0 0 95%;
     padding: 1.25rem;
-    height: auto;
+    height: 200px;
 
 }
 
@@ -376,8 +375,11 @@ body {
 
 .Mobile-Settings .dropdown-menu {
     background: #f8f9fa;
-    width: 100%;
     text-align: right;
+}
+
+.Mobile-Settings .dropdown {
+    position: unset;
 }
 
 .Mobile-Page-Header {
@@ -412,4 +414,28 @@ body {
         align-items: center;
         display: flex;
     }
+}
+
+/* Health page attributes */
+.Mobile .FormData {
+    height: 400px;
+    background: #f8f9fa;
+    margin-right: auto;
+    margin-left: auto;
+    flex: 0 0 100%;
+    overflow: auto;
+}
+
+/* Update Page */
+.Mobile .Form-Update {
+    color: #353c3f;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    padding: 1.25rem;
+    text-align: right;
+}
+
+.Mobile textarea {
+    height: 100px;
 }

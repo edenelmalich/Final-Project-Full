@@ -68,6 +68,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           <div className='DashBoard-Text'>
                             <span>לקוחות חדשים</span>
                           </div>
+                          <div className='DashBoard-Text-info'>4</div>
                         </Card.Body>
                       </Card>
                       <Card id='DashSub' style={{ width: '15rem' }}>
@@ -78,6 +79,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           <div className='DashBoard-Text'>
                             <span>חידוש מנויים</span>
                           </div>
+                          <div className='DashBoard-Text-info'>2</div>
                         </Card.Body>
                       </Card>
                       <Card id='DashSubStat' style={{ width: '15rem' }}>
@@ -88,6 +90,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           <div className='DashBoard-Text'>
                             <span>סטטיסטיקת מנויים</span>
                           </div>
+                          <div className='DashBoard-Text-info'>4.5</div>
                         </Card.Body>
                       </Card>
                     </div>

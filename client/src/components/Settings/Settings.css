@@ -172,6 +172,7 @@
     height: 23.8rem;
     margin-right: auto;
     margin-left: auto;
+    position: relative;
 }
 
 /* PersonalDetails Attributes */

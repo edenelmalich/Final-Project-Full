@@ -3,38 +3,51 @@
     font-weight: bold;
     font-size: 16px;
     margin: 0;
-    padding: 1.25rem;
+    padding: 1.25rem 5rem 1.25rem 5rem;
+    text-align: right;
+}
+
+#Form-label {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: #353c3f;
+    text-align: right;
 }
 
 .Form-Update input[type="text"] {
-    width: 60%;
-    height: 40px;
-    font-size: 16px;
-    color: #353c3f;
-    text-indent: 25px;
-    margin-top: 20px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
     outline: none;
-    border: 1px solid #353c3f;
+    color: #353c3f;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
 
 }
 
 .Form-Update input[type="submit"] {
-    font-size: 16px;
-    width: 120px;
-    height: 30px;
-    border: none;
-    outline: none;
-    font-weight: 600;
-    cursor: pointer;
     display: block;
-    background: #353c3f;
-    color: #f8f9fa;
+    width: 150px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    background-color: #353c3f;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
     margin-right: auto;
     margin-left: auto;
+    outline: none;
+    margin-top: 20px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .Form-Update label {
@@ -42,6 +55,7 @@
     font-weight: 600;
     display: block;
     color: #353c3f;
+    padding-top: 1rem;
 }
 
 .Form-Update ::placeholder {
@@ -49,11 +63,15 @@
 }
 
 textarea {
-    width: 50%;
+    width: 100%;
     height: 150px;
     display: block;
     margin-right: auto;
     margin-left: auto;
-    border: 1px solid #353c3f;
     outline: none;
+    text-indent: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    background-clip: padding-box;
+    border: 2px solid #353c3f;
+    border-radius: 0.75rem;
 }
