@@ -51,6 +51,20 @@ const MobileStat = () => (
     <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>סטטיסטיקת מתאמנים</h2>
+      <form className='Stat-Form'>
+        <input type='text' placeholder='הכנס שם מתאמן' />
+        <input type='submit' value='בדוק סטטיסטיקות' />
+      </form>
+      <div className='Stat-content'>
+        <Card id='Stat-card'>
+          <Card.Header>סטטיסטיקת משקל</Card.Header>
+          <Card.Body></Card.Body>
+        </Card>
+        <Card>
+          <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
+          <Card.Body></Card.Body>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>
