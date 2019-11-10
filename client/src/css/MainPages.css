@@ -15,6 +15,7 @@ body {
     width: 100%;
     height: 75px;
     background: #f8f9fa;
+    box-shadow: 0px 2px 5px 0px #282828;
 }
 
 .MainPage img {
@@ -54,6 +55,18 @@ body {
 
 .Carousel-content {
     padding-top: 5rem;
+}
+
+.Carousel-item {
+    position: unset;
+}
+
+.carousel-inner {
+    position: unset;
+}
+
+.Carousel {
+    position: unset;
 }
 
 .Carousel-content img {

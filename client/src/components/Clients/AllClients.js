@@ -34,6 +34,7 @@ const AllClients = ({ GetClients, getClients }) => {
                         <h3>לקוחות</h3>
                       </header>
                       <div className='Main-Padding'></div>
+                      <div className='TableText'>רשימת לקוחות</div>
                       <Table striped bordered hover size='sm'>
                         <thead>
                           <tr>
@@ -83,7 +84,7 @@ const MobileClients = ({ getClients }) => (
       <h2 id='Mobile-text'>לקוחות</h2>
       <Card id='Table-Clients-Card-size'>
         <Card.Body>
-          <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
+          <div className='TableText'>רשימת לקוחות</div>
           <Table striped bordered hover size='sm'>
             <thead>
               <tr>

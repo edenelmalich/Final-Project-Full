@@ -5,7 +5,11 @@ import './NewClients.css';
 import PropTypes from 'prop-types';
 import { Nclient } from '../../actions/NclientAction';
 import Alert from '../layout/Alert';
-
+// Mobile imports
+import '../../css/Mobile.css';
+import MobileNav from '../Mobile/MobileNav';
+import MobileFooter from '../Mobile/MobileFooter';
+import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 const NewClients = ({ Nclient }) => {
@@ -113,118 +117,249 @@ const NewClients = ({ Nclient }) => {
   };
   return (
     <div className='Nclients'>
-      <Navbar />
+      <MediaQuery maxDeviceWidth={1024}>
+        <MobileNclient
+          TypeData={TypeData}
+          onChange={onChange}
+          TimeData={TimeData}
+          PaymentData={PaymentData}
+          CalculationData={CalculationData}
+          SetData={SetData}
+          Phone={Phone}
+          id={id}
+          firstname={firstname}
+          lastname={lastname}
+          onSubmit={onSubmit}
+        />
+      </MediaQuery>
+      <MediaQuery minDeviceWidth={1280}>
+        <Navbar />
 
-      <div className='Page-Container'>
-        <main className='main'>
-          <div className='Pages-Content'>
-            <div className='Att-PagesContent'>
-              <div className='PagesContainer'>
-                <h2>לקוח חדש</h2>
-                <div className='FormClient'>
-                  <header className='Header-Client'>
-                    <h3>הוספת לקוח חדש</h3>
-                  </header>
-                  <div className='Main-Padding'></div>
-                  <div className='Alert-Position'>
-                    <Alert />
-                  </div>
-                  <form
-                    action='#'
-                    className='Nclient-FormAtt'
-                    onSubmit={e => onSubmit(e)}
-                  >
-                    <div className='Form-Flex'>
-                      <input
-                        type='text'
-                        name='firstname'
-                        value={firstname}
-                        onChange={e => SetData(e)}
-                        placeholder='שם פרטי'
-                      />
-                      <input
-                        type='text'
-                        name='lastname'
-                        value={lastname}
-                        onChange={e => SetData(e)}
-                        placeholder='שם משפחה'
-                      />
-                      <input
-                        type='text'
-                        name='id'
-                        value={id}
-                        onChange={e => SetData(e)}
-                        placeholder='תעודת זהות'
-                      />
-                      <input
-                        type='text'
-                        name='Phone'
-                        value={Phone}
-                        onChange={e => SetData(e)}
-                        placeholder='טלפון'
-                      />
+        <div className='Page-Container'>
+          <main className='main'>
+            <div className='Pages-Content'>
+              <div className='Att-PagesContent'>
+                <div className='PagesContainer'>
+                  <h2>לקוח חדש</h2>
+                  <div className='FormClient'>
+                    <header className='Header-Client'>
+                      <h3>הוספת לקוח חדש</h3>
+                    </header>
+                    <div className='Alert-Position'>
+                      <Alert />
                     </div>
-                    <div className='Main-Padding'></div>
-                    <div className='Main-Border'></div>
-                    <label>סוג המנוי:</label>
-                    {TypeData.map(item => (
-                      <div className='Radio-Text' key={item.id}>
-                        {item.label}
+                    <form
+                      action='#'
+                      className='Nclient-FormAtt'
+                      onSubmit={e => onSubmit(e)}
+                    >
+                      <div className='Form-Flex'>
                         <input
-                          type='radio'
-                          value={'TypeData'}
-                          name='Type'
-                          onChange={e => onChange(e, item.id)}
-                          checked={item.selected}
+                          type='text'
+                          name='firstname'
+                          value={firstname}
+                          onChange={e => SetData(e)}
+                          placeholder='שם פרטי'
+                        />
+                        <input
+                          type='text'
+                          name='lastname'
+                          value={lastname}
+                          onChange={e => SetData(e)}
+                          placeholder='שם משפחה'
+                        />
+                        <input
+                          type='text'
+                          name='id'
+                          value={id}
+                          onChange={e => SetData(e)}
+                          placeholder='תעודת זהות'
+                        />
+                        <input
+                          type='text'
+                          name='Phone'
+                          value={Phone}
+                          onChange={e => SetData(e)}
+                          placeholder='טלפון'
                         />
                       </div>
-                    ))}
-                    <div className='Main-Border'></div>
-                    <label>תקופת מנוי:</label>
-                    {TimeData.map(item => (
-                      <div className='Radio-Text' key={item.id}>
-                        {item.label}
-                        <input
-                          type='radio'
-                          name='Time'
-                          value={'TimeData'}
-                          onChange={e => onChange(e, item.id)}
-                          checked={item.selected}
-                        />
-                      </div>
-                    ))}
-                    <div className='Main-Border'></div>
-                    <label>יגבה תשלום חד פעמי בעלות של 20 ₪ עבור צ'יפ.</label>
-                    <div className='Main-Border'></div>
-                    <label>אמצעי תשלום:</label>
-                    {PaymentData.map(item => (
-                      <span className='Radio-Text' key={item.id}>
-                        {item.label}
-                        <input
-                          type='radio'
-                          value={'PaymentData'}
-                          onChange={e => onChange(e, item.id)}
-                          checked={item.selected}
-                        />
-                      </span>
-                    ))}
-                    <div className='Main-Border'></div>
-                    <label>סך הכל לתשלום:</label>
-                    <span className='calculation'>{CalculationData} ₪</span>
-                    <div className='Main-Border'></div>
-                    <div className='Main-Padding'></div>
-                    <input type='submit' name='send' value='הוסף לקוח חדש' />
-                  </form>
+                      <div className='Main-Padding'></div>
+                      <div className='Main-Border'></div>
+                      <label>סוג המנוי:</label>
+                      {TypeData.map(item => (
+                        <div className='Radio-Text' key={item.id}>
+                          {item.label}
+                          <input
+                            type='radio'
+                            value={'TypeData'}
+                            name='Type'
+                            onChange={e => onChange(e, item.id)}
+                            checked={item.selected}
+                          />
+                        </div>
+                      ))}
+                      <div className='Main-Border'></div>
+                      <label>תקופת מנוי:</label>
+                      {TimeData.map(item => (
+                        <div className='Radio-Text' key={item.id}>
+                          {item.label}
+                          <input
+                            type='radio'
+                            name='Time'
+                            value={'TimeData'}
+                            onChange={e => onChange(e, item.id)}
+                            checked={item.selected}
+                          />
+                        </div>
+                      ))}
+                      <div className='Main-Border'></div>
+                      <label>יגבה תשלום חד פעמי בעלות של 20 ₪ עבור צ'יפ.</label>
+                      <div className='Main-Border'></div>
+                      <label>אמצעי תשלום:</label>
+                      {PaymentData.map(item => (
+                        <span className='Radio-Text' key={item.id}>
+                          {item.label}
+                          <input
+                            type='radio'
+                            value={'PaymentData'}
+                            onChange={e => onChange(e, item.id)}
+                            checked={item.selected}
+                          />
+                        </span>
+                      ))}
+                      <div className='Main-Border'></div>
+                      <label>סך הכל לתשלום:</label>
+                      <span className='calculation'>{CalculationData} ₪</span>
+                      <div className='Main-Border'></div>
+                      <div className='Main-Padding'></div>
+                      <input type='submit' name='send' value='הוסף לקוח חדש' />
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-        <AppFooter />
-      </div>
+          </main>
+          <AppFooter />
+        </div>
+      </MediaQuery>
     </div>
   );
 };
+const MobileNclient = ({
+  TypeData,
+  onChange,
+  TimeData,
+  PaymentData,
+  CalculationData,
+  firstname,
+  lastname,
+  SetData,
+  id,
+  Phone,
+  onSubmit
+}) => (
+  <div className='Mobile'>
+    <MobileNav />
+    <main className='main'>
+      <h2 id='Mobile-text'>לקוח חדש</h2>
+      <div className='FormClient'>
+        <header className='Header-Client'>
+          <h3>הוספת לקוח חדש</h3>
+        </header>
+        <div className='Alert-Position'>
+          <Alert />
+        </div>
+        <form
+          action='#'
+          className='Nclient-FormAtt'
+          onSubmit={e => onSubmit(e)}
+        >
+          <div className='Form-Flex'>
+            <input
+              type='text'
+              name='firstname'
+              value={firstname}
+              onChange={e => SetData(e)}
+              placeholder='שם פרטי'
+            />
+            <input
+              type='text'
+              name='lastname'
+              value={lastname}
+              onChange={e => SetData(e)}
+              placeholder='שם משפחה'
+            />
+            <input
+              type='text'
+              name='id'
+              value={id}
+              onChange={e => SetData(e)}
+              placeholder='תעודת זהות'
+            />
+            <input
+              type='text'
+              name='Phone'
+              value={Phone}
+              onChange={e => SetData(e)}
+              placeholder='טלפון'
+            />
+          </div>
+          <div className='Main-Padding'></div>
+          <div className='Main-Border'></div>
+          <label>סוג המנוי:</label>
+          {TypeData.map(item => (
+            <div className='Radio-Text' key={item.id}>
+              {item.label}
+              <input
+                type='radio'
+                value={'TypeData'}
+                name='Type'
+                onChange={e => onChange(e, item.id)}
+                checked={item.selected}
+              />
+            </div>
+          ))}
+          <div className='Main-Border'></div>
+          <label>תקופת מנוי:</label>
+          {TimeData.map(item => (
+            <div className='Radio-Text' key={item.id}>
+              {item.label}
+              <input
+                type='radio'
+                name='Time'
+                value={'TimeData'}
+                onChange={e => onChange(e, item.id)}
+                checked={item.selected}
+              />
+            </div>
+          ))}
+          <div className='Main-Border'></div>
+          <label>יגבה תשלום חד פעמי בעלות של 20 ₪ עבור צ'יפ.</label>
+          <div className='Main-Border'></div>
+          <label>אמצעי תשלום:</label>
+          {PaymentData.map(item => (
+            <span className='Radio-Text' key={item.id}>
+              {item.label}
+              <input
+                type='radio'
+                value={'PaymentData'}
+                onChange={e => onChange(e, item.id)}
+                checked={item.selected}
+              />
+            </span>
+          ))}
+          <div className='Main-Border'></div>
+          <label>סך הכל לתשלום:</label>
+          <span className='calculation'>{CalculationData} ₪</span>
+          <div className='Main-Border'></div>
+          <div className='Main-Padding'></div>
+          <input type='submit' name='send' value='הוסף לקוח חדש' />
+        </form>
+      </div>
+    </main>
+    <MobileFooter />
+  </div>
+);
 NewClients.propType = {
   NclientSuccess: PropTypes.bool
 };
