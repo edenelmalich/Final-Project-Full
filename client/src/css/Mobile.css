@@ -527,3 +527,41 @@ body {
 .Mobile .Stat-content .card-header {
     font-weight: 600;
 }
+
+/* Notifications */
+.MobileNav .Notifications {
+    color: #353c3f;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: auto;
+    padding-left: 15px;
+    margin-bottom: 3px;
+
+}
+
+.MobileNav .NotiBox {
+    position: absolute;
+    background: #f8f9fa;
+    border: 1px solid #353c3f;
+    left: 0;
+    top: 85px;
+    margin-left: 20px;
+}
+
+.MobileNav .NotiBox:before {
+    content: "";
+    display: block;
+    width: 19px;
+    height: 19px;
+    top: -17px;
+    right: 140px;
+    z-index: 3;
+}
+
+.MobileNav .Notifications:hover {
+    color: #6e6e6e;
+}

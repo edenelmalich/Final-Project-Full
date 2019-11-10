@@ -3,11 +3,20 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
+import Notifications from '../Navbar/Notifications';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
+import { SetNotification } from '../../actions/NavAction';
 
-const MobileNav = ({ user, Logout }) => {
+const MobileNav = ({
+  user,
+  Logout,
+  SetNotification,
+  NotificationsSelected
+}) => {
   const { Name } = user;
   return (
     <div className='MobileNav'>
@@ -17,6 +26,13 @@ const MobileNav = ({ user, Logout }) => {
             <img src={logo} alt='Mobile logo' id='MobileNav-img' />
           </Link>
         </Navbar.Brand>
+        <button
+          onClick={() => SetNotification(NotificationsSelected)}
+          className='Notifications'
+        >
+          <FontAwesomeIcon icon={faBell} />
+        </button>
+        {NotificationsSelected ? <Notifications /> : null}
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mr-auto'>
@@ -53,12 +69,14 @@ const MobileNav = ({ user, Logout }) => {
 };
 MobileNav.propTypes = {
   user: PropTypes.object,
-  Logout: PropTypes.func.isRequired
+  Logout: PropTypes.func.isRequired,
+  SetNotification: PropTypes.func
 };
 const mapStateToProps = state => ({
-  user: state.authReducer.user
+  user: state.authReducer.user,
+  NotificationsSelected: state.NavReducer.NotificationsSelected
 });
 export default connect(
   mapStateToProps,
-  { Logout }
+  { Logout, SetNotification }
 )(MobileNav);

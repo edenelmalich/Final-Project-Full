@@ -17,6 +17,7 @@ import {
   faAddressCard,
   faEdit
 } from '@fortawesome/free-regular-svg-icons';
+import Notifications from './Notifications';
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification, SetAccount } from '../../actions/NavAction';
@@ -104,9 +105,7 @@ const Navbar = ({
               <FontAwesomeIcon icon={faAngleDown} />
             </button>
           </div>
-          {NotificationsSelected ? (
-            <NotiBox SetNotification={SetNotification} />
-          ) : null}
+          {NotificationsSelected ? <Notifications /> : null}
           {AccountSelected ? (
             <Accbox SetAccount={SetAccount} Logout={Logout} />
           ) : null}
@@ -131,17 +130,6 @@ const Accbox = ({ Logout }) => (
     </Link>
     <Link to='/' onClick={() => Logout()} className='Logout-item'>
       התנתקות
-    </Link>
-  </div>
-);
-//This Box will show the notifications
-const NotiBox = () => (
-  <div className='NotiBox'>
-    <div className='Notification-Title'>יש לך 2 התראות חדשות</div>
-    <div className='Notification-item'>התקבלה הצהרת בריאות חדשה</div>
-    <div className='Notification-item'>נרשם לקוח חדש</div>
-    <Link to='/Notifications' className='Notification-Footer'>
-      לכל ההתראות
     </Link>
   </div>
 );
