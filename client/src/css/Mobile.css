@@ -7,7 +7,7 @@ body {
 }
 
 .Mobile .main {
-    padding: 2rem;
+    padding: 1.75rem;
     background: #353c3f;
     padding-top: 116px;
     min-height: 100vh;
@@ -475,6 +475,7 @@ body {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.Mobile .Nclient-FormAtt::placeholder {
+.Mobile .Nclient-FormAtt input[type=text]::placeholder {
     color: #353c3f;
+    font-size: 12px;
 }
