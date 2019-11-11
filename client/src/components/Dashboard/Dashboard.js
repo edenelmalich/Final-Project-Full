@@ -7,6 +7,8 @@ import { Card, Table } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppFooter from '../AppFooter';
+import SubStat from './SubStat';
+import NewSub from './NewSub';
 import {
   faUser,
   faUserPlus,
@@ -97,9 +99,11 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                     <div className='Dash-Box-Att'>
                       <div className='BoxStat'>
                         <div className='BoxTitle'>סטטיסטיקת מנויים</div>
+                        <SubStat />
                       </div>
                       <div className='BoxStat'>
                         <div className='BoxTitle'>סטטיסטיקת חידוש מנויים</div>
+                        <NewSub />
                       </div>
                     </div>
                     <Card id='Card-size'>
@@ -184,10 +188,12 @@ const MobileDash = ({ getClients }) => (
       </div>
       <div className='Mobile-Dash-Box-Att'>
         <Card bg='light' id='Dash-card-Stat'>
-          <div className='Mobile-BoxTitle'>סטטיסטיקת מנויים</div>
+          {/* <div className='Mobile-BoxTitle'>סטטיסטיקת מנויים</div> */}
+          <SubStat />
         </Card>
         <Card bg='light' id='Dash-card-Stat'>
-          <div className='Mobile-BoxTitle'>סטטיסטיקת חידוש מנויים</div>
+          {/* <div className='Mobile-BoxTitle'>סטטיסטיקת חידוש מנויים</div> */}
+          <NewSub />
         </Card>
       </div>
       <div className='Mobile-Dash-Box-Att'>
