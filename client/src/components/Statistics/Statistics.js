@@ -4,6 +4,9 @@ import './Statistics.css';
 import AppFooter from '../AppFooter';
 import { Card } from 'react-bootstrap';
 import HandState from './HandState';
+import WeightStat from './WeightStat';
+import ChestStat from './ChestStat';
+import BackhandStat from './BackhandStat';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -30,10 +33,19 @@ const Statistics = () => {
                   <div className='Stat-content'>
                     <Card>
                       <Card.Header>סטטיסטיקת משקל</Card.Header>
+                      <WeightStat />
                     </Card>
                     <Card>
                       <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
-                      <Card.Body></Card.Body>
+                      <HandState />
+                    </Card>
+                    <Card>
+                      <Card.Header>סטטיסטיקת היקף חזה</Card.Header>
+                      <ChestStat />
+                    </Card>
+                    <Card>
+                      <Card.Header>סטטיסטיקת היקף יד אחורית</Card.Header>
+                      <BackhandStat />
                     </Card>
                   </div>
                 </div>
@@ -56,11 +68,21 @@ const MobileStat = () => (
         <input type='submit' value='בדוק סטטיסטיקות' />
       </form>
       <div className='Stat-content'>
-        <Card id='Stat-card'>
+        <Card>
           <Card.Header>סטטיסטיקת משקל</Card.Header>
+          <WeightStat />
         </Card>
         <Card>
           <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
+          <HandState />
+        </Card>
+        <Card>
+          <Card.Header>סטטיסטיקת היקף חזה </Card.Header>
+          <ChestStat />
+        </Card>
+        <Card>
+          <Card.Header>סטטיסטיקת היקף יד אחורית</Card.Header>
+          <BackhandStat />
         </Card>
       </div>
     </main>

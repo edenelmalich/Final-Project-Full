@@ -55,6 +55,7 @@
     margin-right: auto;
     margin-left: auto;
     background: #f8f9fa;
+    margin-top: 15px;
 }
 
 .Stat-content .card-header {
@@ -82,4 +83,8 @@
 .chartjs-size-monitor-shrink {
     position: unset;
 
+}
+
+.HandState {
+    padding: 1.25rem;
 }

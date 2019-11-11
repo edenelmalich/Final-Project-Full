@@ -3,7 +3,7 @@ import { Bar } from 'react-chartjs-2';
 import MediaQuery from 'react-responsive';
 import '../../css/Mobile.css';
 
-class HandState extends React.Component {
+class WeightStat extends React.Component {
   state = {
     dataBar: {
       labels: [
@@ -22,8 +22,8 @@ class HandState extends React.Component {
       ],
       datasets: [
         {
-          label: 'סטטיסטיקת יד קדמית',
-          data: [6, 8, 10, 12, 14, 16],
+          label: 'סטטיסטיקת משקל',
+          data: [10, 20, 30, 40, 50, 60],
           backgroundColor: [
             'rgba(255, 134,159,0.4)',
             'rgba(98,  182, 239,0.4)',
@@ -96,4 +96,4 @@ class HandState extends React.Component {
   }
 }
 
-export default HandState;
+export default WeightStat;
