@@ -44,7 +44,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                   <h2>סקירה כללית</h2>
                   <div className='DashBoard-Margin'>
                     <div className='Dash-Box-Att'>
-                      <Card id='DashClient' style={{ width: '15rem' }}>
+                      <Card id='DashClient'>
                         <Card.Body>
                           <Link to='/AllClients'>
                             <div className='DashBoard-Icon'>
@@ -58,7 +58,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                         </Card.Body>
                       </Card>
 
-                      <Card id='DashNewClient' style={{ width: '15rem' }}>
+                      <Card id='DashNewClient'>
                         <Card.Body>
                           <a href='#NewClients'>
                             <div className='DashBoard-Icon'>
@@ -71,7 +71,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           <div className='DashBoard-Text-info'>4</div>
                         </Card.Body>
                       </Card>
-                      <Card id='DashSub' style={{ width: '15rem' }}>
+                      <Card id='DashSub'>
                         <Card.Body>
                           <div className='DashBoard-Icon'>
                             <FontAwesomeIcon icon={faUserClock} size='3x' />
@@ -82,7 +82,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                           <div className='DashBoard-Text-info'>2</div>
                         </Card.Body>
                       </Card>
-                      <Card id='DashSubStat' style={{ width: '15rem' }}>
+                      <Card id='DashSubStat'>
                         <Card.Body>
                           <div className='DashBoard-Icon'>
                             <FontAwesomeIcon icon={faChartBar} size='3x' />
@@ -102,7 +102,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                         <div className='BoxTitle'>סטטיסטיקת חידוש מנויים</div>
                       </div>
                     </div>
-                    <Card id='Card-size' style={{ width: '68rem' }}>
+                    <Card id='Card-size'>
                       <div className='BoxTitle'>מתאמנים חדשים</div>
                       <Card.Body>
                         <Table id='NewClients' striped bordered hover size='sm'>

@@ -31,19 +31,23 @@
 
 #DashClient {
     background: #a7414a;
+    width: 15rem;
 }
 
 #DashNewClient {
 
     background: #6a8a82;
+    width: 15rem;
 }
 
 #DashSub {
     background: #d9ac2a;
+    width: 15rem;
 }
 
 #DashSubStat {
     background: #415939;
+    width: 15rem;
 }
 
 .BoxStat {
@@ -82,7 +86,9 @@
 
 #Card-size {
     height: 50vh;
+    width: 68rem;
 }
+
 
 /* Dashboard table */
 .table-bordered {
@@ -117,4 +123,32 @@
 .table-bordered td,
 .table-bordered th {
     border: 1px solid #353c3f;
+}
+
+@media only screen and (width:1280px) {
+    #Card-size {
+        width: 53rem;
+    }
+
+    #DashClient {
+
+        width: 12rem;
+    }
+
+    #DashNewClient {
+
+
+        width: 12rem;
+    }
+
+    #DashSub {
+
+        width: 12rem;
+    }
+
+    #DashSubStat {
+
+        width: 12rem;
+    }
+
 }
