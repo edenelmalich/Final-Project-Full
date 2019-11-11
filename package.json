@@ -2,22 +2,22 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.2",
     "config": "^3.2.2",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "local-storage": "^2.0.0",
+    "mdbreact": "^4.22.0",
     "mongoose": "^5.6.13",
+    "nodemon": "^1.19.2",
     "react-dialog": "^1.0.2",
     "react-modal": "^3.9.1",
     "react-select": "^3.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "request": "^2.88.0",
-    "concurrently": "^4.1.2",
-    "nodemon": "^1.19.2"
+    "request": "^2.88.0"
   },
-
   "name": "maxfit",
   "homepage": "http://edenelmalich.github.io/Final-Project-Full",
   "version": "1.0.0",

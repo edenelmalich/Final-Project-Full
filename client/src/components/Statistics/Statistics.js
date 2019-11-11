@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar';
 import './Statistics.css';
 import AppFooter from '../AppFooter';
 import { Card } from 'react-bootstrap';
+import HandState from './HandState';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -29,7 +30,8 @@ const Statistics = () => {
                   <div className='Stat-content'>
                     <Card>
                       <Card.Header>סטטיסטיקת משקל</Card.Header>
-                      <Card.Body></Card.Body>
+
+                      <HandState />
                     </Card>
                     <Card>
                       <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
@@ -58,11 +60,10 @@ const MobileStat = () => (
       <div className='Stat-content'>
         <Card id='Stat-card'>
           <Card.Header>סטטיסטיקת משקל</Card.Header>
-          <Card.Body></Card.Body>
+          <HandState />
         </Card>
         <Card>
           <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
-          <Card.Body></Card.Body>
         </Card>
       </div>
     </main>

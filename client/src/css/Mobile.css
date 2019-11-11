@@ -519,7 +519,7 @@ body {
 
 .Mobile .Stat-content .card {
     flex: 0 0 100%;
-    height: 300px;
+    height: 325px;
     margin-right: auto;
     margin-left: auto;
     background: #f8f9fa;
@@ -535,6 +535,13 @@ body {
 
 .Mobile .Stat-content .card-header {
     font-weight: 600;
+}
+
+.Mobile h3 {
+    color: #353c3f;
+    margin-right: 5px;
+    font-size: 20px;
+    padding: 5px 5px 10px;
 }
 
 /* Notifications */
@@ -578,4 +585,18 @@ body {
 
 .MobileNav .Notifications .active {
     color: #6e6e6e;
+}
+
+/* Notification page Attributes */
+.Mobile .Noti-Main {
+    max-width: 100%;
+    background: #f8f9fa;
+}
+
+.Mobile .Noti-Window {
+    padding: unset;
+}
+
+.Mobile .Noti-Header {
+    font-size: 22px;
 }

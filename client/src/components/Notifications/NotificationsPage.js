@@ -3,6 +3,12 @@ import Navbar from '../Navbar/Navbar';
 import './NotiCss.css';
 import PropTypes from 'prop-types';
 import AppFooter from '../AppFooter';
+// Mobile imports
+import '../../css/Mobile.css';
+import MobileNav from '../Mobile/MobileNav';
+import MobileFooter from '../Mobile/MobileFooter';
+import MediaQuery from 'react-responsive';
+import SettingsNav from '../Mobile/SettingsNav';
 // Redux
 import { connect } from 'react-redux';
 import { closeAll } from '../../actions/NavAction';
@@ -12,30 +18,45 @@ const NotificationsPage = ({ closeAll }) => {
   }, []);
   return (
     <Fragment>
-      <Navbar />
-      <div className='Page-Container'>
-        <main className='main'>
-          <div className='Pages-Content'>
-            <div className='Att-PagesContent'>
-              <div className='PagesContainer'>
-                <h2>התראות</h2>
-                <div className='Noti-Padding'></div>
-                <div className='Noti-Main'>
-                  <div className='Noti-Window'>
+      <MediaQuery maxDeviceWidth={1024}>
+        <MobileNoti />
+      </MediaQuery>
+      <MediaQuery minDeviceWidth={1280}>
+        <Navbar />
+        <div className='Page-Container'>
+          <main className='main'>
+            <div className='Pages-Content'>
+              <div className='Att-PagesContent'>
+                <div className='PagesContainer'>
+                  <h2>התראות</h2>
+
+                  <div className='Noti-Main'>
                     <div className='Noti-Header '>התראות</div>
-                    <div className='Main-Padding'></div>
-                    <div className='Main-Border'></div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-        <AppFooter />
-      </div>
+          </main>
+          <AppFooter />
+        </div>
+      </MediaQuery>
     </Fragment>
   );
 };
+const MobileNoti = () => (
+  <div className='Mobile'>
+    <MobileNav />
+    <main className='main'>
+      <h2 id='Mobile-text'>התראות</h2>
+      <div className='Noti-Main'>
+        <div className='Noti-Window'>
+          <div className='Noti-Header '>התראות</div>
+        </div>
+      </div>
+    </main>
+    <MobileFooter />
+  </div>
+);
 NotificationsPage.propTypes = {
   closeAll: PropTypes.func.isRequired
 };

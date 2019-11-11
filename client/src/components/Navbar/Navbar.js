@@ -18,16 +18,14 @@ import {
   faEdit
 } from '@fortawesome/free-regular-svg-icons';
 import Notifications from './Notifications';
+import Account from './Account';
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification, SetAccount } from '../../actions/NavAction';
 
-import { Logout } from '../../actions/authAction';
-
 const Navbar = ({
   NotificationsSelected,
   AccountSelected,
-  Logout,
   user,
   SetAccount,
   SetNotification
@@ -106,37 +104,16 @@ const Navbar = ({
             </button>
           </div>
           <Notifications />
-          {AccountSelected ? (
-            <Accbox SetAccount={SetAccount} Logout={Logout} />
-          ) : null}
+          <Account />
         </header>
         <header className='header-logo' />
       </div>
     </div>
   );
 };
-//This Box will show the settings
-const Accbox = ({ Logout }) => (
-  <div className='AccBox'>
-    <div className='Settings-Title'>הגדרות</div>
-    <Link to='/PersonalDetails' className='Settings-item'>
-      פרטים אישיים
-    </Link>
-    <Link to='/changePass' className='Settings-item'>
-      שינוי סיסמא
-    </Link>
-    <Link to='/ChangeEmail' className='Settings-item'>
-      שינוי דואר אלקטרוני
-    </Link>
-    <Link to='/' onClick={() => Logout()} className='Logout-item'>
-      התנתקות
-    </Link>
-  </div>
-);
 
 Navbar.propTypes = {
   user: PropTypes.object,
-  Logout: PropTypes.func.isRequired,
   SetNotification: PropTypes.func,
   setAccount: PropTypes.func,
   NotificationsSelected: PropTypes.bool,
@@ -150,5 +127,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { Logout, SetNotification, SetAccount }
+  { SetNotification, SetAccount }
 )(Navbar);
