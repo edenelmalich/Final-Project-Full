@@ -117,7 +117,7 @@ const NewClients = ({ Nclient }) => {
   };
   return (
     <div className='Nclients'>
-      <MediaQuery maxDeviceWidth={1024}>
+      <MediaQuery maxDeviceWidth={1000}>
         <MobileNclient
           TypeData={TypeData}
           onChange={onChange}
@@ -132,7 +132,7 @@ const NewClients = ({ Nclient }) => {
           onSubmit={onSubmit}
         />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={1280}>
+      <MediaQuery minDeviceWidth={1024}>
         <Navbar />
 
         <div className='Page-Container'>

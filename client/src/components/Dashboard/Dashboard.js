@@ -33,10 +33,10 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
   }, []);
   return (
     <div className='Dashboard'>
-      <MediaQuery maxDeviceWidth={1024}>
+      <MediaQuery maxDeviceWidth={1000}>
         <MobileDash getClients={getClients} />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={1280}>
+      <MediaQuery minDeviceWidth={1024}>
         <Navbar />
         <div className='Page-Container'>
           <main className='main'>
@@ -106,40 +106,49 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                         <NewSub />
                       </div>
                     </div>
-                    <Card id='Card-size'>
-                      <div className='BoxTitle'>מתאמנים חדשים</div>
-                      <Card.Body>
-                        <Table id='NewClients' striped bordered hover size='sm'>
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>שם פרטי</th>
-                              <th>שם משפחה</th>
-                              <th>דואר אלקטרוני</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>עדן</td>
-                              <td>אלמליח</td>
-                              <td>eelmalich2@gmail.com</td>
-                            </tr>
-                            <tr>
-                              <td>2</td>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <td>3</td>
-                              <td colSpan='2'>Larry the Bird</td>
-                              <td>@twitter</td>
-                            </tr>
-                          </tbody>
-                        </Table>
-                      </Card.Body>
-                    </Card>
+                    <div className='Dash-Table'>
+                      <Card id='Card-size'>
+                        <div className='BoxTitle'>מתאמנים חדשים</div>
+                        <Card.Body>
+                          <Table
+                            id='NewClients'
+                            striped
+                            bordered
+                            hover
+                            size='sm'
+                          >
+                            <thead>
+                              <tr>
+                                <th>שם פרטי</th>
+                                <th>שם משפחה</th>
+                                <th>תעודת זהות</th>
+                                <th>טלפון</th>
+                                <th>סוג מנוי</th>
+                                <th>תקופת מנוי</th>
+                                <th>אמצעי תשלום</th>
+                                <th>סה"כ לתשלום</th>
+                                <th>תאריך הרשמה</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {getClients.map(client => (
+                                <tr key={client.id}>
+                                  <td>{client.firstname}</td>
+                                  <td>{client.lastname}</td>
+                                  <td>{client.id}</td>
+                                  <td>{client.phone}</td>
+                                  <td>{client.Type}</td>
+                                  <td>{client.Time}</td>
+                                  <td>{client.Payment}</td>
+                                  <td>{client.Total}</td>
+                                  <td>{client.date}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </Table>
+                        </Card.Body>
+                      </Card>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -196,36 +205,38 @@ const MobileDash = ({ getClients }) => (
           <NewSub />
         </Card>
       </div>
+
       <div className='Mobile-Dash-Box-Att'>
         <Card id='Table-Card-size'>
           <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
           <Table id='NewClients' striped bordered hover size='sm'>
             <thead>
               <tr>
-                <th>#</th>
                 <th>שם פרטי</th>
                 <th>שם משפחה</th>
-                <th>דואר אלקטרוני</th>
+                <th>תעודת זהות</th>
+                <th>טלפון</th>
+                <th>סוג מנוי</th>
+                <th>תקופת מנוי</th>
+                <th>אמצעי תשלום</th>
+                <th>סה"כ לתשלום</th>
+                <th>תאריך הרשמה</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>עדן</td>
-                <td>אלמליח</td>
-                <td>eelmalich2@gmail.com</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colSpan='2'>Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              {getClients.map(client => (
+                <tr key={client.id}>
+                  <td>{client.firstname}</td>
+                  <td>{client.lastname}</td>
+                  <td>{client.id}</td>
+                  <td>{client.phone}</td>
+                  <td>{client.Type}</td>
+                  <td>{client.Time}</td>
+                  <td>{client.Payment}</td>
+                  <td>{client.Total}</td>
+                  <td>{client.date}</td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         </Card>

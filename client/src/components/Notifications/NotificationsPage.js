@@ -18,10 +18,10 @@ const NotificationsPage = ({ closeAll }) => {
   }, []);
   return (
     <Fragment>
-      <MediaQuery maxDeviceWidth={1024}>
+      <MediaQuery maxDeviceWidth={1000}>
         <MobileNoti />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={1280}>
+      <MediaQuery minDeviceWidth={1024}>
         <Navbar />
         <div className='Page-Container'>
           <main className='main'>

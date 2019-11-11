@@ -22,10 +22,10 @@ const PersonalDetails = ({ Logout, user, closeAll }) => {
   }, []);
   return (
     <div className='Settings'>
-      <MediaQuery maxDeviceWidth={1024}>
+      <MediaQuery maxDeviceWidth={1000}>
         <MobileDetails user={user} />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={1280}>
+      <MediaQuery minDeviceWidth={1024}>
         <Navbar />
         <div className='Page-Container'>
           <main className='main'>

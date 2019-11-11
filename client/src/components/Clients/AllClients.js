@@ -17,10 +17,10 @@ const AllClients = ({ GetClients, getClients }) => {
 
   return (
     <div className='Clients'>
-      <MediaQuery maxDeviceWidth={1024}>
+      <MediaQuery maxDeviceWidth={1000}>
         <MobileClients getClients={getClients} />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={1280}>
+      <MediaQuery minDeviceWidth={1024}>
         <Navbar />
         <div className='Page-Container'>
           <main className='main'>
@@ -28,44 +28,43 @@ const AllClients = ({ GetClients, getClients }) => {
               <div className='Att-PagesContent'>
                 <div className='PagesContainer'>
                   <h2>לקוחות</h2>
-                  <div className='Flex-Pages'>
-                    <div className='FormData'>
-                      <header className='header-Form'>
-                        <h3>לקוחות</h3>
-                      </header>
-                      <div className='Main-Padding'></div>
-                      <div className='TableText'>רשימת לקוחות</div>
-                      <Table striped bordered hover size='sm'>
-                        <thead>
-                          <tr>
-                            <th>שם פרטי</th>
-                            <th>שם משפחה</th>
-                            <th>תעודת זהות</th>
-                            <th>טלפון</th>
-                            <th>סוג מנוי</th>
-                            <th>תקופת מנוי</th>
-                            <th>אמצעי תשלום</th>
-                            <th>סה"כ לתשלום</th>
-                            <th>תאריך הרשמה</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {getClients.map(client => (
-                            <tr key={client.id}>
-                              <td>{client.firstname}</td>
-                              <td>{client.lastname}</td>
-                              <td>{client.id}</td>
-                              <td>{client.phone}</td>
-                              <td>{client.Type}</td>
-                              <td>{client.Time}</td>
-                              <td>{client.Payment}</td>
-                              <td>{client.Total}</td>
-                              <td>{client.date}</td>
+
+                  <div className='Card-Pages'>
+                    <Card id='Clients-Card-size'>
+                      <div className='Card-Title'> רשימת לקוחות</div>
+                      <Card.Body>
+                        <Table id='NewClients' striped bordered hover size='sm'>
+                          <thead>
+                            <tr>
+                              <th>שם פרטי</th>
+                              <th>שם משפחה</th>
+                              <th>תעודת זהות</th>
+                              <th>טלפון</th>
+                              <th>סוג מנוי</th>
+                              <th>תקופת מנוי</th>
+                              <th>אמצעי תשלום</th>
+                              <th>סה"כ לתשלום</th>
+                              <th>תאריך הרשמה</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </div>
+                          </thead>
+                          <tbody>
+                            {getClients.map(client => (
+                              <tr key={client.id}>
+                                <td>{client.firstname}</td>
+                                <td>{client.lastname}</td>
+                                <td>{client.id}</td>
+                                <td>{client.phone}</td>
+                                <td>{client.Type}</td>
+                                <td>{client.Time}</td>
+                                <td>{client.Payment}</td>
+                                <td>{client.Total}</td>
+                                <td>{client.date}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </Card.Body>
+                    </Card>
                   </div>
                 </div>
               </div>
@@ -82,41 +81,43 @@ const MobileClients = ({ getClients }) => (
     <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>לקוחות</h2>
-      <Card id='Table-Clients-Card-size'>
-        <Card.Body>
-          <div className='TableText'>רשימת לקוחות</div>
-          <Table striped bordered hover size='sm'>
-            <thead>
-              <tr>
-                <th>שם פרטי</th>
-                <th>שם משפחה</th>
-                <th>תעודת זהות</th>
-                <th>טלפון</th>
-                <th>סוג מנוי</th>
-                <th>תקופת מנוי</th>
-                <th>אמצעי תשלום</th>
-                <th>סה"כ לתשלום</th>
-                <th>תאריך הרשמה</th>
-              </tr>
-            </thead>
-            <tbody>
-              {getClients.map(client => (
-                <tr key={client.id}>
-                  <td>{client.firstname}</td>
-                  <td>{client.lastname}</td>
-                  <td>{client.id}</td>
-                  <td>{client.phone}</td>
-                  <td>{client.Type}</td>
-                  <td>{client.Time}</td>
-                  <td>{client.Payment}</td>
-                  <td>{client.Total}</td>
-                  <td>{client.date}</td>
+      <div className='Client-card'>
+        <Card>
+          <Card.Body>
+            <div className='TableText'>רשימת לקוחות</div>
+            <Table striped bordered hover size='sm'>
+              <thead>
+                <tr>
+                  <th>שם פרטי</th>
+                  <th>שם משפחה</th>
+                  <th>תעודת זהות</th>
+                  <th>טלפון</th>
+                  <th>סוג מנוי</th>
+                  <th>תקופת מנוי</th>
+                  <th>אמצעי תשלום</th>
+                  <th>סה"כ לתשלום</th>
+                  <th>תאריך הרשמה</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
+              </thead>
+              <tbody>
+                {getClients.map(client => (
+                  <tr key={client.id}>
+                    <td>{client.firstname}</td>
+                    <td>{client.lastname}</td>
+                    <td>{client.id}</td>
+                    <td>{client.phone}</td>
+                    <td>{client.Type}</td>
+                    <td>{client.Time}</td>
+                    <td>{client.Payment}</td>
+                    <td>{client.Total}</td>
+                    <td>{client.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card.Body>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>

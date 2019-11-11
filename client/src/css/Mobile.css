@@ -209,10 +209,6 @@ body {
 
 }
 
-#Table-Clients-Card-size {
-    overflow-y: auto;
-    overflow-x: scroll;
-}
 
 /* Main Mobile form attributes */
 .Mobile-Form {
@@ -364,6 +360,8 @@ body {
     border: 1px solid #353c3f;
     font-size: 11px;
 }
+
+
 
 /* Mobile Settings Attributes */
 .Mobile-Settings .nav-link {
@@ -537,12 +535,7 @@ body {
     font-weight: 600;
 }
 
-.Mobile h3 {
-    color: #353c3f;
-    margin-right: 5px;
-    font-size: 20px;
-    padding: 5px 5px 10px;
-}
+
 
 /* Notifications */
 .MobileNav .Notifications {
@@ -599,4 +592,9 @@ body {
 
 .Mobile .Noti-Header {
     font-size: 22px;
+}
+
+/* Clients Page attributes */
+.Client-card .card-body {
+    overflow: auto;
 }

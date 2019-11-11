@@ -87,7 +87,7 @@ class SubStat extends React.Component {
   render() {
     return (
       <div className='HandState'>
-        <MediaQuery maxDeviceWidth={1024}>
+        <MediaQuery maxDeviceWidth={700}>
           <Bar
             width={280}
             height={200}
@@ -95,7 +95,15 @@ class SubStat extends React.Component {
             options={this.state.barChartOptions}
           />
         </MediaQuery>
-        <MediaQuery minDeviceWidth={1280}>
+        <MediaQuery deviceWidth={768}>
+          <Bar
+            width={600}
+            height={200}
+            data={this.state.dataBar}
+            options={this.state.barChartOptions}
+          />
+        </MediaQuery>
+        <MediaQuery minDeviceWidth={1024}>
           <Bar
             width={350}
             height={325}

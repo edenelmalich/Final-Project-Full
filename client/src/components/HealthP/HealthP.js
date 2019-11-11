@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
+import { Card } from 'react-bootstrap';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -10,10 +11,10 @@ class HealthP extends Component {
   render() {
     return (
       <div className='Healthp'>
-        <MediaQuery maxDeviceWidth={1024}>
+        <MediaQuery maxDeviceWidth={1000}>
           <MobileHealth />
         </MediaQuery>
-        <MediaQuery minDeviceWidth={1280}>
+        <MediaQuery minDeviceWidth={1024}>
           <Navbar />
           <div className='Page-Container'>
             <main className='main'>
@@ -21,12 +22,11 @@ class HealthP extends Component {
                 <div className='Att-PagesContent'>
                   <div className='PagesContainer'>
                     <h2>הצהרות בריאות</h2>
-                    <div className='Flex-Pages'>
-                      <div className='FormData'>
-                        <header className='header-Form'>
-                          <h3>הצהרות בריאות</h3>
-                        </header>
-                      </div>
+                    <div className='Card-Pages'>
+                      <Card id='Health-Card-size'>
+                        <div className='Card-Title'>הצהרות בריאות</div>
+                        <Card.Body></Card.Body>
+                      </Card>
                     </div>
                   </div>
                 </div>
@@ -44,13 +44,10 @@ const MobileHealth = () => (
     <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>הצהרות בריאות</h2>
-      <div className='Flex-Pages'>
-        <div className='FormData'>
-          <header className='header-Form'>
-            <h3>הצהרות בריאות</h3>
-          </header>
-        </div>
-      </div>
+      <Card id='Health-Card-size'>
+        <div className='Card-Title'>הצהרות בריאות</div>
+        <Card.Body></Card.Body>
+      </Card>
     </main>
     <MobileFooter />
   </div>
