@@ -97,18 +97,20 @@ const MobileSettingPass = () => (
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />
-      <Card bg='light' style={{ width: '100%' }}>
-        <div className='Mobile-Page-Header'>שינוי סיסמה</div>
-        <FontAwesomeIcon className='Main-Settings-Icon' icon={faLock} />
+      <div className='Mobile-Settings'>
+        <Card bg='light' style={{ width: '100%' }}>
+          <div className='Mobile-Page-Header'>שינוי סיסמה</div>
+          <FontAwesomeIcon className='Main-Settings-Icon' icon={faLock} />
 
-        <form className='Form-Settings'>
-          <label>הכנס סיסמה חדשה</label>
-          <input type='password' placeholder='הכנס סיסמא חדשה' />
-          <label>אימות סיסמה</label>
-          <input type='password' placeholder='אימות סיסמא' />
-          <input type='submit' value='שנה סיסמא' />
-        </form>
-      </Card>
+          <form className='Form-Settings'>
+            <label>הכנס סיסמה חדשה</label>
+            <input type='password' placeholder='הכנס סיסמא חדשה' />
+            <label>אימות סיסמה</label>
+            <input type='password' placeholder='אימות סיסמא' />
+            <input type='submit' value='שנה סיסמא' />
+          </form>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>

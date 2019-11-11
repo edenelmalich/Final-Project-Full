@@ -102,18 +102,20 @@ const MobileSettingEmail = () => (
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />
-      <Card bg='light' style={{ width: '100%' }}>
-        <div className='Mobile-Page-Header'>שינוי דואר אלקטרוני</div>
-        <FontAwesomeIcon className='Main-Settings-Icon' icon={faEnvelope} />
+      <div className='Mobile-Settings'>
+        <Card bg='light' style={{ width: '100%' }}>
+          <div className='Mobile-Page-Header'>שינוי דואר אלקטרוני</div>
+          <FontAwesomeIcon className='Main-Settings-Icon' icon={faEnvelope} />
 
-        <form className='Form-Settings'>
-          <label> דואר אלקטרוני חדש </label>
-          <input type='email' placeholder='הכנס דואר אלקטרוני חדש' />
-          <label>אימות דואר אלקטרוני</label>
-          <input type='email' placeholder='אימות דואר אלקטרוני' />
-          <input type='submit' value='שנה דואר אלקטרוני' />
-        </form>
-      </Card>
+          <form className='Form-Settings'>
+            <label> דואר אלקטרוני חדש </label>
+            <input type='email' placeholder='הכנס דואר אלקטרוני חדש' />
+            <label>אימות דואר אלקטרוני</label>
+            <input type='email' placeholder='אימות דואר אלקטרוני' />
+            <input type='submit' value='שנה דואר אלקטרוני' />
+          </form>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>

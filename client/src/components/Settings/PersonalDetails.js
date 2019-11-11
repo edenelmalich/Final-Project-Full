@@ -86,15 +86,17 @@ const MobileDetails = ({ user }) => (
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />
-      <Card bg='light' style={{ width: '100%' }}>
-        <div className='Mobile-Page-Header'>
-          פרטים אישיים
-          <div className='userDetails-text'>
-            {user.Name}
-            <div className='userDetails-text'>{user.email}</div>
+      <div className='Mobile-Settings'>
+        <Card bg='light' style={{ width: '100%' }}>
+          <div className='Mobile-Page-Header'>
+            פרטים אישיים
+            <div className='userDetails-text'>
+              {user.Name}
+              <div className='userDetails-text'>{user.email}</div>
+            </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </div>
     </main>
     <MobileFooter />
   </div>

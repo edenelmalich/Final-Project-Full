@@ -6,7 +6,7 @@ import AppFooter from '../AppFooter';
 // Redux
 import { connect } from 'react-redux';
 import { closeAll } from '../../actions/NavAction';
-const Notifications = ({ closeAll }) => {
+const NotificationsPage = ({ closeAll }) => {
   useEffect(() => {
     closeAll();
   }, []);
@@ -36,10 +36,10 @@ const Notifications = ({ closeAll }) => {
     </Fragment>
   );
 };
-Notifications.propTypes = {
+NotificationsPage.propTypes = {
   closeAll: PropTypes.func.isRequired
 };
 export default connect(
   null,
   { closeAll }
-)(Notifications);
+)(NotificationsPage);

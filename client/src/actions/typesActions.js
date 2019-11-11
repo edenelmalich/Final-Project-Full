@@ -16,4 +16,6 @@ export const LOGOUT = 'LOGOUT';
 // Account and Notifications Actions
 export const ACCOUNT = 'ACCOUNT';
 export const NOTIFICATIONS = 'NOTIFICATIONS';
+export const NAV = 'NAV';
+export const NAV_SETTING = 'NAV_SETTING';
 export const CLOSE = 'CLOSE';

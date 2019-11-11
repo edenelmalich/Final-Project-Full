@@ -105,7 +105,7 @@ const Navbar = ({
               <FontAwesomeIcon icon={faAngleDown} />
             </button>
           </div>
-          {NotificationsSelected ? <Notifications /> : null}
+          <Notifications />
           {AccountSelected ? (
             <Accbox SetAccount={SetAccount} Logout={Logout} />
           ) : null}

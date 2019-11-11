@@ -4,11 +4,16 @@ import PropTypes from 'prop-types';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
+import { navSetting } from '../../actions/NavAction';
 
-const SettingsNav = ({ Logout }) => {
+const SettingsNav = ({ Logout, navSetting, SettingState }) => {
   return (
     <div className='Mobile-Settings'>
-      <NavDropdown title='הגדרות' id='basic-nav-dropdown'>
+      <NavDropdown
+        title='הגדרות'
+        id='basic-nav-dropdown'
+        onClick={() => navSetting(SettingState)}
+      >
         <NavDropdown.Item href='/PersonalDetails'>
           פרטים אישיים
         </NavDropdown.Item>
@@ -25,9 +30,13 @@ const SettingsNav = ({ Logout }) => {
   );
 };
 SettingsNav.propTypes = {
-  Logout: PropTypes.func.isRequired
+  Logout: PropTypes.func.isRequired,
+  SettingState: PropTypes.bool
 };
+const mapStateToProps = state => ({
+  SettingState: state.NavReducer.SettingState
+});
 export default connect(
-  null,
-  { Logout }
+  mapStateToProps,
+  { Logout, navSetting }
 )(SettingsNav);

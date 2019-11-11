@@ -398,6 +398,15 @@ body {
     padding: 1.25rem;
 }
 
+.Mobile .Mobile-Settings .card {
+    position: unset;
+    display: flex;
+    height: 23.8rem;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
 @media only screen and (min-width:768px) {
     .Mobile-Main-Text button {
         margin-right: 15px;
@@ -550,6 +559,7 @@ body {
     left: 0;
     top: 85px;
     margin-left: 20px;
+    max-width: 220px;
 }
 
 .MobileNav .NotiBox:before {
@@ -558,10 +568,14 @@ body {
     width: 19px;
     height: 19px;
     top: -17px;
-    right: 140px;
+    right: 115px;
     z-index: 3;
 }
 
-.MobileNav .Notifications:hover {
+.Mobile .Notification-item {
+    font-size: 14px;
+}
+
+.MobileNav .Notifications .active {
     color: #6e6e6e;
 }

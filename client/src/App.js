@@ -13,7 +13,7 @@ import BuildPlan from './components/BuildPlan/BuildPlan';
 import Registar from './components/MainPage/Register';
 import ForgotPass from './components/MainPage/ForgotPass';
 import Updates from './components/Updates/Updates';
-import Notifications from './components/Notifications/Notifications';
+import NotificationsPage from './components/Notifications/NotificationsPage';
 import MainPage from './components/MainPage/MainPage';
 // Settings
 import PersonalDetails from './components/Settings/PersonalDetails';
@@ -49,7 +49,7 @@ const App = () => {
               <Route path='/nclients' component={Nclients} />
               <Route path='/exeplan' component={ExePlan} />
               <Route path='/buildPlan' component={BuildPlan} />
-              <Route path='/notifications' component={Notifications} />
+              <Route path='/notifications' component={NotificationsPage} />
               <Route path='/updates' component={Updates} />
 
               <Route path='/forgotPass' component={ForgotPass} />

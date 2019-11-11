@@ -9,13 +9,15 @@ import Notifications from '../Navbar/Notifications';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { SetNotification } from '../../actions/NavAction';
+import { SetNotification, SetNav } from '../../actions/NavAction';
 
 const MobileNav = ({
   user,
   Logout,
   SetNotification,
-  NotificationsSelected
+  NotificationsSelected,
+  SetNav,
+  MobileNav
 }) => {
   const { Name } = user;
   return (
@@ -32,11 +34,15 @@ const MobileNav = ({
         >
           <FontAwesomeIcon icon={faBell} />
         </button>
-        {NotificationsSelected ? <Notifications /> : null}
-        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Notifications />
+
+        <Navbar.Toggle
+          aria-controls='basic-navbar-nav'
+          onClick={() => SetNav(MobileNav)}
+        />
+        <Navbar.Collapse id='basic-navbar-nav' in={MobileNav}>
           <Nav className='mr-auto'>
-            <NavDropdown title={`שלום ${user.Name}`} id='basic-nav-dropdown'>
+            <NavDropdown title={`שלום ${Name}`} id='basic-nav-dropdown'>
               <NavDropdown.Item className='Nav-Setting'>
                 הגדרות
               </NavDropdown.Item>
@@ -70,13 +76,16 @@ const MobileNav = ({
 MobileNav.propTypes = {
   user: PropTypes.object,
   Logout: PropTypes.func.isRequired,
-  SetNotification: PropTypes.func
+  SetNotification: PropTypes.func,
+  NotificationsSelected: PropTypes.bool,
+  MobileNav: PropTypes.bool
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user,
-  NotificationsSelected: state.NavReducer.NotificationsSelected
+  NotificationsSelected: state.NavReducer.NotificationsSelected,
+  MobileNav: state.NavReducer.MobileNav
 });
 export default connect(
   mapStateToProps,
-  { Logout, SetNotification }
+  { Logout, SetNotification, SetNav }
 )(MobileNav);

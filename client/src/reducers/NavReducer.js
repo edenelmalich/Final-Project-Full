@@ -1,7 +1,15 @@
-import { ACCOUNT, NOTIFICATIONS, CLOSE } from '../actions/typesActions';
+import {
+  ACCOUNT,
+  NOTIFICATIONS,
+  CLOSE,
+  NAV,
+  NAV_SETTING
+} from '../actions/typesActions';
 const initialState = {
   AccountSelected: false,
-  NotificationsSelected: false
+  NotificationsSelected: false,
+  MobileNav: false,
+  SettingState: false
 };
 
 const NavReducer = (state = initialState, action) => {
@@ -16,8 +24,21 @@ const NavReducer = (state = initialState, action) => {
     case NOTIFICATIONS:
       return {
         ...state,
+        MobileNav: false,
         AccountSelected: false,
         NotificationsSelected: !payload
+      };
+    case NAV:
+      return {
+        ...state,
+        MobileNav: !payload,
+        NotificationsSelected: false
+      };
+    case NAV_SETTING:
+      return {
+        ...state,
+        SettingState: !payload,
+        NotificationsSelected: false
       };
     case CLOSE:
       return {
