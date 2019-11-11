@@ -30,8 +30,6 @@ const Statistics = () => {
                   <div className='Stat-content'>
                     <Card>
                       <Card.Header>סטטיסטיקת משקל</Card.Header>
-
-                      <HandState />
                     </Card>
                     <Card>
                       <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
@@ -60,7 +58,6 @@ const MobileStat = () => (
       <div className='Stat-content'>
         <Card id='Stat-card'>
           <Card.Header>סטטיסטיקת משקל</Card.Header>
-          <HandState />
         </Card>
         <Card>
           <Card.Header>סטטיסטיקת היקף יד קדמית</Card.Header>
