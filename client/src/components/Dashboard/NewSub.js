@@ -23,7 +23,7 @@ class NewSub extends React.Component {
       datasets: [
         {
           label: 'סטטיסטיקת חידוש מנויים',
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          data: [1, 10, 3, 4, 5, 9, 7, 4, 2, 10, 11, 8],
           backgroundColor: [
             'rgba(167, 65, 74, 1)',
             'rgba(167, 65, 74, 1)',
