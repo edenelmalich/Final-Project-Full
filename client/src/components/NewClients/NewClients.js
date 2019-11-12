@@ -13,6 +13,7 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { Nclient } from '../../actions/NclientAction';
 import { setAlert } from '../../actions/alertAction';
+import { CalcTotal } from '../../actions/CalcAction';
 const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
   // Data
   const Time = [
@@ -104,7 +105,7 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
   const onSubmit = e => {
     e.preventDefault();
     const Total = CalcType.CalcType * CalcTime.CalcTime;
-    SetCalculation(CalcType.CalcType * CalcTime.CalcTime);
+    SetCalculation(Total);
     Nclient(
       firstname,
       lastname,
@@ -115,8 +116,36 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
       CalcPayment.CalcPayment,
       Total
     );
+    ResetForm();
   };
 
+  const ResetForm = () => {
+    setTimeout(() => {
+      SetCalculation(0);
+    }, 2000);
+    SetFormData({
+      ...FormData,
+      firstname: '',
+      lastname: '',
+      id: '',
+      Phone: ''
+    });
+    setType(
+      TypeData.map(type => {
+        return { ...type, selected: false };
+      })
+    );
+    setTime(
+      TimeData.map(time => {
+        return { ...time, selected: false };
+      })
+    );
+    setPayment(
+      PaymentData.map(payment => {
+        return { ...payment, selected: false };
+      })
+    );
+  };
   if (SendSuccess) {
     setAlert('לקוח נרשם בהצלחה', 'success');
   }
@@ -364,16 +393,19 @@ const MobileNclient = ({
     <MobileFooter />
   </div>
 );
+
 NewClients.propType = {
   NclientSuccess: PropTypes.bool,
   SendSuccess: PropTypes.bool,
+  SendFail: PropTypes.bool,
   setAlert: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   NclientSuccess: state.NclientReducer.NclientSuccess,
-  SendSuccess: state.NclientReducer.SendSuccess
+  SendSuccess: state.NclientReducer.SendSuccess,
+  total: state.CalcReducer.total
 });
 export default connect(
   mapStateToProps,
-  { Nclient, setAlert }
+  { Nclient, setAlert, CalcTotal }
 )(NewClients);

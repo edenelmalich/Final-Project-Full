@@ -19,3 +19,4 @@ export const NOTIFICATIONS = 'NOTIFICATIONS';
 export const NAV = 'NAV';
 export const NAV_SETTING = 'NAV_SETTING';
 export const CLOSE = 'CLOSE';
+export const CALC = 'CALC';
