@@ -205,40 +205,41 @@ const MobileDash = ({ getClients }) => (
           <NewSub />
         </Card>
       </div>
-
-      <div className='Mobile-Dash-Box-Att'>
+      <div className='Dash-Table'>
         <Card id='Table-Card-size'>
           <div className='Mobile-BoxTitle'>מתאמנים חדשים</div>
-          <Table id='NewClients' striped bordered hover size='sm'>
-            <thead>
-              <tr>
-                <th>שם פרטי</th>
-                <th>שם משפחה</th>
-                <th>תעודת זהות</th>
-                <th>טלפון</th>
-                <th>סוג מנוי</th>
-                <th>תקופת מנוי</th>
-                <th>אמצעי תשלום</th>
-                <th>סה"כ לתשלום</th>
-                <th>תאריך הרשמה</th>
-              </tr>
-            </thead>
-            <tbody>
-              {getClients.map(client => (
-                <tr key={client.id}>
-                  <td>{client.firstname}</td>
-                  <td>{client.lastname}</td>
-                  <td>{client.id}</td>
-                  <td>{client.phone}</td>
-                  <td>{client.Type}</td>
-                  <td>{client.Time}</td>
-                  <td>{client.Payment}</td>
-                  <td>{client.Total}</td>
-                  <td>{client.date}</td>
+          <Card.Body>
+            <Table id='NewClients' striped bordered hover size='sm'>
+              <thead>
+                <tr>
+                  <th>שם פרטי</th>
+                  <th>שם משפחה</th>
+                  <th>תעודת זהות</th>
+                  <th>טלפון</th>
+                  <th>סוג מנוי</th>
+                  <th>תקופת מנוי</th>
+                  <th>אמצעי תשלום</th>
+                  <th>סה"כ לתשלום</th>
+                  <th>תאריך הרשמה</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {getClients.map(client => (
+                  <tr key={client.id}>
+                    <td>{client.firstname}</td>
+                    <td>{client.lastname}</td>
+                    <td>{client.id}</td>
+                    <td>{client.phone}</td>
+                    <td>{client.Type}</td>
+                    <td>{client.Time}</td>
+                    <td>{client.Payment}</td>
+                    <td>{client.Total}</td>
+                    <td>{client.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Card.Body>
         </Card>
       </div>
     </main>

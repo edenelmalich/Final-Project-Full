@@ -3,7 +3,6 @@ import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
 import './NewClients.css';
 import PropTypes from 'prop-types';
-import { Nclient } from '../../actions/NclientAction';
 import Alert from '../layout/Alert';
 // Mobile imports
 import '../../css/Mobile.css';
@@ -12,7 +11,9 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-const NewClients = ({ Nclient }) => {
+import { Nclient } from '../../actions/NclientAction';
+import { setAlert } from '../../actions/alertAction';
+const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
   // Data
   const Time = [
     {
@@ -115,6 +116,10 @@ const NewClients = ({ Nclient }) => {
       Total
     );
   };
+
+  if (SendSuccess) {
+    setAlert('לקוח נרשם בהצלחה', 'success');
+  }
   return (
     <div className='Nclients'>
       <MediaQuery maxDeviceWidth={1000}>
@@ -149,7 +154,6 @@ const NewClients = ({ Nclient }) => {
                       <Alert />
                     </div>
                     <form
-                      action='#'
                       className='Nclient-FormAtt'
                       onSubmit={e => onSubmit(e)}
                     >
@@ -266,9 +270,7 @@ const MobileNclient = ({
         <header className='Header-Client'>
           <h3>הוספת לקוח חדש</h3>
         </header>
-        <div className='Alert-Position'>
-          <Alert />
-        </div>
+        <div className='Alert-Position'></div>
         <form
           action='#'
           className='Nclient-FormAtt'
@@ -354,6 +356,8 @@ const MobileNclient = ({
           <div className='Main-Border'></div>
           <div className='Main-Padding'></div>
           <input type='submit' name='send' value='הוסף לקוח חדש' />
+          <div className='Main-Padding'></div>
+          <Alert />
         </form>
       </div>
     </main>
@@ -361,12 +365,15 @@ const MobileNclient = ({
   </div>
 );
 NewClients.propType = {
-  NclientSuccess: PropTypes.bool
+  NclientSuccess: PropTypes.bool,
+  SendSuccess: PropTypes.bool,
+  setAlert: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  NclientSuccess: state.NclientReducer.NclientSuccess
+  NclientSuccess: state.NclientReducer.NclientSuccess,
+  SendSuccess: state.NclientReducer.SendSuccess
 });
 export default connect(
   mapStateToProps,
-  { Nclient }
+  { Nclient, setAlert }
 )(NewClients);

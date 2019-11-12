@@ -23,7 +23,6 @@ router.post(
       .not()
       .isEmpty(),
     check('id', 'הכנס תעודת זהות עם 9 ספרות').isLength({ min: 9, max: 9 }),
-
     check('phone', 'הכנס מספר טלפון תקין').isLength({ min: 10, max: 10 }),
 
     check('Type', 'בחר סוג מנוי')
@@ -37,7 +36,7 @@ router.post(
       .isEmpty()
   ],
   async (req, res) => {
-    const errors = validationResult(req);
+    let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
@@ -51,6 +50,12 @@ router.post(
       Payment,
       Total
     } = req.body;
+    let Nclient = await NewClient.findOne({ id });
+    if (Nclient) {
+      return res
+        .status(400)
+        .json({ errors: [{ msg: 'תעודת זהות זו נמצאת במערכת' }] });
+    }
     try {
       Nclient = new NewClient({
         firstname,

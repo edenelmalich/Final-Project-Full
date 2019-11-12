@@ -6,15 +6,20 @@ import {
 
 const initialState = {
   NclientSuccess: null,
-  getClients: []
+  getClients: [],
+  SendSuccess: null
 };
 const NclientReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case NCLIENT_SUCCESS:
-      return { ...state, NclientSuccess: true };
+      return {
+        ...state,
+        NclientSuccess: true,
+        SendSuccess: true
+      };
     case NCLIENT_FAIL:
-      return { ...state, NclientSuccess: false };
+      return { ...state, NclientSuccess: false, SendSuccess: false };
     case GET_CLIENTS:
       return { ...state, getClients: payload };
     default:

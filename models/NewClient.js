@@ -11,7 +11,8 @@ const NclientSchema = new mongoose.Schema({
   },
   id: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   phone: {
     type: String,
