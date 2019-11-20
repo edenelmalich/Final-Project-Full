@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Table, Card } from 'react-bootstrap';
-import { GetClients } from '../../actions/NclientAction';
+import moment from 'moment';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -10,6 +10,7 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import AppFooter from '../AppFooter';
+import { GetClients } from '../../actions/NclientAction';
 const AllClients = ({ GetClients, getClients }) => {
   useEffect(() => {
     GetClients();
@@ -58,7 +59,9 @@ const AllClients = ({ GetClients, getClients }) => {
                                 <td>{client.Time}</td>
                                 <td>{client.Payment}</td>
                                 <td>{client.Total}</td>
-                                <td>{client.date}</td>
+                                <td>
+                                  {moment(client.date).format('YYYY/MM/DD')}
+                                </td>
                               </tr>
                             ))}
                           </tbody>
@@ -110,7 +113,7 @@ const MobileClients = ({ getClients }) => (
                     <td>{client.Time}</td>
                     <td>{client.Payment}</td>
                     <td>{client.Total}</td>
-                    <td>{client.date}</td>
+                    <td>{moment(client.date).format('YYYY/MM/DD')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -125,7 +128,4 @@ const MobileClients = ({ getClients }) => (
 const mapStateToProps = state => ({
   getClients: state.NclientReducer.getClients
 });
-export default connect(
-  mapStateToProps,
-  { GetClients }
-)(AllClients);
+export default connect(mapStateToProps, { GetClients })(AllClients);

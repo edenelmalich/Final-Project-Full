@@ -28,12 +28,14 @@ const MobileNav = ({
             <img src={logo} alt='Mobile logo' id='MobileNav-img' />
           </Link>
         </Navbar.Brand>
+        <div className='Quantity-Mobile'>0</div>
         <button
           onClick={() => SetNotification(NotificationsSelected)}
           className='Notifications'
         >
           <FontAwesomeIcon icon={faBell} />
         </button>
+
         <Notifications />
 
         <Navbar.Toggle
@@ -85,7 +87,6 @@ const mapStateToProps = state => ({
   NotificationsSelected: state.NavReducer.NotificationsSelected,
   MobileNav: state.NavReducer.MobileNav
 });
-export default connect(
-  mapStateToProps,
-  { Logout, SetNotification, SetNav }
-)(MobileNav);
+export default connect(mapStateToProps, { Logout, SetNotification, SetNav })(
+  MobileNav
+);

@@ -80,6 +80,22 @@ body {
 
 }
 
+.Quantity-Mobile {
+    position: fixed;
+    display: inline-block;
+    left: 28%;
+    top: 25px;
+    padding-top: 1px;
+    height: 18px;
+    width: 18px;
+    line-height: 15px;
+    text-align: center;
+    background: #ff4b5a;
+    color: #fff;
+    border-radius: 100%;
+    font-size: 12px;
+}
+
 .navbar-brand {
     text-align: left;
     margin-right: unset;
@@ -407,6 +423,10 @@ body {
 @media only screen and (min-width:768px) {
     .Mobile-Main-Text button {
         margin-right: 15px;
+    }
+
+    .Quantity-Mobile {
+        left: 14%;
     }
 }
 

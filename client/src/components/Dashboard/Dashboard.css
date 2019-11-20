@@ -29,6 +29,10 @@
     padding: 0 1.25rem;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 #DashClient {
     background: #a7414a;
     width: 15rem;
@@ -156,6 +160,7 @@
 @media only screen and (width:1024px) {
     #Card-size {
         width: 38rem;
+        height: 40vh;
     }
 
     #DashClient {
@@ -187,5 +192,20 @@
         font-size: 2.5em;
     }
 
+    .Dashboard .card {
+        height: 20vh;
+    }
 
+
+}
+
+@media only screen and (width:1440px) {
+
+    .BoxStat {
+        flex: 0 0 49%;
+    }
+
+    #Card-size {
+        width: unset;
+    }
 }

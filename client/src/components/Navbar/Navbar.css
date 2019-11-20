@@ -110,6 +110,9 @@ li#selected a {
     z-index: 3;
 }
 
+
+
+
 .AccBox:before {
     content: "";
     display: block;
@@ -254,4 +257,35 @@ li#selected a {
 
 .icon-acc:hover {
     color: #6e6e6e;
+}
+
+.Quantity {
+    position: fixed;
+    display: block;
+    left: 14%;
+    top: 15px;
+    padding-top: 1px;
+    height: 18px;
+    width: 18px;
+    line-height: 15px;
+    text-align: center;
+    background: #ff4b5a;
+    color: #fff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    font-size: 12px;
+}
+
+@media only screen and (width:1024px) {
+    .Quantity {
+        left: 21%;
+    }
+}
+
+@media only screen and (width:1440px) {
+    .Quantity {
+        left: 15%;
+    }
+
 }

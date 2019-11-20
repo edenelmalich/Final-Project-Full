@@ -95,6 +95,7 @@ const Navbar = ({
             >
               <FontAwesomeIcon icon={faBell} />
             </button>
+            <div className='Quantity'>0</div>
             <div className='Accname'> שלום {Name}</div>
             <button
               onClick={() => SetAccount(AccountSelected)}
@@ -125,7 +126,6 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(
-  mapStateToProps,
-  { SetNotification, SetAccount }
-)(Navbar);
+export default connect(mapStateToProps, { SetNotification, SetAccount })(
+  Navbar
+);

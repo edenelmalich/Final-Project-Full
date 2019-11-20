@@ -105,22 +105,6 @@
     display: inline-block;
 }
 
-.Quantity {
-    position: absolute;
-    display: inline-block;
-    left: 23%;
-    padding-top: 1px;
-    height: 18px;
-    width: 18px;
-    line-height: 15px;
-    text-align: center;
-    background: #ff4b5a;
-    color: #fff;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    font-size: 12px;
-}
 
 .ListBox-Att {
     color: #555;

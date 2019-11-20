@@ -567,11 +567,7 @@ const ShowShoulders = props => (
   </div>
 );
 const mapStateToProps = state => {
-  return {
-    ListBoxSelected: state.listReducer.ListBoxSelected,
-    AccountSelected: state.accountReducer.AccountSelected,
-    NotificationsSelected: state.notiReducer.NotificationsSelected
-  };
+  return {};
 };
 const mapDispatchToProps = dispatch => {
   return {
@@ -583,7 +579,4 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BuildPlan);
+export default connect(mapStateToProps, mapDispatchToProps)(BuildPlan);

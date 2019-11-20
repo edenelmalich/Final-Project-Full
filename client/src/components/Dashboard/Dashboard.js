@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppFooter from '../AppFooter';
 import SubStat from './SubStat';
 import NewSub from './NewSub';
+import moment from 'moment';
 import {
   faUser,
   faUserPlus,
@@ -47,32 +48,34 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                   <div className='DashBoard-Margin'>
                     <div className='Dash-Box-Att'>
                       <Card id='DashClient'>
-                        <Card.Body>
-                          <Link to='/AllClients'>
+                        <Link to='/AllClients'>
+                          <Card.Body>
                             <div className='DashBoard-Icon'>
                               <FontAwesomeIcon icon={faUser} size='3x' />
                             </div>
                             <div className='DashBoard-Text'>לקוחות</div>
-                          </Link>
-                          <div className='DashBoard-Text-info'>
-                            {getClients.length}
-                          </div>
-                        </Card.Body>
-                      </Card>
 
+                            <div className='DashBoard-Text-info'>
+                              {getClients.length}
+                            </div>
+                          </Card.Body>
+                        </Link>
+                      </Card>
                       <Card id='DashNewClient'>
-                        <Card.Body>
-                          <a href='#NewClients'>
+                        <a href='#NewClients'>
+                          <Card.Body>
                             <div className='DashBoard-Icon'>
                               <FontAwesomeIcon icon={faUserPlus} size='3x' />
                             </div>
-                          </a>
-                          <div className='DashBoard-Text'>
-                            <span>לקוחות חדשים</span>
-                          </div>
-                          <div className='DashBoard-Text-info'>4</div>
-                        </Card.Body>
+
+                            <div className='DashBoard-Text'>
+                              <span>לקוחות חדשים</span>
+                            </div>
+                            <div className='DashBoard-Text-info'>4</div>
+                          </Card.Body>
+                        </a>
                       </Card>
+
                       <Card id='DashSub'>
                         <Card.Body>
                           <div className='DashBoard-Icon'>
@@ -141,7 +144,9 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                                   <td>{client.Time}</td>
                                   <td>{client.Payment}</td>
                                   <td>{client.Total}</td>
-                                  <td>{client.date}</td>
+                                  <td>
+                                    {moment(client.date).format('YYYY/MM/DD')}
+                                  </td>
                                 </tr>
                               ))}
                             </tbody>
@@ -234,7 +239,7 @@ const MobileDash = ({ getClients }) => (
                     <td>{client.Time}</td>
                     <td>{client.Payment}</td>
                     <td>{client.Total}</td>
-                    <td>{client.date}</td>
+                    <td> {moment(client.date).format('YYYY/MM/DD')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -252,7 +257,4 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   getClients: state.NclientReducer.getClients
 });
-export default connect(
-  mapStateToProps,
-  { GetClients, closeAll }
-)(Dashboard);
+export default connect(mapStateToProps, { GetClients, closeAll })(Dashboard);
