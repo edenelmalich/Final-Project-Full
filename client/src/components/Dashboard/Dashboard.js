@@ -34,7 +34,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
   }, []);
   return (
     <div className='Dashboard'>
-      <MediaQuery maxDeviceWidth={1000}>
+      <MediaQuery maxDeviceWidth={900}>
         <MobileDash getClients={getClients} />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>

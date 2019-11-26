@@ -88,7 +88,7 @@ const Navbar = ({
           </div>
         </aside>
         <header className='header-desktop'>
-          <div className='Object-Att'>
+          <span>
             <button
               onClick={() => SetNotification(NotificationsSelected)}
               className='Notifications'
@@ -96,14 +96,16 @@ const Navbar = ({
               <FontAwesomeIcon icon={faBell} />
             </button>
             <div className='Quantity'>0</div>
-            <div className='Accname'> שלום {Name}</div>
-            <button
-              onClick={() => SetAccount(AccountSelected)}
-              className='icon-acc'
-            >
-              <FontAwesomeIcon icon={faAngleDown} />
-            </button>
-          </div>
+          </span>
+          <span className='Accname'> שלום {Name}</span>
+
+          <button
+            onClick={() => SetAccount(AccountSelected)}
+            className='icon-acc'
+          >
+            <FontAwesomeIcon icon={faAngleDown} />
+          </button>
+
           <Notifications />
           <Account />
         </header>

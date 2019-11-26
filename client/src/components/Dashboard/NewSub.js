@@ -103,7 +103,8 @@ class NewSub extends React.Component {
             options={this.state.barChartOptions}
           />
         </MediaQuery>
-        <MediaQuery minDeviceWidth={1024}>
+
+        <MediaQuery minDeviceWidth={1440}>
           <Bar
             width={350}
             height={325}

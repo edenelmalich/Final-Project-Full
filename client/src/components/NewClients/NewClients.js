@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
 import './NewClients.css';
@@ -14,9 +14,18 @@ import { connect } from 'react-redux';
 import { Nclient } from '../../actions/NclientAction';
 import { setAlert } from '../../actions/alertAction';
 import { CalcTotal } from '../../actions/CalcAction';
-const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
-  // Data
-  const Time = [
+
+const NewClients = ({ Nclient, NclientSuccess, setAlert }) => {
+  // useState
+  const [TypeData, setType] = useState([
+    { label: 'רגיל', id: 1, value: 200, selected: false },
+    { label: 'סטודנט', id: 2, value: 150, selected: false }
+  ]);
+  const [PaymentData, setPayment] = useState([
+    { label: 'אשראי', id: 1, value: 'אשראי', selected: false },
+    { label: 'מזומן', id: 2, value: 'מזומן', selected: false }
+  ]);
+  const [TimeData, setTime] = useState([
     {
       label: 'חודש',
       value: 1,
@@ -35,21 +44,9 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
       id: 3,
       selected: false
     }
-  ];
-  const Type = [
-    { label: 'רגיל', id: 1, value: 200, selected: false },
-    { label: 'סטודנט', id: 2, value: 150, selected: false }
-  ];
-  const Payment = [
-    { label: 'אשראי', id: 1, value: 'אשראי', selected: false },
-    { label: 'מזומן', id: 2, value: 'מזומן', selected: false }
-  ];
-  // useState
-  const [TypeData, setType] = useState(Type);
-  const [TimeData, setTime] = useState(Time);
+  ]);
   const [TypeName, setTypeName] = useState({});
   const [TimeName, setTimeName] = useState({});
-  const [PaymentData, setPayment] = useState(Payment);
   const [CalculationData, SetCalculation] = useState(0);
   const [CalcType, SetCalcType] = useState({});
   const [CalcTime, SetCalcTime] = useState({});
@@ -103,8 +100,11 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
     }
   };
   const onSubmit = e => {
+    let Total = 0;
     e.preventDefault();
-    const Total = CalcType.CalcType * CalcTime.CalcTime;
+    if (CalcType.CalcType !== undefined && CalcTime.CalcTime !== undefined) {
+      Total = CalcType.CalcType * CalcTime.CalcTime;
+    }
     SetCalculation(Total);
     Nclient(
       firstname,
@@ -130,6 +130,11 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
       id: '',
       Phone: ''
     });
+    setTimeName('');
+    setTypeName('');
+    SetCalcTime('');
+    SetCalcType('');
+    setCalcPayment('');
     setType(
       TypeData.map(type => {
         return { ...type, selected: false };
@@ -146,9 +151,6 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
       })
     );
   };
-  if (SendSuccess) {
-    setAlert('לקוח נרשם בהצלחה', 'success');
-  }
   return (
     <div className='Nclients'>
       <MediaQuery maxDeviceWidth={1000}>
@@ -262,7 +264,9 @@ const NewClients = ({ Nclient, SendSuccess, setAlert }) => {
                       ))}
                       <div className='Main-Border'></div>
                       <label>סך הכל לתשלום:</label>
+
                       <span className='calculation'>{CalculationData} ₪</span>
+
                       <div className='Main-Border'></div>
                       <div className='Main-Padding'></div>
                       <input type='submit' name='send' value='הוסף לקוח חדש' />
@@ -396,16 +400,13 @@ const MobileNclient = ({
 
 NewClients.propType = {
   NclientSuccess: PropTypes.bool,
-  SendSuccess: PropTypes.bool,
   SendFail: PropTypes.bool,
   setAlert: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   NclientSuccess: state.NclientReducer.NclientSuccess,
-  SendSuccess: state.NclientReducer.SendSuccess,
   total: state.CalcReducer.total
 });
-export default connect(
-  mapStateToProps,
-  { Nclient, setAlert, CalcTotal }
-)(NewClients);
+export default connect(mapStateToProps, { Nclient, setAlert, CalcTotal })(
+  NewClients
+);

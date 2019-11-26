@@ -7,7 +7,6 @@ import {
 const initialState = {
   NclientSuccess: null,
   getClients: [],
-  SendSuccess: null,
   SendFail: null
 };
 const NclientReducer = (state = initialState, action) => {
@@ -16,15 +15,13 @@ const NclientReducer = (state = initialState, action) => {
     case NCLIENT_SUCCESS:
       return {
         ...state,
-        NclientSuccess: true,
-        SendSuccess: true
+        NclientSuccess: true
       };
     case NCLIENT_FAIL:
       return {
         ...state,
         NclientSuccess: false,
-        SendSuccess: false,
-        SendFail: true
+        SendSuccess: false
       };
     case GET_CLIENTS:
       return { ...state, getClients: payload };

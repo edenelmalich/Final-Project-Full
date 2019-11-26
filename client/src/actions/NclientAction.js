@@ -36,6 +36,7 @@ export const Nclient = (
       type: NCLIENT_SUCCESS,
       payload: res.data
     });
+    dispatch(setAlert('משתמש נרשם בהצלחה', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
