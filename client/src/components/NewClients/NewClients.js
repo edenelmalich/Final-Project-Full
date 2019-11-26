@@ -15,7 +15,7 @@ import { Nclient } from '../../actions/NclientAction';
 import { setAlert } from '../../actions/alertAction';
 import { CalcTotal } from '../../actions/CalcAction';
 
-const NewClients = ({ Nclient, NclientSuccess, setAlert }) => {
+const NewClients = ({ Nclient }) => {
   // useState
   const [TypeData, setType] = useState([
     { label: 'רגיל', id: 1, value: 200, selected: false },
@@ -399,12 +399,10 @@ const MobileNclient = ({
 );
 
 NewClients.propType = {
-  NclientSuccess: PropTypes.bool,
   SendFail: PropTypes.bool,
   setAlert: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  NclientSuccess: state.NclientReducer.NclientSuccess,
   total: state.CalcReducer.total
 });
 export default connect(mapStateToProps, { Nclient, setAlert, CalcTotal })(

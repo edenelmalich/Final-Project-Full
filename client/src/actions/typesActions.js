@@ -8,7 +8,6 @@ export const LOGIN_LOAD = 'LOGIN_LOAD';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
-export const NCLIENT_SUCCESS = 'NCLIENT_SUCCESS';
 export const NCLIENT_FAIL = 'NCLIENT_FAIL';
 // Action to loading all the clients from DB
 export const GET_CLIENTS = 'GET_CLIENTS';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CLIENTS, NCLIENT_SUCCESS, NCLIENT_FAIL } from './typesActions';
+import { GET_CLIENTS, NCLIENT_FAIL } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const Nclient = (
@@ -30,12 +30,8 @@ export const Nclient = (
   });
 
   try {
-    const res = await axios.post('api/Nclient', body, config);
+    await axios.post('api/Nclient', body, config);
 
-    dispatch({
-      type: NCLIENT_SUCCESS,
-      payload: res.data
-    });
     dispatch(setAlert('משתמש נרשם בהצלחה', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
