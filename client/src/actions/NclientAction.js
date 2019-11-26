@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CLIENTS, NCLIENT_FAIL } from './typesActions';
+import { GET_CLIENTS } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const Nclient = (
@@ -38,10 +38,6 @@ export const Nclient = (
     if (errors) {
       errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
     }
-    console.error(err.message);
-    dispatch({
-      type: NCLIENT_FAIL
-    });
   }
 };
 

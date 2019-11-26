@@ -10,6 +10,16 @@ body {
     background: #353c3f;
 }
 
+/* Alert attributes */
+.MainPage .Alert {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.MainPage .alert {
+    position: unset;
+}
+
 .MainPage-Header {
     position: fixed;
     width: 100%;
@@ -279,7 +289,7 @@ label {
 
 .MainPage .Card-size {
     width: 35rem;
-    height: 70vh;
+    height: auto;
 }
 
 #Card-Height {

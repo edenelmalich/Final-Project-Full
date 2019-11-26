@@ -20,8 +20,10 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-    check('email', 'Please Enter valid email').isEmail(),
-    check('password', 'Password is required').exists()
+    check('email', 'הכנס דואר אלקטרוני תקין').isEmail(),
+    check('password', 'הכנס סיסמה תקינה')
+      .not()
+      .isEmpty()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -34,17 +36,13 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+        return res.status(400).json({ errors: [{ msg: 'משתמש לא קיים' }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+        return res.status(400).json({ errors: [{ msg: 'סיסמה לא נכונה' }] });
       }
 
       const payload = {

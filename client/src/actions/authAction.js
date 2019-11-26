@@ -43,6 +43,8 @@ export const register = (Name, email, password) => async dispatch => {
       payload: res.data
     });
     dispatch(CheckUser());
+
+    dispatch(setAlert('משתמש נרשם בהצלחה', 'success'));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -69,6 +71,10 @@ export const login = (email, password) => async dispatch => {
     });
     dispatch(CheckUser());
   } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: LOGIN_FAIL
     });

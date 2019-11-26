@@ -7,6 +7,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import MainFooter from '../MainFooter';
 import PropTypes from 'prop-types';
+import Alert from '../layout/Alert';
 // Mobile imports
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
@@ -19,6 +20,7 @@ const LoginApp = ({ isAuth, login }) => {
     Email: '',
     Password: ''
   });
+
   const { Email, Password } = Data;
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
 
@@ -26,9 +28,11 @@ const LoginApp = ({ isAuth, login }) => {
     e.preventDefault();
     login(Email, Password);
   };
+
   if (isAuth) {
     return <Redirect to='Dashboard' />;
   }
+
   return (
     <div className='MainPage'>
       <MediaQuery maxDeviceWidth={1024}>
@@ -51,11 +55,13 @@ const LoginApp = ({ isAuth, login }) => {
           <div className='MainPage-container'>
             <div className='MainPage-content '>
               <div className='MainPage-title '>התחברות ל-Maxfit</div>
+
               <Card className='Card-size'>
                 <Card.Header>התחברות</Card.Header>
                 <Card.Body>
                   <FontAwesomeIcon className='Main-Icon' icon={FasUser} />
                   <header className='Main-Title'> התחברות</header>
+
                   <form className='MainPage-Form' onSubmit={e => onSubmit(e)}>
                     <label> דואר אלקטרוני</label>
                     <input
@@ -64,7 +70,6 @@ const LoginApp = ({ isAuth, login }) => {
                       value={Email}
                       onChange={e => onChange(e)}
                       placeholder='דואר אלקטרוני'
-                      required
                     />
                     <label> סיסמה</label>
                     <input
@@ -73,8 +78,10 @@ const LoginApp = ({ isAuth, login }) => {
                       value={Password}
                       onChange={e => onChange(e)}
                       placeholder='סיסמה'
-                      required
                     />
+                    <div className='Alert'>
+                      <Alert />
+                    </div>
                     <input type='submit' name='Password' value='התחברות' />
                     <div className='Main-Border'></div>
                     <div className='Button-content '>
@@ -110,6 +117,7 @@ const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
     </header>
     <main className='main'>
       <div className='Mobile-Main-Title '>התחברות ל-Maxfit</div>
+
       <Card className='Mobile-Card-size'>
         <Card.Header>התחברות</Card.Header>
         <Card.Body>
@@ -123,7 +131,6 @@ const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
               value={Email}
               onChange={e => onChange(e)}
               placeholder='דואר אלקטרוני'
-              required
             />
             <label> סיסמה</label>
             <input
@@ -132,8 +139,9 @@ const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
               value={Password}
               onChange={e => onChange(e)}
               placeholder='סיסמה'
-              required
             />
+            <div className='Main-Padding'></div>
+            <Alert />
             <input type='submit' name='Password' value='התחברות' />
             <div className='Main-Border'></div>
             <div className='Mobile-Button-content '>
@@ -163,7 +171,4 @@ LoginApp.propTypes = {
 const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth
 });
-export default connect(
-  mapStateToProps,
-  { login }
-)(LoginApp);
+export default connect(mapStateToProps, { login })(LoginApp);

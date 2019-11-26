@@ -17,6 +17,8 @@ import { setAlert } from '../../actions/alertAction';
 import { register } from '../../actions/authAction';
 
 const Register = ({ setAlert, register, isAuth }) => {
+  // useState
+  const [redirectDelay, setRedirect] = useState(false);
   const [Data, SetData] = useState({
     Name: '',
     Email: '',
@@ -32,9 +34,12 @@ const Register = ({ setAlert, register, isAuth }) => {
       setAlert('סיסמאות לא תואמות', 'danger');
     } else {
       register(Name, Email, Password);
+      setTimeout(() => {
+        setRedirect(true);
+      }, 2000);
     }
   };
-  if (isAuth) {
+  if (isAuth && redirectDelay) {
     return <Redirect to='/LoginApp' />;
   }
   return (
@@ -61,6 +66,7 @@ const Register = ({ setAlert, register, isAuth }) => {
           <div className='MainPage-container'>
             <div className='MainPage-content '>
               <div className='MainPage-title '>הרשמה ל-Maxfit</div>
+
               <Card id='Card-Height' className='Card-size'>
                 <Card.Header>הרשמה</Card.Header>
                 <Card.Body>
@@ -69,9 +75,7 @@ const Register = ({ setAlert, register, isAuth }) => {
                     icon={FasAddressCard}
                   />
                   <header className='Main-Title'>הרשמה</header>
-                  <div className='Alert-Position'>
-                    <Alert />
-                  </div>
+
                   <form className='MainPage-Form' onSubmit={e => onSubmit(e)}>
                     <label> שם מלא</label>
                     <input
@@ -106,6 +110,9 @@ const Register = ({ setAlert, register, isAuth }) => {
                       onChange={e => onChange(e)}
                       placeholder='אימות סיסמה'
                     />
+                    <div className='Alert'>
+                      <Alert />
+                    </div>
                     <input type='submit' name='register' value='הרשמה' />
                     <div className='Main-Border'></div>
                     <div className='Button-content '>
@@ -150,6 +157,7 @@ const MobileRegister = ({
         <Card.Body>
           <FontAwesomeIcon className='Mobile-Main-Icon' icon={FasAddressCard} />
           <header className='Main-Title'> הרשמה</header>
+
           <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
             <label> שם מלא</label>
             <input
@@ -184,6 +192,8 @@ const MobileRegister = ({
               onChange={e => onChange(e)}
               placeholder='אימות סיסמה'
             />
+            <div className='Main-Padding'></div>
+            <Alert />
             <input type='submit' name='register' value='הרשמה' />
             <div className='Main-Border'></div>
             <div className='Mobile-Button-content '>
@@ -211,7 +221,4 @@ Register.propTypes = {
 const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth
 });
-export default connect(
-  mapStateToProps,
-  { setAlert, register }
-)(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);

@@ -4,7 +4,7 @@ import '../../css/CssFont.css';
 import './Dashboard.css';
 
 import { Card, Table } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppFooter from '../AppFooter';
 import SubStat from './SubStat';

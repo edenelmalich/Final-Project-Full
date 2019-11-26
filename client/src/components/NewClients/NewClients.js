@@ -388,9 +388,8 @@ const MobileNclient = ({
           <span className='calculation'>{CalculationData} ₪</span>
           <div className='Main-Border'></div>
           <div className='Main-Padding'></div>
-          <input type='submit' name='send' value='הוסף לקוח חדש' />
-          <div className='Main-Padding'></div>
           <Alert />
+          <input type='submit' name='send' value='הוסף לקוח חדש' />
         </form>
       </div>
     </main>

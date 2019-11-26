@@ -649,6 +649,5 @@ body {
     position: unset;
     font-size: 12px;
     right: 0;
-    padding-right: 45px;
-
+    text-align: center;
 }
