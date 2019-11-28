@@ -27,7 +27,7 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 
-const Dashboard = ({ getClients, GetClients, closeAll }) => {
+const Dashboard = ({ clientsList, GetClients, closeAll }) => {
   useEffect(() => {
     GetClients();
     closeAll();
@@ -35,7 +35,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
   return (
     <div className='Dashboard'>
       <MediaQuery maxDeviceWidth={900}>
-        <MobileDash getClients={getClients} />
+        <MobileDash clientsList={clientsList} />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -56,7 +56,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                             <div className='DashBoard-Text'>לקוחות</div>
 
                             <div className='DashBoard-Text-info'>
-                              {getClients.length}
+                              {clientsList.length}
                             </div>
                           </Card.Body>
                         </Link>
@@ -134,7 +134,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
                               </tr>
                             </thead>
                             <tbody>
-                              {getClients.map(client => (
+                              {clientsList.map(client => (
                                 <tr key={client.id}>
                                   <td>{client.firstname}</td>
                                   <td>{client.lastname}</td>
@@ -165,7 +165,7 @@ const Dashboard = ({ getClients, GetClients, closeAll }) => {
     </div>
   );
 };
-const MobileDash = ({ getClients }) => (
+const MobileDash = ({ clientsList }) => (
   <div className='Mobile'>
     <MobileNav />
     <main className='main'>
@@ -177,7 +177,7 @@ const MobileDash = ({ getClients }) => (
 
             <div className='Mobile-DashBoard-Text'>לקוחות</div>
           </Link>
-          <div className='Mobile-DashBoard-Text-info'>{getClients.length}</div>
+          <div className='Mobile-DashBoard-Text-info'>{clientsList.length}</div>
         </Card>
 
         <Card id='DashNewClient' className='Dash-Card-Size'>
@@ -229,7 +229,7 @@ const MobileDash = ({ getClients }) => (
                 </tr>
               </thead>
               <tbody>
-                {getClients.map(client => (
+                {clientsList.map(client => (
                   <tr key={client.id}>
                     <td>{client.firstname}</td>
                     <td>{client.lastname}</td>
@@ -252,9 +252,11 @@ const MobileDash = ({ getClients }) => (
   </div>
 );
 Dashboard.propTypes = {
-  getClients: PropTypes.array
+  clientsList: PropTypes.array,
+  GetClients: PropTypes.func,
+  closeAll: PropTypes.func
 };
 const mapStateToProps = state => ({
-  getClients: state.NclientReducer.getClients
+  clientsList: state.NclientReducer.clientsList
 });
 export default connect(mapStateToProps, { GetClients, closeAll })(Dashboard);

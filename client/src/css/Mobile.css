@@ -80,11 +80,12 @@ body {
 
 }
 
+.Notifications-position {
+    margin-right: auto;
+}
+
 .Quantity-Mobile {
-    position: fixed;
-    display: flex;
-    left: 28%;
-    top: 25px;
+    position: relative;
     padding-top: 1px;
     height: 18px;
     width: 18px;
@@ -94,7 +95,6 @@ body {
     color: #fff;
     border-radius: 100%;
     font-size: 12px;
-    justify-content: center;
 
 }
 
@@ -427,48 +427,6 @@ body {
 
 }
 
-@media only screen and (min-width:768px) {
-    .Mobile-Main-Text button {
-        margin-right: 15px;
-    }
-
-    .Mobile .Dash-Table {
-        padding: 0 1rem 0 1rem;
-    }
-
-    .Quantity-Mobile {
-        left: 14%;
-    }
-
-
-}
-
-@media only screen and (width: 731px) {
-    #Table-Card-size {
-        width: 40rem;
-    }
-}
-
-@media only screen and (width:640px) {
-
-    .Quantity-Mobile {
-        left: 16%;
-    }
-}
-
-@media only screen and (width:360px) {
-    .Mobile-DashBoard-Text {
-        font-size: 12px;
-    }
-
-    .Mobile-Main-Text button {
-        width: 120px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-}
-
 /* Health page attributes */
 .Mobile .FormData {
     height: 400px;
@@ -550,14 +508,13 @@ body {
     padding: unset;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 5px;
+    padding: 0 1rem 0 1rem;
 }
 
 .Mobile .Stat-Form {
-    display: block;
+    display: flex;
     margin-right: auto;
     margin-left: auto;
-    padding: 0 2rem 0 2rem;
 }
 
 .Mobile .Stat-content .card {
@@ -583,7 +540,9 @@ body {
 
 
 /* Notifications */
-.MobileNav .Notifications {
+.MobileNav .Notifications-mobile {
+    position: relative;
+    width: 50px;
     color: #353c3f;
     font-size: 1.5rem;
     border: none;
@@ -650,4 +609,57 @@ body {
     font-size: 12px;
     right: 0;
     text-align: center;
+}
+
+/* Screens attributes */
+@media only screen and (min-width:768px) {
+    .Mobile-Main-Text button {
+        margin-right: 15px;
+    }
+
+    .Mobile .Dash-Table {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .Quantity-Mobile {
+        left: 14%;
+    }
+
+    .Mobile .Stat-Form {
+        padding: 0 25% 0 25%;
+    }
+
+
+}
+
+@media only screen and (width: 731px) {
+    #Table-Card-size {
+        width: 40rem;
+    }
+}
+
+@media only screen and (width:640px) {
+
+    .Quantity-Mobile {
+        left: 16%;
+    }
+}
+
+@media only screen and (max-width:700px) {
+    .Mobile .Stat-Form {
+        padding: 0 1rem 0 1rem;
+    }
+}
+
+@media only screen and (width:360px) {
+    .Mobile-DashBoard-Text {
+        font-size: 12px;
+    }
+
+    .Mobile-Main-Text button {
+        width: 120px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
 }

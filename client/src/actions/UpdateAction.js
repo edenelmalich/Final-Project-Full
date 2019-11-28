@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { UPDATE_SUCCESS, UPDATE_FAIL } from './typesActions';
+import { setAlert } from './alertAction';
 
 export const update = (firstname, lastname, update) => async dispatch => {
   const config = {
@@ -9,14 +10,17 @@ export const update = (firstname, lastname, update) => async dispatch => {
   };
   const body = JSON.stringify({ firstname, lastname, update });
   try {
-    const res = await axios.post('api/updates', body, config);
+    await axios.post('api/updates', body, config);
 
     dispatch({
-      type: UPDATE_SUCCESS,
-      payload: res.data
+      type: UPDATE_SUCCESS
     });
+    dispatch(setAlert('הודעה נשלחה בהצלחה', 'success'));
   } catch (err) {
-    console.error(err.message);
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: UPDATE_FAIL
     });

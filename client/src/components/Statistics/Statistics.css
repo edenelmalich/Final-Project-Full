@@ -21,6 +21,7 @@
     background-clip: padding-box;
     border: 2px solid #353c3f;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
 }
 
 .Stat-Form input[type=submit] {

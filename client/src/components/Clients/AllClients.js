@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import { Table, Card } from 'react-bootstrap';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -11,15 +12,17 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import AppFooter from '../AppFooter';
 import { GetClients } from '../../actions/NclientAction';
-const AllClients = ({ GetClients, getClients }) => {
+import { closeAll } from '../../actions/NavAction';
+const AllClients = ({ GetClients, clientsList, closeAll }) => {
   useEffect(() => {
     GetClients();
+    closeAll();
   }, []);
 
   return (
     <div className='Clients'>
       <MediaQuery maxDeviceWidth={1000}>
-        <MobileClients getClients={getClients} />
+        <MobileClients clientsList={clientsList} />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -49,7 +52,7 @@ const AllClients = ({ GetClients, getClients }) => {
                             </tr>
                           </thead>
                           <tbody>
-                            {getClients.map(client => (
+                            {clientsList.map(client => (
                               <tr key={client.id}>
                                 <td>{client.firstname}</td>
                                 <td>{client.lastname}</td>
@@ -79,7 +82,7 @@ const AllClients = ({ GetClients, getClients }) => {
     </div>
   );
 };
-const MobileClients = ({ getClients }) => (
+const MobileClients = ({ clientsList }) => (
   <div className='Mobile'>
     <MobileNav />
     <main className='main'>
@@ -103,7 +106,7 @@ const MobileClients = ({ getClients }) => (
                 </tr>
               </thead>
               <tbody>
-                {getClients.map(client => (
+                {clientsList.map(client => (
                   <tr key={client.id}>
                     <td>{client.firstname}</td>
                     <td>{client.lastname}</td>
@@ -125,7 +128,12 @@ const MobileClients = ({ getClients }) => (
     <MobileFooter />
   </div>
 );
+AllClients.propTypes = {
+  clientsList: PropTypes.array,
+  GetClients: PropTypes.func,
+  closeAll: PropTypes.func
+};
 const mapStateToProps = state => ({
-  getClients: state.NclientReducer.getClients
+  clientsList: state.NclientReducer.clientsList
 });
-export default connect(mapStateToProps, { GetClients })(AllClients);
+export default connect(mapStateToProps, { GetClients, closeAll })(AllClients);

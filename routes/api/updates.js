@@ -6,13 +6,13 @@ const router = express.Router();
 router.post(
   '/',
   [
-    check('firstname', 'Please Enter valid firstname')
+    check('firstname', 'הכנס שם תקין')
       .not()
       .isEmpty(),
-    check('lastname', 'Please Enter valid lastname')
+    check('lastname', 'הכנס שם משפחה תקין')
       .not()
       .isEmpty(),
-    check('update', 'Please Enter valid update')
+    check('update', 'הכנס הודעה תקינה')
       .not()
       .isEmpty()
   ],

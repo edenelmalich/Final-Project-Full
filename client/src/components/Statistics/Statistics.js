@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './Statistics.css';
 import AppFooter from '../AppFooter';
@@ -7,12 +7,22 @@ import HandState from './HandState';
 import WeightStat from './WeightStat';
 import ChestStat from './ChestStat';
 import BackhandStat from './BackhandStat';
+import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
-const Statistics = () => {
+// Redux
+import { connect } from 'react-redux';
+import { closeAll } from '../../actions/NavAction';
+import { closeAlerts } from '../../actions/alertAction';
+const Statistics = ({ closeAll, closeAlerts }) => {
+  // ComponentWillMount
+  useEffect(() => {
+    closeAll();
+    closeAlerts();
+  }, []);
   return (
     <div className='Statistics'>
       <MediaQuery maxDeviceWidth={1024}>
@@ -89,4 +99,8 @@ const MobileStat = () => (
     <MobileFooter />
   </div>
 );
-export default Statistics;
+Statistics.propTypes = {
+  closeAll: PropTypes.func,
+  closeAlerts: PropTypes.func
+};
+export default connect(null, { closeAll, closeAlerts })(Statistics);

@@ -14,8 +14,14 @@ import { connect } from 'react-redux';
 import { Nclient } from '../../actions/NclientAction';
 import { setAlert } from '../../actions/alertAction';
 import { CalcTotal } from '../../actions/CalcAction';
+import { closeAll } from '../../actions/NavAction';
+import { closeAlerts } from '../../actions/alertAction';
 
-const NewClients = ({ Nclient }) => {
+const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
+  useEffect(() => {
+    closeAll();
+    closeAlerts();
+  }, []);
   // useState
   const [TypeData, setType] = useState([
     { label: 'רגיל', id: 1, value: 200, selected: false },
@@ -303,7 +309,6 @@ const MobileNclient = ({
         <header className='Header-Client'>
           <h3>הוספת לקוח חדש</h3>
         </header>
-        <div className='Alert-Position'></div>
         <form
           action='#'
           className='Nclient-FormAtt'
@@ -399,11 +404,18 @@ const MobileNclient = ({
 
 NewClients.propType = {
   SendFail: PropTypes.bool,
-  setAlert: PropTypes.func.isRequired
+  setAlert: PropTypes.func.isRequired,
+  closeAll: PropTypes.func,
+  CalcTotal: PropTypes.func,
+  closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
   total: state.CalcReducer.total
 });
-export default connect(mapStateToProps, { Nclient, setAlert, CalcTotal })(
-  NewClients
-);
+export default connect(mapStateToProps, {
+  Nclient,
+  setAlert,
+  CalcTotal,
+  closeAll,
+  closeAlerts
+})(NewClients);

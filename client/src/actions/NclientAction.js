@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CLIENTS } from './typesActions';
+import { SET_CLIENTS } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const Nclient = (
@@ -46,7 +46,7 @@ export const GetClients = () => async dispatch => {
     const res = await axios.get('/api/Nclient');
 
     dispatch({
-      type: GET_CLIENTS,
+      type: SET_CLIENTS,
       payload: res.data
     });
   } catch (err) {

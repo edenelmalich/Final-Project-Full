@@ -28,14 +28,15 @@ const MobileNav = ({
             <img src={logo} alt='Mobile logo' id='MobileNav-img' />
           </Link>
         </Navbar.Brand>
-        <div className='Quantity-Mobile'>0</div>
-        <button
-          onClick={() => SetNotification(NotificationsSelected)}
-          className='Notifications'
-        >
-          <FontAwesomeIcon icon={faBell} />
-        </button>
-
+        <span className='Notifications-position'>
+          <div className='Quantity-Mobile'>0</div>
+          <button
+            onClick={() => SetNotification(NotificationsSelected)}
+            className='Notifications-mobile'
+          >
+            <FontAwesomeIcon icon={faBell} />
+          </button>
+        </span>
         <Notifications />
 
         <Navbar.Toggle

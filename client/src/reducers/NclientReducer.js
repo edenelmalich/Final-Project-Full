@@ -1,13 +1,13 @@
-import { GET_CLIENTS } from '../actions/typesActions';
+import { SET_CLIENTS } from '../actions/typesActions';
 
 const initialState = {
-  getClients: []
+  clientsList: []
 };
 const NclientReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case GET_CLIENTS:
-      return { ...state, getClients: payload };
+    case SET_CLIENTS:
+      return { ...state, clientsList: payload };
     default:
       return state;
   }
