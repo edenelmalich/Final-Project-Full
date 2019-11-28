@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+// Components imports
 import Navbar from '../Navbar/Navbar';
+import AppFooter from '../AppFooter';
+// Css imports
+import './Buildplan.css';
+// import Link from react-router
 import { Link } from 'react-router-dom';
-import './BuildplanCss.css';
+// Fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
+// Bootstrap imports
+import { Toast } from 'react-bootstrap';
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification } from '../../actions/NavAction';
 import { SetAccount } from '../../actions/NavAction';
+import { closeAll } from '../../actions/NavAction';
 
-const BuildPlan = props => {
-  const {
-    listBox,
-    ListBoxSelected,
-    NotificationsSelected,
-    AccountSelected,
-    noti,
-    acc
-  } = props;
+const BuildPlan = ({
+  listBox,
+  ListBoxSelected,
+  NotificationsSelected,
+  AccountSelected,
+  getDays,
+  closeAll
+}) => {
+  // ComponentWillMount
+  useEffect(() => {
+    closeAll();
+    let days = JSON.parse(localStorage.getItem('days')) || '';
+    SetDay(days);
+  }, []);
+  // useState
+  const [dayData, SetDay] = useState(null);
   // Data
   const Exercises = [
     // Chest Exercises
@@ -304,10 +320,10 @@ const BuildPlan = props => {
     listBox(ListBoxSelected);
 
     if (NotificationsSelected === true) {
-      noti(NotificationsSelected);
+      SetNotification(NotificationsSelected);
     }
     if (AccountSelected === true) {
-      acc(AccountSelected);
+      SetAccount(AccountSelected);
     }
   };
   return (
@@ -321,19 +337,10 @@ const BuildPlan = props => {
               <h2>בניית תוכנית אימונים</h2>
               <div className='Plan-Padding'></div>
               <div className='ExeMain'>
-                <div className='PlanHeader'>
-                  בחר שרירים
-                  <Link to='/exeplan' className='BackPage'>
-                    לדף הקודם
-                  </Link>
-                </div>
+                <div className='PlanHeader'>בחר שרירים {dayData}</div>
                 <div className='Main-Padding'></div>
                 <div className='Main-Border'></div>
                 <div className='Quantity'>{CounterData}</div>
-                {/* Code to open and close the list */}
-                <button className='Icon-List' onClick={() => ShowList()}>
-                  <FontAwesomeIcon icon={faClipboardList} />
-                </button>
                 {ListBoxSelected ? (
                   <div className='ListBox'>
                     <div className='ListBox-Att'>
@@ -378,12 +385,16 @@ const BuildPlan = props => {
                     {/* Code for show the muscles in the page */}
                     {MusclesData.map(muscles => (
                       <div key={muscles.id}>
-                        <label>{muscles.label}</label>
-                        <input
-                          type='checkbox'
-                          onChange={() => onChange(muscles.id)}
-                          checked={muscles.selected}
-                        />
+                        <Toast>
+                          <strong className='mr-auto'>
+                            {muscles.label}
+                            <input
+                              type='checkbox'
+                              onChange={() => onChange(muscles.id)}
+                              checked={muscles.selected}
+                            />
+                          </strong>
+                        </Toast>
                       </div>
                     ))}
                   </div>
@@ -462,14 +473,21 @@ const BuildPlan = props => {
                       ) : null}
                     </div>
                   ))}
+                  <div className='FooterAtt'>
+                    <Link to='/exeplan' className='BackPage'>
+                      לדף הקודם
+                    </Link>
+                    {/* Code to open and close the list */}
+                    <button className='Icon-List' onClick={() => ShowList()}>
+                      <FontAwesomeIcon icon={faClipboardList} />
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
           </div>
         </div>
-        <div className='FooterText'>
-          <div className='FooterTitle'>Final Project By Eden Elmalich</div>
-        </div>
+        <AppFooter />
       </div>
     </div>
   );
@@ -566,17 +584,18 @@ const ShowShoulders = props => (
     ))}
   </div>
 );
-const mapStateToProps = state => {
-  return {};
+BuildPlan.propTypes = {
+  getDays: PropTypes.string,
+  SetNotification: PropTypes.func,
+  SetAccount: PropTypes.func,
+  closeAll: PropTypes.func
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    noti: boolean => {
-      dispatch(SetNotification(boolean));
-    },
-    acc: boolean => {
-      dispatch(SetAccount(boolean));
-    }
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(BuildPlan);
+const mapStateToProps = state => ({
+  getDays: state.ExePlanReducer.getDays
+});
+
+export default connect(mapStateToProps, {
+  SetNotification,
+  SetAccount,
+  closeAll
+})(BuildPlan);

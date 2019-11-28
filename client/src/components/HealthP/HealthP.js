@@ -12,6 +12,7 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { closeAll } from '../../actions/NavAction';
 import { closeAlerts } from '../../actions/alertAction';
+
 const HealthP = ({ closeAll, closeAlerts }) => {
   // ComponentWillMount
   useEffect(() => {

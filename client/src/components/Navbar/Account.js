@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import Link from react-router
 import { Link } from 'react-router-dom';
+// Bootstrap imports
 import { Collapse } from 'react-bootstrap';
 // Redux
 import { connect } from 'react-redux';
@@ -34,7 +36,4 @@ Account.propTypes = {
 const mapStateToProps = state => ({
   AccountSelected: state.NavReducer.AccountSelected
 });
-export default connect(
-  mapStateToProps,
-  { Logout }
-)(Account);
+export default connect(mapStateToProps, { Logout })(Account);

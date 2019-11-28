@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
-import Navbar from '../Navbar/Navbar';
-import { Table, Card } from 'react-bootstrap';
-import moment from 'moment';
 import PropTypes from 'prop-types';
+// Components imports
+import Navbar from '../Navbar/Navbar';
+import AppFooter from '../AppFooter';
+// Bootstrap imports
+import { Table, Card } from 'react-bootstrap';
+// import moment to get the days
+import moment from 'moment';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -10,11 +14,13 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import AppFooter from '../AppFooter';
 import { GetClients } from '../../actions/NclientAction';
 import { closeAll } from '../../actions/NavAction';
-const AllClients = ({ GetClients, clientsList, closeAll }) => {
+import { closeAlerts } from '../../actions/alertAction';
+
+const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
   useEffect(() => {
+    closeAlerts();
     GetClients();
     closeAll();
   }, []);
@@ -131,9 +137,12 @@ const MobileClients = ({ clientsList }) => (
 AllClients.propTypes = {
   clientsList: PropTypes.array,
   GetClients: PropTypes.func,
-  closeAll: PropTypes.func
+  closeAll: PropTypes.func,
+  closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
   clientsList: state.NclientReducer.clientsList
 });
-export default connect(mapStateToProps, { GetClients, closeAll })(AllClients);
+export default connect(mapStateToProps, { GetClients, closeAll, closeAlerts })(
+  AllClients
+);

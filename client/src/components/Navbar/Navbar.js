@@ -1,8 +1,15 @@
 import React from 'react';
-import logo from '../../img/logo.png';
 import PropTypes from 'prop-types';
+// Components imports
+import Notifications from './Notifications';
+import Account from './Account';
+// import logo from img
+import logo from '../../img/logo.png';
+// Css imports
 import './Navbar.css';
+// import Link from react-router
 import { NavLink, Link } from 'react-router-dom';
+// Fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleDown,
@@ -17,8 +24,6 @@ import {
   faAddressCard,
   faEdit
 } from '@fortawesome/free-regular-svg-icons';
-import Notifications from './Notifications';
-import Account from './Account';
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification, SetAccount } from '../../actions/NavAction';

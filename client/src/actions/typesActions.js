@@ -24,3 +24,5 @@ export const NAV_SETTING = 'NAV_SETTING';
 export const CLOSE = 'CLOSE';
 // Calculate the price
 export const CALC = 'CALC';
+// Set days from ExePlan
+export const SET_DAYS = 'SET_DAYS';

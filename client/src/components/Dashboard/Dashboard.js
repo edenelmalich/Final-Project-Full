@@ -1,24 +1,27 @@
 import React, { useEffect } from 'react';
+import { PropTypes } from 'prop-types';
+// Components imports
 import Navbar from '../Navbar/Navbar';
-import '../../css/CssFont.css';
-import './Dashboard.css';
-
-import { Card, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AppFooter from '../AppFooter';
 import SubStat from './SubStat';
 import NewSub from './NewSub';
-import moment from 'moment';
+// Css imports
+import '../../css/CssFont.css';
+import './Dashboard.css';
+// import Link from react-router
+import { Link } from 'react-router-dom';
+// Fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faUserPlus,
   faUserClock,
   faChartBar
 } from '@fortawesome/free-solid-svg-icons';
-import { PropTypes } from 'prop-types';
-import { GetClients } from '../../actions/NclientAction';
-import { closeAll } from '../../actions/NavAction';
+// Bootstrap imports
+import { Card, Table } from 'react-bootstrap';
+// import moment to get the days
+import moment from 'moment';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileNav from '../Mobile/MobileNav';
@@ -26,9 +29,14 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
+import { closeAlerts } from '../../actions/alertAction';
+import { GetClients } from '../../actions/NclientAction';
+import { closeAll } from '../../actions/NavAction';
 
-const Dashboard = ({ clientsList, GetClients, closeAll }) => {
+const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
+  // ComponentWillMount
   useEffect(() => {
+    closeAlerts();
     GetClients();
     closeAll();
   }, []);
@@ -254,9 +262,12 @@ const MobileDash = ({ clientsList }) => (
 Dashboard.propTypes = {
   clientsList: PropTypes.array,
   GetClients: PropTypes.func,
-  closeAll: PropTypes.func
+  closeAll: PropTypes.func,
+  closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
   clientsList: state.NclientReducer.clientsList
 });
-export default connect(mapStateToProps, { GetClients, closeAll })(Dashboard);
+export default connect(mapStateToProps, { GetClients, closeAll, closeAlerts })(
+  Dashboard
+);
