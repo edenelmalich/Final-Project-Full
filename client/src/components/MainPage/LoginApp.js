@@ -91,7 +91,7 @@ const LoginApp = ({ isAuth, login }) => {
                       <div className='LoginApp-text'>
                         איך לך משתמש?
                         <span className='Link-Color'>
-                          <Link to='/registarApp' className='RegistarButton'>
+                          <Link to='/registerApp' className='RegistarButton'>
                             הירשם כעת
                           </Link>
                         </span>
@@ -110,11 +110,6 @@ const LoginApp = ({ isAuth, login }) => {
 };
 const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
   <div className='Mobile'>
-    <header>
-      <div className='Mobile-Header'>
-        <img src={logo} alt='Logo' id='Mobile-img' />
-      </div>
-    </header>
     <main className='main'>
       <div className='Mobile-Main-Title '>התחברות ל-Maxfit</div>
 
@@ -151,7 +146,7 @@ const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
               <div className='Mobile-LoginApp-text'>
                 איך לך משתמש?
                 <span className='Link-Color'>
-                  <Link to='/registarApp' className='RegistarButton'>
+                  <Link to='/registerApp' className='RegistarButton'>
                     הירשם כעת
                   </Link>
                 </span>

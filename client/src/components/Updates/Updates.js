@@ -123,7 +123,6 @@ const MobileUpdates = ({
   UpdateMessage
 }) => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>עדכונים</h2>
       <div className='FormClient'>

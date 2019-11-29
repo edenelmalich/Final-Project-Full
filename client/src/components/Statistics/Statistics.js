@@ -70,7 +70,6 @@ const Statistics = ({ closeAll, closeAlerts }) => {
 };
 const MobileStat = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>סטטיסטיקת מתאמנים</h2>
       <form className='Stat-Form'>

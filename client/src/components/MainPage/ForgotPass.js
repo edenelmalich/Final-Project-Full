@@ -120,11 +120,6 @@ const MobileForgotPass = ({
   onChange
 }) => (
   <div className='Mobile'>
-    <header>
-      <div className='Mobile-Header'>
-        <img src={logo} alt='Logo' id='Mobile-img' />
-      </div>
-    </header>
     <main className='main'>
       <div className='Mobile-container'>
         <div className='Mobile-content'>

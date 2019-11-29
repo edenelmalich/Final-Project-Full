@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React, { useState, Fragment } from 'react';
+import { Navbar, Nav, NavDropdown, Collapse } from 'react-bootstrap';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -11,12 +11,15 @@ import {
   faTachometerAlt,
   faUsers,
   faChartBar,
-  faTasks
+  faTasks,
+  faUnlockAlt
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFileAlt,
   faAddressCard,
-  faEdit
+  faEdit,
+  faUser as FasUser,
+  faAddressCard as FasAddressCard
 } from '@fortawesome/free-regular-svg-icons';
 // Redux
 import { connect } from 'react-redux';
@@ -29,67 +32,108 @@ const MobileNav = ({
   SetNotification,
   NotificationsSelected,
   SetNav,
-  MobileNav
+  MobileNav,
+  loading,
+  isAuth
 }) => {
+  // Auth links
+  const AuthLinks = () => (
+    <Fragment>
+      <Link to='/Dashboard' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faTachometerAlt} /> לוח בקרה
+      </Link>
+      <Link to='/Nclients' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faAddressCard} /> לקוח חדש
+      </Link>
+      <Link to='/HealthP' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faFileAlt} /> הצהרת בריאות
+      </Link>
+      <Link to='/AllClients' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faUsers} /> לקוחות
+      </Link>
+      <Link to='/Statistics' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faChartBar} /> סטטיסטיקת מתאמנים
+      </Link>
+      <Link to='/ExePlan' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faTasks} /> תוכניות אימונים
+      </Link>
+      <Link to='/Updates' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faEdit} /> עדכונים
+      </Link>
+    </Fragment>
+  );
+  const GuestLinks = () => (
+    <Fragment>
+      <Link to='/loginApp' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={FasUser} /> התחברות
+      </Link>
+      <Link to='/registerApp' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={FasAddressCard} /> הרשמה
+      </Link>
+      <Link to='/forgotPass' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+        <FontAwesomeIcon icon={faUnlockAlt} /> איפוס סיסמה
+      </Link>
+    </Fragment>
+  );
+  const logout = () => {
+    Logout();
+    SetNav(MobileNav);
+  };
   const { Name } = user;
   return (
     <div className='MobileNav'>
       <Navbar bg='light' expand='lg'>
         <Navbar.Brand>
-          <Link to='/Dashboard'>
-            <img src={logo} alt='Mobile logo' id='MobileNav-img' />
-          </Link>
+          {!loading && isAuth ? (
+            <Link to='/Dashboard'>
+              <img src={logo} alt='Mobile logo' id='MobileNav-img' />
+            </Link>
+          ) : (
+            <Link to='/'>
+              <img src={logo} alt='Mobile logo' id='MobileNav-img' />
+            </Link>
+          )}
         </Navbar.Brand>
-        <span className='Notifications-position'>
-          <div className='Quantity-Mobile'>0</div>
-          <button
-            onClick={() => SetNotification(NotificationsSelected)}
-            className='Notifications-mobile'
-          >
-            <FontAwesomeIcon icon={faBell} />
-          </button>
-        </span>
-        <Notifications />
-
+        {!loading && isAuth ? (
+          <span>
+            <span className='Notifications-position'>
+              <div className='Quantity-Mobile'>0</div>
+              <button
+                onClick={() => SetNotification(NotificationsSelected)}
+                className='Notifications-mobile'
+              >
+                <FontAwesomeIcon icon={faBell} />
+              </button>
+            </span>
+            <Notifications />
+          </span>
+        ) : null}
         <Navbar.Toggle
           aria-controls='basic-navbar-nav'
           onClick={() => SetNav(MobileNav)}
         />
-        <Navbar.Collapse id='basic-navbar-nav' in={MobileNav}>
+        <Navbar.Collapse in={MobileNav} id='basic-navbar-nav'>
           <Nav className='mr-auto'>
-            <NavDropdown title={`שלום ${Name}`} id='basic-nav-dropdown'>
-              <NavDropdown.Item className='Nav-Setting'>
-                הגדרות
-              </NavDropdown.Item>
-              <Link to='/PersonalDetails'>פרטים אישיים</Link>
-              <Link to='/changePass'>שינוי סיסמה</Link>
-              <Link to='/ChangeEmail'>שינוי דואר אלקטרוני</Link>
-              <NavDropdown.Divider />
-              <Link to='/' onClick={() => Logout()}>
-                התנתקות
-              </Link>
-            </NavDropdown>
-            <Link to='/Dashboard' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faTachometerAlt} /> לוח בקרה
-            </Link>
-            <Link to='/nclients' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faAddressCard} /> לקוח חדש
-            </Link>
-            <Link to='/healthp' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faFileAlt} /> הצהרת בריאות
-            </Link>
-            <Link to='/AllClients' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faUsers} /> לקוחות
-            </Link>
-            <Link to='/statistics' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faChartBar} /> סטטיסטיקת מתאמנים
-            </Link>
-            <Link to='/exeplan' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faTasks} /> תוכניות אימונים
-            </Link>
-            <Link to='/updates' onClick={() => SetNav(true)}>
-              <FontAwesomeIcon icon={faEdit} /> עדכונים
-            </Link>
+            {!loading && isAuth ? (
+              <NavDropdown title={`שלום ${Name}`} id='basic-nav-dropdown'>
+                <div className='Nav-Setting'>הגדרות</div>
+                <Link to='/PersonalDetails' id='a-Padding'>
+                  פרטים אישיים
+                </Link>
+                <Link to='/ChangePass' id='a-Padding'>
+                  שינוי סיסמה
+                </Link>
+                <Link to='/ChangeEmail' id='a-Padding'>
+                  שינוי דואר אלקטרוני
+                </Link>
+                <NavDropdown.Divider />
+                <Link to='/' onClick={() => logout()}>
+                  התנתקות
+                </Link>
+              </NavDropdown>
+            ) : null}
+
+            {!loading && isAuth ? <AuthLinks /> : <GuestLinks />}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -101,12 +145,16 @@ MobileNav.propTypes = {
   Logout: PropTypes.func.isRequired,
   SetNotification: PropTypes.func,
   NotificationsSelected: PropTypes.bool,
-  MobileNav: PropTypes.bool
+  MobileNav: PropTypes.bool,
+  loading: PropTypes.bool,
+  isAuth: PropTypes.bool
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user,
   NotificationsSelected: state.NavReducer.NotificationsSelected,
-  MobileNav: state.NavReducer.MobileNav
+  MobileNav: state.NavReducer.MobileNav,
+  loading: state.authReducer.loading,
+  isAuth: state.authReducer.isAuth
 });
 export default connect(mapStateToProps, {
   Logout,

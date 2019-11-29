@@ -2,7 +2,7 @@ import {
   ACCOUNT,
   NOTIFICATIONS,
   CLOSE,
-  NAV,
+  NAV_MOBILE,
   NAV_SETTING
 } from '../actions/typesActions';
 const initialState = {
@@ -28,7 +28,7 @@ const NavReducer = (state = initialState, action) => {
         AccountSelected: false,
         NotificationsSelected: !payload
       };
-    case NAV:
+    case NAV_MOBILE:
       return {
         ...state,
         MobileNav: !payload,

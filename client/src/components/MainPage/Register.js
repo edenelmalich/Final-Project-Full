@@ -145,11 +145,6 @@ const MobileRegister = ({
   RePassword
 }) => (
   <div className='Mobile'>
-    <header>
-      <div className='Mobile-Header'>
-        <img src={logo} alt='Logo' id='Mobile-img' />
-      </div>
-    </header>
     <main className='main'>
       <div className='Mobile-Main-Title '>הרשמה ל-Maxfit</div>
       <Card className='Mobile-Card-size'>

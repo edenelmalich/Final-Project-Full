@@ -34,14 +34,7 @@ import { GetClients } from '../../actions/NclientAction';
 import { closeAll } from '../../actions/NavAction';
 import { SetNav } from '../../actions/NavAction';
 
-const Dashboard = ({
-  clientsList,
-  GetClients,
-  closeAll,
-  closeAlerts,
-  SetNav,
-  MobileNav
-}) => {
+const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
@@ -183,7 +176,6 @@ const Dashboard = ({
 };
 const MobileDash = ({ clientsList }) => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>סקירה כללית</h2>
       <div className='Mobile-Dash-Box-Att'>
@@ -271,8 +263,7 @@ Dashboard.propTypes = {
   clientsList: PropTypes.array,
   GetClients: PropTypes.func,
   closeAll: PropTypes.func,
-  closeAlerts: PropTypes.func,
-  SetNav: PropTypes.func
+  closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
   clientsList: state.NclientReducer.clientsList,
@@ -281,6 +272,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   GetClients,
   closeAll,
-  closeAlerts,
-  SetNav
+  closeAlerts
 })(Dashboard);

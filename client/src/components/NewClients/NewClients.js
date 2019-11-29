@@ -302,7 +302,6 @@ const MobileNclient = ({
   onSubmit
 }) => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>לקוח חדש</h2>
       <div className='FormClient'>

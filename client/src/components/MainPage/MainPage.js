@@ -73,7 +73,7 @@ const MainPage = () => {
               <div className='Button-content '>
                 <div className='MainPage-text'>
                   נשמע מעניין?
-                  <Link to='/registarApp'>
+                  <Link to='/registerApp'>
                     <button>הירשם עכשיו</button>
                   </Link>
                 </div>
@@ -94,11 +94,6 @@ const MainPage = () => {
 };
 const MobileMain = () => (
   <div className='Mobile'>
-    <header>
-      <div className='Mobile-Header'>
-        <img src={logo} alt='Logo' id='Mobile-img' />
-      </div>
-    </header>
     <main className='main'>
       <div className='Mobile-container'>
         <div className='Mobile-content'>
@@ -148,7 +143,7 @@ const MobileMain = () => (
           <div className='Button-content '>
             <div className='Mobile-Main-Text'>
               נשמע מעניין?
-              <Link to='/registarApp'>
+              <Link to='/registerApp'>
                 <button>הירשם עכשיו</button>
               </Link>
             </div>

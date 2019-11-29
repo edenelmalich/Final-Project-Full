@@ -67,6 +67,11 @@ body {
     padding-top: 5rem;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+    position: unset;
+}
+
 .Carousel-item {
     position: unset;
 }

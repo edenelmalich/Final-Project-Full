@@ -2,8 +2,8 @@ import {
   ACCOUNT,
   NOTIFICATIONS,
   CLOSE,
-  NAV,
-  NAV_SETTING
+  NAV_SETTING,
+  NAV_MOBILE
 } from './typesActions';
 export const SetAccount = AccountState => dispatch => {
   dispatch({
@@ -19,7 +19,7 @@ export const SetNotification = NotificationState => dispatch => {
 };
 export const SetNav = NavState => dispatch => {
   dispatch({
-    type: NAV,
+    type: NAV_MOBILE,
     payload: NavState
   });
 };

@@ -90,7 +90,6 @@ const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
 };
 const MobileClients = ({ clientsList }) => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>לקוחות</h2>
       <div className='Client-card'>

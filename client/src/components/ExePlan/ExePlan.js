@@ -133,7 +133,6 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
 };
 const MobilePlan = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>בניית תוכנית אימונים</h2>
     </main>

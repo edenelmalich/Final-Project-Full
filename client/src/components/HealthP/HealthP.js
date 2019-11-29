@@ -51,7 +51,6 @@ const HealthP = ({ closeAll, closeAlerts }) => {
 
 const MobileHealth = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>הצהרות בריאות</h2>
       <Card id='Health-Card-size'>

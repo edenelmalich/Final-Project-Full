@@ -11,11 +11,14 @@ import Nclients from './components/NewClients/NewClients';
 import ExePlan from './components/ExePlan/ExePlan';
 import LoginApp from './components/MainPage/LoginApp';
 import BuildPlan from './components/BuildPlan/BuildPlan';
-import Registar from './components/MainPage/Register';
+import Register from './components/MainPage/Register';
 import ForgotPass from './components/MainPage/ForgotPass';
 import Updates from './components/Updates/Updates';
 import NotificationsPage from './components/Notifications/NotificationsPage';
 import MainPage from './components/MainPage/MainPage';
+// Mobile imports
+import MobileNav from './components/Mobile/MobileNav';
+import MediaQuery from 'react-responsive';
 // Settings
 import PersonalDetails from './components/Settings/PersonalDetails';
 import ChangePass from './components/Settings/ChangePass';
@@ -31,37 +34,45 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 const App = () => {
+  const CurrentPath = window.location.pathname;
   useEffect(() => {
     store.dispatch(CheckUser());
   }, []);
+  // useState
+
   return (
     <Provider store={store}>
-      <div className='App'>
-        <Router>
+      <Router>
+        <MediaQuery maxDeviceWidth={900}>
+          <div className='Mobile'>
+            <MobileNav />
+          </div>
+        </MediaQuery>
+        <div className='App'>
           <div id='App-flex'>
             <Switch>
               <Route path='/' component={MainPage} exact />
-              <Route path='/registarApp' component={Registar} />
+              <Route path='/registerApp' component={Register} />
               <Route path='/LoginApp' component={LoginApp} />
               <Route path='/Dashboard' component={Dashboard} />
               <Route path='/AllClients' component={AllClients} />
-              <Route path='/statistics' component={Statistics} />
-              <Route path='/healthp' component={HealthP} />
-              <Route path='/nclients' component={Nclients} />
-              <Route path='/exeplan' component={ExePlan} />
-              <Route path='/buildPlan' component={BuildPlan} />
-              <Route path='/notifications' component={NotificationsPage} />
-              <Route path='/updates' component={Updates} />
+              <Route path='/Statistics' component={Statistics} />
+              <Route path='/HealthP' component={HealthP} />
+              <Route path='/Nclients' component={Nclients} />
+              <Route path='/ExePlan' component={ExePlan} />
+              <Route path='/BuildPlan' component={BuildPlan} />
+              <Route path='/NotificationsPage' component={NotificationsPage} />
+              <Route path='/Updates' component={Updates} />
 
               <Route path='/forgotPass' component={ForgotPass} />
               {/* Settings Routes */}
-              <Route path='/personalDetails' component={PersonalDetails} />
-              <Route path='/changePass' component={ChangePass} />
-              <Route path='/changeEmail' component={ChangeEmail} />
+              <Route path='/PersonalDetails' component={PersonalDetails} />
+              <Route path='/ChangePass' component={ChangePass} />
+              <Route path='/ChangeEmail' component={ChangeEmail} />
             </Switch>
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     </Provider>
   );
 };
