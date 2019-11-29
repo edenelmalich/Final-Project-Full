@@ -62,6 +62,7 @@ const MobileNav = ({
       </Link>
     </Fragment>
   );
+  // Guest Links
   const GuestLinks = () => (
     <Fragment>
       <Link to='/loginApp' id='a-Padding' onClick={() => SetNav(MobileNav)}>
