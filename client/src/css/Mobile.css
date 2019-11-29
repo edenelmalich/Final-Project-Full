@@ -107,7 +107,15 @@ body {
     height: 75px;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.MobileNav a {
+    display: block;
+    padding: .5rem 0;
+    color: #353c3f;
+}
+
+.NotiBox a {
+    display: block;
+    padding: .5rem 1.25rem;
     color: #353c3f;
 }
 
@@ -123,9 +131,9 @@ body {
 .navbar-nav .dropdown-menu {
     position: static;
     float: none;
-    border: 1px solid #353c3f;
     background: #f8f9fa;
     text-align: right;
+    border: unset;
 }
 
 .Nav-Setting {
@@ -561,7 +569,7 @@ body {
     background: #f8f9fa;
     border: 1px solid #353c3f;
     left: 0;
-    top: 85px;
+    top: 100px;
     margin-left: 20px;
     max-width: 220px;
 }

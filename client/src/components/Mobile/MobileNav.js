@@ -3,9 +3,21 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
 import Notifications from '../Navbar/Notifications';
+// Fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBell,
+  faTachometerAlt,
+  faUsers,
+  faChartBar,
+  faTasks
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faFileAlt,
+  faAddressCard,
+  faEdit
+} from '@fortawesome/free-regular-svg-icons';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
@@ -49,27 +61,35 @@ const MobileNav = ({
               <NavDropdown.Item className='Nav-Setting'>
                 הגדרות
               </NavDropdown.Item>
-              <NavDropdown.Item href='/PersonalDetails'>
-                פרטים אישיים
-              </NavDropdown.Item>
-              <NavDropdown.Item href='/changePass'>
-                שינוי סיסמה
-              </NavDropdown.Item>
-              <NavDropdown.Item href='/ChangeEmail'>
-                שינוי דואר אלקטרוני
-              </NavDropdown.Item>
+              <Link to='/PersonalDetails'>פרטים אישיים</Link>
+              <Link to='/changePass'>שינוי סיסמה</Link>
+              <Link to='/ChangeEmail'>שינוי דואר אלקטרוני</Link>
               <NavDropdown.Divider />
-              <NavDropdown.Item href='/' onClick={() => Logout()}>
+              <Link to='/' onClick={() => Logout()}>
                 התנתקות
-              </NavDropdown.Item>
+              </Link>
             </NavDropdown>
-            <Nav.Link href='/Dashboard'>לוח בקרה</Nav.Link>
-            <Nav.Link href='/nclients'>לקוח חדש</Nav.Link>
-            <Nav.Link href='/healthp'>הצהרת בריאות</Nav.Link>
-            <Nav.Link href='/AllClients'>לקוחות</Nav.Link>
-            <Nav.Link href='/statistics'>סטטיסטיקת מתאמנים</Nav.Link>
-            <Nav.Link href='/exeplan'>תוכניות אימונים</Nav.Link>
-            <Nav.Link href='/updates'>עדכונים</Nav.Link>
+            <Link to='/Dashboard' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faTachometerAlt} /> לוח בקרה
+            </Link>
+            <Link to='/nclients' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faAddressCard} /> לקוח חדש
+            </Link>
+            <Link to='/healthp' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faFileAlt} /> הצהרת בריאות
+            </Link>
+            <Link to='/AllClients' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faUsers} /> לקוחות
+            </Link>
+            <Link to='/statistics' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faChartBar} /> סטטיסטיקת מתאמנים
+            </Link>
+            <Link to='/exeplan' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faTasks} /> תוכניות אימונים
+            </Link>
+            <Link to='/updates' onClick={() => SetNav(true)}>
+              <FontAwesomeIcon icon={faEdit} /> עדכונים
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -88,6 +108,8 @@ const mapStateToProps = state => ({
   NotificationsSelected: state.NavReducer.NotificationsSelected,
   MobileNav: state.NavReducer.MobileNav
 });
-export default connect(mapStateToProps, { Logout, SetNotification, SetNav })(
-  MobileNav
-);
+export default connect(mapStateToProps, {
+  Logout,
+  SetNotification,
+  SetNav
+})(MobileNav);

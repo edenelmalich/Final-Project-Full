@@ -32,8 +32,16 @@ import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 import { GetClients } from '../../actions/NclientAction';
 import { closeAll } from '../../actions/NavAction';
+import { SetNav } from '../../actions/NavAction';
 
-const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
+const Dashboard = ({
+  clientsList,
+  GetClients,
+  closeAll,
+  closeAlerts,
+  SetNav,
+  MobileNav
+}) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
@@ -263,11 +271,16 @@ Dashboard.propTypes = {
   clientsList: PropTypes.array,
   GetClients: PropTypes.func,
   closeAll: PropTypes.func,
-  closeAlerts: PropTypes.func
+  closeAlerts: PropTypes.func,
+  SetNav: PropTypes.func
 };
 const mapStateToProps = state => ({
-  clientsList: state.NclientReducer.clientsList
+  clientsList: state.NclientReducer.clientsList,
+  MobileNav: state.NavReducer.MobileNav
 });
-export default connect(mapStateToProps, { GetClients, closeAll, closeAlerts })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  GetClients,
+  closeAll,
+  closeAlerts,
+  SetNav
+})(Dashboard);

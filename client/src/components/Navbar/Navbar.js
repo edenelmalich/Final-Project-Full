@@ -27,13 +27,15 @@ import {
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification, SetAccount } from '../../actions/NavAction';
+import { closeAll } from '../../actions/NavAction';
 
 const Navbar = ({
   NotificationsSelected,
   AccountSelected,
   user,
   SetAccount,
-  SetNotification
+  SetNotification,
+  closeAll
 }) => {
   const { Name } = user;
   return (
@@ -125,7 +127,8 @@ Navbar.propTypes = {
   SetNotification: PropTypes.func,
   setAccount: PropTypes.func,
   NotificationsSelected: PropTypes.bool,
-  AccountSelected: PropTypes.bool
+  AccountSelected: PropTypes.bool,
+  closeAll: PropTypes.func
 };
 const mapStateToProps = state => ({
   NotificationsSelected: state.NavReducer.NotificationsSelected,
@@ -133,6 +136,8 @@ const mapStateToProps = state => ({
   user: state.authReducer.user
 });
 
-export default connect(mapStateToProps, { SetNotification, SetAccount })(
-  Navbar
-);
+export default connect(mapStateToProps, {
+  SetNotification,
+  SetAccount,
+  closeAll
+})(Navbar);
