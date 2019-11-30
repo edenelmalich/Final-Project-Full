@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import logo from '../../img/logo.png';
 import '../../css/MainPages.css';
 import { Carousel } from 'react-bootstrap';
@@ -11,7 +12,16 @@ import MainFooter from '../MainFooter';
 // Mobile imports
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
-const MainPage = () => {
+// Redux
+import { connect } from 'react-redux';
+import { Logout } from '../../actions/authAction';
+
+const MainPage = ({ isAuth, Logout }) => {
+  useEffect(() => {
+    if (isAuth) {
+      Logout();
+    }
+  });
   return (
     <div className='MainPage'>
       <MediaQuery maxDeviceWidth={1024}>
@@ -162,4 +172,10 @@ const MobileMain = () => (
     </footer>
   </div>
 );
-export default MainPage;
+MainPage.propTypes = {
+  isAuth: PropTypes.bool
+};
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.isAuth
+});
+export default connect(mapStateToProps, { Logout })(MainPage);

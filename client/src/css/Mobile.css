@@ -121,6 +121,7 @@ body {
 .NotiBox a {
     display: block;
     color: #353c3f;
+    text-align: right;
 }
 
 .dropdown,
