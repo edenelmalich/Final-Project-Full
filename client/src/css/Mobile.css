@@ -77,8 +77,10 @@ body {
     position: fixed;
     width: 100%;
     box-shadow: 0px 2px 5px 0px #282828;
+    z-index: 3;
 
 }
+
 
 .Notifications-position {
     margin-right: auto;
@@ -397,12 +399,12 @@ body {
 
 
 /* Mobile Settings Attributes */
-.Mobile-Settings .nav-link {
+.Mobile-Settings a {
     display: block;
     padding: .5rem 1rem;
     background: #f8f9fa;
     color: #353c3f;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .Mobile-Settings .dropdown-menu {
@@ -622,6 +624,9 @@ body {
     text-align: center;
 }
 
+/* Exe plan mobile page attributes */
+
+
 /* Screens attributes */
 @media only screen and (min-width:768px) {
     .Mobile-Main-Text button {
@@ -659,6 +664,32 @@ body {
 @media only screen and (max-width:700px) {
     .Mobile .Stat-Form {
         padding: 0 1rem 0 1rem;
+    }
+
+    .Mobile .ExeForm {
+        padding: unset;
+    }
+
+    .Mobile .Exe-Flex {
+        padding: unset;
+    }
+
+    .Mobile .ExeBoxs {
+        height: 150px;
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 20px;
+        margin-top: 25px;
+        flex: unset;
+
+    }
+
+    .Mobile .ExeDays {
+        height: auto;
+    }
+
+    .ExeForm .FooterAtt {
+        margin-top: 35px;
     }
 }
 

@@ -76,6 +76,7 @@ const MobileNav = ({
       </Link>
     </Fragment>
   );
+  // Functions
   const logout = () => {
     Logout();
     SetNav(MobileNav);
@@ -118,13 +119,25 @@ const MobileNav = ({
             {!loading && isAuth ? (
               <NavDropdown title={`שלום ${Name}`} id='basic-nav-dropdown'>
                 <div className='Nav-Setting'>הגדרות</div>
-                <Link to='/PersonalDetails' id='a-Padding'>
+                <Link
+                  to='/PersonalDetails'
+                  onClick={() => SetNav(MobileNav)}
+                  id='a-Padding'
+                >
                   פרטים אישיים
                 </Link>
-                <Link to='/ChangePass' id='a-Padding'>
+                <Link
+                  to='/ChangePass'
+                  onClick={() => SetNav(MobileNav)}
+                  id='a-Padding'
+                >
                   שינוי סיסמה
                 </Link>
-                <Link to='/ChangeEmail' id='a-Padding'>
+                <Link
+                  to='/ChangeEmail'
+                  onClick={() => SetNav(MobileNav)}
+                  id='a-Padding'
+                >
                   שינוי דואר אלקטרוני
                 </Link>
                 <NavDropdown.Divider />

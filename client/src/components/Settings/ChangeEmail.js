@@ -124,7 +124,4 @@ ChangeEmail.propTypes = {
   Logout: PropTypes.func.isRequired,
   closeAll: PropTypes.func.isRequired
 };
-export default connect(
-  null,
-  { Logout, closeAll }
-)(ChangeEmail);
+export default connect(null, { Logout, closeAll })(ChangeEmail);

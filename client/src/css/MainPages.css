@@ -26,6 +26,7 @@ body {
     height: 75px;
     background: #f8f9fa;
     box-shadow: 0px 2px 5px 0px #282828;
+    z-index: 3;
 }
 
 .MainPage img {
@@ -70,6 +71,21 @@ body {
 .carousel-control-next,
 .carousel-control-prev {
     position: unset;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    position: unset;
+
+}
+
+.carousel-control-next-icon {
+    background-image: unset;
+}
+
+.carousel-control-prev-icon {
+    background-image: unset;
 }
 
 .Carousel-item {

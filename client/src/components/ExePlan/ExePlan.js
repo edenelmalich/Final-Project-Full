@@ -33,7 +33,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
   return (
     <div className='ExePlan'>
       <MediaQuery maxDeviceWidth={1024}>
-        <MobilePlan />
+        <MobilePlan saveDay={saveDay} />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
         <Navbar />
@@ -131,10 +131,87 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
     </div>
   );
 };
-const MobilePlan = () => (
+const MobilePlan = ({ saveDay }) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>בניית תוכנית אימונים</h2>
+      <form className='ExeForm'>
+        <div className='Exe-Flex'>
+          <input type='text' placeholder='שם מתאמן' />
+          <select name='Days'>
+            <option>מספר ימי אימון</option>
+            <option value='one'>1</option>
+            <option value='two'>2</option>
+            <option value='three'>3</option>
+            <option value='four'>4</option>
+            <option value='five'>5</option>
+          </select>
+        </div>
+        <div className='ExePadding'></div>
+        <div className='ExeDays'>
+          <Link
+            onClick={() => saveDay('יום ראשון')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='SundayDesign'
+          >
+            <div className='DaysText'>יום ראשון</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום שני')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='MondayDesign'
+          >
+            <div className='DaysText'>יום שני</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום שלישי')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='TuesdayDesign'
+          >
+            <div className='DaysText'>יום שלישי</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום רביעי')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='WednesdayDesign'
+          >
+            <div className='DaysText'>יום רביעי</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום חמישי')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='ThursdayDesign'
+          >
+            <div className='DaysText'>יום חמישי</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום שישי')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='FridayDesign'
+          >
+            <div className='DaysText'>יום שישי</div>
+          </Link>
+          <Link
+            onClick={() => saveDay('יום שבת')}
+            to='/BuildPlan'
+            className='ExeBoxs'
+            id='SaturdayDesign'
+          >
+            <div className='DaysText'>יום שבת</div>
+          </Link>
+          <div className='ExePadding'></div>
+        </div>
+        <div className='FooterAtt'>
+          <input type='submit' value='שלח תוכנית אימונים' />
+          <Button variant='light'>אפס תוכנית</Button>
+        </div>
+      </form>
     </main>
     <MobileFooter />
   </div>
