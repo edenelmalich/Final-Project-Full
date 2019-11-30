@@ -11,7 +11,11 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 // Bootstrap imports
-import { Toast } from 'react-bootstrap';
+import { Toast, Collapse, DropdownButton, Dropdown } from 'react-bootstrap';
+// Mobile imports
+import '../../css/Mobile.css';
+import MobileFooter from '../Mobile/MobileFooter';
+import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { SetNotification } from '../../actions/NavAction';
@@ -32,8 +36,7 @@ const BuildPlan = ({
     let days = JSON.parse(localStorage.getItem('days')) || '';
     SetDay(days);
   }, []);
-  // useState
-  const [dayData, SetDay] = useState(null);
+
   // Data
   const Exercises = [
     // Chest Exercises
@@ -194,6 +197,7 @@ const BuildPlan = ({
     { id: 6, label: 'כתפיים', value: 'Shoulders', selected: false }
   ];
   // useState
+  const [dayData, SetDay] = useState(null);
   const [MusclesData, SetMuscles] = useState(Muscles);
   const [ChestData] = useState(Chest);
   const [AbsData] = useState(Abs);
@@ -216,6 +220,7 @@ const BuildPlan = ({
       })
     );
   };
+  // functions
   const saveExercises = id => {
     if (id > 0 && id <= 9) {
       SetExercises(
@@ -328,167 +333,178 @@ const BuildPlan = ({
   };
   return (
     <div className='BuildPlan'>
-      <Navbar />
-      {/* The Attributes of the BuildPlan Page With the Title */}
-      <div className='Page-Container'>
-        <div className='Pages-Content'>
-          <div className='Att-PagesContent'>
-            <div className='PagesContainer'>
-              <h2>בניית תוכנית אימונים</h2>
-              <div className='Plan-Padding'></div>
-              <div className='ExeMain'>
-                <div className='PlanHeader'>בחר שרירים {dayData}</div>
-                <div className='Main-Padding'></div>
-                <div className='Main-Border'></div>
-                <div className='Quantity'>{CounterData}</div>
-                {ListBoxSelected ? (
-                  <div className='ListBox'>
-                    <div className='ListBox-Att'>
-                      <div className='HeaderList'>
-                        תרגילים שנבחרו
-                        <div className='Header-Padding '></div>
-                      </div>
-                      <div className='ExercisesText-Box'>
-                        {/* Code for adding the exercises to list */}
-                        {ExercisesData.map(item => (
-                          <div key={item.id}>
-                            {item.selected ? (
-                              <div className='ExercisesText-Att'>
-                                <div className='ExercisesText'>
-                                  {item.label}
-                                  <div
-                                    className='DeleteItem'
-                                    onClick={() => DeleteItem(item.id)}
-                                  >
-                                    +
-                                  </div>
-                                </div>
-                              </div>
-                            ) : null}
-                          </div>
-                        ))}
-                      </div>
-                      <div className='ListBox-Button-Display'>
-                        <button className='Buttons-ListBox'>שמור תוכנית</button>
-                        <button
-                          onClick={() => listBox(ListBoxSelected)}
-                          className='Buttons-ListBox'
-                        >
-                          סגור
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
-                <form className='Form-Plan'>
-                  <div className='Plan-Flex'>
-                    {/* Code for show the muscles in the page */}
-                    {MusclesData.map(muscles => (
-                      <div key={muscles.id}>
-                        <Toast>
-                          <strong className='mr-auto'>
-                            {muscles.label}
-                            <input
-                              type='checkbox'
-                              onChange={() => onChange(muscles.id)}
-                              checked={muscles.selected}
-                            />
-                          </strong>
-                        </Toast>
-                      </div>
-                    ))}
-                  </div>
+      <MediaQuery maxDeviceWidth={900}>
+        <BuildPlanMobile
+          dayData={dayData}
+          onChange={onChange}
+          MusclesData={MusclesData}
+        />
+      </MediaQuery>
+      <MediaQuery minDeviceWidth={1024}>
+        <Navbar />
+        {/* The Attributes of the BuildPlan Page With the Title */}
+        <div className='Page-Container'>
+          <div className='Pages-Content'>
+            <div className='Att-PagesContent'>
+              <div className='PagesContainer'>
+                <h2>בניית תוכנית אימונים</h2>
+                <div className='Plan-Padding'></div>
+                <div className='ExeMain'>
+                  <div className='PlanHeader'>בחר שרירים {dayData}</div>
                   <div className='Main-Padding'></div>
                   <div className='Main-Border'></div>
-                  <div className='Build-Exe-Header'>רשימת תרגילים</div>
-                  <div className='Plan-Padding'></div>
-                  {/* Code For Showing The Exercises */}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'Chest' ? (
-                        <ShowChest
-                          ChestData={ChestData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
+                  <div className='Quantity'>{CounterData}</div>
+                  {ListBoxSelected ? (
+                    <div className='ListBox'>
+                      <div className='ListBox-Att'>
+                        <div className='HeaderList'>
+                          תרגילים שנבחרו
+                          <div className='Header-Padding '></div>
+                        </div>
+                        <div className='ExercisesText-Box'>
+                          {/* Code for adding the exercises to list */}
+                          {ExercisesData.map(item => (
+                            <div key={item.id}>
+                              {item.selected ? (
+                                <div className='ExercisesText-Att'>
+                                  <div className='ExercisesText'>
+                                    {item.label}
+                                    <div
+                                      className='DeleteItem'
+                                      onClick={() => DeleteItem(item.id)}
+                                    >
+                                      +
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null}
+                            </div>
+                          ))}
+                        </div>
+                        <div className='ListBox-Button-Display'>
+                          <button className='Buttons-ListBox'>
+                            שמור תוכנית
+                          </button>
+                          <button
+                            onClick={() => listBox(ListBoxSelected)}
+                            className='Buttons-ListBox'
+                          >
+                            סגור
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'Abs' ? (
-                        <ShowAbs
-                          AbsData={AbsData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
+                  ) : null}
+                  <form className='Form-Plan'>
+                    <div className='Plan-Flex'>
+                      {/* Code for show the muscles in the page */}
+                      {MusclesData.map(muscles => (
+                        <div key={muscles.id}>
+                          <Toast>
+                            <strong className='mr-auto'>
+                              {muscles.label}
+                              <input
+                                type='checkbox'
+                                onChange={() => onChange(muscles.id)}
+                                checked={muscles.selected}
+                              />
+                            </strong>
+                          </Toast>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'Back' ? (
-                        <ShowBack
-                          BackData={BackData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
+                    <div className='Main-Padding'></div>
+                    <div className='Main-Border'></div>
+                    <div className='Build-Exe-Header'>רשימת תרגילים</div>
+                    <div className='Plan-Padding'></div>
+                    {/* Code For Showing The Exercises */}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'Chest' ? (
+                          <ShowChest
+                            ChestData={ChestData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'Abs' ? (
+                          <ShowAbs
+                            AbsData={AbsData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'Back' ? (
+                          <ShowBack
+                            BackData={BackData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'FrontHand' ? (
+                          <ShowFrontHand
+                            FrontHandData={FrontHandData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'BackHand' ? (
+                          <ShowBackHand
+                            BackHandData={BackHandData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'Legs' ? (
+                          <ShowLegs
+                            LegsData={LegsData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    {MusclesData.map(muscle => (
+                      <div key={muscle.id}>
+                        {muscle.selected && muscle.value === 'Shoulders' ? (
+                          <ShowShoulders
+                            ShouldersData={ShouldersData}
+                            saveExercises={saveExercises}
+                          />
+                        ) : null}
+                      </div>
+                    ))}
+                    <div className='FooterAtt'>
+                      <Link to='/exeplan' className='BackPage'>
+                        לדף הקודם
+                      </Link>
+                      {/* Code to open and close the list */}
+                      <button className='Icon-List' onClick={() => ShowList()}>
+                        <FontAwesomeIcon icon={faClipboardList} />
+                      </button>
                     </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'FrontHand' ? (
-                        <ShowFrontHand
-                          FrontHandData={FrontHandData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
-                    </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'BackHand' ? (
-                        <ShowBackHand
-                          BackHandData={BackHandData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
-                    </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'Legs' ? (
-                        <ShowLegs
-                          LegsData={LegsData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
-                    </div>
-                  ))}
-                  {MusclesData.map(muscle => (
-                    <div key={muscle.id}>
-                      {muscle.selected && muscle.value === 'Shoulders' ? (
-                        <ShowShoulders
-                          ShouldersData={ShouldersData}
-                          saveExercises={saveExercises}
-                        />
-                      ) : null}
-                    </div>
-                  ))}
-                  <div className='FooterAtt'>
-                    <Link to='/exeplan' className='BackPage'>
-                      לדף הקודם
-                    </Link>
-                    {/* Code to open and close the list */}
-                    <button className='Icon-List' onClick={() => ShowList()}>
-                      <FontAwesomeIcon icon={faClipboardList} />
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <AppFooter />
         </div>
-        <AppFooter />
-      </div>
+      </MediaQuery>
     </div>
   );
 };
@@ -582,6 +598,35 @@ const ShowShoulders = props => (
         {item.label}
       </div>
     ))}
+  </div>
+);
+const BuildPlanMobile = ({ dayData, MusclesData, onChange }) => (
+  <div className='Mobile'>
+    <main className='main'>
+      <h2 id='Mobile-text'>בניית תוכנית אימונים</h2>
+      <div className='Build-Muscle'>
+        <DropdownButton
+          id='dropdown-basic-button'
+          title={`בחר שרירים ${dayData}`}
+        >
+          {MusclesData.map(muscles => (
+            <div key={muscles.id}>
+              <Toast>
+                <strong className='mr-auto'>
+                  {muscles.label}
+                  <input
+                    type='checkbox'
+                    onChange={() => onChange(muscles.id)}
+                    checked={muscles.selected}
+                  />
+                </strong>
+              </Toast>
+            </div>
+          ))}
+        </DropdownButton>
+      </div>
+    </main>
+    <MobileFooter />
   </div>
 );
 BuildPlan.propTypes = {

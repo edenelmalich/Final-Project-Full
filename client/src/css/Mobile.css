@@ -520,7 +520,7 @@ body {
 .Mobile .Stat-Form input[type="submit"] {
     padding: unset;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 5px;
     padding: 0 1rem 0 1rem;
 }
 
@@ -624,8 +624,48 @@ body {
     text-align: center;
 }
 
-/* Exe plan mobile page attributes */
+/* BuildPlan mobile page attributes */
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #f8f9fa;
+    width: 100%;
+    border-color: #353c3f;
+    color: #353c3f;
+}
 
+
+.Build-Muscle button:not(:disabled) {
+    cursor: pointer;
+    width: 100%;
+    background: #f8f9fa;
+    color: #353c3f;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.Build-Muscle .btn-primary {
+    border-color: #353c3f;
+}
+
+.Build-Muscle .dropdown-menu.show {
+    display: block;
+    right: 0;
+    text-align: right;
+}
+
+.Build-Muscle .toast {
+    width: unset;
+}
+
+.Build-Muscle input[type=checkbox],
+input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    position: absolute;
+    left: 15px;
+}
 
 /* Screens attributes */
 @media only screen and (min-width:768px) {
@@ -663,7 +703,7 @@ body {
 
 @media only screen and (max-width:700px) {
     .Mobile .Stat-Form {
-        padding: 0 1rem 0 1rem;
+        padding: 0;
     }
 
     .Mobile .ExeForm {

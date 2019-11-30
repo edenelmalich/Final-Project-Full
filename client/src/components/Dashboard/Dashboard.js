@@ -24,7 +24,6 @@ import { Card, Table } from 'react-bootstrap';
 import moment from 'moment';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
@@ -32,7 +31,6 @@ import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 import { GetClients } from '../../actions/NclientAction';
 import { closeAll } from '../../actions/NavAction';
-import { SetNav } from '../../actions/NavAction';
 
 const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
   // ComponentWillMount
