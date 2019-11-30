@@ -651,20 +651,29 @@ body {
 
 .Build-Muscle .dropdown-menu.show {
     display: block;
-    right: 0;
     text-align: right;
+    margin-right: auto;
+    margin-left: auto;
+    width: 85%;
+
 }
 
 .Build-Muscle .toast {
     width: unset;
 }
 
-.Build-Muscle input[type=checkbox],
-input[type=radio] {
+.Build-Muscle input[type=checkbox] {
     box-sizing: border-box;
     padding: 0;
     position: absolute;
     left: 15px;
+}
+
+.Build-Muscle .dropdown,
+.dropleft,
+.dropright,
+.dropup {
+    position: unset;
 }
 
 /* Screens attributes */
