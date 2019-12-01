@@ -218,10 +218,13 @@ const BuildPlan = ({
   const [ShouldersData] = useState(Shoulders);
   const [CounterData, SetCounter] = useState(0);
   const [ExercisesData, SetExercises] = useState(Exercises);
+  const [MuscleName, SetMuscleName] = useState('חזה');
+  const [ListState, SetList] = useState(false);
   // Functions
-  const onChange = id => {
+  const onChange = (id, muscleName) => {
     SetNav(true);
     ShowMuscles(true);
+    SetMuscleName(muscleName);
     SetMuscles(
       MusclesData.map(muscle => {
         if (id === muscle.id && muscle.selected === false) {
@@ -343,6 +346,9 @@ const BuildPlan = ({
       SetAccount(AccountSelected);
     }
   };
+  const ListChecked = () => {
+    SetList(!ListState);
+  };
   return (
     <div className='BuildPlan'>
       <MediaQuery maxDeviceWidth={900}>
@@ -360,6 +366,11 @@ const BuildPlan = ({
           LegsData={LegsData}
           ShouldersData={ShouldersData}
           AbsData={AbsData}
+          MuscleName={MuscleName}
+          CounterData={CounterData}
+          SetList={SetList}
+          ListState={ListState}
+          ListChecked={ListChecked}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -443,10 +454,13 @@ const BuildPlan = ({
                     {MusclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Chest' ? (
-                          <ShowChest
-                            ChestData={ChestData}
-                            saveExercises={saveExercises}
-                          />
+                          <div>
+                            {() => SetMuscleName(muscle.label)}
+                            <ShowChest
+                              ChestData={ChestData}
+                              saveExercises={saveExercises}
+                            />
+                          </div>
                         ) : null}
                       </div>
                     ))}
@@ -635,7 +649,12 @@ const BuildPlanMobile = ({
   FrontHandData,
   BackHandData,
   LegsData,
-  ShouldersData
+  ShouldersData,
+  MuscleName,
+  CounterData,
+  SetList,
+  ListState,
+  ListChecked
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -647,6 +666,13 @@ const BuildPlanMobile = ({
             onClick={() => ShowMuscles(Muscles_State)}
             icon={faAngleDown}
           />
+          <button className='Icon-List'>
+            <div className='Quantity-Mobile'>{CounterData}</div>
+            <FontAwesomeIcon
+              onClick={() => ListChecked()}
+              icon={faClipboardList}
+            />
+          </button>
         </div>
 
         <Collapse isOpen={Muscles_State}>
@@ -657,7 +683,7 @@ const BuildPlanMobile = ({
                   {muscles.label}
                   <input
                     type='checkbox'
-                    onChange={() => onChange(muscles.id)}
+                    onChange={() => onChange(muscles.id, muscles.label)}
                     checked={muscles.selected}
                   />
                 </strong>
@@ -667,7 +693,7 @@ const BuildPlanMobile = ({
         </Collapse>
         <div className='Main-Border'></div>
       </div>
-      <div className='Build-Exe-Header'>רשימת תרגילים</div>
+      <div className='Build-Exe-Header'> רשימת תרגילים {MuscleName}</div>
       {/* Code For Showing The Exercises */}
       {MusclesData.map(muscle => (
         <div key={muscle.id}>

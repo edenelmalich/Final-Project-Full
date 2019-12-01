@@ -98,7 +98,7 @@ const MobileNav = ({
       <Link to='/ChangeEmail' onClick={() => SetNav(MobileNav)} id='a-Padding'>
         שינוי דואר אלקטרוני
       </Link>
-      <Link to='/' onClick={() => logout()}>
+      <Link to='/' onClick={() => logout()} id='a-Padding'>
         התנתקות
       </Link>
     </Fragment>

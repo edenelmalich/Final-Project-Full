@@ -249,13 +249,15 @@
 
 .Build-Muscle .Header-Muscles {
     width: 100%;
+    display: flex;
     background: #f8f9fa;
     color: #353c3f;
     font-weight: 600;
-    padding: 1rem;
     margin-top: 15px;
     font-size: 18px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .Build-Muscle .toast {
@@ -269,12 +271,22 @@
     color: #353c3f;
 }
 
-.Display-Button {
+.Build-Muscle button:not(:disabled) {
+    width: unset;
+}
+
+.Mobile .Display-Button {
     display: unset;
 }
 
 @media only screen and (max-width:700px) {
     .Plan-Button {
         margin-top: 10px;
+    }
+
+    .Build-Muscle .Icon-List {
+        margin-bottom: 5px;
+        outline: none;
+
     }
 }
