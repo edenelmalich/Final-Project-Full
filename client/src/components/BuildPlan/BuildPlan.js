@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 // Components imports
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
+import ExercisesList from './ExercisesList';
+import Alert from '../layout/Alert';
 // Css imports
 import './Buildplan.css';
 // import Link from react-router
@@ -28,21 +30,21 @@ import { SetAccount } from '../../actions/NavAction';
 import { closeAll } from '../../actions/NavAction';
 import { ShowMuscles } from '../../actions/BuildAction';
 import { SetNav } from '../../actions/NavAction';
+import { setAlert } from '../../actions/alertAction';
+import { closeAlerts } from '../../actions/alertAction';
 
 const BuildPlan = ({
-  listBox,
-  ListBoxSelected,
-  NotificationsSelected,
-  AccountSelected,
   getDays,
   closeAll,
   ShowMuscles,
   Muscles_State,
-  SetNav
+  SetNav,
+  setAlert
 }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAll();
+    closeAlerts();
     let days = JSON.parse(localStorage.getItem('days')) || '';
     SetDay(days);
   }, []);
@@ -323,12 +325,14 @@ const BuildPlan = ({
     }
   };
   const Additem = () => {
+    setAlert('התרגיל נוסף בהצלחה', 'success');
     SetCounter(prevCount => prevCount + 1);
   };
   const DeleteItem = id => {
     SetExercises(
       ExercisesData.map(del => {
         if (id === del.id) {
+          setAlert('התרגיל הוסר בהצלחה', 'danger');
           SetCounter(CounterData - 1);
           return { ...del, selected: false };
         }
@@ -336,19 +340,7 @@ const BuildPlan = ({
       })
     );
   };
-  const ShowList = () => {
-    listBox(ListBoxSelected);
 
-    if (NotificationsSelected === true) {
-      SetNotification(NotificationsSelected);
-    }
-    if (AccountSelected === true) {
-      SetAccount(AccountSelected);
-    }
-  };
-  const ListChecked = () => {
-    SetList(!ListState);
-  };
   return (
     <div className='BuildPlan'>
       <MediaQuery maxDeviceWidth={900}>
@@ -370,7 +362,8 @@ const BuildPlan = ({
           CounterData={CounterData}
           SetList={SetList}
           ListState={ListState}
-          ListChecked={ListChecked}
+          ExercisesData={ExercisesData}
+          DeleteItem={DeleteItem}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -387,47 +380,7 @@ const BuildPlan = ({
                   <div className='Main-Padding'></div>
                   <div className='Main-Border'></div>
                   <div className='Quantity'>{CounterData}</div>
-                  {ListBoxSelected ? (
-                    <div className='ListBox'>
-                      <div className='ListBox-Att'>
-                        <div className='HeaderList'>
-                          תרגילים שנבחרו
-                          <div className='Header-Padding '></div>
-                        </div>
-                        <div className='ExercisesText-Box'>
-                          {/* Code for adding the exercises to list */}
-                          {ExercisesData.map(item => (
-                            <div key={item.id}>
-                              {item.selected ? (
-                                <div className='ExercisesText-Att'>
-                                  <div className='ExercisesText'>
-                                    {item.label}
-                                    <div
-                                      className='DeleteItem'
-                                      onClick={() => DeleteItem(item.id)}
-                                    >
-                                      +
-                                    </div>
-                                  </div>
-                                </div>
-                              ) : null}
-                            </div>
-                          ))}
-                        </div>
-                        <div className='ListBox-Button-Display'>
-                          <button className='Buttons-ListBox'>
-                            שמור תוכנית
-                          </button>
-                          <button
-                            onClick={() => listBox(ListBoxSelected)}
-                            className='Buttons-ListBox'
-                          >
-                            סגור
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
+
                   <form className='Form-Plan'>
                     <div className='Plan-Flex'>
                       {/* Code for show the muscles in the page */}
@@ -529,7 +482,7 @@ const BuildPlan = ({
                         לדף הקודם
                       </Link>
                       {/* Code to open and close the list */}
-                      <button className='Icon-List' onClick={() => ShowList()}>
+                      <button className='Icon-List'>
                         <FontAwesomeIcon icon={faClipboardList} />
                       </button>
                     </div>
@@ -654,20 +607,30 @@ const BuildPlanMobile = ({
   CounterData,
   SetList,
   ListState,
-  ListChecked
+  ExercisesData,
+  DeleteItem
 }) => (
   <div className='Mobile'>
     <main className='main'>
+      <Alert />
       <h2 id='Mobile-text'>
         בניית תוכנית אימונים
         <button className='Icon-List'>
           <div className='Quantity-Mobile'>{CounterData}</div>
           <FontAwesomeIcon
-            onClick={() => ListChecked()}
+            onClick={() => SetList(!ListState)}
             icon={faClipboardList}
           />
         </button>
       </h2>
+
+      <ExercisesList
+        show={ListState}
+        onHide={() => SetList(false)}
+        exercisesData={ExercisesData}
+        deleteItem={DeleteItem}
+        muscleName={MuscleName}
+      />
       <div className='Build-Muscle'>
         <div className='Header-Muscles'>
           בחר שרירים {dayData}
@@ -676,6 +639,7 @@ const BuildPlanMobile = ({
             icon={faAngleDown}
           />
         </div>
+        <div className='Main-Padding'></div>
 
         <Collapse isOpen={Muscles_State}>
           {MusclesData.map(muscles => (
@@ -768,7 +732,9 @@ BuildPlan.propTypes = {
   SetAccount: PropTypes.func,
   closeAll: PropTypes.func,
   ShowMuscles: PropTypes.func,
-  SetNav: PropTypes.func
+  SetNav: PropTypes.func,
+  setAlert: PropTypes.func,
+  closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
   getDays: state.ExePlanReducer.getDays,
@@ -780,5 +746,7 @@ export default connect(mapStateToProps, {
   SetAccount,
   closeAll,
   ShowMuscles,
-  SetNav
+  SetNav,
+  setAlert,
+  closeAlerts
 })(BuildPlan);

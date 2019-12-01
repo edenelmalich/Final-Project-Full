@@ -136,16 +136,6 @@
 .Header-Padding {
   padding-bottom: 20px;
 }
-
-.HeaderList {
-  color: #fff;
-  font-size: 22px;
-  text-align: center;
-  font-weight: 600;
-  border-bottom: 1px solid #f2f2f2;
-  padding-bottom: 5px;
-}
-
 .ExercisesText-Box {
   position: relative;
   height: 300px;
@@ -158,8 +148,8 @@
 }
 
 .ExercisesText {
-  border-bottom: 1px solid #f2f2f2;
-  color: #fff;
+  color: #353c3f;
+  font-weight: 600;
   padding: 15px 15px;
   padding-bottom: 14px;
   display: flex;
@@ -169,7 +159,7 @@
 .DeleteItem {
   position: absolute;
   left: 5%;
-  color: #ffffff;
+  color: #353c3f;
   font-size: 18px;
   transform: rotate(45deg);
   cursor: pointer;
@@ -199,34 +189,6 @@
   height: 300px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.ListBox {
-  position: absolute;
-  width: 24%;
-  max-height: 430px;
-  background: #555;
-  margin-top: 55px;
-  border-bottom: 1px solid #f2f2f2;
-  padding: 0.5rem;
-  z-index: 3;
-  left: 10%;
-}
-
-.ListBox::before {
-  content: '';
-  display: block;
-  width: 19px;
-  height: 19px;
-  border-bottom: 9px solid #555;
-  border-top: 9px solid transparent;
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  position: absolute;
-  top: -17px;
-  float: left;
-  right: 43%;
-  z-index: 3;
 }
 
 /* Toast Attributes */
@@ -275,7 +237,22 @@
 .Mobile .Display-Button {
   display: unset;
 }
-
+/* BuildPlan modal */
+.modal-title {
+  font-weight: 600;
+}
+.modal-content {
+  background: #f8f9fa;
+  text-align: right;
+  height: 400px;
+  overflow: auto;
+}
+.Modal-muscle-name {
+  font-size: 18px;
+  color: #353c3f;
+  padding: 1.25rem;
+  font-weight: 600;
+}
 @media only screen and (max-width: 700px) {
   .Plan-Button {
     margin-top: 10px;
