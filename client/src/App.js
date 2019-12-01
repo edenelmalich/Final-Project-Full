@@ -34,7 +34,6 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 const App = () => {
-  const CurrentPath = window.location.pathname;
   useEffect(() => {
     store.dispatch(CheckUser());
   }, []);

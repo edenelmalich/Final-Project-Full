@@ -27,7 +27,6 @@ body {
     text-align: right;
 }
 
-
 /* Logo Attributes */
 #Mobile-img {
     position: relative;
@@ -78,9 +77,7 @@ body {
     width: 100%;
     box-shadow: 0px 2px 5px 0px #282828;
     z-index: 3;
-
 }
-
 
 .Notifications-position {
     margin-right: auto;
@@ -97,7 +94,6 @@ body {
     color: #fff;
     border-radius: 100%;
     font-size: 12px;
-
 }
 
 .navbar-brand {
@@ -112,10 +108,11 @@ body {
 .MobileNav a {
     display: block;
     color: #353c3f;
+    padding: 0.5rem 0;
 }
 
 #a-Padding {
-    padding: .5rem 0;
+    padding: 0.5rem 0;
 }
 
 .NotiBox a {
@@ -129,7 +126,7 @@ body {
 .dropright,
 .dropup {
     position: relative;
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     font-weight: 600;
 }
 
@@ -143,7 +140,7 @@ body {
 
 .Nav-Setting {
     font-weight: 600;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
 }
 
 .Nav-account-name {
@@ -199,14 +196,13 @@ body {
 .Mobile .Footer-top {
     border-top-style: solid;
     border-top-width: 1px;
-    border-top-color: rgba(0, 0, 0, .125);
+    border-top-color: rgba(0, 0, 0, 0.125);
 }
 
 .Mobile .Footer-Padding {
     padding-left: 1rem;
     padding-right: 1rem;
 }
-
 
 /* Mobile Main cards */
 .Mobile-Card-size {
@@ -228,11 +224,9 @@ body {
     background: #f8f9fa;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     overflow: hidden;
-
 }
-
 
 #Dash-card-Stat {
     flex: 0 0 95%;
@@ -246,7 +240,6 @@ body {
     height: 400px;
 }
 
-
 /* Main Mobile form attributes */
 .Mobile-Form {
     margin-right: auto;
@@ -256,8 +249,8 @@ body {
     text-align: right;
 }
 
-.Mobile-Form input[type=text],
-[type=email] {
+.Mobile-Form input[type='text'],
+[type='email'] {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -274,7 +267,7 @@ body {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.Mobile-Form input[type=password] {
+.Mobile-Form input[type='password'] {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
@@ -289,10 +282,9 @@ body {
     border: 2px solid #353c3f;
     border-radius: 0.75rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
 }
 
-.Mobile-Form input[type=submit] {
+.Mobile-Form input[type='submit'] {
     display: block;
     width: 150px;
     color: #fff;
@@ -345,6 +337,7 @@ body {
 
 #Mobile-text {
     font-size: 22px;
+    padding: 1rem 0;
 }
 
 /* Mobile Dashboard Attributes */
@@ -357,7 +350,6 @@ body {
 }
 
 .Mobile .Dash-Table {
-
     padding: 0 0.325rem 0 0.325rem;
 }
 
@@ -405,12 +397,10 @@ body {
     font-size: 11px;
 }
 
-
-
 /* Mobile Settings Attributes */
 .Mobile-Settings a {
     display: block;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     background: #f8f9fa;
     color: #353c3f;
     font-size: 16px;
@@ -446,7 +436,6 @@ body {
     height: 23.8rem;
     margin-right: auto;
     margin-left: auto;
-
 }
 
 /* Health page attributes */
@@ -487,7 +476,7 @@ body {
     display: inline-block;
 }
 
-.Mobile .Nclient-FormAtt input[type=text] {
+.Mobile .Nclient-FormAtt input[type='text'] {
     width: 40%;
     height: 30px;
     text-indent: unset;
@@ -507,26 +496,24 @@ body {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.Mobile .Nclient-FormAtt input[type=text]::placeholder {
+.Mobile .Nclient-FormAtt input[type='text']::placeholder {
     color: #353c3f;
     font-size: 12px;
 }
 
 .Mobile .Radio-Text {
-
     margin-right: 10px;
 }
 
 /* Stat Page Attributes */
-.Mobile .Stat-Form input[type="text"] {
-
+.Mobile .Stat-Form input[type='text'] {
     padding: unset;
     text-indent: 5px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.Mobile .Stat-Form input[type="submit"] {
+.Mobile .Stat-Form input[type='submit'] {
     padding: unset;
     margin-left: auto;
     margin-right: 5px;
@@ -559,8 +546,6 @@ body {
     font-weight: 600;
 }
 
-
-
 /* Notifications */
 .MobileNav .Notifications-mobile {
     position: relative;
@@ -575,7 +560,6 @@ body {
     margin-right: auto;
     padding-left: 15px;
     margin-bottom: 3px;
-
 }
 
 .MobileNav .NotiBox {
@@ -589,7 +573,7 @@ body {
 }
 
 .MobileNav .NotiBox:before {
-    content: "";
+    content: '';
     display: block;
     width: 19px;
     height: 19px;
@@ -644,7 +628,6 @@ body {
     color: #353c3f;
 }
 
-
 .Build-Muscle button:not(:disabled) {
     cursor: pointer;
     width: 100%;
@@ -664,14 +647,13 @@ body {
     margin-right: auto;
     margin-left: auto;
     width: 85%;
-
 }
 
 .Build-Muscle .toast {
     width: unset;
 }
 
-.Build-Muscle input[type=checkbox] {
+.Build-Muscle input[type='checkbox'] {
     box-sizing: border-box;
     padding: 0;
     position: absolute;
@@ -686,7 +668,7 @@ body {
 }
 
 /* Screens attributes */
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
     .Mobile-Main-Text button {
         margin-right: 15px;
     }
@@ -702,8 +684,6 @@ body {
     .Mobile .Stat-Form {
         padding: 0 25% 0 25%;
     }
-
-
 }
 
 @media only screen and (width: 731px) {
@@ -712,14 +692,13 @@ body {
     }
 }
 
-@media only screen and (width:640px) {
-
+@media only screen and (width: 640px) {
     .Quantity-Mobile {
         left: 16%;
     }
 }
 
-@media only screen and (max-width:700px) {
+@media only screen and (max-width: 700px) {
     .Mobile .Stat-Form {
         padding: 0;
     }
@@ -739,7 +718,6 @@ body {
         border-radius: 20px;
         margin-top: 25px;
         flex: unset;
-
     }
 
     .Mobile .ExeDays {
@@ -751,7 +729,7 @@ body {
     }
 }
 
-@media only screen and (width:360px) {
+@media only screen and (width: 360px) {
     .Mobile-DashBoard-Text {
         font-size: 12px;
     }

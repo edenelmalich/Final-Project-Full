@@ -28,3 +28,5 @@ export const CLOSE = 'CLOSE';
 export const CALC = 'CALC';
 // Set days from ExePlan
 export const SET_DAYS = 'SET_DAYS';
+// Build Plan Show muscles
+export const SHOW_MUSCLES = 'SHOW_MUSCLES';

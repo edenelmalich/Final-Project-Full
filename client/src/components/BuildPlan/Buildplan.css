@@ -246,4 +246,26 @@
 }
 
 /* Mobile responsive attributes */
+.Build-Muscle .Header-Muscles {
+    width: 100%;
+    background: #f8f9fa;
+    color: #353c3f;
+    font-weight: 600;
+    padding: 1rem;
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.Build-Muscle .toast {
+    margin-left: unset;
+    margin-right: unset;
+    border-radius: unset;
+}
+
+.Build-Muscle .svg-inline--fa {
+    margin-right: 10px;
+    color: #353c3f;
+}
+
 @media only screen and (max-width:700px) {}

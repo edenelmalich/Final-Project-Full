@@ -6,6 +6,7 @@ import updateReducer from './updateReducer';
 import NclientReducer from './NclientReducer';
 import CalcReducer from './CalcReducer';
 import ExePlanReducer from './ExePlanReducer';
+import BuildReducer from './BuildReducer';
 
 export default combineReducers({
   alertReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   NclientReducer,
   NavReducer,
   CalcReducer,
-  ExePlanReducer
+  ExePlanReducer,
+  BuildReducer
 });

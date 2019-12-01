@@ -9,9 +9,14 @@ import './Buildplan.css';
 import { Link } from 'react-router-dom';
 // Fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import {
+  faClipboardList,
+  faAngleDown
+} from '@fortawesome/free-solid-svg-icons';
 // Bootstrap imports
-import { Toast, Collapse, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Toast, DropdownButton } from 'react-bootstrap';
+// ReactStrap imports
+import { Collapse } from 'reactstrap';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileFooter from '../Mobile/MobileFooter';
@@ -21,6 +26,7 @@ import { connect } from 'react-redux';
 import { SetNotification } from '../../actions/NavAction';
 import { SetAccount } from '../../actions/NavAction';
 import { closeAll } from '../../actions/NavAction';
+import { ShowMuscles } from '../../actions/BuildAction';
 
 const BuildPlan = ({
   listBox,
@@ -28,7 +34,9 @@ const BuildPlan = ({
   NotificationsSelected,
   AccountSelected,
   getDays,
-  closeAll
+  closeAll,
+  ShowMuscles,
+  Muscles_State
 }) => {
   // ComponentWillMount
   useEffect(() => {
@@ -338,6 +346,8 @@ const BuildPlan = ({
           dayData={dayData}
           onChange={onChange}
           MusclesData={MusclesData}
+          Muscles_State={Muscles_State}
+          ShowMuscles={ShowMuscles}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -600,15 +610,26 @@ const ShowShoulders = props => (
     ))}
   </div>
 );
-const BuildPlanMobile = ({ dayData, MusclesData, onChange }) => (
+const BuildPlanMobile = ({
+  dayData,
+  MusclesData,
+  onChange,
+  Muscles_State,
+  ShowMuscles
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>בניית תוכנית אימונים</h2>
       <div className='Build-Muscle'>
-        <DropdownButton
-          id='dropdown-basic-button'
-          title={`בחר שרירים ${dayData}`}
-        >
+        <div className='Header-Muscles'>
+          בחר שרירים {dayData}
+          <FontAwesomeIcon
+            onClick={() => ShowMuscles(Muscles_State)}
+            icon={faAngleDown}
+          />
+        </div>
+
+        <Collapse isOpen={Muscles_State}>
           {MusclesData.map(muscles => (
             <div key={muscles.id}>
               <Toast>
@@ -623,7 +644,7 @@ const BuildPlanMobile = ({ dayData, MusclesData, onChange }) => (
               </Toast>
             </div>
           ))}
-        </DropdownButton>
+        </Collapse>
       </div>
     </main>
     <MobileFooter />
@@ -633,14 +654,17 @@ BuildPlan.propTypes = {
   getDays: PropTypes.string,
   SetNotification: PropTypes.func,
   SetAccount: PropTypes.func,
-  closeAll: PropTypes.func
+  closeAll: PropTypes.func,
+  ShowMuscles: PropTypes.func
 };
 const mapStateToProps = state => ({
-  getDays: state.ExePlanReducer.getDays
+  getDays: state.ExePlanReducer.getDays,
+  Muscles_State: state.BuildReducer.Muscles_State
 });
 
 export default connect(mapStateToProps, {
   SetNotification,
   SetAccount,
-  closeAll
+  closeAll,
+  ShowMuscles
 })(BuildPlan);
