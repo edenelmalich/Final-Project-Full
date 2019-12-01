@@ -656,8 +656,7 @@ body {
 .Build-Muscle input[type='checkbox'] {
     box-sizing: border-box;
     padding: 0;
-    position: absolute;
-    left: 15px;
+    float: left;
 }
 
 .Build-Muscle .dropdown,

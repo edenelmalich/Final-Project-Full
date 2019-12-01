@@ -14,7 +14,7 @@ import {
   faAngleDown
 } from '@fortawesome/free-solid-svg-icons';
 // Bootstrap imports
-import { Toast, DropdownButton } from 'react-bootstrap';
+import { Toast } from 'react-bootstrap';
 // ReactStrap imports
 import { Collapse } from 'reactstrap';
 // Mobile imports
@@ -27,6 +27,7 @@ import { SetNotification } from '../../actions/NavAction';
 import { SetAccount } from '../../actions/NavAction';
 import { closeAll } from '../../actions/NavAction';
 import { ShowMuscles } from '../../actions/BuildAction';
+import { SetNav } from '../../actions/NavAction';
 
 const BuildPlan = ({
   listBox,
@@ -36,7 +37,8 @@ const BuildPlan = ({
   getDays,
   closeAll,
   ShowMuscles,
-  Muscles_State
+  Muscles_State,
+  SetNav
 }) => {
   // ComponentWillMount
   useEffect(() => {
@@ -218,6 +220,8 @@ const BuildPlan = ({
   const [ExercisesData, SetExercises] = useState(Exercises);
   // Functions
   const onChange = id => {
+    SetNav(true);
+    ShowMuscles(true);
     SetMuscles(
       MusclesData.map(muscle => {
         if (id === muscle.id && muscle.selected === false) {
@@ -348,6 +352,14 @@ const BuildPlan = ({
           MusclesData={MusclesData}
           Muscles_State={Muscles_State}
           ShowMuscles={ShowMuscles}
+          ChestData={ChestData}
+          saveExercises={saveExercises}
+          BackData={BackData}
+          FrontHandData={FrontHandData}
+          BackHandData={BackHandData}
+          LegsData={LegsData}
+          ShouldersData={ShouldersData}
+          AbsData={AbsData}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -615,7 +627,15 @@ const BuildPlanMobile = ({
   MusclesData,
   onChange,
   Muscles_State,
-  ShowMuscles
+  ShowMuscles,
+  ChestData,
+  saveExercises,
+  AbsData,
+  BackData,
+  FrontHandData,
+  BackHandData,
+  LegsData,
+  ShouldersData
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -645,7 +665,68 @@ const BuildPlanMobile = ({
             </div>
           ))}
         </Collapse>
+        <div className='Main-Border'></div>
       </div>
+      <div className='Build-Exe-Header'>רשימת תרגילים</div>
+      {/* Code For Showing The Exercises */}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'Chest' ? (
+            <ShowChest ChestData={ChestData} saveExercises={saveExercises} />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'Abs' ? (
+            <ShowAbs AbsData={AbsData} saveExercises={saveExercises} />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'Back' ? (
+            <ShowBack BackData={BackData} saveExercises={saveExercises} />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'FrontHand' ? (
+            <ShowFrontHand
+              FrontHandData={FrontHandData}
+              saveExercises={saveExercises}
+            />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'BackHand' ? (
+            <ShowBackHand
+              BackHandData={BackHandData}
+              saveExercises={saveExercises}
+            />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'Legs' ? (
+            <ShowLegs LegsData={LegsData} saveExercises={saveExercises} />
+          ) : null}
+        </div>
+      ))}
+      {MusclesData.map(muscle => (
+        <div key={muscle.id}>
+          {muscle.selected && muscle.value === 'Shoulders' ? (
+            <ShowShoulders
+              ShouldersData={ShouldersData}
+              saveExercises={saveExercises}
+            />
+          ) : null}
+        </div>
+      ))}
     </main>
     <MobileFooter />
   </div>
@@ -655,7 +736,8 @@ BuildPlan.propTypes = {
   SetNotification: PropTypes.func,
   SetAccount: PropTypes.func,
   closeAll: PropTypes.func,
-  ShowMuscles: PropTypes.func
+  ShowMuscles: PropTypes.func,
+  SetNav: PropTypes.func
 };
 const mapStateToProps = state => ({
   getDays: state.ExePlanReducer.getDays,
@@ -666,5 +748,6 @@ export default connect(mapStateToProps, {
   SetNotification,
   SetAccount,
   closeAll,
-  ShowMuscles
+  ShowMuscles,
+  SetNav
 })(BuildPlan);

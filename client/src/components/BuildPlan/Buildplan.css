@@ -246,6 +246,7 @@
 }
 
 /* Mobile responsive attributes */
+
 .Build-Muscle .Header-Muscles {
     width: 100%;
     background: #f8f9fa;
@@ -268,4 +269,12 @@
     color: #353c3f;
 }
 
-@media only screen and (max-width:700px) {}
+.Display-Button {
+    display: unset;
+}
+
+@media only screen and (max-width:700px) {
+    .Plan-Button {
+        margin-top: 10px;
+    }
+}
