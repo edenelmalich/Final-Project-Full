@@ -6,7 +6,6 @@ import Alert from '../layout/Alert';
 import AppFooter from '../AppFooter';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux

@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
-import { Navbar, Nav, NavDropdown, Collapse } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Collapse } from 'reactstrap';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -12,7 +13,8 @@ import {
   faUsers,
   faChartBar,
   faTasks,
-  faUnlockAlt
+  faUnlockAlt,
+  faAngleDown
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFileAlt,
@@ -25,6 +27,7 @@ import {
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
 import { SetNotification, SetNav } from '../../actions/NavAction';
+import { AccountSettings } from '../../actions/NavAction';
 
 const MobileNav = ({
   user,
@@ -34,7 +37,10 @@ const MobileNav = ({
   SetNav,
   MobileNav,
   loading,
-  isAuth
+  isAuth,
+  MenuState,
+  Account_Mobile,
+  AccountSettings
 }) => {
   // Auth links
   const AuthLinks = () => (
@@ -76,11 +82,33 @@ const MobileNav = ({
       </Link>
     </Fragment>
   );
+  // Account Links
+  const AccountLinks = () => (
+    <Fragment>
+      <Link
+        to='/PersonalDetails'
+        onClick={() => SetNav(MobileNav)}
+        id='a-Padding'
+      >
+        פרטים אישיים
+      </Link>
+      <Link to='/ChangePass' onClick={() => SetNav(MobileNav)} id='a-Padding'>
+        שינוי סיסמה
+      </Link>
+      <Link to='/ChangeEmail' onClick={() => SetNav(MobileNav)} id='a-Padding'>
+        שינוי דואר אלקטרוני
+      </Link>
+      <Link to='/' onClick={() => logout()}>
+        התנתקות
+      </Link>
+    </Fragment>
+  );
   // Functions
   const logout = () => {
     Logout();
     SetNav(MobileNav);
   };
+
   const { Name } = user;
   return (
     <div className='MobileNav'>
@@ -117,37 +145,26 @@ const MobileNav = ({
         <Navbar.Collapse in={MobileNav} id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             {!loading && isAuth ? (
-              <NavDropdown title={`שלום ${Name}`} id='basic-nav-dropdown'>
-                <div className='Nav-Setting'>הגדרות</div>
-                <Link
-                  to='/PersonalDetails'
-                  onClick={() => SetNav(MobileNav)}
-                  id='a-Padding'
-                >
-                  פרטים אישיים
-                </Link>
-                <Link
-                  to='/ChangePass'
-                  onClick={() => SetNav(MobileNav)}
-                  id='a-Padding'
-                >
-                  שינוי סיסמה
-                </Link>
-                <Link
-                  to='/ChangeEmail'
-                  onClick={() => SetNav(MobileNav)}
-                  id='a-Padding'
-                >
-                  שינוי דואר אלקטרוני
-                </Link>
-                <NavDropdown.Divider />
-                <Link to='/' onClick={() => logout()}>
-                  התנתקות
-                </Link>
-              </NavDropdown>
+              <span>
+                <span className='Nav-account-name '>שלום {Name}</span>
+                <FontAwesomeIcon
+                  onClick={() => AccountSettings(Account_Mobile)}
+                  icon={faAngleDown}
+                />
+                <Collapse isOpen={Account_Mobile}>
+                  <div className='Nav-Setting'>הגדרות</div>
+                  <AccountLinks />
+                </Collapse>
+              </span>
             ) : null}
 
-            {!loading && isAuth ? <AuthLinks /> : <GuestLinks />}
+            {!loading && isAuth ? (
+              <Collapse isOpen={MenuState}>
+                <AuthLinks />
+              </Collapse>
+            ) : (
+              <GuestLinks />
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -161,17 +178,23 @@ MobileNav.propTypes = {
   NotificationsSelected: PropTypes.bool,
   MobileNav: PropTypes.bool,
   loading: PropTypes.bool,
-  isAuth: PropTypes.bool
+  isAuth: PropTypes.bool,
+  MenuState: PropTypes.bool,
+  Account_Mobile: PropTypes.bool,
+  AccountSettings: PropTypes.func
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user,
   NotificationsSelected: state.NavReducer.NotificationsSelected,
   MobileNav: state.NavReducer.MobileNav,
   loading: state.authReducer.loading,
-  isAuth: state.authReducer.isAuth
+  isAuth: state.authReducer.isAuth,
+  MenuState: state.NavReducer.MenuState,
+  Account_Mobile: state.NavReducer.Account_Mobile
 });
 export default connect(mapStateToProps, {
   Logout,
   SetNotification,
-  SetNav
+  SetNav,
+  AccountSettings
 })(MobileNav);

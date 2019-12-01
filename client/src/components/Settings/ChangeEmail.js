@@ -8,7 +8,6 @@ import AppFooter from '../AppFooter';
 import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 import SettingsNav from '../Mobile/SettingsNav';
@@ -23,7 +22,7 @@ const ChangeEmail = ({ Logout, closeAll }) => {
   }, []);
   return (
     <div className='Settings'>
-      <MediaQuery maxDeviceWidth={1000}>
+      <MediaQuery maxDeviceWidth={900}>
         <MobileSettingEmail />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -98,7 +97,6 @@ const ChangeEmail = ({ Logout, closeAll }) => {
 };
 const MobileSettingEmail = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />

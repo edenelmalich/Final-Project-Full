@@ -173,7 +173,8 @@ const MobileMain = () => (
   </div>
 );
 MainPage.propTypes = {
-  isAuth: PropTypes.bool
+  isAuth: PropTypes.bool,
+  Logout: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth

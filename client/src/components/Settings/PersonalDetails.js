@@ -7,7 +7,6 @@ import { Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 import SettingsNav from '../Mobile/SettingsNav';
@@ -82,7 +81,6 @@ const PersonalDetails = ({ Logout, user, closeAll }) => {
 };
 const MobileDetails = ({ user }) => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />
@@ -109,7 +107,4 @@ PersonalDetails.propTypes = {
 const mapStateToProps = state => ({
   user: state.authReducer.user
 });
-export default connect(
-  mapStateToProps,
-  { Logout, closeAll }
-)(PersonalDetails);
+export default connect(mapStateToProps, { Logout, closeAll })(PersonalDetails);

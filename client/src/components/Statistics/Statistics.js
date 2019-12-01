@@ -10,7 +10,6 @@ import BackhandStat from './BackhandStat';
 import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux

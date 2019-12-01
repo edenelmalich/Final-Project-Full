@@ -143,6 +143,14 @@ body {
 
 .Nav-Setting {
     font-weight: 600;
+    padding: .5rem 0;
+}
+
+.Nav-account-name {
+    padding: 1rem 0;
+    font-weight: 600;
+    margin-left: 5px;
+    color: #353c3f;
 }
 
 /* Carousel attributes */

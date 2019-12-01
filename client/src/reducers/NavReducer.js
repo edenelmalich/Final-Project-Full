@@ -3,13 +3,16 @@ import {
   NOTIFICATIONS,
   CLOSE,
   NAV_MOBILE,
-  NAV_SETTING
+  NAV_SETTING,
+  SET_ACCOUNT_MOBILE
 } from '../actions/typesActions';
 const initialState = {
   AccountSelected: false,
   NotificationsSelected: false,
   MobileNav: false,
-  SettingState: false
+  SettingState: false,
+  Account_Mobile: false,
+  MenuState: true
 };
 
 const NavReducer = (state = initialState, action) => {
@@ -32,7 +35,9 @@ const NavReducer = (state = initialState, action) => {
       return {
         ...state,
         MobileNav: !payload,
-        NotificationsSelected: false
+        NotificationsSelected: false,
+        Account_Mobile: false,
+        MenuState: true
       };
     case NAV_SETTING:
       return {
@@ -40,6 +45,8 @@ const NavReducer = (state = initialState, action) => {
         SettingState: !payload,
         NotificationsSelected: false
       };
+    case SET_ACCOUNT_MOBILE:
+      return { ...state, Account_Mobile: !payload, MenuState: payload };
     case CLOSE:
       return {
         ...state,

@@ -20,6 +20,8 @@ export const ACCOUNT = 'ACCOUNT';
 export const NOTIFICATIONS = 'NOTIFICATIONS';
 export const NAV_MOBILE = 'NAV';
 export const NAV_SETTING = 'NAV_SETTING';
+export const SET_ACCOUNT_MOBILE = 'SET_ACCOUNT_MOBILE';
+export const SET_MENU = 'SET_MENU';
 // close all the bars
 export const CLOSE = 'CLOSE';
 // Calculate the price

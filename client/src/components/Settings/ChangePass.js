@@ -8,7 +8,6 @@ import AppFooter from '../AppFooter';
 import PropTypes from 'prop-types';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 import SettingsNav from '../Mobile/SettingsNav';
@@ -93,7 +92,6 @@ const ChangePass = ({ Logout, closeAll }) => {
 };
 const MobileSettingPass = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
       <SettingsNav />
@@ -119,7 +117,4 @@ ChangePass.propTypes = {
   Logout: PropTypes.func.isRequired,
   closeAll: PropTypes.func.isRequired
 };
-export default connect(
-  null,
-  { Logout, closeAll }
-)(ChangePass);
+export default connect(null, { Logout, closeAll })(ChangePass);

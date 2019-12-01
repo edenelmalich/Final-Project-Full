@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import AppFooter from '../AppFooter';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
+
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
-import SettingsNav from '../Mobile/SettingsNav';
+
 // Redux
 import { connect } from 'react-redux';
 import { closeAll } from '../../actions/NavAction';
@@ -18,7 +18,7 @@ const NotificationsPage = ({ closeAll }) => {
   }, []);
   return (
     <Fragment>
-      <MediaQuery maxDeviceWidth={1000}>
+      <MediaQuery maxDeviceWidth={900}>
         <MobileNoti />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -45,7 +45,6 @@ const NotificationsPage = ({ closeAll }) => {
 };
 const MobileNoti = () => (
   <div className='Mobile'>
-    <MobileNav />
     <main className='main'>
       <h2 id='Mobile-text'>התראות</h2>
       <div className='Noti-Main'>
@@ -60,7 +59,4 @@ const MobileNoti = () => (
 NotificationsPage.propTypes = {
   closeAll: PropTypes.func.isRequired
 };
-export default connect(
-  null,
-  { closeAll }
-)(NotificationsPage);
+export default connect(null, { closeAll })(NotificationsPage);

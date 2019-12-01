@@ -9,7 +9,6 @@ import { Table, Card } from 'react-bootstrap';
 import moment from 'moment';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux

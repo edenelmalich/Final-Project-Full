@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
 // Mobile imports
 import '../../css/Mobile.css';
-import MobileNav from '../Mobile/MobileNav';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
