@@ -1,292 +1,294 @@
 .Plan-Padding {
-    padding-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
 }
-
 
 /* Form Build Plan attributes */
 .BackPage {
-    display: block;
-    width: 150px;
-    color: #f8f9fa;
-    font-size: 16px;
-    text-decoration: none;
-    left: 0;
-    border: 2px solid #f8f9fa;
-    margin-top: 15px;
-    white-space: nowrap;
-    padding: .75rem;
-    text-align: center;
+  display: block;
+  width: 150px;
+  color: #f8f9fa;
+  font-size: 16px;
+  text-decoration: none;
+  left: 0;
+  border: 2px solid #f8f9fa;
+  margin-top: 15px;
+  white-space: nowrap;
+  padding: 0.75rem;
+  text-align: center;
 }
 
 .BackPage:hover {
-    background: #9a9a9a;
-    color: #353c3f;
+  background: #9a9a9a;
+  color: #353c3f;
 }
 
 .Form-Plan button {
-    outline: none;
+  outline: none;
 }
 
 .Form-Plan {
-    color: #353c3f;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 25px;
-    padding: 1.25rem;
-    border: 2px solid #f8f9fa;
-
+  color: #353c3f;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 25px;
+  padding: 1.25rem;
+  border: 2px solid #f8f9fa;
 }
 
 .Plan-Flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .Build-Exe-Header {
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    color: #f8f9fa;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #f8f9fa;
 }
 
-.Form-Plan input[type="checkbox"] {
-    cursor: pointer;
-    margin-right: 5px;
+.Form-Plan input[type='checkbox'] {
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .Form-Plan label {
-    margin-right: 25px;
-    color: #f8f9fa;
+  margin-right: 25px;
+  color: #f8f9fa;
 }
 
 .Form-Plan .FooterAtt {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Display-Button {
-    height: 200px;
-    flex-wrap: wrap;
-    display: flex;
+  height: 200px;
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .Plan-Button {
-    height: 55px;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    background: #f8f9fa;
-    text-align: center;
-    color: #353c3f;
-    font-weight: 600;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    flex: 0 0 30%;
-    word-wrap: break-word;
+  height: 55px;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: #f8f9fa;
+  text-align: center;
+  color: #353c3f;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  flex: 0 0 30%;
+  word-wrap: break-word;
 }
 
 .Plan-Button:hover {
-    background: #9a9a9a;
+  background: #9a9a9a;
 }
 
 .PlanBox {
-    width: 80%;
-    height: 500px;
-    margin-top: 40px;
-    margin-right: 10%;
-    background: #f5f5f5;
+  width: 80%;
+  height: 500px;
+  margin-top: 40px;
+  margin-right: 10%;
+  background: #f5f5f5;
 }
 
 .PlanHeader {
-    font-size: 30px;
-    color: #f8f9fa;
-    text-align: center;
-    font-weight: 600;
-    padding: 10px;
+  font-size: 30px;
+  color: #f8f9fa;
+  text-align: center;
+  font-weight: 600;
+  padding: 10px;
 }
 
 /*Attributes of icon Exercises List and List Box*/
 .Icon-List {
-    font-size: 30px;
-    color: #f8f9fa;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    margin-top: 10px;
-    margin-right: 15px;
+  font-size: 30px;
+  color: #f8f9fa;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+  margin-right: 15px;
 }
 
-.Icon-List:active {
-    outline: none;
+.Icon-List .active {
+  outline: none;
 }
 
 .ListBox-Att {
-    color: #555;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0;
-    padding: 0.2rem;
+  color: #555;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0;
+  padding: 0.2rem;
 }
 
 .Header-Padding {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .HeaderList {
-    color: #fff;
-    font-size: 22px;
-    text-align: center;
-    font-weight: 600;
-    border-bottom: 1px solid #f2f2f2;
-    padding-bottom: 5px;
+  color: #fff;
+  font-size: 22px;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 5px;
 }
 
 .ExercisesText-Box {
-    position: relative;
-    height: 300px;
-    overflow: auto;
-    padding-bottom: 15px;
+  position: relative;
+  height: 300px;
+  overflow: auto;
+  padding-bottom: 15px;
 }
 
 .ExercisesText-Att {
-    overflow: auto;
+  overflow: auto;
 }
 
 .ExercisesText {
-    border-bottom: 1px solid #f2f2f2;
-    color: #fff;
-    padding: 15px 15px;
-    padding-bottom: 14px;
-    display: flex;
-    margin-left: 10px;
+  border-bottom: 1px solid #f2f2f2;
+  color: #fff;
+  padding: 15px 15px;
+  padding-bottom: 14px;
+  display: flex;
+  margin-left: 10px;
 }
 
-
 .DeleteItem {
-    position: absolute;
-    left: 5%;
-    color: #ffffff;
-    font-size: 18px;
-    transform: rotate(45deg);
-    cursor: pointer;
+  position: absolute;
+  left: 5%;
+  color: #ffffff;
+  font-size: 18px;
+  transform: rotate(45deg);
+  cursor: pointer;
 }
 
 .ListBox-Button-Display {
-    display: flex;
-    flex-wrap: wrap;
-    height: 50px;
-    margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 50px;
+  margin-top: 15px;
 }
 
 .Buttons-ListBox {
-    color: #333;
-    height: 35px;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    outline: none;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    flex: 0 0 48%;
+  color: #333;
+  height: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  flex: 0 0 48%;
 }
 
 .List-Box-Flex {
-    height: 300px;
-    display: flex;
-    flex-wrap: wrap;
+  height: 300px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .ListBox {
-    position: absolute;
-    width: 24%;
-    max-height: 430px;
-    background: #555;
-    margin-top: 55px;
-    border-bottom: 1px solid #f2f2f2;
-    padding: 0.5rem;
-    z-index: 3;
-    left: 10%;
+  position: absolute;
+  width: 24%;
+  max-height: 430px;
+  background: #555;
+  margin-top: 55px;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 0.5rem;
+  z-index: 3;
+  left: 10%;
 }
 
 .ListBox::before {
-    content: "";
-    display: block;
-    width: 19px;
-    height: 19px;
-    border-bottom: 9px solid #555;
-    border-top: 9px solid transparent;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    position: absolute;
-    top: -17px;
-    float: left;
-    right: 43%;
-    z-index: 3;
+  content: '';
+  display: block;
+  width: 19px;
+  height: 19px;
+  border-bottom: 9px solid #555;
+  border-top: 9px solid transparent;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  position: absolute;
+  top: -17px;
+  float: left;
+  right: 43%;
+  z-index: 3;
 }
 
 /* Toast Attributes */
 .toast {
-    text-align: center;
-    width: 125px;
-    padding: 1rem;
-    color: #353c3f;
-    background: #f8f9fa;
-    align-items: center;
-    margin-left: 5px;
-    margin-right: 5px;
+  text-align: center;
+  width: 125px;
+  padding: 1rem;
+  color: #353c3f;
+  background: #f8f9fa;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 /* Mobile responsive attributes */
 
 .Build-Muscle .Header-Muscles {
-    width: 100%;
-    display: flex;
-    background: #f8f9fa;
-    color: #353c3f;
-    font-weight: 600;
-    margin-top: 15px;
-    font-size: 18px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  background: #f8f9fa;
+  color: #353c3f;
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 18px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .Build-Muscle .toast {
-    margin-left: unset;
-    margin-right: unset;
-    border-radius: unset;
+  margin-left: unset;
+  margin-right: unset;
+  border-radius: unset;
 }
 
 .Build-Muscle .svg-inline--fa {
-    margin-right: 10px;
-    color: #353c3f;
+  margin-right: 10px;
+  color: #353c3f;
 }
 
 .Build-Muscle button:not(:disabled) {
-    width: unset;
+  width: unset;
 }
 
 .Mobile .Display-Button {
-    display: unset;
+  display: unset;
 }
 
-@media only screen and (max-width:700px) {
-    .Plan-Button {
-        margin-top: 10px;
-    }
+@media only screen and (max-width: 700px) {
+  .Plan-Button {
+    margin-top: 10px;
+  }
 
-    .Build-Muscle .Icon-List {
-        margin-bottom: 5px;
-        outline: none;
-
-    }
+  .Icon-List {
+    margin-bottom: 5px;
+    outline: none;
+    border: none;
+    float: left;
+    width: 50px;
+  }
+  button:not(:disabled) {
+    outline: none;
+  }
 }

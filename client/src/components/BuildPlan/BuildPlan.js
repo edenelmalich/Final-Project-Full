@@ -658,7 +658,16 @@ const BuildPlanMobile = ({
 }) => (
   <div className='Mobile'>
     <main className='main'>
-      <h2 id='Mobile-text'>בניית תוכנית אימונים</h2>
+      <h2 id='Mobile-text'>
+        בניית תוכנית אימונים
+        <button className='Icon-List'>
+          <div className='Quantity-Mobile'>{CounterData}</div>
+          <FontAwesomeIcon
+            onClick={() => ListChecked()}
+            icon={faClipboardList}
+          />
+        </button>
+      </h2>
       <div className='Build-Muscle'>
         <div className='Header-Muscles'>
           בחר שרירים {dayData}
@@ -666,13 +675,6 @@ const BuildPlanMobile = ({
             onClick={() => ShowMuscles(Muscles_State)}
             icon={faAngleDown}
           />
-          <button className='Icon-List'>
-            <div className='Quantity-Mobile'>{CounterData}</div>
-            <FontAwesomeIcon
-              onClick={() => ListChecked()}
-              icon={faClipboardList}
-            />
-          </button>
         </div>
 
         <Collapse isOpen={Muscles_State}>
@@ -753,6 +755,9 @@ const BuildPlanMobile = ({
           ) : null}
         </div>
       ))}
+      <Link to='/exeplan' className='BackPage'>
+        לדף הקודם
+      </Link>
     </main>
     <MobileFooter />
   </div>
