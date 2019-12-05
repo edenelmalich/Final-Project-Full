@@ -65,6 +65,7 @@ const App = () => {
 
               <Route path='/forgotPass' component={ForgotPass} />
               {/* Settings Routes */}
+
               <Route path='/PersonalDetails' component={PersonalDetails} />
               <Route path='/ChangePass' component={ChangePass} />
               <Route path='/ChangeEmail' component={ChangeEmail} />

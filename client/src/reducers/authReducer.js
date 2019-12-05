@@ -40,6 +40,7 @@ const authReducer = (state = initialState, action) => {
       localStorage.removeItem('token');
       return {
         ...state,
+
         token: null,
         isAuth: false,
         loading: false

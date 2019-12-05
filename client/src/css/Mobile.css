@@ -437,6 +437,30 @@ body {
   margin-left: auto;
 }
 
+.Mobile .Mobile-Settings .Nav-Header {
+  width: 100%;
+  display: flex;
+  background: #f8f9fa;
+  color: #353c3f;
+  font-weight: 600;
+  margin-top: 15px;
+  font-size: 18px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+}
+
+.Nav-Header .svg-inline--fa {
+  margin-right: auto;
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
 /* Health page attributes */
 .Mobile .FormData {
   height: 400px;

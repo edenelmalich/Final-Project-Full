@@ -1,30 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // React Router imports
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { Collapse } from 'reactstrap';
 // Bootstrap imports
-import { NavDropdown } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
 import { navSetting } from '../../actions/NavAction';
 
 const SettingsNav = ({ Logout, navSetting, SettingState }) => {
+  // useState
   return (
     <div className='Mobile-Settings'>
-      <NavDropdown
-        title='הגדרות'
-        id='basic-nav-dropdown'
-        onClick={() => navSetting(SettingState)}
-      >
-        <NavLink to='/PersonalDetails'>פרטים אישיים</NavLink>
-        <NavLink to='/changePass'>שינוי סיסמה</NavLink>
-        <NavLink to='/ChangeEmail'>שינוי דואר אלקטרוני</NavLink>
-        <NavDropdown.Divider />
-        <NavLink to='/' onClick={() => Logout()}>
-          התנתקות
+      <div className='Nav-Header'>
+        הגדרות
+        <FontAwesomeIcon
+          icon={faCog}
+          onClick={() => navSetting(SettingState)}
+        />
+      </div>
+      <div className='Main-Padding'></div>
+      <Collapse isOpen={SettingState}>
+        <NavLink to='/PersonalDetails' onClick={() => navSetting(SettingState)}>
+          פרטים אישיים
         </NavLink>
-      </NavDropdown>
+        <NavLink to='/changePass' onClick={() => navSetting(SettingState)}>
+          שינוי סיסמה
+        </NavLink>
+        <NavLink to='/ChangeEmail' onClick={() => navSetting(SettingState)}>
+          שינוי דואר אלקטרוני
+        </NavLink>
+        <Link to='/' onClick={() => Logout()}>
+          התנתקות
+        </Link>
+      </Collapse>
+      <div className='Main-Padding'></div>
     </div>
   );
 };
