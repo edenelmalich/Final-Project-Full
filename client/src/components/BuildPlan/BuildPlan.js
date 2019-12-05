@@ -306,8 +306,6 @@ const BuildPlan = ({
                   <div className='PlanHeader'>בחר שרירים {dayData}</div>
                   <div className='Main-Padding'></div>
                   <div className='Main-Border'></div>
-                  <div className='Quantity'>{CounterData}</div>
-
                   <form className='Form-Plan'>
                     <div className='Plan-Flex'>
                       {/* Code for show the muscles in the page */}
@@ -410,6 +408,7 @@ const BuildPlan = ({
                       </Link>
                       {/* Code to open and close the list */}
                       <button className='Icon-List'>
+                        <div className='Quantity-Exercises'>{CounterData}</div>
                         <FontAwesomeIcon icon={faClipboardList} />
                       </button>
                     </div>
