@@ -91,7 +91,6 @@ export const ResetPassword = (password, email) => async dispatch => {
     await axios.post('/api/forgotPass', body, config);
 
     dispatch(setAlert('סיסמה שונתה בהצלחה', 'success'));
-    console.log('hi all');
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

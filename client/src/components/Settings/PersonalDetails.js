@@ -12,12 +12,13 @@ import MediaQuery from 'react-responsive';
 import SettingsNav from '../Mobile/SettingsNav';
 // Redux
 import { connect } from 'react-redux';
-import { Logout } from '../../actions/authAction';
+import { Logout, CheckUser } from '../../actions/authAction';
 import { closeAll } from '../../actions/NavAction';
 
 const PersonalDetails = ({ Logout, user, closeAll }) => {
   useEffect(() => {
     closeAll();
+    CheckUser();
   }, []);
   return (
     <div className='Settings'>
@@ -102,9 +103,12 @@ const MobileDetails = ({ user }) => (
 PersonalDetails.propTypes = {
   user: PropTypes.object,
   Logout: PropTypes.func.isRequired,
-  closeAll: PropTypes.func.isRequired
+  closeAll: PropTypes.func.isRequired,
+  CheckUser: PropTypes.func
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user
 });
-export default connect(mapStateToProps, { Logout, closeAll })(PersonalDetails);
+export default connect(mapStateToProps, { Logout, closeAll, CheckUser })(
+  PersonalDetails
+);
