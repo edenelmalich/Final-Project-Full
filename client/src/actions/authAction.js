@@ -80,7 +80,25 @@ export const login = (email, password) => async dispatch => {
     });
   }
 };
+export const ResetPassword = (password, email) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  const body = JSON.stringify({ password, email });
+  try {
+    await axios.post('/api/forgotPass', body, config);
 
+    dispatch(setAlert('סיסמה שונתה בהצלחה', 'success'));
+    console.log('hi all');
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+  }
+};
 export const Logout = () => dispatch => {
   dispatch({
     type: LOGOUT

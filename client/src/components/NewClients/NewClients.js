@@ -11,7 +11,6 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { Nclient } from '../../actions/NclientAction';
-import { setAlert } from '../../actions/alertAction';
 import { CalcTotal } from '../../actions/CalcAction';
 import { closeAll } from '../../actions/NavAction';
 import { closeAlerts } from '../../actions/alertAction';
@@ -402,7 +401,6 @@ const MobileNclient = ({
 
 NewClients.propType = {
   SendFail: PropTypes.bool,
-  setAlert: PropTypes.func.isRequired,
   closeAll: PropTypes.func,
   CalcTotal: PropTypes.func,
   closeAlerts: PropTypes.func
@@ -412,7 +410,6 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
   Nclient,
-  setAlert,
   CalcTotal,
   closeAll,
   closeAlerts

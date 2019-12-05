@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+// Components imports
+import MainFooter from '../MainFooter';
+import Alert from '../layout/Alert';
+// Css imports
 import '../../css/MainPages.css';
+// logo imports
 import logo from '../../img/logo.png';
+// Fontawesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser as FasUser } from '@fortawesome/free-regular-svg-icons';
+// import Link from react-router
 import { Link, Redirect } from 'react-router-dom';
+// Bootstrap imports
 import { Card } from 'react-bootstrap';
-import MainFooter from '../MainFooter';
-import PropTypes from 'prop-types';
-import Alert from '../layout/Alert';
 // Mobile imports
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';

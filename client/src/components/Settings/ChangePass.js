@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+// Components
 import Navbar from '../Navbar/Navbar';
+import AppFooter from '../AppFooter';
+import Alert from '../layout/Alert';
+import { NavLink, Link } from 'react-router-dom';
+
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card } from 'react-bootstrap';
-import AppFooter from '../AppFooter';
-import PropTypes from 'prop-types';
+
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileFooter from '../Mobile/MobileFooter';
@@ -15,15 +19,45 @@ import SettingsNav from '../Mobile/SettingsNav';
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
 import { closeAll } from '../../actions/NavAction';
+import { setAlert } from '../../actions/alertAction';
+import { ResetPassword } from '../../actions/authAction';
 
-const ChangePass = ({ Logout, closeAll }) => {
+const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
   useEffect(() => {
     closeAll();
   }, []);
+  const { email } = user;
+  // useState
+  const [getData, setData] = useState({
+    Password: '',
+    RePassword: ''
+  });
+  const { Password, RePassword } = getData;
+  // Functions
+  const onChange = e => {
+    setData({ ...getData, [e.target.name]: e.target.value });
+  };
+  const onSubmit = e => {
+    e.preventDefault();
+    if (Password !== RePassword) {
+      setAlert('סיסמאות לא תואמות', 'danger');
+    } else {
+      ResetPassword(Password, email);
+    }
+    ResetForm();
+  };
+  const ResetForm = () => {
+    setData({ ...getData, Password: '', RePassword: '' });
+  };
   return (
     <div className='Settings'>
       <MediaQuery maxDeviceWidth={1000}>
-        <MobileSettingPass />
+        <MobileSettingPass
+          onSubmit={onSubmit}
+          onChange={onChange}
+          Password={Password}
+          RePassword={RePassword}
+        />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -33,6 +67,7 @@ const ChangePass = ({ Logout, closeAll }) => {
               <div className='Att-PagesContent'>
                 <div className='PagesContainer'>
                   <h2>הגדרות</h2>
+
                   <div className='Noti-Padding'></div>
 
                   <Card bg='light' style={{ width: '50rem' }}>
@@ -43,14 +78,27 @@ const ChangePass = ({ Logout, closeAll }) => {
                         icon={faLock}
                       />
                       <div className='Form-padding'>
-                        <form className='Form-Settings'>
+                        <form
+                          className='Form-Settings'
+                          onSubmit={e => onSubmit(e)}
+                        >
                           <label>הכנס סיסמה חדשה</label>
                           <input
                             type='password'
+                            name='Password'
+                            value={Password}
+                            onChange={e => onChange(e)}
                             placeholder='הכנס סיסמא חדשה'
                           />
                           <label>אימות סיסמה</label>
-                          <input type='password' placeholder='אימות סיסמא' />
+                          <input
+                            type='password'
+                            name='RePassword'
+                            value={RePassword}
+                            onChange={e => onChange(e)}
+                            placeholder='אימות סיסמא'
+                          />
+
                           <input type='submit' value='שנה סיסמא' />
                         </form>
                       </div>
@@ -79,6 +127,9 @@ const ChangePass = ({ Logout, closeAll }) => {
                         התנתקות
                       </Link>
                     </div>
+                    <div className='Alert-Position'>
+                      <Alert />
+                    </div>
                   </Card>
                 </div>
               </div>
@@ -90,7 +141,7 @@ const ChangePass = ({ Logout, closeAll }) => {
     </div>
   );
 };
-const MobileSettingPass = () => (
+const MobileSettingPass = ({ onSubmit, onChange, Password, RePassword }) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
@@ -100,11 +151,25 @@ const MobileSettingPass = () => (
           <div className='Mobile-Page-Header'>שינוי סיסמה</div>
           <FontAwesomeIcon className='Main-Settings-Icon' icon={faLock} />
 
-          <form className='Form-Settings'>
+          <form className='Form-Settings' onSubmit={e => onSubmit(e)}>
             <label>הכנס סיסמה חדשה</label>
-            <input type='password' placeholder='הכנס סיסמא חדשה' />
+            <input
+              type='password'
+              name='Password'
+              value={Password}
+              onChange={e => onChange(e)}
+              placeholder='הכנס סיסמא חדשה'
+            />
             <label>אימות סיסמה</label>
-            <input type='password' placeholder='אימות סיסמא' />
+            <input
+              type='password'
+              name='RePassword'
+              value={RePassword}
+              onChange={e => onChange(e)}
+              placeholder='אימות סיסמא'
+            />
+            <div className='Main-Padding'></div>
+            <Alert />
             <input type='submit' value='שנה סיסמא' />
           </form>
         </Card>
@@ -115,6 +180,17 @@ const MobileSettingPass = () => (
 );
 ChangePass.propTypes = {
   Logout: PropTypes.func.isRequired,
-  closeAll: PropTypes.func.isRequired
+  closeAll: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  setAlert: PropTypes.func,
+  ResetPassword: PropTypes.func
 };
-export default connect(null, { Logout, closeAll })(ChangePass);
+const mapStateToProps = state => ({
+  user: state.authReducer.user
+});
+export default connect(mapStateToProps, {
+  Logout,
+  closeAll,
+  setAlert,
+  ResetPassword
+})(ChangePass);

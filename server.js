@@ -14,6 +14,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/updates', require('./routes/api/updates'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/Nclient', require('./routes/api/Nclient'));
+app.use('/api/forgotPass', require('./routes/api/forgotPass'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

@@ -238,92 +238,19 @@ const BuildPlan = ({
     );
   };
   // functions
-  const saveExercises = id => {
-    if (id > 0 && id <= 9) {
-      SetExercises(
-        ExercisesData.map(chest => {
-          if (id === chest.id && chest.selected === false) {
-            const Checked = { ...chest, selected: true };
-            Additem();
-            return Checked;
-          }
-          return chest;
-        })
-      );
-    }
-    if (id > 9 && id <= 18) {
-      SetExercises(
-        ExercisesData.map(abs => {
-          if (id === abs.id && abs.selected === false) {
-            const Checked = { ...abs, selected: true };
-            Additem();
-            return Checked;
-          }
-          return abs;
-        })
-      );
-    }
-    if (id > 18 && id <= 27) {
-      SetExercises(
-        ExercisesData.map(back => {
-          if (id === back.id && back.selected === false) {
-            const Checked = { ...back, selected: true };
-            Additem();
-            return Checked;
-          }
-          return back;
-        })
-      );
-    }
-    if (id > 27 && id <= 36) {
-      SetExercises(
-        ExercisesData.map(frontHand => {
-          if (id === frontHand.id && frontHand.selected === false) {
-            const Checked = { ...frontHand, selected: true };
-            Additem();
-            return Checked;
-          }
-          return frontHand;
-        })
-      );
-    }
-    if (id > 36 && id <= 46) {
-      SetExercises(
-        ExercisesData.map(backHand => {
-          if (id === backHand.id && backHand.selected === false) {
-            const Checked = { ...backHand, selected: true };
-            Additem();
-            return Checked;
-          }
-          return backHand;
-        })
-      );
-    }
-    if (id > 46 && id <= 54) {
-      SetExercises(
-        ExercisesData.map(leg => {
-          if (id === leg.id && leg.selected === false) {
-            const Checked = { ...leg, selected: true };
-            Additem();
-            return Checked;
-          }
-          return leg;
-        })
-      );
-    }
-    if (id > 54 && id <= 63) {
-      SetExercises(
-        ExercisesData.map(shoulder => {
-          if (id === shoulder.id && shoulder.selected === false) {
-            const Checked = { ...shoulder, selected: true };
-            Additem();
-            return Checked;
-          }
-          return shoulder;
-        })
-      );
-    }
+  const saveExercises = (id, selected) => {
+    SetExercises(
+      ExercisesData.map(exercise => {
+        if (id === exercise.id && exercise.selected === false) {
+          const Checked = { ...exercise, selected: true };
+          Additem();
+          return Checked;
+        }
+        return exercise;
+      })
+    );
   };
+
   const Additem = () => {
     setAlert('התרגיל נוסף בהצלחה', 'success');
     SetCounter(prevCount => prevCount + 1);
@@ -504,7 +431,7 @@ const ShowChest = props => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => props.saveExercises(item.id, item.selected)}
       >
         {item.label}
       </div>
@@ -623,7 +550,6 @@ const BuildPlanMobile = ({
           />
         </button>
       </h2>
-
       <ExercisesList
         show={ListState}
         onHide={() => SetList(false)}

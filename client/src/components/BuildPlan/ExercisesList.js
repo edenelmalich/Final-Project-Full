@@ -15,7 +15,6 @@ const ExercisesList = props => {
       aria-labelledby='contained-modal-title-vcenter'
       centered
     >
-      {() => closeAlerts()}
       <Modal.Header closeButton>
         <Modal.Title id='contained-modal-title-vcenter'>
           תרגילים שנבחרו

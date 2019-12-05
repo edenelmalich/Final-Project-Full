@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+// Components
+import Alert from '../layout/Alert';
 import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../css/MainPages.css';
@@ -9,8 +12,11 @@ import MainFooter from '../MainFooter';
 // Mobile imports
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
-
-const ForgotPass = () => {
+// Redux
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alertAction';
+import { ResetPassword } from '../../actions/authAction';
+const ForgotPass = ({ setAlert, ResetPassword }) => {
   const [Data, SetData] = useState({
     Email: '',
     Password: '',
@@ -18,15 +24,18 @@ const ForgotPass = () => {
   });
   const { Email, Password, RePassword } = Data;
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
     if (Password !== RePassword) {
-      console.log('Passwords not match');
+      setAlert('סיסמאות לא תואמות', 'danger');
     } else {
-      console.log(Data);
+      ResetPassword(Password, Email);
     }
+    RestForm();
   };
-
+  const RestForm = () => {
+    SetData({ ...Data, Email: '', Password: '', RePassword: '' });
+  };
   return (
     <div className='MainPage'>
       <MediaQuery maxDeviceWidth={1024}>
@@ -63,7 +72,6 @@ const ForgotPass = () => {
                       value={Email}
                       onChange={e => onChange(e)}
                       placeholder='דואר אלקטרוני'
-                      required
                     />
                     <label> סיסמה</label>
                     <input
@@ -72,7 +80,6 @@ const ForgotPass = () => {
                       value={Password}
                       onChange={e => onChange(e)}
                       placeholder='סיסמא'
-                      required
                     />
                     <label>אימות סיסמה</label>
                     <input
@@ -81,9 +88,10 @@ const ForgotPass = () => {
                       value={RePassword}
                       onChange={e => onChange(e)}
                       placeholder='אימות סיסמא'
-                      required
                     />
-
+                    <div className='Alert'>
+                      <Alert />
+                    </div>
                     <input
                       className='PassButton'
                       type='submit'
@@ -132,7 +140,7 @@ const MobileForgotPass = ({
                 icon={faUnlockAlt}
               />
               <header className='Main-Title'> איפוס סיסמה</header>
-              <form className='Mobile-Form'>
+              <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
                 <label>דואר אלקטרוני</label>
                 <input
                   type='text'
@@ -140,7 +148,6 @@ const MobileForgotPass = ({
                   value={Email}
                   onChange={e => onChange(e)}
                   placeholder='דואר אלקטרוני'
-                  required
                 />
                 <label> סיסמה</label>
                 <input
@@ -149,7 +156,6 @@ const MobileForgotPass = ({
                   value={Password}
                   onChange={e => onChange(e)}
                   placeholder='סיסמא'
-                  required
                 />
                 <label>אימות סיסמה</label>
                 <input
@@ -158,14 +164,14 @@ const MobileForgotPass = ({
                   value={RePassword}
                   onChange={e => onChange(e)}
                   placeholder='אימות סיסמא'
-                  required
                 />
+                <div className='Main-Padding'></div>
+                <Alert />
                 <input
                   className='PassButton'
                   type='submit'
                   name='Password'
                   value='איפוס סיסמה'
-                  onSubmit={e => onSubmit(e)}
                 />
 
                 <div className='Main-Border'></div>
@@ -188,5 +194,8 @@ const MobileForgotPass = ({
     <MobileFooter />
   </div>
 );
-
-export default ForgotPass;
+ForgotPass.propTypes = {
+  setAlert: PropTypes.func,
+  ResetPassword: PropTypes.func
+};
+export default connect(null, { setAlert, ResetPassword })(ForgotPass);
