@@ -17,12 +17,14 @@ import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
 import { ResetPassword } from '../../actions/authAction';
 const ForgotPass = ({ setAlert, ResetPassword }) => {
+  // useState
   const [Data, SetData] = useState({
     Email: '',
     Password: '',
     RePassword: ''
   });
   const { Email, Password, RePassword } = Data;
+  const [TypeState, SetType] = useState(false);
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
   const onSubmit = e => {
     e.preventDefault();
@@ -45,6 +47,8 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
           onChange={onChange}
           Password={Password}
           RePassword={RePassword}
+          SetType={SetType}
+          TypeState={TypeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -75,7 +79,7 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
                     />
                     <label> סיסמה</label>
                     <input
-                      type='password'
+                      type={TypeState ? 'text' : 'password'}
                       name='Password'
                       value={Password}
                       onChange={e => onChange(e)}
@@ -83,11 +87,16 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
                     />
                     <label>אימות סיסמה</label>
                     <input
-                      type='password'
+                      type={TypeState ? 'text' : 'password'}
                       name='RePassword'
                       value={RePassword}
                       onChange={e => onChange(e)}
                       placeholder='אימות סיסמא'
+                    />
+                    <label>הצג סיסמאות</label>
+                    <input
+                      type='checkbox'
+                      onClick={() => SetType(!TypeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -125,7 +134,9 @@ const MobileForgotPass = ({
   Email,
   Password,
   RePassword,
-  onChange
+  onChange,
+  SetType,
+  TypeState
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -151,7 +162,7 @@ const MobileForgotPass = ({
                 />
                 <label> סיסמה</label>
                 <input
-                  type='password'
+                  type={TypeState ? 'text' : 'password'}
                   name='Password'
                   value={Password}
                   onChange={e => onChange(e)}
@@ -159,12 +170,14 @@ const MobileForgotPass = ({
                 />
                 <label>אימות סיסמה</label>
                 <input
-                  type='password'
+                  type={TypeState ? 'text' : 'password'}
                   name='RePassword'
                   value={RePassword}
                   onChange={e => onChange(e)}
                   placeholder='אימות סיסמא'
                 />
+                <label>הצג סיסמאות</label>
+                <input type='checkbox' onClick={() => SetType(!TypeState)} />
                 <div className='Main-Padding'></div>
                 <Alert />
                 <input

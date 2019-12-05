@@ -27,6 +27,8 @@ const Register = ({ setAlert, register, isAuth }) => {
   });
 
   const { Name, Email, Password, RePassword } = Data;
+  const [typeState, SetType] = useState(false);
+  // Functions
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
   const onSubmit = e => {
     e.preventDefault();
@@ -52,6 +54,8 @@ const Register = ({ setAlert, register, isAuth }) => {
           Name={Name}
           Email={Email}
           RePassword={RePassword}
+          SetType={SetType}
+          typeState={typeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -96,7 +100,7 @@ const Register = ({ setAlert, register, isAuth }) => {
                     <label> סיסמה</label>
 
                     <input
-                      type='password'
+                      type={typeState ? 'text' : 'password'}
                       name='Password'
                       value={Password}
                       onChange={e => onChange(e)}
@@ -104,11 +108,16 @@ const Register = ({ setAlert, register, isAuth }) => {
                     />
                     <label>אימות סיסמה</label>
                     <input
-                      type='password'
+                      type={typeState ? 'text' : 'password'}
                       name='RePassword'
                       value={RePassword}
                       onChange={e => onChange(e)}
                       placeholder='אימות סיסמה'
+                    />
+                    <label>הצג סיסמאות</label>
+                    <input
+                      type='checkbox'
+                      onClick={() => SetType(!typeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -142,7 +151,9 @@ const MobileRegister = ({
   Password,
   Name,
   Email,
-  RePassword
+  RePassword,
+  typeState,
+  SetType
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -173,7 +184,7 @@ const MobileRegister = ({
             <label> סיסמה</label>
 
             <input
-              type='password'
+              type={typeState ? 'text' : 'password'}
               name='Password'
               value={Password}
               onChange={e => onChange(e)}
@@ -181,12 +192,14 @@ const MobileRegister = ({
             />
             <label>אימות סיסמה</label>
             <input
-              type='password'
+              type={typeState ? 'text' : 'password'}
               name='RePassword'
               value={RePassword}
               onChange={e => onChange(e)}
               placeholder='אימות סיסמה'
             />
+            <label>הצג סיסמאות</label>
+            <input type='checkbox' onClick={() => SetType(!typeState)} />
             <div className='Main-Padding'></div>
             <Alert />
             <input type='submit' name='register' value='הרשמה' />

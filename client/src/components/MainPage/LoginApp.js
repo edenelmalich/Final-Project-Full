@@ -22,12 +22,13 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/authAction';
 
 const LoginApp = ({ isAuth, login }) => {
+  // useState
   const [Data, SetData] = useState({
     Email: '',
     Password: ''
   });
-
   const { Email, Password } = Data;
+  const [TypeState, SetType] = useState(false);
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
@@ -47,6 +48,8 @@ const LoginApp = ({ isAuth, login }) => {
           Password={Password}
           onSubmit={onSubmit}
           onChange={onChange}
+          SetType={SetType}
+          TypeState={TypeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -79,11 +82,16 @@ const LoginApp = ({ isAuth, login }) => {
                     />
                     <label> סיסמה</label>
                     <input
-                      type='password'
+                      type={TypeState ? 'text' : 'password'}
                       name='Password'
                       value={Password}
                       onChange={e => onChange(e)}
                       placeholder='סיסמה'
+                    />
+                    <label> הצג סיסמה</label>
+                    <input
+                      type='checkbox'
+                      onClick={() => SetType(!TypeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -114,7 +122,14 @@ const LoginApp = ({ isAuth, login }) => {
     </div>
   );
 };
-const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
+const MobileLogin = ({
+  Email,
+  Password,
+  onSubmit,
+  onChange,
+  SetType,
+  TypeState
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <div className='Mobile-Main-Title '>התחברות ל-Maxfit</div>
@@ -135,12 +150,14 @@ const MobileLogin = ({ Email, Password, onSubmit, onChange }) => (
             />
             <label> סיסמה</label>
             <input
-              type='password'
+              type={TypeState ? 'text' : 'password'}
               name='Password'
               value={Password}
               onChange={e => onChange(e)}
               placeholder='סיסמה'
             />
+            <label> הצג סיסמה</label>
+            <input type='checkbox' onClick={() => SetType(!TypeState)} />
             <div className='Main-Padding'></div>
             <Alert />
             <input type='submit' name='Password' value='התחברות' />

@@ -296,7 +296,6 @@ body {
   margin-left: auto;
   outline: none;
   margin-bottom: 25px;
-  margin-top: 25px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -306,7 +305,7 @@ body {
 
 .Mobile-Form label {
   padding-bottom: 5px;
-  padding-top: 5px;
+  padding-top: 15px;
   color: #353c3f;
 }
 
