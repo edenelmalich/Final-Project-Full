@@ -4,7 +4,7 @@ import alertReducer from './alertReducer';
 import authReducer from './authReducer';
 import updateReducer from './updateReducer';
 import newClientsReducer from './newClientsReducer';
-import calcReducer from './calcReducer';
+import CalcReducer from './CalcReducer';
 import ExePlanReducer from './ExePlanReducer';
 import BuildReducer from './BuildReducer';
 
@@ -14,7 +14,7 @@ export default combineReducers({
   updateReducer,
   newClientsReducer,
   navReducer,
-  calcReducer,
+  CalcReducer,
   ExePlanReducer,
   BuildReducer
 });

@@ -409,7 +409,7 @@ NewClients.propType = {
   setNewClient: PropTypes.func
 };
 const mapStateToProps = state => ({
-  total: state.calcReducer.total
+  total: state.CalcReducer.total
 });
 export default connect(mapStateToProps, {
   setNewClient,
