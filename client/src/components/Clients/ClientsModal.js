@@ -29,19 +29,19 @@ const ClientsModal = props => {
                     {client.firstname} {client.lastname}
                   </header>
                   <div className='Clients-modal-att'>
-                    <span className='clientsDetails'>תעודת זהות:</span>
+                    <div className='clientsDetails'>תעודת זהות:</div>
                     {client.id}
-                    <span className='clientsDetails'>טלפון:</span>
+                    <div className='clientsDetails'>טלפון:</div>
                     {client.phone}
-                    <span className='clientsDetails'>סוג מנוי:</span>
+                    <div className='clientsDetails'>סוג מנוי:</div>
                     {client.Type}
-                    <span className='clientsDetails'>תקופת מנוי:</span>
+                    <div className='clientsDetails'>תקופת מנוי:</div>
                     {client.Time}
-                    <span className='clientsDetails'> אמצעי תשלום:</span>
+                    <div className='clientsDetails'> אמצעי תשלום:</div>
                     {client.Payment}
-                    <span className='clientsDetails'> סה"כ תשלום:</span>
+                    <div className='clientsDetails'> סה"כ תשלום:</div>
                     {client.Total}
-                    <span className='clientsDetails'> תאריך הצטרפות:</span>
+                    <div className='clientsDetails'> תאריך הצטרפות:</div>
                     {moment(client.date).format('YYYY/MM/DD')}
                   </div>
                 </div>
