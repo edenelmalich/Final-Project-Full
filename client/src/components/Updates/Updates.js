@@ -10,7 +10,7 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { setUpdate } from '../../actions/updateAction';
+import { setUpdate } from '../../actions/updateActions';
 import { closeAlerts } from '../../actions/alertAction';
 import { closeAll } from '../../actions/navsAction';
 
