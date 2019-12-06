@@ -31,7 +31,6 @@ import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 import { getClients } from '../../actions/newClientsAction';
 import { closeAll } from '../../actions/navAction';
-
 const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
   // ComponentWillMount
   useEffect(() => {
