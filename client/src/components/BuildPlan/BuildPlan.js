@@ -31,7 +31,7 @@ import {
   closeAll,
   setNavMobileToggle
 } from '../../actions/navsAction';
-import { showMuscles } from '../../actions/buildAction';
+import { showMuscles } from '../../actions/buildActions';
 import { setAlert } from '../../actions/alertAction';
 import { closeAlerts } from '../../actions/alertAction';
 
