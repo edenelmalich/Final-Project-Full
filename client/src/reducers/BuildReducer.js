@@ -3,7 +3,7 @@ import { SHOW_MUSCLES } from '../actions/typesActions';
 const initialState = {
   Muscles_State: false
 };
-const buildReducer = (state = initialState, action) => {
+const BuildReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case SHOW_MUSCLES:
@@ -12,4 +12,4 @@ const buildReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default buildReducer;
+export default BuildReducer;

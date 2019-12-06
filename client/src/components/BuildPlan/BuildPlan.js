@@ -664,7 +664,7 @@ BuildPlan.propTypes = {
 };
 const mapStateToProps = state => ({
   getDays: state.exePlanReducer.getDays,
-  Muscles_State: state.buildReducer.Muscles_State
+  Muscles_State: state.BuildReducer.Muscles_State
 });
 
 export default connect(mapStateToProps, {
