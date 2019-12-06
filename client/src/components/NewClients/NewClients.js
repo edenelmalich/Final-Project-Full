@@ -13,7 +13,7 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { setNewClient } from '../../actions/newClientsAction';
-import { calcTotal } from '../../actions/calcAction';
+import { calcTotal } from '../../actions/calculateAction';
 import { closeAll } from '../../actions/navsAction';
 import { closeAlerts } from '../../actions/alertAction';
 
