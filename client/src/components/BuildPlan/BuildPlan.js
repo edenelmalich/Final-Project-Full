@@ -663,7 +663,7 @@ BuildPlan.propTypes = {
   closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
-  getDays: state.exePlanReducer.getDays,
+  getDays: state.ExePlanReducer.getDays,
   Muscles_State: state.BuildReducer.Muscles_State
 });
 

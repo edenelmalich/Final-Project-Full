@@ -4,7 +4,7 @@ const initialState = {
   getDay: null
 };
 
-const exePlanReducer = (state = initialState, action) => {
+const ExePlanReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_DAYS:
@@ -13,4 +13,4 @@ const exePlanReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default exePlanReducer;
+export default ExePlanReducer;
