@@ -20,7 +20,7 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { getClients } from '../../actions/newClientsAction';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 import { closeAlerts } from '../../actions/alertAction';
 
 const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {

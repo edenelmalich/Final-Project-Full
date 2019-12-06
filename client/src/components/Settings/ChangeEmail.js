@@ -20,7 +20,7 @@ import SettingsNav from '../Mobile/SettingsNav';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 import { setAlert } from '../../actions/alertAction';
 import { resetEmail } from '../../actions/resetEmail';
 const ChangeEmail = ({ Logout, closeAll, setAlert, resetEmail, user }) => {

@@ -12,7 +12,7 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { setUpdate } from '../../actions/updateAction';
 import { closeAlerts } from '../../actions/alertAction';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 
 const Updates = ({ setUpdate, closeAlerts, closeAll }) => {
   // componentWillMount

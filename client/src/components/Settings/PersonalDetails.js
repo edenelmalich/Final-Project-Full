@@ -13,7 +13,7 @@ import SettingsNav from '../Mobile/SettingsNav';
 // Redux
 import { connect } from 'react-redux';
 import { Logout, checkUser } from '../../actions/authAction';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 
 const PersonalDetails = ({ Logout, user, closeAll }) => {
   useEffect(() => {

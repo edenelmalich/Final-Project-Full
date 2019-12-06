@@ -29,8 +29,8 @@ import { connect } from 'react-redux';
 import {
   setNotificationToggle,
   setAccountToggle
-} from '../../actions/navAction';
-import { closeAll } from '../../actions/navAction';
+} from '../../actions/navsAction';
+import { closeAll } from '../../actions/navsAction';
 
 const Navbar = ({
   notificationsToggleState,

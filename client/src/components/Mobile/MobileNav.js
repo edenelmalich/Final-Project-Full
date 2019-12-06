@@ -28,9 +28,9 @@ import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
 import {
   setNotificationToggle,
-  setNavMobileToggle
-} from '../../actions/navAction';
-import { accountSettings } from '../../actions/navAction';
+  setNavMobileToggle,
+  accountSettings
+} from '../../actions/navsAction';
 
 const MobileNav = ({
   user,

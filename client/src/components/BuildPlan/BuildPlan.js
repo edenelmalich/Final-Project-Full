@@ -25,11 +25,13 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { setNotificationToggle } from '../../actions/navAction';
-import { setAccountToggle } from '../../actions/navAction';
-import { closeAll } from '../../actions/navAction';
+import {
+  setNotificationToggle,
+  setAccountToggle,
+  closeAll,
+  setNavMobileToggle
+} from '../../actions/navsAction';
 import { showMuscles } from '../../actions/buildAction';
-import { setNavMobileToggle } from '../../actions/navAction';
 import { setAlert } from '../../actions/alertAction';
 import { closeAlerts } from '../../actions/alertAction';
 

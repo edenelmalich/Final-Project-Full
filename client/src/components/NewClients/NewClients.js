@@ -14,7 +14,7 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { setNewClient } from '../../actions/newClientsAction';
 import { calcTotal } from '../../actions/calcAction';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 import { closeAlerts } from '../../actions/alertAction';
 
 const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {

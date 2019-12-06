@@ -11,7 +11,7 @@ import MediaQuery from 'react-responsive';
 
 // Redux
 import { connect } from 'react-redux';
-import { closeAll } from '../../actions/navAction';
+import { closeAll } from '../../actions/navsAction';
 const NotificationsPage = ({ closeAll }) => {
   useEffect(() => {
     closeAll();

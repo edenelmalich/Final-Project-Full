@@ -9,7 +9,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { navSetting } from '../../actions/navAction';
+import { navSetting } from '../../actions/navsAction';
 
 const SettingsNav = ({ Logout, navSetting, settingToggleState }) => {
   // useState
