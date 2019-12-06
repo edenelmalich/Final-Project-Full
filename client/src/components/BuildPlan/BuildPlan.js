@@ -6,7 +6,7 @@ import AppFooter from '../AppFooter';
 import ExercisesList from './ExercisesList';
 import Alert from '../layout/Alert';
 // Css imports
-import './buildPlan.css';
+import '../../css/buildPlan.css';
 // import Link from react-router
 import { Link } from 'react-router-dom';
 // Fontawesome imports
