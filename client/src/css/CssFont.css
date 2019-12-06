@@ -230,14 +230,16 @@ h4 {
 
 }
 
-.Clients-modal-att {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+.clientsValues {
+  font-size: 16px;
+  text-align: center;
+  padding: 0rem 0.5rem 0 0.5rem;
+  border-bottom: 1px solid #353c3f;
 }
 
 .clientsDetails {
+  display: block;
+  text-align: center;
   font-size: 18px;
   padding: 1rem 0.5rem 1rem 0.5rem;
   font-weight: 600;
