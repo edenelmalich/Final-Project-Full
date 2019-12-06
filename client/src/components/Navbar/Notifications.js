@@ -24,6 +24,6 @@ Notifications.propTypes = {
   notificationsToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  notificationsToggleState: state.navReducer.notificationsToggleState
+  notificationsToggleState: state.NavReducer.notificationsToggleState
 });
 export default connect(mapStateToProps)(Notifications);

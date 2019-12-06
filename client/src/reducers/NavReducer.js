@@ -15,7 +15,7 @@ const initialState = {
   MenuState: true
 };
 
-const navReducer = (state = initialState, action) => {
+const NavReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_ACCOUNT_TOGGLE:
@@ -58,4 +58,4 @@ const navReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default navReducer;
+export default NavReducer;

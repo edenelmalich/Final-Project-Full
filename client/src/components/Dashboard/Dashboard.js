@@ -266,7 +266,7 @@ Dashboard.propTypes = {
 };
 const mapStateToProps = state => ({
   getClientsList: state.newClientsReducer.getClientsList,
-  mobileToggleState: state.navReducer.mobileToggleState
+  mobileToggleState: state.NavReducer.mobileToggleState
 });
 export default connect(mapStateToProps, {
   getClients,

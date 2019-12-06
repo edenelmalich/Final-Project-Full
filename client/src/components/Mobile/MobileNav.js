@@ -236,12 +236,12 @@ MobileNav.propTypes = {
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user,
-  notificationsToggleState: state.navReducer.notificationsToggleState,
-  mobileToggleState: state.navReducer.mobileToggleState,
+  notificationsToggleState: state.NavReducer.notificationsToggleState,
+  mobileToggleState: state.NavReducer.mobileToggleState,
   loading: state.authReducer.loading,
   isAuth: state.authReducer.isAuth,
-  MenuState: state.navReducer.MenuState,
-  Account_Mobile: state.navReducer.Account_Mobile
+  MenuState: state.NavReducer.MenuState,
+  Account_Mobile: state.NavReducer.Account_Mobile
 });
 export default connect(mapStateToProps, {
   Logout,

@@ -34,6 +34,6 @@ Account.propTypes = {
   accountToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  accountToggleState: state.navReducer.accountToggleState
+  accountToggleState: state.NavReducer.accountToggleState
 });
 export default connect(mapStateToProps, { Logout })(Account);

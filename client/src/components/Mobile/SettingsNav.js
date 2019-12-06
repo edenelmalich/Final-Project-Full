@@ -55,6 +55,6 @@ SettingsNav.propTypes = {
   settingToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  settingToggleState: state.navReducer.settingToggleState
+  settingToggleState: state.NavReducer.settingToggleState
 });
 export default connect(mapStateToProps, { Logout, navSetting })(SettingsNav);

@@ -132,8 +132,8 @@ Navbar.propTypes = {
   accountToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  notificationsToggleState: state.navReducer.notificationsToggleState,
-  accountToggleState: state.navReducer.accountToggleState,
+  notificationsToggleState: state.NavReducer.notificationsToggleState,
+  accountToggleState: state.NavReducer.accountToggleState,
   user: state.authReducer.user
 });
 

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import navReducer from './navReducer';
+import NavReducer from './NavReducer';
 import alertReducer from './alertReducer';
 import authReducer from './authReducer';
 import updateReducer from './updateReducer';
@@ -13,7 +13,7 @@ export default combineReducers({
   authReducer,
   updateReducer,
   newClientsReducer,
-  navReducer,
+  NavReducer,
   CalcReducer,
   ExePlanReducer,
   BuildReducer
