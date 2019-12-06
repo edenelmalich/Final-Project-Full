@@ -99,6 +99,10 @@ h4 {
 
 /*The Attributes of the box inside pages: Customers,Nclients,HealthP*/
 
+.table-bordered td,
+.table-bordered th {
+  text-align: center;
+}
 
 .TableText {
   font-size: 20px;
@@ -200,4 +204,41 @@ h4 {
   overflow: auto;
   right: 0;
   padding-right: 45px;
+}
+
+/* AllClients modal attributes */
+.modal-backdrop.show {
+  opacity: .1;
+}
+
+.modal-body {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem 27% 1rem 27%;
+}
+
+
+.modal {
+  right: 10%;
+}
+
+.modal-Header {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+.Clients-modal-att {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clientsDetails {
+  font-size: 18px;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  font-weight: 600;
 }

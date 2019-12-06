@@ -1,60 +1,61 @@
 import {
-  ACCOUNT,
-  NOTIFICATIONS,
+  SET_ACCOUNT_TOGGLE,
+  SET_NOTIFICATIONS_TOGGLE,
   CLOSE,
-  NAV_MOBILE,
-  NAV_SETTING,
+  SET_NAV_MOBILE_TOGGLE,
+  SET_NAV_SETTING_TOGGLE,
   SET_ACCOUNT_MOBILE
 } from '../actions/typesActions';
 const initialState = {
-  AccountSelected: false,
-  NotificationsSelected: false,
-  MobileNav: false,
-  SettingState: false,
+  accountToggleState: false,
+  notificationsToggleState: false,
+  mobileToggleState: false,
+  settingToggleState: false,
   Account_Mobile: false,
   MenuState: true
 };
 
-const NavReducer = (state = initialState, action) => {
+const navReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case ACCOUNT:
+    case SET_ACCOUNT_TOGGLE:
       return {
         ...state,
-        AccountSelected: !payload,
-        NotificationsSelected: false
+        accountToggleState: !payload,
+        notificationsToggleState: false
       };
-    case NOTIFICATIONS:
+    case SET_NOTIFICATIONS_TOGGLE:
       return {
         ...state,
-        MobileNav: false,
-        AccountSelected: false,
-        NotificationsSelected: !payload
+        mobileToggleState: false,
+        accountToggleState: false,
+        settingToggleState: false,
+        notificationsToggleState: !payload
       };
-    case NAV_MOBILE:
+    case SET_NAV_MOBILE_TOGGLE:
       return {
         ...state,
-        MobileNav: !payload,
-        NotificationsSelected: false,
+        mobileToggleState: !payload,
+        notificationsToggleState: false,
         Account_Mobile: false,
         MenuState: true
       };
-    case NAV_SETTING:
+    case SET_NAV_SETTING_TOGGLE:
       return {
         ...state,
-        SettingState: !payload,
-        NotificationsSelected: false
+        settingToggleState: !payload,
+        notificationsToggleState: false
       };
     case SET_ACCOUNT_MOBILE:
       return { ...state, Account_Mobile: !payload, MenuState: payload };
     case CLOSE:
       return {
         ...state,
-        AccountSelected: false,
-        NotificationsSelected: false
+        accountToggleState: false,
+        notificationsToggleState: false
       };
     default:
       return state;
   }
 };
-export default NavReducer;
+export default navReducer;

@@ -1,39 +1,39 @@
 import {
-  ACCOUNT,
-  NOTIFICATIONS,
+  SET_ACCOUNT_TOGGLE,
+  SET_NOTIFICATIONS_TOGGLE,
   CLOSE,
-  NAV_SETTING,
-  NAV_MOBILE,
+  SET_NAV_SETTING_TOGGLE,
+  SET_NAV_MOBILE_TOGGLE,
   SET_ACCOUNT_MOBILE
 } from './typesActions';
-export const SetAccount = AccountState => dispatch => {
+export const setAccountToggle = AccountState => dispatch => {
   dispatch({
-    type: ACCOUNT,
+    type: SET_ACCOUNT_TOGGLE,
     payload: AccountState
   });
 };
-export const SetNotification = NotificationState => dispatch => {
+export const setNotificationToggle = NotificationState => dispatch => {
   dispatch({
-    type: NOTIFICATIONS,
+    type: SET_NOTIFICATIONS_TOGGLE,
     payload: NotificationState
   });
 };
-export const SetNav = NavState => dispatch => {
+export const setNavMobileToggle = NavState => dispatch => {
   dispatch({
-    type: NAV_MOBILE,
+    type: SET_NAV_MOBILE_TOGGLE,
     payload: NavState
   });
 };
-export const AccountSettings = ToggleAccount => dispatch => {
+export const accountSettings = ToggleAccount => dispatch => {
   dispatch({
     type: SET_ACCOUNT_MOBILE,
     payload: ToggleAccount
   });
 };
-export const navSetting = SettingState => dispatch => {
+export const navSetting = settingState => dispatch => {
   dispatch({
-    type: NAV_SETTING,
-    payload: SettingState
+    type: SET_NAV_SETTING_TOGGLE,
+    payload: settingState
   });
 };
 export const closeAll = () => dispatch => {

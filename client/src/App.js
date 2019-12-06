@@ -28,14 +28,14 @@ import ChangeEmail from './components/Settings/ChangeEmail';
 import setAuthToken from './utils/setAuthToken';
 import { Provider } from 'react-redux';
 import store from './store';
-import { CheckUser } from './actions/authAction';
+import { checkUser } from './actions/authAction';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 const App = () => {
   useEffect(() => {
-    store.dispatch(CheckUser());
+    store.dispatch(checkUser());
   }, []);
   // useState
 

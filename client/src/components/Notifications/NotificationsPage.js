@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
-import './NotiCss.css';
+import './Notifications.css';
 import PropTypes from 'prop-types';
 import AppFooter from '../AppFooter';
 // Mobile imports
@@ -11,7 +11,7 @@ import MediaQuery from 'react-responsive';
 
 // Redux
 import { connect } from 'react-redux';
-import { closeAll } from '../../actions/NavAction';
+import { closeAll } from '../../actions/navAction';
 const NotificationsPage = ({ closeAll }) => {
   useEffect(() => {
     closeAll();

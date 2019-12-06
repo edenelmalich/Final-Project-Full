@@ -27,7 +27,7 @@ const Register = ({ setAlert, register, isAuth }) => {
   });
 
   const { Name, Email, Password, RePassword } = Data;
-  const [typeState, SetType] = useState(false);
+  const [typeState, setType] = useState(false);
   // Functions
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
   const onSubmit = e => {
@@ -54,7 +54,7 @@ const Register = ({ setAlert, register, isAuth }) => {
           Name={Name}
           Email={Email}
           RePassword={RePassword}
-          SetType={SetType}
+          setType={setType}
           typeState={typeState}
         />
       </MediaQuery>
@@ -117,7 +117,7 @@ const Register = ({ setAlert, register, isAuth }) => {
                     <label>הצג סיסמאות</label>
                     <input
                       type='checkbox'
-                      onClick={() => SetType(!typeState)}
+                      onClick={() => setType(!typeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -153,7 +153,7 @@ const MobileRegister = ({
   Email,
   RePassword,
   typeState,
-  SetType
+  setType
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -199,7 +199,7 @@ const MobileRegister = ({
               placeholder='אימות סיסמה'
             />
             <label>הצג סיסמאות</label>
-            <input type='checkbox' onClick={() => SetType(!typeState)} />
+            <input type='checkbox' onClick={() => setType(!typeState)} />
             <div className='Main-Padding'></div>
             <Alert />
             <input type='submit' name='register' value='הרשמה' />

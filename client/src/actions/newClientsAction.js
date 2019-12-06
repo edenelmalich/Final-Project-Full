@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { SET_CLIENTS } from './typesActions';
+import { SET_CLIENTS_LIST } from './typesActions';
 import { setAlert } from './alertAction';
 
-export const Nclient = (
+export const setNewClient = (
   firstname,
   lastname,
   id,
@@ -41,12 +41,12 @@ export const Nclient = (
   }
 };
 
-export const GetClients = () => async dispatch => {
+export const getClients = () => async dispatch => {
   try {
     const res = await axios.get('/api/Nclient');
 
     dispatch({
-      type: SET_CLIENTS,
+      type: SET_CLIENTS_LIST,
       payload: res.data
     });
   } catch (err) {

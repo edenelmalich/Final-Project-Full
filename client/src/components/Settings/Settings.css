@@ -1,6 +1,7 @@
 .Settings-Container {
     padding-right: 215px;
-    padding-top: 100px
+    padding-top: 100px;
+    overflow: auto;
 }
 
 .Settings-Content {
@@ -115,7 +116,8 @@
     text-align: right;
 }
 
-.Form-Settings input[type=password] {
+.Form-Settings input[type=password],
+[type='text'] {
     display: block;
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);

@@ -9,7 +9,7 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { closeAll } from '../../actions/NavAction';
+import { closeAll } from '../../actions/navAction';
 import { closeAlerts } from '../../actions/alertAction';
 
 const HealthP = ({ closeAll, closeAlerts }) => {

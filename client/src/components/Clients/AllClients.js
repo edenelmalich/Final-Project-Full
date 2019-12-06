@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 // Components imports
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
+import ClientsModal from './ClientsModal';
+// Css imports
+import '../../css/CssFont.css';
+// Fontawesome imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye as FarEye } from '@fortawesome/free-regular-svg-icons';
 // Bootstrap imports
 import { Table, Card } from 'react-bootstrap';
 // import moment to get the days
@@ -13,21 +19,34 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { GetClients } from '../../actions/NclientAction';
-import { closeAll } from '../../actions/NavAction';
+import { getClients } from '../../actions/newClientsAction';
+import { closeAll } from '../../actions/navAction';
 import { closeAlerts } from '../../actions/alertAction';
 
-const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
+const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {
+  // ComponentWillMount
   useEffect(() => {
     closeAlerts();
-    GetClients();
+    getClients();
     closeAll();
   }, []);
-
+  // useState
+  const [modalToggle, setModalToggle] = useState(false);
+  const [clientData, setClientData] = useState();
+  const getId = id => {
+    setClientData(id);
+    setModalToggle(!modalToggle);
+  };
   return (
     <div className='Clients'>
       <MediaQuery maxDeviceWidth={1000}>
-        <MobileClients clientsList={clientsList} />
+        <MobileClients
+          getClientsList={getClientsList}
+          getId={getId}
+          clientData={clientData}
+          setModalToggle={setModalToggle}
+          modalToggle={modalToggle}
+        />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -45,6 +64,7 @@ const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
                         <Table id='NewClients' striped bordered hover size='sm'>
                           <thead>
                             <tr>
+                              <th>הצג לקוח</th>
                               <th>שם פרטי</th>
                               <th>שם משפחה</th>
                               <th>תעודת זהות</th>
@@ -57,8 +77,20 @@ const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
                             </tr>
                           </thead>
                           <tbody>
-                            {clientsList.map(client => (
+                            {getClientsList.map(client => (
                               <tr key={client.id}>
+                                <td>
+                                  <FontAwesomeIcon
+                                    icon={FarEye}
+                                    onClick={() => getId(client.id)}
+                                  />
+                                  <ClientsModal
+                                    show={modalToggle}
+                                    onHide={() => setModalToggle(false)}
+                                    getclientslist={getClientsList}
+                                    clientdata={clientData}
+                                  />
+                                </td>
                                 <td>{client.firstname}</td>
                                 <td>{client.lastname}</td>
                                 <td>{client.id}</td>
@@ -87,7 +119,13 @@ const AllClients = ({ GetClients, clientsList, closeAll, closeAlerts }) => {
     </div>
   );
 };
-const MobileClients = ({ clientsList }) => (
+const MobileClients = ({
+  getClientsList,
+  getId,
+  modalToggle,
+  setModalToggle,
+  clientData
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>לקוחות</h2>
@@ -98,6 +136,7 @@ const MobileClients = ({ clientsList }) => (
             <Table striped bordered hover size='sm'>
               <thead>
                 <tr>
+                  <th>הצג לקוח</th>
                   <th>שם פרטי</th>
                   <th>שם משפחה</th>
                   <th>תעודת זהות</th>
@@ -110,8 +149,20 @@ const MobileClients = ({ clientsList }) => (
                 </tr>
               </thead>
               <tbody>
-                {clientsList.map(client => (
+                {getClientsList.map(client => (
                   <tr key={client.id}>
+                    <td>
+                      <FontAwesomeIcon
+                        icon={FarEye}
+                        onClick={() => getId(client.id)}
+                      />
+                      <ClientsModal
+                        show={modalToggle}
+                        onHide={() => setModalToggle(false)}
+                        getclientslist={getClientsList}
+                        clientdata={clientData}
+                      />
+                    </td>
                     <td>{client.firstname}</td>
                     <td>{client.lastname}</td>
                     <td>{client.id}</td>
@@ -133,14 +184,14 @@ const MobileClients = ({ clientsList }) => (
   </div>
 );
 AllClients.propTypes = {
-  clientsList: PropTypes.array,
-  GetClients: PropTypes.func,
+  getClientsList: PropTypes.array,
+  getClients: PropTypes.func,
   closeAll: PropTypes.func,
   closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
-  clientsList: state.NclientReducer.clientsList
+  getClientsList: state.newClientsReducer.getClientsList
 });
-export default connect(mapStateToProps, { GetClients, closeAll, closeAlerts })(
+export default connect(mapStateToProps, { getClients, closeAll, closeAlerts })(
   AllClients
 );

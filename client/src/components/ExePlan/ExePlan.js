@@ -15,10 +15,10 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { closeAll } from '../../actions/NavAction';
+import { closeAll } from '../../actions/navAction';
 import { closeAlerts } from '../../actions/alertAction';
-import { SetDays } from '../../actions/ExePlanAction';
-const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
+import { setDays } from '../../actions/exercisesAction';
+const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAll();
@@ -26,7 +26,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
   }, []);
   // ExePlan Functions
   const saveDay = dayName => {
-    SetDays(dayName);
+    setDays(dayName);
     localStorage.setItem('days', JSON.stringify(dayName));
   };
   return (
@@ -61,7 +61,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                   <div className='ExeDays'>
                     <Link
                       onClick={() => saveDay('יום ראשון')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='SundayDesign'
                     >
@@ -69,7 +69,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שני')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='MondayDesign'
                     >
@@ -77,7 +77,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שלישי')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='TuesdayDesign'
                     >
@@ -85,7 +85,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום רביעי')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='WednesdayDesign'
                     >
@@ -93,7 +93,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום חמישי')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='ThursdayDesign'
                     >
@@ -101,7 +101,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שישי')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='FridayDesign'
                     >
@@ -109,7 +109,7 @@ const ExePlan = ({ closeAll, closeAlerts, SetDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שבת')}
-                      to='/BuildPlan'
+                      to='/buildPlan'
                       className='ExeBoxs'
                       id='SaturdayDesign'
                     >
@@ -150,7 +150,7 @@ const MobilePlan = ({ saveDay }) => (
         <div className='ExeDays'>
           <Link
             onClick={() => saveDay('יום ראשון')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='SundayDesign'
           >
@@ -158,7 +158,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שני')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='MondayDesign'
           >
@@ -166,7 +166,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שלישי')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='TuesdayDesign'
           >
@@ -174,7 +174,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום רביעי')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='WednesdayDesign'
           >
@@ -182,7 +182,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום חמישי')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='ThursdayDesign'
           >
@@ -190,7 +190,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שישי')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='FridayDesign'
           >
@@ -198,7 +198,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שבת')}
-            to='/BuildPlan'
+            to='/buildPlan'
             className='ExeBoxs'
             id='SaturdayDesign'
           >
@@ -218,6 +218,6 @@ const MobilePlan = ({ saveDay }) => (
 ExePlan.propTypes = {
   closeAll: PropTypes.func,
   closeAlerts: PropTypes.func,
-  SetDays: PropTypes.func
+  setDays: PropTypes.func
 };
-export default connect(null, { closeAll, closeAlerts, SetDays })(ExePlan);
+export default connect(null, { closeAll, closeAlerts, setDays })(ExePlan);

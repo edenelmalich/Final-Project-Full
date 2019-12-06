@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import React, { Fragment } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Collapse } from 'reactstrap';
 import logo from '../../img/logo.png';
 import { Link } from 'react-router-dom';
@@ -26,44 +26,75 @@ import {
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { SetNotification, SetNav } from '../../actions/NavAction';
-import { AccountSettings } from '../../actions/NavAction';
+import {
+  setNotificationToggle,
+  setNavMobileToggle
+} from '../../actions/navAction';
+import { accountSettings } from '../../actions/navAction';
 
 const MobileNav = ({
   user,
   Logout,
-  SetNotification,
-  NotificationsSelected,
-  SetNav,
-  MobileNav,
+  setNotificationToggle,
+  notificationsToggleState,
+  setNavMobileToggle,
+  mobileToggleState,
   loading,
   isAuth,
   MenuState,
   Account_Mobile,
-  AccountSettings
+  accountSettings
 }) => {
   // Auth links
   const AuthLinks = () => (
     <Fragment>
-      <Link to='/Dashboard' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/Dashboard'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faTachometerAlt} /> לוח בקרה
       </Link>
-      <Link to='/Nclients' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/Nclients'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faAddressCard} /> לקוח חדש
       </Link>
-      <Link to='/HealthP' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/HealthP'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faFileAlt} /> הצהרת בריאות
       </Link>
-      <Link to='/AllClients' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/AllClients'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faUsers} /> לקוחות
       </Link>
-      <Link to='/Statistics' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/Statistics'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faChartBar} /> סטטיסטיקת מתאמנים
       </Link>
-      <Link to='/ExePlan' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/ExePlan'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faTasks} /> תוכניות אימונים
       </Link>
-      <Link to='/Updates' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/Updates'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faEdit} /> עדכונים
       </Link>
     </Fragment>
@@ -71,13 +102,25 @@ const MobileNav = ({
   // Guest Links
   const GuestLinks = () => (
     <Fragment>
-      <Link to='/loginApp' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/loginApp'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={FasUser} /> התחברות
       </Link>
-      <Link to='/registerApp' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/registerApp'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={FasAddressCard} /> הרשמה
       </Link>
-      <Link to='/forgotPass' id='a-Padding' onClick={() => SetNav(MobileNav)}>
+      <Link
+        to='/forgotPass'
+        id='a-Padding'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+      >
         <FontAwesomeIcon icon={faUnlockAlt} /> איפוס סיסמה
       </Link>
     </Fragment>
@@ -87,15 +130,23 @@ const MobileNav = ({
     <Fragment>
       <Link
         to='/PersonalDetails'
-        onClick={() => SetNav(MobileNav)}
+        onClick={() => setNavMobileToggle(mobileToggleState)}
         id='a-Padding'
       >
         פרטים אישיים
       </Link>
-      <Link to='/ChangePass' onClick={() => SetNav(MobileNav)} id='a-Padding'>
+      <Link
+        to='/ChangePass'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+        id='a-Padding'
+      >
         שינוי סיסמה
       </Link>
-      <Link to='/ChangeEmail' onClick={() => SetNav(MobileNav)} id='a-Padding'>
+      <Link
+        to='/ChangeEmail'
+        onClick={() => setNavMobileToggle(mobileToggleState)}
+        id='a-Padding'
+      >
         שינוי דואר אלקטרוני
       </Link>
       <Link to='/' onClick={() => logout()} id='a-Padding'>
@@ -106,7 +157,7 @@ const MobileNav = ({
   // Functions
   const logout = () => {
     Logout();
-    SetNav(MobileNav);
+    setNavMobileToggle(mobileToggleState);
   };
 
   const { Name } = user;
@@ -129,7 +180,7 @@ const MobileNav = ({
             <span className='Notifications-position'>
               <div className='Quantity-Mobile'>0</div>
               <button
-                onClick={() => SetNotification(NotificationsSelected)}
+                onClick={() => setNotificationToggle(notificationsToggleState)}
                 className='Notifications-mobile'
               >
                 <FontAwesomeIcon icon={faBell} />
@@ -140,15 +191,15 @@ const MobileNav = ({
         ) : null}
         <Navbar.Toggle
           aria-controls='basic-navbar-nav'
-          onClick={() => SetNav(MobileNav)}
+          onClick={() => setNavMobileToggle(mobileToggleState)}
         />
-        <Navbar.Collapse in={MobileNav} id='basic-navbar-nav'>
+        <Navbar.Collapse in={mobileToggleState} id='basic-navbar-nav'>
           <Nav className='mr-auto'>
             {!loading && isAuth ? (
               <span>
                 <span className='Nav-account-name '>שלום {Name}</span>
                 <FontAwesomeIcon
-                  onClick={() => AccountSettings(Account_Mobile)}
+                  onClick={() => accountSettings(Account_Mobile)}
                   icon={faAngleDown}
                 />
                 <Collapse isOpen={Account_Mobile}>
@@ -174,27 +225,27 @@ const MobileNav = ({
 MobileNav.propTypes = {
   user: PropTypes.object,
   Logout: PropTypes.func.isRequired,
-  SetNotification: PropTypes.func,
-  NotificationsSelected: PropTypes.bool,
+  setNotificationToggle: PropTypes.func,
+  notificationsToggleState: PropTypes.bool,
   MobileNav: PropTypes.bool,
   loading: PropTypes.bool,
   isAuth: PropTypes.bool,
   MenuState: PropTypes.bool,
   Account_Mobile: PropTypes.bool,
-  AccountSettings: PropTypes.func
+  accountSettings: PropTypes.func
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user,
-  NotificationsSelected: state.NavReducer.NotificationsSelected,
-  MobileNav: state.NavReducer.MobileNav,
+  notificationsToggleState: state.navReducer.notificationsToggleState,
+  mobileToggleState: state.navReducer.mobileToggleState,
   loading: state.authReducer.loading,
   isAuth: state.authReducer.isAuth,
-  MenuState: state.NavReducer.MenuState,
-  Account_Mobile: state.NavReducer.Account_Mobile
+  MenuState: state.navReducer.MenuState,
+  Account_Mobile: state.navReducer.Account_Mobile
 });
 export default connect(mapStateToProps, {
   Logout,
-  SetNotification,
-  SetNav,
-  AccountSettings
+  setNotificationToggle,
+  setNavMobileToggle,
+  accountSettings
 })(MobileNav);

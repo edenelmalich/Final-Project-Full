@@ -9,9 +9,9 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { navSetting } from '../../actions/NavAction';
+import { navSetting } from '../../actions/navAction';
 
-const SettingsNav = ({ Logout, navSetting, SettingState }) => {
+const SettingsNav = ({ Logout, navSetting, settingToggleState }) => {
   // useState
   return (
     <div className='Mobile-Settings'>
@@ -19,18 +19,27 @@ const SettingsNav = ({ Logout, navSetting, SettingState }) => {
         הגדרות
         <FontAwesomeIcon
           icon={faCog}
-          onClick={() => navSetting(SettingState)}
+          onClick={() => navSetting(settingToggleState)}
         />
       </div>
       <div className='Main-Padding'></div>
-      <Collapse isOpen={SettingState}>
-        <NavLink to='/PersonalDetails' onClick={() => navSetting(SettingState)}>
+      <Collapse isOpen={settingToggleState}>
+        <NavLink
+          to='/PersonalDetails'
+          onClick={() => navSetting(settingToggleState)}
+        >
           פרטים אישיים
         </NavLink>
-        <NavLink to='/changePass' onClick={() => navSetting(SettingState)}>
+        <NavLink
+          to='/ChangePass'
+          onClick={() => navSetting(settingToggleState)}
+        >
           שינוי סיסמה
         </NavLink>
-        <NavLink to='/ChangeEmail' onClick={() => navSetting(SettingState)}>
+        <NavLink
+          to='/ChangeEmail'
+          onClick={() => navSetting(settingToggleState)}
+        >
           שינוי דואר אלקטרוני
         </NavLink>
         <Link to='/' onClick={() => Logout()}>
@@ -43,9 +52,9 @@ const SettingsNav = ({ Logout, navSetting, SettingState }) => {
 };
 SettingsNav.propTypes = {
   Logout: PropTypes.func.isRequired,
-  SettingState: PropTypes.bool
+  settingToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  SettingState: state.NavReducer.SettingState
+  settingToggleState: state.navReducer.settingToggleState
 });
 export default connect(mapStateToProps, { Logout, navSetting })(SettingsNav);

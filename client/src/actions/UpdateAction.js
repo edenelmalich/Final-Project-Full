@@ -2,7 +2,7 @@ import axios from 'axios';
 import { UPDATE_SUCCESS, UPDATE_FAIL } from './typesActions';
 import { setAlert } from './alertAction';
 
-export const update = (firstname, lastname, update) => async dispatch => {
+export const setUpdate = (firstname, lastname, update) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'

@@ -15,8 +15,8 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alertAction';
-import { ResetPassword } from '../../actions/authAction';
-const ForgotPass = ({ setAlert, ResetPassword }) => {
+import { resetPassword } from '../../actions/authAction';
+const ForgotPass = ({ setAlert, resetPassword }) => {
   // useState
   const [Data, SetData] = useState({
     Email: '',
@@ -24,14 +24,14 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
     RePassword: ''
   });
   const { Email, Password, RePassword } = Data;
-  const [TypeState, SetType] = useState(false);
+  const [typeState, setType] = useState(false);
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
   const onSubmit = e => {
     e.preventDefault();
     if (Password !== RePassword) {
       setAlert('סיסמאות לא תואמות', 'danger');
     } else {
-      ResetPassword(Password, Email);
+      resetPassword(Password, Email);
     }
     RestForm();
   };
@@ -47,8 +47,8 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
           onChange={onChange}
           Password={Password}
           RePassword={RePassword}
-          SetType={SetType}
-          TypeState={TypeState}
+          setType={setType}
+          typeState={typeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -79,7 +79,7 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
                     />
                     <label> סיסמה</label>
                     <input
-                      type={TypeState ? 'text' : 'password'}
+                      type={typeState ? 'text' : 'password'}
                       name='Password'
                       value={Password}
                       onChange={e => onChange(e)}
@@ -87,7 +87,7 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
                     />
                     <label>אימות סיסמה</label>
                     <input
-                      type={TypeState ? 'text' : 'password'}
+                      type={typeState ? 'text' : 'password'}
                       name='RePassword'
                       value={RePassword}
                       onChange={e => onChange(e)}
@@ -96,7 +96,7 @@ const ForgotPass = ({ setAlert, ResetPassword }) => {
                     <label>הצג סיסמאות</label>
                     <input
                       type='checkbox'
-                      onClick={() => SetType(!TypeState)}
+                      onClick={() => setType(!typeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -135,8 +135,8 @@ const MobileForgotPass = ({
   Password,
   RePassword,
   onChange,
-  SetType,
-  TypeState
+  setType,
+  typeState
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -162,7 +162,7 @@ const MobileForgotPass = ({
                 />
                 <label> סיסמה</label>
                 <input
-                  type={TypeState ? 'text' : 'password'}
+                  type={typeState ? 'text' : 'password'}
                   name='Password'
                   value={Password}
                   onChange={e => onChange(e)}
@@ -170,14 +170,14 @@ const MobileForgotPass = ({
                 />
                 <label>אימות סיסמה</label>
                 <input
-                  type={TypeState ? 'text' : 'password'}
+                  type={typeState ? 'text' : 'password'}
                   name='RePassword'
                   value={RePassword}
                   onChange={e => onChange(e)}
                   placeholder='אימות סיסמא'
                 />
                 <label>הצג סיסמאות</label>
-                <input type='checkbox' onClick={() => SetType(!TypeState)} />
+                <input type='checkbox' onClick={() => setType(!typeState)} />
                 <div className='Main-Padding'></div>
                 <Alert />
                 <input
@@ -209,6 +209,6 @@ const MobileForgotPass = ({
 );
 ForgotPass.propTypes = {
   setAlert: PropTypes.func,
-  ResetPassword: PropTypes.func
+  resetPassword: PropTypes.func
 };
-export default connect(null, { setAlert, ResetPassword })(ForgotPass);
+export default connect(null, { setAlert, resetPassword })(ForgotPass);

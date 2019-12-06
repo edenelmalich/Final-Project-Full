@@ -8,9 +8,9 @@ import { Collapse } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
 
-const Account = ({ Logout, AccountSelected }) => {
+const Account = ({ Logout, accountToggleState }) => {
   return (
-    <Collapse in={AccountSelected}>
+    <Collapse in={accountToggleState}>
       <div className='AccBox'>
         <div className='Settings-Title'>הגדרות</div>
         <Link to='/PersonalDetails' className='Settings-item'>
@@ -31,9 +31,9 @@ const Account = ({ Logout, AccountSelected }) => {
 };
 Account.propTypes = {
   Logout: PropTypes.func.isRequired,
-  AccountSelected: PropTypes.bool
+  accountToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  AccountSelected: state.NavReducer.AccountSelected
+  accountToggleState: state.navReducer.accountToggleState
 });
 export default connect(mapStateToProps, { Logout })(Account);

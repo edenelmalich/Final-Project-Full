@@ -26,16 +26,18 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 // Redux
 import { connect } from 'react-redux';
-import { SetNotification, SetAccount } from '../../actions/NavAction';
-import { closeAll } from '../../actions/NavAction';
+import {
+  setNotificationToggle,
+  setAccountToggle
+} from '../../actions/navAction';
+import { closeAll } from '../../actions/navAction';
 
 const Navbar = ({
-  NotificationsSelected,
-  AccountSelected,
+  notificationsToggleState,
+  accountToggleState,
   user,
-  SetAccount,
-  SetNotification,
-  closeAll
+  setAccountToggle,
+  setNotificationToggle
 }) => {
   const { Name } = user;
   return (
@@ -97,7 +99,7 @@ const Navbar = ({
         <header className='header-desktop'>
           <span>
             <button
-              onClick={() => SetNotification(NotificationsSelected)}
+              onClick={() => setNotificationToggle(notificationsToggleState)}
               className='Notifications'
             >
               <FontAwesomeIcon icon={faBell} />
@@ -107,7 +109,7 @@ const Navbar = ({
           <span className='Accname'> שלום {Name}</span>
 
           <button
-            onClick={() => SetAccount(AccountSelected)}
+            onClick={() => setAccountToggle(accountToggleState)}
             className='icon-acc'
           >
             <FontAwesomeIcon icon={faAngleDown} />
@@ -124,20 +126,18 @@ const Navbar = ({
 
 Navbar.propTypes = {
   user: PropTypes.object,
-  SetNotification: PropTypes.func,
-  setAccount: PropTypes.func,
-  NotificationsSelected: PropTypes.bool,
-  AccountSelected: PropTypes.bool,
-  closeAll: PropTypes.func
+  setNotificationToggle: PropTypes.func,
+  setAccountToggle: PropTypes.func,
+  notificationsToggleState: PropTypes.bool,
+  accountToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  NotificationsSelected: state.NavReducer.NotificationsSelected,
-  AccountSelected: state.NavReducer.AccountSelected,
+  notificationsToggleState: state.navReducer.notificationsToggleState,
+  accountToggleState: state.navReducer.accountToggleState,
   user: state.authReducer.user
 });
 
 export default connect(mapStateToProps, {
-  SetNotification,
-  SetAccount,
-  closeAll
+  setNotificationToggle,
+  setAccountToggle
 })(Navbar);

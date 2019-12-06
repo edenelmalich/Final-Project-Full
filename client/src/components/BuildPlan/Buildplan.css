@@ -252,7 +252,7 @@
     display: unset;
 }
 
-/* BuildPlan modal */
+/* buildPlan modal */
 .modal-title {
     font-weight: 600;
 }
@@ -291,5 +291,13 @@
 
     button:not(:disabled) {
         outline: none;
+    }
+
+    .modal {
+        right: unset;
+    }
+
+    .modal-body {
+        padding: 1rem 0.5rem 1rem 0.5rem;
     }
 }

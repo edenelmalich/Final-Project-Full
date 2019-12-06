@@ -639,7 +639,7 @@ body {
   text-align: center;
 }
 
-/* BuildPlan mobile page attributes */
+/* buildPlan mobile page attributes */
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle {

@@ -28,7 +28,7 @@ const LoginApp = ({ isAuth, login }) => {
     Password: ''
   });
   const { Email, Password } = Data;
-  const [TypeState, SetType] = useState(false);
+  const [typeState, setType] = useState(false);
   const onChange = e => SetData({ ...Data, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
@@ -48,8 +48,8 @@ const LoginApp = ({ isAuth, login }) => {
           Password={Password}
           onSubmit={onSubmit}
           onChange={onChange}
-          SetType={SetType}
-          TypeState={TypeState}
+          setType={setType}
+          typeState={typeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -82,7 +82,7 @@ const LoginApp = ({ isAuth, login }) => {
                     />
                     <label> סיסמה</label>
                     <input
-                      type={TypeState ? 'text' : 'password'}
+                      type={typeState ? 'text' : 'password'}
                       name='Password'
                       value={Password}
                       onChange={e => onChange(e)}
@@ -91,7 +91,7 @@ const LoginApp = ({ isAuth, login }) => {
                     <label> הצג סיסמה</label>
                     <input
                       type='checkbox'
-                      onClick={() => SetType(!TypeState)}
+                      onClick={() => setType(!typeState)}
                     />
                     <div className='Alert'>
                       <Alert />
@@ -127,8 +127,8 @@ const MobileLogin = ({
   Password,
   onSubmit,
   onChange,
-  SetType,
-  TypeState
+  setType,
+  typeState
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -150,14 +150,14 @@ const MobileLogin = ({
             />
             <label> סיסמה</label>
             <input
-              type={TypeState ? 'text' : 'password'}
+              type={typeState ? 'text' : 'password'}
               name='Password'
               value={Password}
               onChange={e => onChange(e)}
               placeholder='סיסמה'
             />
             <label> הצג סיסמה</label>
-            <input type='checkbox' onClick={() => SetType(!TypeState)} />
+            <input type='checkbox' onClick={() => setType(!typeState)} />
             <div className='Main-Padding'></div>
             <Alert />
             <input type='submit' name='Password' value='התחברות' />

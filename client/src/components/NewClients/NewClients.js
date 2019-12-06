@@ -1,35 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+// Components imports
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
-import './NewClients.css';
-import PropTypes from 'prop-types';
 import Alert from '../layout/Alert';
+// Css imports
+import './NewClients.css';
 // Mobile imports
 import '../../css/Mobile.css';
 import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { Nclient } from '../../actions/NclientAction';
-import { CalcTotal } from '../../actions/CalcAction';
-import { closeAll } from '../../actions/NavAction';
+import { setNewClient } from '../../actions/newClientsAction';
+import { calcTotal } from '../../actions/calcAction';
+import { closeAll } from '../../actions/navAction';
 import { closeAlerts } from '../../actions/alertAction';
 
-const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
+const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
   useEffect(() => {
     closeAll();
     closeAlerts();
   }, []);
   // useState
-  const [TypeData, setType] = useState([
+  const [typeData, setType] = useState([
     { label: 'רגיל', id: 1, value: 200, selected: false },
     { label: 'סטודנט', id: 2, value: 150, selected: false }
   ]);
-  const [PaymentData, setPayment] = useState([
+  const [paymentData, setPayment] = useState([
     { label: 'אשראי', id: 1, value: 'אשראי', selected: false },
     { label: 'מזומן', id: 2, value: 'מזומן', selected: false }
   ]);
-  const [TimeData, setTime] = useState([
+  const [timeData, setTime] = useState([
     {
       label: 'חודש',
       value: 1,
@@ -49,53 +51,53 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
       selected: false
     }
   ]);
-  const [TypeName, setTypeName] = useState({});
-  const [TimeName, setTimeName] = useState({});
-  const [CalculationData, SetCalculation] = useState(0);
-  const [CalcType, SetCalcType] = useState({});
-  const [CalcTime, SetCalcTime] = useState({});
-  const [CalcPayment, setCalcPayment] = useState({});
-  const [FormData, SetFormData] = useState({
+  const [typeName, setTypeName] = useState({});
+  const [timeName, setTimeName] = useState({});
+  const [calculationData, setCalculation] = useState(0);
+  const [calcType, setCalcType] = useState({});
+  const [calcTime, setCalcTime] = useState({});
+  const [calcPayment, setCalcPayment] = useState({});
+  const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     id: '',
     Phone: ''
   });
 
-  const { firstname, lastname, id, Phone } = FormData;
+  const { firstname, lastname, id, Phone } = formData;
   // Functions
   const SetData = e =>
-    SetFormData({ ...FormData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   const onChange = (e, id) => {
-    if (e.target.value === 'TypeData') {
+    if (e.target.value === 'typeData') {
       setType(
-        TypeData.map(type => {
+        typeData.map(type => {
           if (type.id === id && type.selected === false) {
-            SetCalcType({ CalcType: type.value });
-            setTypeName({ TypeName: type.label });
+            setCalcType({ calcType: type.value });
+            setTypeName({ typeName: type.label });
             return { ...type, selected: true };
           }
           return { ...type, selected: false };
         })
       );
     }
-    if (e.target.value === 'TimeData') {
+    if (e.target.value === 'timeData') {
       setTime(
-        TimeData.map(time => {
+        timeData.map(time => {
           if (time.id === id && time.selected === false) {
-            SetCalcTime({ CalcTime: time.value });
-            setTimeName({ TimeName: time.label });
+            setCalcTime({ calcTime: time.value });
+            setTimeName({ timeName: time.label });
             return { ...time, selected: true };
           }
           return { ...time, selected: false };
         })
       );
     }
-    if (e.target.value === 'PaymentData') {
+    if (e.target.value === 'paymentData') {
       setPayment(
-        PaymentData.map(payment => {
+        paymentData.map(payment => {
           if (payment.id === id && payment.selected === false) {
-            setCalcPayment({ CalcPayment: payment.value });
+            setCalcPayment({ calcPayment: payment.value });
             return { ...payment, selected: true };
           }
           return { ...payment, selected: false };
@@ -106,18 +108,18 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
   const onSubmit = e => {
     let Total = 0;
     e.preventDefault();
-    if (CalcType.CalcType !== undefined && CalcTime.CalcTime !== undefined) {
-      Total = CalcType.CalcType * CalcTime.CalcTime;
+    if (calcType.calcType !== undefined && calcTime.calcTime !== undefined) {
+      Total = calcType.calcType * calcTime.calcTime;
     }
-    SetCalculation(Total);
-    Nclient(
+    setCalculation(Total);
+    setNewClient(
       firstname,
       lastname,
       id,
       Phone,
-      TypeName.TypeName,
-      TimeName.TimeName,
-      CalcPayment.CalcPayment,
+      typeName.typeName,
+      timeName.timeName,
+      calcPayment.calcPayment,
       Total
     );
     ResetForm();
@@ -125,10 +127,10 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
 
   const ResetForm = () => {
     setTimeout(() => {
-      SetCalculation(0);
+      setCalculation(0);
     }, 2000);
-    SetFormData({
-      ...FormData,
+    setFormData({
+      ...formData,
       firstname: '',
       lastname: '',
       id: '',
@@ -136,21 +138,21 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
     });
     setTimeName('');
     setTypeName('');
-    SetCalcTime('');
-    SetCalcType('');
+    setCalcTime('');
+    setCalcType('');
     setCalcPayment('');
     setType(
-      TypeData.map(type => {
+      typeData.map(type => {
         return { ...type, selected: false };
       })
     );
     setTime(
-      TimeData.map(time => {
+      timeData.map(time => {
         return { ...time, selected: false };
       })
     );
     setPayment(
-      PaymentData.map(payment => {
+      paymentData.map(payment => {
         return { ...payment, selected: false };
       })
     );
@@ -159,11 +161,11 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
     <div className='Nclients'>
       <MediaQuery maxDeviceWidth={1000}>
         <MobileNclient
-          TypeData={TypeData}
+          typeData={typeData}
           onChange={onChange}
-          TimeData={TimeData}
-          PaymentData={PaymentData}
-          CalculationData={CalculationData}
+          timeData={timeData}
+          paymentData={paymentData}
+          calculationData={calculationData}
           SetData={SetData}
           Phone={Phone}
           id={id}
@@ -225,12 +227,12 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
                       <div className='Main-Padding'></div>
                       <div className='Main-Border'></div>
                       <label>סוג המנוי:</label>
-                      {TypeData.map(item => (
+                      {typeData.map(item => (
                         <div className='Radio-Text' key={item.id}>
                           {item.label}
                           <input
                             type='radio'
-                            value={'TypeData'}
+                            value={'typeData'}
                             name='Type'
                             onChange={e => onChange(e, item.id)}
                             checked={item.selected}
@@ -239,13 +241,13 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
                       ))}
                       <div className='Main-Border'></div>
                       <label>תקופת מנוי:</label>
-                      {TimeData.map(item => (
+                      {timeData.map(item => (
                         <div className='Radio-Text' key={item.id}>
                           {item.label}
                           <input
                             type='radio'
                             name='Time'
-                            value={'TimeData'}
+                            value={'timeData'}
                             onChange={e => onChange(e, item.id)}
                             checked={item.selected}
                           />
@@ -255,12 +257,12 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
                       <label>יגבה תשלום חד פעמי בעלות של 20 ₪ עבור צ'יפ.</label>
                       <div className='Main-Border'></div>
                       <label>אמצעי תשלום:</label>
-                      {PaymentData.map(item => (
+                      {paymentData.map(item => (
                         <span className='Radio-Text' key={item.id}>
                           {item.label}
                           <input
                             type='radio'
-                            value={'PaymentData'}
+                            value={'paymentData'}
                             onChange={e => onChange(e, item.id)}
                             checked={item.selected}
                           />
@@ -269,7 +271,7 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
                       <div className='Main-Border'></div>
                       <label>סך הכל לתשלום:</label>
 
-                      <span className='calculation'>{CalculationData} ₪</span>
+                      <span className='calculation'>{calculationData} ₪</span>
 
                       <div className='Main-Border'></div>
                       <div className='Main-Padding'></div>
@@ -287,11 +289,11 @@ const NewClients = ({ Nclient, closeAll, closeAlerts }) => {
   );
 };
 const MobileNclient = ({
-  TypeData,
+  typeData,
   onChange,
-  TimeData,
-  PaymentData,
-  CalculationData,
+  timeData,
+  paymentData,
+  calculationData,
   firstname,
   lastname,
   SetData,
@@ -344,12 +346,12 @@ const MobileNclient = ({
           <div className='Main-Padding'></div>
           <div className='Main-Border'></div>
           <label>סוג המנוי:</label>
-          {TypeData.map(item => (
+          {typeData.map(item => (
             <div className='Radio-Text' key={item.id}>
               {item.label}
               <input
                 type='radio'
-                value={'TypeData'}
+                value={'typeData'}
                 name='Type'
                 onChange={e => onChange(e, item.id)}
                 checked={item.selected}
@@ -358,13 +360,13 @@ const MobileNclient = ({
           ))}
           <div className='Main-Border'></div>
           <label>תקופת מנוי:</label>
-          {TimeData.map(item => (
+          {timeData.map(item => (
             <div className='Radio-Text' key={item.id}>
               {item.label}
               <input
                 type='radio'
                 name='Time'
-                value={'TimeData'}
+                value={'timeData'}
                 onChange={e => onChange(e, item.id)}
                 checked={item.selected}
               />
@@ -374,12 +376,12 @@ const MobileNclient = ({
           <label>יגבה תשלום חד פעמי בעלות של 20 ₪ עבור צ'יפ.</label>
           <div className='Main-Border'></div>
           <label>אמצעי תשלום:</label>
-          {PaymentData.map(item => (
+          {paymentData.map(item => (
             <span className='Radio-Text' key={item.id}>
               {item.label}
               <input
                 type='radio'
-                value={'PaymentData'}
+                value={'paymentData'}
                 onChange={e => onChange(e, item.id)}
                 checked={item.selected}
               />
@@ -387,7 +389,7 @@ const MobileNclient = ({
           ))}
           <div className='Main-Border'></div>
           <label>סך הכל לתשלום:</label>
-          <span className='calculation'>{CalculationData} ₪</span>
+          <span className='calculation'>{calculationData} ₪</span>
           <div className='Main-Border'></div>
           <div className='Main-Padding'></div>
           <Alert />
@@ -402,15 +404,16 @@ const MobileNclient = ({
 NewClients.propType = {
   SendFail: PropTypes.bool,
   closeAll: PropTypes.func,
-  CalcTotal: PropTypes.func,
-  closeAlerts: PropTypes.func
+  calcTotal: PropTypes.func,
+  closeAlerts: PropTypes.func,
+  setNewClient: PropTypes.func
 };
 const mapStateToProps = state => ({
-  total: state.CalcReducer.total
+  total: state.calcReducer.total
 });
 export default connect(mapStateToProps, {
-  Nclient,
-  CalcTotal,
+  setNewClient,
+  calcTotal,
   closeAll,
   closeAlerts
 })(NewClients);

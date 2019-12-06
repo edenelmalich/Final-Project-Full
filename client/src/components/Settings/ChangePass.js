@@ -18,11 +18,11 @@ import SettingsNav from '../Mobile/SettingsNav';
 // Redux
 import { connect } from 'react-redux';
 import { Logout } from '../../actions/authAction';
-import { closeAll } from '../../actions/NavAction';
+import { closeAll } from '../../actions/navAction';
 import { setAlert } from '../../actions/alertAction';
-import { ResetPassword } from '../../actions/authAction';
+import { resetPassword } from '../../actions/authAction';
 
-const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
+const ChangePass = ({ Logout, closeAll, user, resetPassword, setAlert }) => {
   useEffect(() => {
     closeAll();
   }, []);
@@ -32,6 +32,7 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
     Password: '',
     RePassword: ''
   });
+  const [typeState, setType] = useState(false);
   const { Password, RePassword } = getData;
   // Functions
   const onChange = e => {
@@ -42,7 +43,7 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
     if (Password !== RePassword) {
       setAlert('סיסמאות לא תואמות', 'danger');
     } else {
-      ResetPassword(Password, email);
+      resetPassword(Password, email);
     }
     ResetForm();
   };
@@ -57,6 +58,8 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
           onChange={onChange}
           Password={Password}
           RePassword={RePassword}
+          setType={setType}
+          typeState={typeState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -84,7 +87,7 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
                         >
                           <label>הכנס סיסמה חדשה</label>
                           <input
-                            type='password'
+                            type={typeState ? 'text' : 'password'}
                             name='Password'
                             value={Password}
                             onChange={e => onChange(e)}
@@ -92,13 +95,17 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
                           />
                           <label>אימות סיסמה</label>
                           <input
-                            type='password'
+                            type={typeState ? 'text' : 'password'}
                             name='RePassword'
                             value={RePassword}
                             onChange={e => onChange(e)}
                             placeholder='אימות סיסמא'
                           />
-
+                          <label>הצג סיסמאות</label>
+                          <input
+                            type='checkbox'
+                            onClick={() => setType(!typeState)}
+                          />
                           <input type='submit' value='שנה סיסמא' />
                         </form>
                       </div>
@@ -141,7 +148,14 @@ const ChangePass = ({ Logout, closeAll, user, ResetPassword, setAlert }) => {
     </div>
   );
 };
-const MobileSettingPass = ({ onSubmit, onChange, Password, RePassword }) => (
+const MobileSettingPass = ({
+  onSubmit,
+  onChange,
+  Password,
+  RePassword,
+  setType,
+  typeState
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>הגדרות</h2>
@@ -154,7 +168,7 @@ const MobileSettingPass = ({ onSubmit, onChange, Password, RePassword }) => (
           <form className='Form-Settings' onSubmit={e => onSubmit(e)}>
             <label>הכנס סיסמה חדשה</label>
             <input
-              type='password'
+              type={typeState ? 'text' : 'password'}
               name='Password'
               value={Password}
               onChange={e => onChange(e)}
@@ -162,12 +176,14 @@ const MobileSettingPass = ({ onSubmit, onChange, Password, RePassword }) => (
             />
             <label>אימות סיסמה</label>
             <input
-              type='password'
+              type={typeState ? 'text' : 'password'}
               name='RePassword'
               value={RePassword}
               onChange={e => onChange(e)}
               placeholder='אימות סיסמא'
             />
+            <label>הצג סיסמאות</label>
+            <input type='checkbox' onClick={() => setType(!typeState)} />
             <div className='Main-Padding'></div>
             <Alert />
             <input type='submit' value='שנה סיסמא' />
@@ -183,7 +199,7 @@ ChangePass.propTypes = {
   closeAll: PropTypes.func.isRequired,
   user: PropTypes.object,
   setAlert: PropTypes.func,
-  ResetPassword: PropTypes.func
+  resetPassword: PropTypes.func
 };
 const mapStateToProps = state => ({
   user: state.authReducer.user
@@ -192,5 +208,5 @@ export default connect(mapStateToProps, {
   Logout,
   closeAll,
   setAlert,
-  ResetPassword
+  resetPassword
 })(ChangePass);

@@ -13,13 +13,13 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
 // Actions to loading all the clients from DB
-export const SET_CLIENTS = 'GET_CLIENTS';
+export const SET_CLIENTS_LIST = 'GET_CLIENTS_LIST';
 export const LOGOUT = 'LOGOUT';
 // Account and Notifications Actions
-export const ACCOUNT = 'ACCOUNT';
-export const NOTIFICATIONS = 'NOTIFICATIONS';
-export const NAV_MOBILE = 'NAV';
-export const NAV_SETTING = 'NAV_SETTING';
+export const SET_ACCOUNT_TOGGLE = 'SET_ACCOUNT_TOGGLE';
+export const SET_NOTIFICATIONS_TOGGLE = 'SET_NOTIFICATIONS_TOGGLE';
+export const SET_NAV_MOBILE_TOGGLE = 'SET_NAV_MOBILE_TOGGLE';
+export const SET_NAV_SETTING_TOGGLE = 'SET_NAV_SETTING_TOGGLE';
 export const SET_ACCOUNT_MOBILE = 'SET_ACCOUNT_MOBILE';
 export const SET_MENU = 'SET_MENU';
 // close all the bars

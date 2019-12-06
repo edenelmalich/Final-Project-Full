@@ -21,7 +21,7 @@ const ExercisesList = props => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* <div className='Modal-muscle-name'>{props.MuscleName}</div> */}
+        {/* <div className='Modal-muscle-name'>{props.muscleName}</div> */}
         <Alert />
         {props.exercisesData.map(item => (
           <div key={item.id}>

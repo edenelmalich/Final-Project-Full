@@ -11,7 +11,7 @@ import {
 } from './typesActions';
 import setAuthToken from '../utils/setAuthToken';
 
-export const CheckUser = () => async dispatch => {
+export const checkUser = () => async dispatch => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
@@ -42,7 +42,7 @@ export const register = (Name, email, password) => async dispatch => {
       type: REGISTER_SUCCESS,
       payload: res.data
     });
-    dispatch(CheckUser());
+    dispatch(checkUser());
 
     dispatch(setAlert('משתמש נרשם בהצלחה', 'success'));
   } catch (err) {
@@ -69,7 +69,7 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_SUCCESS,
       payload: res.data
     });
-    dispatch(CheckUser());
+    dispatch(checkUser());
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -80,7 +80,7 @@ export const login = (email, password) => async dispatch => {
     });
   }
 };
-export const ResetPassword = (password, email) => async dispatch => {
+export const resetPassword = (password, email) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'

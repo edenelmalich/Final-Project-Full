@@ -6,7 +6,7 @@ import AppFooter from '../AppFooter';
 import ExercisesList from './ExercisesList';
 import Alert from '../layout/Alert';
 // Css imports
-import './Buildplan.css';
+import './buildPlan.css';
 // import Link from react-router
 import { Link } from 'react-router-dom';
 // Fontawesome imports
@@ -25,20 +25,19 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { SetNotification } from '../../actions/NavAction';
-import { SetAccount } from '../../actions/NavAction';
-import { closeAll } from '../../actions/NavAction';
-import { ShowMuscles } from '../../actions/BuildAction';
-import { SetNav } from '../../actions/NavAction';
+import { setNotificationToggle } from '../../actions/navAction';
+import { setAccountToggle } from '../../actions/navAction';
+import { closeAll } from '../../actions/navAction';
+import { showMuscles } from '../../actions/buildAction';
+import { setNavMobileToggle } from '../../actions/navAction';
 import { setAlert } from '../../actions/alertAction';
 import { closeAlerts } from '../../actions/alertAction';
 
 const BuildPlan = ({
-  getDays,
   closeAll,
-  ShowMuscles,
+  showMuscles,
   Muscles_State,
-  SetNav,
+  setNavMobileToggle,
   setAlert
 }) => {
   // ComponentWillMount
@@ -46,7 +45,7 @@ const BuildPlan = ({
     closeAll();
     closeAlerts();
     let days = JSON.parse(localStorage.getItem('days')) || '';
-    SetDay(days);
+    setDay(days);
   }, []);
 
   // Data
@@ -81,7 +80,7 @@ const BuildPlan = ({
     { id: 25, label: 'חתירה בהטיית גב כנגד מוט', selected: false },
     { id: 26, label: 'משיכת פולי עליון אחיזה צרה', selected: false },
     { id: 27, label: ' מתח רחב', selected: false },
-    // FrontHand Exercises
+    // frontHand Exercises
     { id: 28, label: 'כפיפת מרפקים כנגד מוט', selected: false },
     { id: 29, label: 'כפיפת מרפקים בעמידה עם מוט', selected: false },
     { id: 30, label: 'פטישים', selected: false },
@@ -91,7 +90,7 @@ const BuildPlan = ({
     { id: 34, label: "כפיפות מרפקים בספסל פריצ'ר בישיבה", selected: false },
     { id: 35, label: ' כפיפות מרפקים כנגד כבל קרוס בישיבה', selected: false },
     { id: 36, label: 'כפיפת מרפקים עם משקולות יד', selected: false },
-    // BackHand Exercises
+    // backHand Exercises
     { id: 37, label: 'לחיצת חזה בשכיבה באחיזה צרה עם מוט', selected: false },
     { id: 38, label: 'פשיטת מרפקים בשכיבה עם מוט', selected: false },
     { id: 39, label: 'פשיטת מרפק בפולי', selected: false },
@@ -155,7 +154,7 @@ const BuildPlan = ({
     { id: 26, label: 'משיכת פולי עליון אחיזה צרה', selected: false },
     { id: 27, label: ' מתח רחב', selected: false }
   ];
-  const FrontHand = [
+  const frontHand = [
     { id: 28, label: 'כפיפת מרפקים כנגד מוט', selected: false },
     { id: 29, label: 'כפיפת מרפקים בעמידה עם מוט', selected: false },
     { id: 30, label: 'פטישים', selected: false },
@@ -166,7 +165,7 @@ const BuildPlan = ({
     { id: 35, label: ' כפיפות מרפקים כנגד כבל קרוס בישיבה', selected: false },
     { id: 36, label: 'כפיפת מרפקים עם משקולות יד', selected: false }
   ];
-  const BackHand = [
+  const backHand = [
     { id: 37, label: 'לחיצת חזה בשכיבה באחיזה צרה עם מוט', selected: false },
     { id: 38, label: 'פשיטת מרפקים בשכיבה עם מוט', selected: false },
     { id: 39, label: 'פשיטת מרפק בפולי', selected: false },
@@ -203,32 +202,32 @@ const BuildPlan = ({
     { id: 0, label: 'חזה', value: 'Chest', selected: true },
     { id: 1, label: 'בטן', value: 'Abs', selected: false },
     { id: 2, label: 'גב', value: 'Back', selected: false },
-    { id: 3, label: 'יד קדמית', value: 'FrontHand', selected: false },
-    { id: 4, label: 'יד אחורית', value: 'BackHand', selected: false },
+    { id: 3, label: 'יד קדמית', value: 'frontHand', selected: false },
+    { id: 4, label: 'יד אחורית', value: 'backHand', selected: false },
     { id: 5, label: 'רגליים', value: 'Legs', selected: false },
     { id: 6, label: 'כתפיים', value: 'Shoulders', selected: false }
   ];
   // useState
-  const [dayData, SetDay] = useState(null);
-  const [MusclesData, SetMuscles] = useState(Muscles);
-  const [ChestData] = useState(Chest);
-  const [AbsData] = useState(Abs);
-  const [BackData] = useState(Back);
-  const [FrontHandData] = useState(FrontHand);
-  const [BackHandData] = useState(BackHand);
-  const [LegsData] = useState(Legs);
-  const [ShouldersData] = useState(Shoulders);
-  const [CounterData, SetCounter] = useState(0);
-  const [ExercisesData, SetExercises] = useState(Exercises);
-  const [MuscleName, SetMuscleName] = useState('חזה');
-  const [ListState, SetList] = useState(false);
+  const [dayData, setDay] = useState(null);
+  const [musclesData, setMuscles] = useState(Muscles);
+  const [chestData] = useState(Chest);
+  const [absData] = useState(Abs);
+  const [backData] = useState(Back);
+  const [frontHandData] = useState(frontHand);
+  const [backHandData] = useState(backHand);
+  const [legsData] = useState(Legs);
+  const [shouldersData] = useState(Shoulders);
+  const [counterData, setCounter] = useState(0);
+  const [exercisesData, setExercises] = useState(Exercises);
+  const [muscleName, setMuscleName] = useState('חזה');
+  const [listState, setList] = useState(false);
   // Functions
-  const onChange = (id, muscleName) => {
-    SetNav(true);
-    ShowMuscles(true);
-    SetMuscleName(muscleName);
-    SetMuscles(
-      MusclesData.map(muscle => {
+  const onChange = (id, muscleTitle) => {
+    setNavMobileToggle(true);
+    showMuscles(true);
+    setMuscleName(muscleTitle);
+    setMuscles(
+      musclesData.map(muscle => {
         if (id === muscle.id && muscle.selected === false) {
           return { ...muscle, selected: !muscle.selected };
         } else {
@@ -239,8 +238,8 @@ const BuildPlan = ({
   };
   // functions
   const saveExercises = (id, selected) => {
-    SetExercises(
-      ExercisesData.map(exercise => {
+    setExercises(
+      exercisesData.map(exercise => {
         if (id === exercise.id && exercise.selected === false) {
           const Checked = { ...exercise, selected: true };
           Additem();
@@ -253,14 +252,14 @@ const BuildPlan = ({
 
   const Additem = () => {
     setAlert('התרגיל נוסף בהצלחה', 'success');
-    SetCounter(prevCount => prevCount + 1);
+    setCounter(prevCount => prevCount + 1);
   };
   const DeleteItem = id => {
-    SetExercises(
-      ExercisesData.map(del => {
+    setExercises(
+      exercisesData.map(del => {
         if (id === del.id) {
           setAlert('התרגיל הוסר בהצלחה', 'danger');
-          SetCounter(CounterData - 1);
+          setCounter(counterData - 1);
           return { ...del, selected: false };
         }
         return del;
@@ -274,22 +273,22 @@ const BuildPlan = ({
         <BuildPlanMobile
           dayData={dayData}
           onChange={onChange}
-          MusclesData={MusclesData}
+          musclesData={musclesData}
           Muscles_State={Muscles_State}
-          ShowMuscles={ShowMuscles}
-          ChestData={ChestData}
+          showMuscles={showMuscles}
+          chestData={chestData}
           saveExercises={saveExercises}
-          BackData={BackData}
-          FrontHandData={FrontHandData}
-          BackHandData={BackHandData}
-          LegsData={LegsData}
-          ShouldersData={ShouldersData}
-          AbsData={AbsData}
-          MuscleName={MuscleName}
-          CounterData={CounterData}
-          SetList={SetList}
-          ListState={ListState}
-          ExercisesData={ExercisesData}
+          backData={backData}
+          frontHandData={frontHandData}
+          backHandData={backHandData}
+          legsData={legsData}
+          shouldersData={shouldersData}
+          absData={absData}
+          muscleName={muscleName}
+          counterData={counterData}
+          setList={setList}
+          listState={listState}
+          exercisesData={exercisesData}
           DeleteItem={DeleteItem}
         />
       </MediaQuery>
@@ -309,7 +308,7 @@ const BuildPlan = ({
                   <form className='Form-Plan'>
                     <div className='Plan-Flex'>
                       {/* Code for show the muscles in the page */}
-                      {MusclesData.map(muscles => (
+                      {musclesData.map(muscles => (
                         <div key={muscles.id}>
                           <Toast>
                             <strong className='mr-auto'>
@@ -329,74 +328,74 @@ const BuildPlan = ({
                     <div className='Build-Exe-Header'>רשימת תרגילים</div>
                     <div className='Plan-Padding'></div>
                     {/* Code For Showing The Exercises */}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Chest' ? (
                           <div>
-                            {() => SetMuscleName(muscle.label)}
+                            {() => setMuscleName(muscle.label)}
                             <ShowChest
-                              ChestData={ChestData}
+                              chestData={chestData}
                               saveExercises={saveExercises}
                             />
                           </div>
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Abs' ? (
                           <ShowAbs
-                            AbsData={AbsData}
+                            absData={absData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Back' ? (
                           <ShowBack
-                            BackData={BackData}
+                            backData={backData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
-                        {muscle.selected && muscle.value === 'FrontHand' ? (
+                        {muscle.selected && muscle.value === 'frontHand' ? (
                           <ShowFrontHand
-                            FrontHandData={FrontHandData}
+                            frontHandData={frontHandData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
-                        {muscle.selected && muscle.value === 'BackHand' ? (
+                        {muscle.selected && muscle.value === 'backHand' ? (
                           <ShowBackHand
-                            BackHandData={BackHandData}
+                            backHandData={backHandData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Legs' ? (
                           <ShowLegs
-                            LegsData={LegsData}
+                            legsData={legsData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
                       </div>
                     ))}
-                    {MusclesData.map(muscle => (
+                    {musclesData.map(muscle => (
                       <div key={muscle.id}>
                         {muscle.selected && muscle.value === 'Shoulders' ? (
                           <ShowShoulders
-                            ShouldersData={ShouldersData}
+                            shouldersData={shouldersData}
                             saveExercises={saveExercises}
                           />
                         ) : null}
@@ -408,7 +407,7 @@ const BuildPlan = ({
                       </Link>
                       {/* Code to open and close the list */}
                       <button className='Icon-List'>
-                        <div className='Quantity-Exercises'>{CounterData}</div>
+                        <div className='Quantity-Exercises'>{counterData}</div>
                         <FontAwesomeIcon icon={faClipboardList} />
                       </button>
                     </div>
@@ -424,91 +423,91 @@ const BuildPlan = ({
   );
 };
 // Show-Muscles
-const ShowChest = props => (
+const ShowChest = ({ chestData, saveExercises }) => (
   <div className='Display-Button'>
-    {props.ChestData.map(item => (
+    {chestData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id, item.selected)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowAbs = props => (
+const ShowAbs = ({ absData, saveExercises }) => (
   <div className='Display-Button'>
-    {props.AbsData.map(item => (
+    {absData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowBack = props => (
+const ShowBack = ({ backData, saveExercises }) => (
   <div className='Display-Button'>
-    {props.BackData.map(item => (
+    {backData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowFrontHand = props => (
+const ShowFrontHand = ({ saveExercises, frontHandData }) => (
   <div className='Display-Button'>
-    {props.FrontHandData.map(item => (
+    {frontHandData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowBackHand = props => (
+const ShowBackHand = ({ saveExercises, backHandData }) => (
   <div className='Display-Button'>
-    {props.BackHandData.map(item => (
+    {backHandData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowLegs = props => (
+const ShowLegs = ({ legsData, saveExercises }) => (
   <div className='Display-Button'>
-    {props.LegsData.map(item => (
+    {legsData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
     ))}
   </div>
 );
-const ShowShoulders = props => (
+const ShowShoulders = ({ shouldersData, saveExercises }) => (
   <div className='Display-Button'>
-    {props.ShouldersData.map(item => (
+    {shouldersData.map(item => (
       <div
         key={item.id}
         className='Plan-Button'
-        onClick={() => props.saveExercises(item.id)}
+        onClick={() => saveExercises(item.id)}
       >
         {item.label}
       </div>
@@ -517,23 +516,23 @@ const ShowShoulders = props => (
 );
 const BuildPlanMobile = ({
   dayData,
-  MusclesData,
+  musclesData,
   onChange,
   Muscles_State,
-  ShowMuscles,
-  ChestData,
+  showMuscles,
+  chestData,
   saveExercises,
-  AbsData,
-  BackData,
-  FrontHandData,
-  BackHandData,
-  LegsData,
-  ShouldersData,
-  MuscleName,
-  CounterData,
-  SetList,
-  ListState,
-  ExercisesData,
+  absData,
+  backData,
+  frontHandData,
+  backHandData,
+  legsData,
+  shouldersData,
+  muscleName,
+  counterData,
+  setList,
+  listState,
+  exercisesData,
   DeleteItem
 }) => (
   <div className='Mobile'>
@@ -542,32 +541,32 @@ const BuildPlanMobile = ({
       <h2 id='Mobile-text'>
         בניית תוכנית אימונים
         <button className='Icon-List'>
-          <div className='Quantity-Mobile'>{CounterData}</div>
+          <div className='Quantity-Mobile'>{counterData}</div>
           <FontAwesomeIcon
-            onClick={() => SetList(!ListState)}
+            onClick={() => setList(!listState)}
             icon={faClipboardList}
           />
         </button>
       </h2>
       <ExercisesList
-        show={ListState}
-        onHide={() => SetList(false)}
-        exercisesData={ExercisesData}
+        show={listState}
+        onHide={() => setList(false)}
+        exercisesData={exercisesData}
         deleteItem={DeleteItem}
-        muscleName={MuscleName}
+        muscleName={muscleName}
       />
       <div className='Build-Muscle'>
         <div className='Header-Muscles'>
           בחר שרירים {dayData}
           <FontAwesomeIcon
-            onClick={() => ShowMuscles(Muscles_State)}
+            onClick={() => showMuscles(Muscles_State)}
             icon={faAngleDown}
           />
         </div>
         <div className='Main-Padding'></div>
 
         <Collapse isOpen={Muscles_State}>
-          {MusclesData.map(muscles => (
+          {musclesData.map(muscles => (
             <div key={muscles.id}>
               <Toast>
                 <strong className='mr-auto'>
@@ -584,61 +583,61 @@ const BuildPlanMobile = ({
         </Collapse>
         <div className='Main-Border'></div>
       </div>
-      <div className='Build-Exe-Header'> רשימת תרגילים {MuscleName}</div>
+      <div className='Build-Exe-Header'> רשימת תרגילים {muscleName}</div>
       {/* Code For Showing The Exercises */}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
           {muscle.selected && muscle.value === 'Chest' ? (
-            <ShowChest ChestData={ChestData} saveExercises={saveExercises} />
+            <ShowChest chestData={chestData} saveExercises={saveExercises} />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
           {muscle.selected && muscle.value === 'Abs' ? (
-            <ShowAbs AbsData={AbsData} saveExercises={saveExercises} />
+            <ShowAbs absData={absData} saveExercises={saveExercises} />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
           {muscle.selected && muscle.value === 'Back' ? (
-            <ShowBack BackData={BackData} saveExercises={saveExercises} />
+            <ShowBack backData={backData} saveExercises={saveExercises} />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
-          {muscle.selected && muscle.value === 'FrontHand' ? (
+          {muscle.selected && muscle.value === 'frontHand' ? (
             <ShowFrontHand
-              FrontHandData={FrontHandData}
+              frontHandData={frontHandData}
               saveExercises={saveExercises}
             />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
-          {muscle.selected && muscle.value === 'BackHand' ? (
+          {muscle.selected && muscle.value === 'backHand' ? (
             <ShowBackHand
-              BackHandData={BackHandData}
+              backHandData={backHandData}
               saveExercises={saveExercises}
             />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
           {muscle.selected && muscle.value === 'Legs' ? (
-            <ShowLegs LegsData={LegsData} saveExercises={saveExercises} />
+            <ShowLegs legsData={legsData} saveExercises={saveExercises} />
           ) : null}
         </div>
       ))}
-      {MusclesData.map(muscle => (
+      {musclesData.map(muscle => (
         <div key={muscle.id}>
           {muscle.selected && muscle.value === 'Shoulders' ? (
             <ShowShoulders
-              ShouldersData={ShouldersData}
+              shouldersData={shouldersData}
               saveExercises={saveExercises}
             />
           ) : null}
@@ -653,25 +652,25 @@ const BuildPlanMobile = ({
 );
 BuildPlan.propTypes = {
   getDays: PropTypes.string,
-  SetNotification: PropTypes.func,
-  SetAccount: PropTypes.func,
+  setNotificationToggle: PropTypes.func,
+  setAccountToggle: PropTypes.func,
   closeAll: PropTypes.func,
-  ShowMuscles: PropTypes.func,
-  SetNav: PropTypes.func,
+  showMuscles: PropTypes.func,
+  setNavMobileToggle: PropTypes.func,
   setAlert: PropTypes.func,
   closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
-  getDays: state.ExePlanReducer.getDays,
-  Muscles_State: state.BuildReducer.Muscles_State
+  getDays: state.exePlanReducer.getDays,
+  Muscles_State: state.buildReducer.Muscles_State
 });
 
 export default connect(mapStateToProps, {
-  SetNotification,
-  SetAccount,
+  setNotificationToggle,
+  setAccountToggle,
   closeAll,
-  ShowMuscles,
-  SetNav,
+  showMuscles,
+  setNavMobileToggle,
   setAlert,
   closeAlerts
 })(BuildPlan);

@@ -1,6 +1,6 @@
 import { CALC } from './typesActions';
 
-export const CalcTotal = total => dispatch => {
+export const calcTotal = total => dispatch => {
   dispatch({
     type: CALC,
     payload: total

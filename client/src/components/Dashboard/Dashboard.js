@@ -29,20 +29,20 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
-import { GetClients } from '../../actions/NclientAction';
-import { closeAll } from '../../actions/NavAction';
+import { getClients } from '../../actions/newClientsAction';
+import { closeAll } from '../../actions/navAction';
 
-const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
+const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
-    GetClients();
+    getClients();
     closeAll();
   }, []);
   return (
     <div className='Dashboard'>
       <MediaQuery maxDeviceWidth={900}>
-        <MobileDash clientsList={clientsList} />
+        <MobileDash getClientsList={getClientsList} />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -63,7 +63,7 @@ const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
                             <div className='DashBoard-Text'>לקוחות</div>
 
                             <div className='DashBoard-Text-info'>
-                              {clientsList.length}
+                              {getClientsList.length}
                             </div>
                           </Card.Body>
                         </Link>
@@ -141,7 +141,7 @@ const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
                               </tr>
                             </thead>
                             <tbody>
-                              {clientsList.map(client => (
+                              {getClientsList.map(client => (
                                 <tr key={client.id}>
                                   <td>{client.firstname}</td>
                                   <td>{client.lastname}</td>
@@ -172,7 +172,7 @@ const Dashboard = ({ clientsList, GetClients, closeAll, closeAlerts }) => {
     </div>
   );
 };
-const MobileDash = ({ clientsList }) => (
+const MobileDash = ({ getClientsList }) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>סקירה כללית</h2>
@@ -183,7 +183,9 @@ const MobileDash = ({ clientsList }) => (
 
             <div className='Mobile-DashBoard-Text'>לקוחות</div>
           </Link>
-          <div className='Mobile-DashBoard-Text-info'>{clientsList.length}</div>
+          <div className='Mobile-DashBoard-Text-info'>
+            {getClientsList.length}
+          </div>
         </Card>
 
         <Card id='DashNewClient' className='Dash-Card-Size'>
@@ -235,7 +237,7 @@ const MobileDash = ({ clientsList }) => (
                 </tr>
               </thead>
               <tbody>
-                {clientsList.map(client => (
+                {getClientsList.map(client => (
                   <tr key={client.id}>
                     <td>{client.firstname}</td>
                     <td>{client.lastname}</td>
@@ -258,17 +260,17 @@ const MobileDash = ({ clientsList }) => (
   </div>
 );
 Dashboard.propTypes = {
-  clientsList: PropTypes.array,
-  GetClients: PropTypes.func,
+  getClientsList: PropTypes.array,
+  getClients: PropTypes.func,
   closeAll: PropTypes.func,
   closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
-  clientsList: state.NclientReducer.clientsList,
-  MobileNav: state.NavReducer.MobileNav
+  getClientsList: state.newClientsReducer.getClientsList,
+  mobileToggleState: state.navReducer.mobileToggleState
 });
 export default connect(mapStateToProps, {
-  GetClients,
+  getClients,
   closeAll,
   closeAlerts
 })(Dashboard);

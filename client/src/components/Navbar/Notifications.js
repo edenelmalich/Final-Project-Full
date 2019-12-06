@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import Collapse from 'react-bootstrap/Collapse';
 // Redux
 import { connect } from 'react-redux';
-const Notifications = ({ NotificationsSelected }) => {
+const Notifications = ({ notificationsToggleState }) => {
   return (
-    <Collapse in={NotificationsSelected}>
+    <Collapse in={notificationsToggleState}>
       <div className='NotiBox'>
         <div className='Notification-Title'>יש לך 2 התראות חדשות</div>
         <div className='Notification-item'>התקבלה הצהרת בריאות חדשה</div>
@@ -21,9 +21,9 @@ const Notifications = ({ NotificationsSelected }) => {
   );
 };
 Notifications.propTypes = {
-  NotificationsSelected: PropTypes.bool
+  notificationsToggleState: PropTypes.bool
 };
 const mapStateToProps = state => ({
-  NotificationsSelected: state.NavReducer.NotificationsSelected
+  notificationsToggleState: state.navReducer.notificationsToggleState
 });
 export default connect(mapStateToProps)(Notifications);

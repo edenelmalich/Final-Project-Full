@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 import '../../css/Mobile.css';
 import MediaQuery from 'react-responsive';
 
-class BackHandStat extends React.Component {
+class BackhandStat extends React.Component {
   state = {
     dataBar: {
       labels: [
@@ -109,4 +109,4 @@ class BackHandStat extends React.Component {
   }
 }
 
-export default BackHandStat;
+export default BackhandStat;

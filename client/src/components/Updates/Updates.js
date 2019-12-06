@@ -10,38 +10,38 @@ import MobileFooter from '../Mobile/MobileFooter';
 import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
-import { update } from '../../actions/UpdateAction';
+import { setUpdate } from '../../actions/updateAction';
 import { closeAlerts } from '../../actions/alertAction';
-import { closeAll } from '../../actions/NavAction';
+import { closeAll } from '../../actions/navAction';
 
-const Updates = ({ update, closeAlerts, closeAll }) => {
+const Updates = ({ setUpdate, closeAlerts, closeAll }) => {
   // componentWillMount
   useEffect(() => {
     closeAlerts();
     closeAll();
   }, []);
   // useState
-  const [updateData, SetUpdateData] = useState({
+  const [updateData, setUpdateData] = useState({
     Firstname: '',
     Lastname: '',
     UpdateMessage: ''
   });
-  const { Firstname, Lastname, UpdateMessage } = updateData;
+  const { firstName, lastName, updateMessage } = updateData;
   // Functions
   const onChange = e => {
-    SetUpdateData({ ...updateData, [e.target.name]: e.target.value });
+    setUpdateData({ ...updateData, [e.target.name]: e.target.value });
   };
   const onSubmit = e => {
     e.preventDefault();
-    update(Firstname, Lastname, UpdateMessage);
+    setUpdate(firstName, lastName, updateMessage);
     restForm();
   };
   const restForm = () => {
-    SetUpdateData({
+    setUpdateData({
       ...updateData,
-      Firstname: '',
-      Lastname: '',
-      UpdateMessage: ''
+      firstName: '',
+      lastName: '',
+      updateMessage: ''
     });
   };
   return (
@@ -49,10 +49,10 @@ const Updates = ({ update, closeAlerts, closeAll }) => {
       <MediaQuery maxDeviceWidth={1024}>
         <MobileUpdates
           onSubmit={onSubmit}
-          Firstname={Firstname}
+          firstName={firstName}
           onChange={onChange}
-          Lastname={Lastname}
-          UpdateMessage={UpdateMessage}
+          lastName={lastName}
+          updateMessage={updateMessage}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1280}>
@@ -74,16 +74,16 @@ const Updates = ({ update, closeAlerts, closeAll }) => {
                       <label id='Form-label'>שם פרטי</label>
                       <input
                         type='text'
-                        name='Firstname'
-                        value={Firstname}
+                        name='firstName'
+                        value={firstName}
                         onChange={e => onChange(e)}
                         placeholder='שם פרטי'
                       />
                       <label id='Form-label'>שם משפחה</label>
                       <input
                         type='text'
-                        name='Lastname'
-                        value={Lastname}
+                        name='lastName'
+                        value={lastName}
                         onChange={e => onChange(e)}
                         placeholder='שם משפחה'
                       />
@@ -91,8 +91,8 @@ const Updates = ({ update, closeAlerts, closeAll }) => {
                       <label id='Form-label'>הכנס עדכון חדש</label>
 
                       <textarea
-                        name='UpdateMessage'
-                        value={UpdateMessage}
+                        name='updateMessage'
+                        value={updateMessage}
                         onChange={e => onChange(e)}
                       ></textarea>
                       <div className='Main-Padding'></div>
@@ -117,9 +117,9 @@ const Updates = ({ update, closeAlerts, closeAll }) => {
 const MobileUpdates = ({
   onChange,
   onSubmit,
-  Firstname,
-  Lastname,
-  UpdateMessage
+  firstName,
+  lastName,
+  updateMessage
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -132,16 +132,16 @@ const MobileUpdates = ({
           <label id='Form-label'>שם פרטי</label>
           <input
             type='text'
-            name='Firstname'
-            value={Firstname}
+            name='firstName'
+            value={firstName}
             onChange={e => onChange(e)}
             placeholder='שם פרטי'
           />
           <label id='Form-label'>שם משפחה</label>
           <input
             type='text'
-            name='Lastname'
-            value={Lastname}
+            name='lastName'
+            value={lastName}
             onChange={e => onChange(e)}
             placeholder='שם משפחה'
           />
@@ -149,8 +149,8 @@ const MobileUpdates = ({
           <label id='Form-label'>הכנס עדכון חדש</label>
           <div className='Main-Padding'></div>
           <textarea
-            name='UpdateMessage'
-            value={UpdateMessage}
+            name='updateMessage'
+            value={updateMessage}
             onChange={e => onChange(e)}
           ></textarea>
           <div className='Main-Padding'></div>
@@ -165,13 +165,13 @@ const MobileUpdates = ({
 );
 Updates.propType = {
   updateSuccess: PropTypes.bool,
-  update: PropTypes.func,
+  setUpdate: PropTypes.func,
   closeAlerts: PropTypes.func,
   closeAll: PropTypes.func
 };
 const mapStateToProps = state => ({
   updateSuccess: state.updateReducer.updateSuccess
 });
-export default connect(mapStateToProps, { update, closeAlerts, closeAll })(
+export default connect(mapStateToProps, { setUpdate, closeAlerts, closeAll })(
   Updates
 );
