@@ -30,13 +30,11 @@ import MediaQuery from 'react-responsive';
 import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 import { getClients } from '../../actions/newClientsAction';
-import { closeAll } from '../../actions/navAction';
-const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
+const Dashboard = ({ getClientsList, getClients, closeAlerts }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
     getClients();
-    closeAll();
   }, []);
   return (
     <div className='Dashboard'>
@@ -261,7 +259,7 @@ const MobileDash = ({ getClientsList }) => (
 Dashboard.propTypes = {
   getClientsList: PropTypes.array,
   getClients: PropTypes.func,
-  closeAll: PropTypes.func,
+
   closeAlerts: PropTypes.func
 };
 const mapStateToProps = state => ({
@@ -270,6 +268,6 @@ const mapStateToProps = state => ({
 });
 export default connect(mapStateToProps, {
   getClients,
-  closeAll,
+
   closeAlerts
 })(Dashboard);
