@@ -3,7 +3,6 @@ const router = express.Router();
 const NewClient = require('../../models/NewClient');
 const { check, validationResult } = require('express-validator');
 
-// add new client
 router.get('/', async (req, res) => {
   try {
     const Clients = await NewClient.find();
@@ -13,6 +12,16 @@ router.get('/', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+router.delete('/:id', async (req, res) => {
+  try {
+    await NewClient.findByIdAndDelete(req.params.id);
+    res.json(req.body);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+// add new client
 router.post(
   '/',
   [
@@ -76,4 +85,5 @@ router.post(
     }
   }
 );
+
 module.exports = router;

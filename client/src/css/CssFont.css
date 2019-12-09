@@ -53,7 +53,7 @@ body {
 .Footer-top {
   border-top-style: solid;
   border-top-width: 1px;
-  border-top-color: rgba(0, 0, 0, .125);
+  border-top-color: rgba(0, 0, 0, 0.125);
 }
 
 .Footer-Padding {
@@ -73,7 +73,6 @@ body {
 }
 
 /*Form Register With Attributes*/
-
 
 /*The Attributes of the Sidebar in all pages*
 /*heading 2,3,4 Attributes */
@@ -124,7 +123,6 @@ h4 {
   margin-left: auto;
   flex: 0 0 90%;
   overflow: auto;
-
 }
 
 .FormData .table {
@@ -183,7 +181,6 @@ h4 {
 
   color: #f8f9fa;
   background: #353c3f;
-  ;
 }
 
 .Footer-top {
@@ -208,16 +205,15 @@ h4 {
 
 /* AllClients modal attributes */
 .modal-backdrop.show {
-  opacity: .1;
+  opacity: 0.1;
 }
 
 .modal-body {
-  position: relative;
+  position: unset;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1rem 27% 1rem 27%;
 }
-
 
 .modal {
   right: 10%;
@@ -227,14 +223,32 @@ h4 {
   font-size: 22px;
   font-weight: 600;
   text-align: center;
+}
 
+.modal-header {
+  box-shadow: 0px 2px 5px 0px #353c3f;
+}
+
+.modal-content {
+  position: unset;
+}
+
+.modal-body {
+  overflow: auto;
+}
+
+.Modal-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .clientsValues {
   font-size: 16px;
+  display: block;
   text-align: center;
-  padding: 0rem 0.5rem 0 0.5rem;
-  border-bottom: 1px solid #353c3f;
+  padding: 1rem 0.5rem 1rem 0.5rem;
 }
 
 .clientsDetails {
@@ -243,4 +257,20 @@ h4 {
   font-size: 18px;
   padding: 1rem 0.5rem 1rem 0.5rem;
   font-weight: 600;
+}
+
+.Alert-Delete .alert {
+  margin-top: 15px;
+  text-align: center;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.modal-footer > :not(:last-child) {
+  margin-left: auto;
+}
+
+.svg-inline--fa {
+  cursor: pointer;
 }

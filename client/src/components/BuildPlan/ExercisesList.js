@@ -46,6 +46,7 @@ const ExercisesList = props => {
   );
 };
 ExercisesList.propTypes = {
-  closeAlerts: PropTypes.func
+  closeAlerts: PropTypes.func,
+  exercisesData: PropTypes.array
 };
 export default connect(null, { closeAlerts })(ExercisesList);

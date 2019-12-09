@@ -8,6 +8,7 @@ const newClientsReducer = (state = initialState, action) => {
   switch (type) {
     case SET_CLIENTS_LIST:
       return { ...state, getClientsList: payload };
+
     default:
       return state;
   }

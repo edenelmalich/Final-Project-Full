@@ -392,6 +392,7 @@ body {
 .table-bordered th {
   border: 1px solid #353c3f;
   font-size: 11px;
+  white-space: nowrap;
 }
 
 /* Mobile Settings Attributes */

@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { SET_CLIENTS_LIST } from './typesActions';
 import { setAlert } from './alertAction';
 
@@ -51,5 +50,14 @@ export const getClients = () => async dispatch => {
     });
   } catch (err) {
     console.error(err.message);
+  }
+};
+export const deleteclient = _id => async dispatch => {
+  try {
+    await axios.delete(`api/Nclient/${_id}`);
+
+    dispatch(setAlert('משתמש נמחק בהצלחה', 'success'));
+  } catch (err) {
+    dispatch(setAlert('שגיאה זמנית בשרת', 'danger'));
   }
 };

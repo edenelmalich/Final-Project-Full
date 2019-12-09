@@ -19,6 +19,7 @@ import { register } from '../../actions/authAction';
 const Register = ({ setAlert, register, isAuth }) => {
   // useState
   const [redirectDelay, setRedirect] = useState(false);
+
   const [Data, SetData] = useState({
     Name: '',
     Email: '',

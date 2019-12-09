@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 // Components imports
 import Navbar from '../Navbar/Navbar';
 import AppFooter from '../AppFooter';
 import SubStat from './SubStat';
 import NewSub from './NewSub';
+import ClientsModal from '../Clients/ClientsModal';
 // Css imports
 import '../../css/CssFont.css';
 import './Dashboard.css';
@@ -16,7 +17,8 @@ import {
   faUser,
   faUserPlus,
   faUserClock,
-  faChartBar
+  faChartBar,
+  faEye as FarEye
 } from '@fortawesome/free-solid-svg-icons';
 // Bootstrap imports
 import { Card, Table } from 'react-bootstrap';
@@ -31,17 +33,39 @@ import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 import { getClients } from '../../actions/newClientsAction';
 import { closeAll } from '../../actions/navsAction';
-const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
+import { setModalToggle } from '../../actions/modalActions';
+const Dashboard = ({
+  getClientsList,
+  getClients,
+  closeAll,
+  closeAlerts,
+  setModalToggle,
+  getModalState
+}) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
     getClients();
     closeAll();
-  }, []);
+  }, [getModalState]);
+  // useState
+  const [clientData, setClientData] = useState();
+  // Functions
+  const getId = id => {
+    setClientData(id);
+    setModalToggle(getModalState);
+    console.log('hi');
+  };
   return (
     <div className='Dashboard'>
       <MediaQuery maxDeviceWidth={900}>
-        <MobileDash getClientsList={getClientsList} />
+        <MobileDash
+          getClientsList={getClientsList}
+          getId={getId}
+          getModalState={getModalState}
+          setModalToggle={setModalToggle}
+          clientData={clientData}
+        />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -128,6 +152,7 @@ const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
                           >
                             <thead>
                               <tr>
+                                <th>הצג לקוח</th>
                                 <th>שם פרטי</th>
                                 <th>שם משפחה</th>
                                 <th>תעודת זהות</th>
@@ -142,6 +167,20 @@ const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
                             <tbody>
                               {getClientsList.map(client => (
                                 <tr key={client.id}>
+                                  <td>
+                                    <FontAwesomeIcon
+                                      icon={FarEye}
+                                      onClick={() => getId(client._id)}
+                                    />
+                                    <ClientsModal
+                                      show={getModalState}
+                                      onHide={() =>
+                                        setModalToggle(getModalState)
+                                      }
+                                      getclientslist={getClientsList}
+                                      clientdata={clientData}
+                                    />
+                                  </td>
                                   <td>{client.firstname}</td>
                                   <td>{client.lastname}</td>
                                   <td>{client.id}</td>
@@ -171,7 +210,13 @@ const Dashboard = ({ getClientsList, getClients, closeAll, closeAlerts }) => {
     </div>
   );
 };
-const MobileDash = ({ getClientsList }) => (
+const MobileDash = ({
+  getClientsList,
+  getId,
+  getModalState,
+  setModalToggle,
+  clientData
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>סקירה כללית</h2>
@@ -224,6 +269,7 @@ const MobileDash = ({ getClientsList }) => (
             <Table id='NewClients' striped bordered hover size='sm'>
               <thead>
                 <tr>
+                  <th>הצג לקוח</th>
                   <th>שם פרטי</th>
                   <th>שם משפחה</th>
                   <th>תעודת זהות</th>
@@ -238,6 +284,18 @@ const MobileDash = ({ getClientsList }) => (
               <tbody>
                 {getClientsList.map(client => (
                   <tr key={client.id}>
+                    <td>
+                      <FontAwesomeIcon
+                        icon={FarEye}
+                        onClick={() => getId(client._id)}
+                      />
+                      <ClientsModal
+                        show={getModalState}
+                        onHide={() => setModalToggle(getModalState)}
+                        getclientslist={getClientsList}
+                        clientdata={clientData}
+                      />
+                    </td>
                     <td>{client.firstname}</td>
                     <td>{client.lastname}</td>
                     <td>{client.id}</td>
@@ -260,16 +318,19 @@ const MobileDash = ({ getClientsList }) => (
 );
 Dashboard.propTypes = {
   getClientsList: PropTypes.array,
-  getClients: PropTypes.func,
-  closeAll: PropTypes.func,
-  closeAlerts: PropTypes.func
+  getClients: PropTypes.func.isRequired,
+  closeAll: PropTypes.func.isRequired,
+  closeAlerts: PropTypes.func.isRequired,
+  setModalToggle: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   getClientsList: state.newClientsReducer.getClientsList,
-  mobileToggleState: state.NavReducer.mobileToggleState
+  mobileToggleState: state.NavReducer.mobileToggleState,
+  getModalState: state.modalReducer.getModalState
 });
 export default connect(mapStateToProps, {
   getClients,
   closeAll,
-  closeAlerts
+  closeAlerts,
+  setModalToggle
 })(Dashboard);

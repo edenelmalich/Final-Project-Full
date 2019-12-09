@@ -7,6 +7,7 @@ import newClientsReducer from './newClientsReducer';
 import CalcReducer from './CalcReducer';
 import ExePlanReducer from './ExePlanReducer';
 import BuildReducer from './BuildReducer';
+import modalReducer from './modalReducer';
 
 export default combineReducers({
   alertReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   NavReducer,
   CalcReducer,
   ExePlanReducer,
-  BuildReducer
+  BuildReducer,
+  modalReducer
 });

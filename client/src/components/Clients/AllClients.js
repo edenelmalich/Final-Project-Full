@@ -22,21 +22,30 @@ import { connect } from 'react-redux';
 import { getClients } from '../../actions/newClientsAction';
 import { closeAll } from '../../actions/navsAction';
 import { closeAlerts } from '../../actions/alertAction';
+import { setModalToggle } from '../../actions/modalActions';
 
-const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {
+const AllClients = ({
+  getClients,
+  getClientsList,
+  closeAll,
+  closeAlerts,
+  getModalState,
+  setModalToggle
+}) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
     getClients();
     closeAll();
-  }, []);
+  }, [getModalState]);
   // useState
-  const [modalToggle, setModalToggle] = useState(false);
   const [clientData, setClientData] = useState();
+
   const getId = id => {
     setClientData(id);
-    setModalToggle(!modalToggle);
+    setModalToggle(getModalState);
   };
+
   return (
     <div className='Clients'>
       <MediaQuery maxDeviceWidth={1000}>
@@ -45,7 +54,7 @@ const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {
           getId={getId}
           clientData={clientData}
           setModalToggle={setModalToggle}
-          modalToggle={modalToggle}
+          getModalState={getModalState}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -82,11 +91,11 @@ const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {
                                 <td>
                                   <FontAwesomeIcon
                                     icon={FarEye}
-                                    onClick={() => getId(client.id)}
+                                    onClick={() => getId(client._id)}
                                   />
                                   <ClientsModal
-                                    show={modalToggle}
-                                    onHide={() => setModalToggle(false)}
+                                    show={getModalState}
+                                    onHide={() => setModalToggle(getModalState)}
                                     getclientslist={getClientsList}
                                     clientdata={clientData}
                                   />
@@ -122,7 +131,7 @@ const AllClients = ({ getClients, getClientsList, closeAll, closeAlerts }) => {
 const MobileClients = ({
   getClientsList,
   getId,
-  modalToggle,
+  getModalState,
   setModalToggle,
   clientData
 }) => (
@@ -154,10 +163,10 @@ const MobileClients = ({
                     <td>
                       <FontAwesomeIcon
                         icon={FarEye}
-                        onClick={() => getId(client.id)}
+                        onClick={() => getId(client._id)}
                       />
                       <ClientsModal
-                        show={modalToggle}
+                        show={getModalState}
                         onHide={() => setModalToggle(false)}
                         getclientslist={getClientsList}
                         clientdata={clientData}
@@ -185,13 +194,19 @@ const MobileClients = ({
 );
 AllClients.propTypes = {
   getClientsList: PropTypes.array,
-  getClients: PropTypes.func,
-  closeAll: PropTypes.func,
-  closeAlerts: PropTypes.func
+  getClients: PropTypes.func.isRequired,
+  closeAll: PropTypes.func.isRequired,
+  closeAlerts: PropTypes.func.isRequired,
+  getModalState: PropTypes.bool.isRequired,
+  setModalToggle: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  getClientsList: state.newClientsReducer.getClientsList
+  getClientsList: state.newClientsReducer.getClientsList,
+  getModalState: state.modalReducer.getModalState
 });
-export default connect(mapStateToProps, { getClients, closeAll, closeAlerts })(
-  AllClients
-);
+export default connect(mapStateToProps, {
+  getClients,
+  closeAll,
+  closeAlerts,
+  setModalToggle
+})(AllClients);

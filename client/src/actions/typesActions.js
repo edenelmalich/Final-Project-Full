@@ -30,3 +30,5 @@ export const CALC = 'CALC';
 export const SET_DAYS = 'SET_DAYS';
 // Build Plan Show muscles
 export const SHOW_MUSCLES = 'SHOW_MUSCLES';
+// Modal state
+export const MODAL_TOGGLE_STATE = 'MODAL_TOGGLE_STATE';
