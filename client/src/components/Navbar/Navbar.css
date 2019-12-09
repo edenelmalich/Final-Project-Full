@@ -255,6 +255,10 @@ li#selected a {
     justify-content: center;
 }
 
+.Notifications .svg-inline--fa {
+    font-size: 22px;
+}
+
 .Notifications:hover {
     color: #6e6e6e;
 }
@@ -267,6 +271,7 @@ li#selected a {
     position: fixed;
     display: block;
     top: 15px;
+    right: 19.5rem;
     padding-top: 1px;
     height: 18px;
     width: 18px;
@@ -281,6 +286,42 @@ li#selected a {
     font-size: 12px;
 }
 
-@media only screen and (width:1024px) {}
+@media only screen and (width: 2560px) {
+    .sidebar .logo {
+        height: 100px;
+    }
 
-@media only screen and (width:1440px) {}
+    .sidebar {
+        width: 400px;
+    }
+
+    .header-desktop {
+        height: 100px;
+        right: 400px;
+    }
+
+    .sidebar a {
+        font-size: 22px;
+    }
+
+    .Notifications {
+        height: 100px;
+    }
+
+    .Notifications .svg-inline--fa {
+        font-size: 30px;
+    }
+
+    .Quantity {
+        font-size: 18px;
+        padding-top: 2px;
+        height: 22px;
+        width: 22px;
+        right: 25.5rem;
+        top: 22px;
+    }
+
+    .Accname {
+        font-size: 22px;
+    }
+}

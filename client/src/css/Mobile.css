@@ -79,11 +79,10 @@ body {
   z-index: 3;
 }
 
-.Notifications-position {
-  margin-right: auto;
-}
+
 
 .Quantity-Mobile {
+  position: absolute;
   padding-top: 1px;
   height: 18px;
   width: 18px;
@@ -571,10 +570,9 @@ body {
 
 /* Notifications */
 .MobileNav .Notifications-mobile {
-  position: relative;
-  width: 50px;
+  width: 45px;
   color: #353c3f;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   border: none;
   outline: none;
   background-repeat: no-repeat;
@@ -700,7 +698,8 @@ body {
   }
 
   .Quantity-Mobile {
-    left: 14%;
+    position: fixed;
+    left: 12%;
   }
 
   .Mobile .Stat-Form {

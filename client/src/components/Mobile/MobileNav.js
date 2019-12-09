@@ -177,15 +177,14 @@ const MobileNav = ({
         </Navbar.Brand>
         {!loading && isAuth ? (
           <span>
-            <span className='Notifications-position'>
+            <button
+              onClick={() => setNotificationToggle(notificationsToggleState)}
+              className='Notifications-mobile'
+            >
               <div className='Quantity-Mobile'>0</div>
-              <button
-                onClick={() => setNotificationToggle(notificationsToggleState)}
-                className='Notifications-mobile'
-              >
-                <FontAwesomeIcon icon={faBell} />
-              </button>
-            </span>
+              <FontAwesomeIcon icon={faBell} />
+            </button>
+
             <Notifications />
           </span>
         ) : null}

@@ -145,3 +145,14 @@
     text-decoration: none;
     display: inline-block;
 }
+
+@media only screen and (width: 2560px) {
+    .Exe-Flex {
+        padding: 0 35% 0 35%;
+    }
+
+    .ExeDays {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
+}

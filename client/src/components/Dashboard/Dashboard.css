@@ -140,6 +140,41 @@ a:hover {
     overflow: auto;
 }
 
+@media only screen and (width: 768px) {
+    .Dashboard .card {
+        height: 15vh;
+    }
+
+}
+
+@media only screen and (width: 2560px) {
+    #DashClient {
+        width: 27rem;
+    }
+
+    #DashNewClient {
+        width: 27rem;
+    }
+
+    #DashSub {
+        width: 27rem;
+    }
+
+    #DashSubStat {
+        width: 27rem;
+    }
+
+    .Dash-Table {
+        padding: 0 3rem 0 3rem;
+    }
+
+    .Card-Pages {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 @media only screen and (width:1280px),
 (width:1200px) {
 

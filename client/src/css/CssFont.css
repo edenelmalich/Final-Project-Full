@@ -267,10 +267,16 @@ h4 {
   margin-left: auto;
 }
 
-.modal-footer > :not(:last-child) {
+.modal-footer> :not(:last-child) {
   margin-left: auto;
 }
 
 .svg-inline--fa {
   cursor: pointer;
+}
+
+@media only screen and (width: 2560px) {
+  .Page-Container {
+    padding-right: 400px;
+  }
 }

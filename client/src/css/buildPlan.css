@@ -325,3 +325,22 @@
         margin-right: auto;
     }
 }
+
+@media only screen and (width: 2560px) {
+    .ExeMain {
+        padding: 0 15% 0 15%;
+    }
+
+    .toast {
+        width: 180px;
+    }
+
+    b,
+    strong {
+        font-size: 18px;
+    }
+
+    .Form-Plan {
+        height: auto;
+    }
+}
