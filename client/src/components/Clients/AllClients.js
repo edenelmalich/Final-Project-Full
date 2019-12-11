@@ -10,7 +10,7 @@ import '../../css/CssFont.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye as FarEye } from '@fortawesome/free-regular-svg-icons';
 // Bootstrap imports
-import { Table, Card } from 'react-bootstrap';
+import { Table, Card, Button } from 'react-bootstrap';
 // import moment to get the days
 import moment from 'moment';
 // Mobile imports
@@ -40,12 +40,36 @@ const AllClients = ({
   }, [getModalState]);
   // useState
   const [clientData, setClientData] = useState();
-
+  const [getClientName, setClientName] = useState({
+    clientName: '',
+    findState: false
+  });
+  const [findList, setFindList] = useState([]);
   const getId = id => {
     setClientData(id);
     setModalToggle(getModalState);
   };
-
+  const searchClient = e => {
+    e.preventDefault();
+    if (clientName !== '') {
+      setClientName({ ...getClientName, findState: true });
+      setFindList(
+        getClientsList.filter(
+          client =>
+            clientName === client.firstname ||
+            clientName === client.lastname ||
+            clientName === client.firstname + ' ' + client.lastname
+        )
+      );
+    } else {
+      setClientName({ ...getClientName, findState: false });
+    }
+  };
+  const onChange = e => {
+    setClientName({ ...getClientName, [e.target.name]: e.target.value });
+  };
+  const { clientName, findState } = getClientName;
+  const ClientList = findState ? findList : getClientsList;
   return (
     <div className='Clients'>
       <MediaQuery maxDeviceWidth={1000}>
@@ -55,6 +79,10 @@ const AllClients = ({
           clientData={clientData}
           setModalToggle={setModalToggle}
           getModalState={getModalState}
+          clientName={clientName}
+          onChange={onChange}
+          searchClient={searchClient}
+          ClientList={ClientList}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -70,6 +98,22 @@ const AllClients = ({
                     <Card id='Clients-Card-size'>
                       <div className='Card-Title'> רשימת לקוחות</div>
                       <Card.Body>
+                        <form className='Form-Search'>
+                          <input
+                            type='text'
+                            name='clientName'
+                            value={clientName}
+                            onChange={e => onChange(e)}
+                            placeholder=' הכנס שם לקוח...'
+                          />
+                          <Button
+                            variant='outline-dark'
+                            onClick={e => searchClient(e)}
+                          >
+                            חפש לקוח
+                          </Button>
+                          <div className='Main-Padding'></div>
+                        </form>
                         <Table id='NewClients' striped bordered hover size='sm'>
                           <thead>
                             <tr>
@@ -86,7 +130,7 @@ const AllClients = ({
                             </tr>
                           </thead>
                           <tbody>
-                            {getClientsList.map(client => (
+                            {ClientList.map(client => (
                               <tr key={client.id}>
                                 <td>
                                   <FontAwesomeIcon
@@ -133,15 +177,32 @@ const MobileClients = ({
   getId,
   getModalState,
   setModalToggle,
-  clientData
+  clientData,
+  clientName,
+  onChange,
+  searchClient,
+  ClientList
 }) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>לקוחות</h2>
       <div className='Client-card'>
         <Card>
+          <div className='Card-Title'>רשימת לקוחות</div>
           <Card.Body>
-            <div className='TableText'>רשימת לקוחות</div>
+            <form className='Form-Search'>
+              <input
+                type='text'
+                name='clientName'
+                value={clientName}
+                onChange={e => onChange(e)}
+                placeholder=' הכנס שם לקוח...'
+              />
+              <Button variant='outline-dark' onClick={e => searchClient(e)}>
+                חפש לקוח
+              </Button>
+              <div className='Main-Padding'></div>
+            </form>
             <Table striped bordered hover size='sm'>
               <thead>
                 <tr>
@@ -158,7 +219,7 @@ const MobileClients = ({
                 </tr>
               </thead>
               <tbody>
-                {getClientsList.map(client => (
+                {ClientList.map(client => (
                   <tr key={client.id}>
                     <td>
                       <FontAwesomeIcon
@@ -167,7 +228,7 @@ const MobileClients = ({
                       />
                       <ClientsModal
                         show={getModalState}
-                        onHide={() => setModalToggle(false)}
+                        onHide={() => setModalToggle(getModalState)}
                         getclientslist={getClientsList}
                         clientdata={clientData}
                       />

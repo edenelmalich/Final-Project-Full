@@ -239,7 +239,7 @@ const BuildPlan = ({
     );
   };
   // functions
-  const saveExercises = (id, selected) => {
+  const saveExercises = id => {
     setExercises(
       exercisesData.map(exercise => {
         if (id === exercise.id && exercise.selected === false) {
@@ -543,7 +543,7 @@ const BuildPlanMobile = ({
       <h2 id='Mobile-text'>
         בניית תוכנית אימונים
         <button className='Icon-List'>
-          <div className='Quantity-Mobile'>{counterData}</div>
+          <div className='Quantity-Mobile-buildPage'>{counterData}</div>
           <FontAwesomeIcon
             onClick={() => setList(!listState)}
             icon={faClipboardList}

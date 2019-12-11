@@ -570,7 +570,7 @@ body {
 
 /* Notifications */
 .MobileNav .Notifications-mobile {
-  width: 45px;
+  width: 48px;
   color: #353c3f;
   font-size: 1.75rem;
   border: none;
@@ -685,6 +685,19 @@ body {
 .dropright,
 .dropup {
   position: unset;
+}
+
+.Quantity-Mobile-buildPage {
+  position: absolute;
+  padding-top: 1px;
+  height: 18px;
+  width: 18px;
+  line-height: 15px;
+  text-align: center;
+  background: #ff4b5a;
+  color: #fff;
+  border-radius: 100%;
+  font-size: 12px;
 }
 
 /* Screens attributes */

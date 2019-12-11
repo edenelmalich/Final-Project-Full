@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_CLIENTS_LIST } from './typesActions';
+import { SET_CLIENTS_LIST, FIND_CLIENT } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const setNewClient = (
@@ -39,7 +39,7 @@ export const setNewClient = (
     }
   }
 };
-
+// Action to get all the client from the db
 export const getClients = () => async dispatch => {
   try {
     const res = await axios.get('/api/Nclient');
@@ -52,6 +52,7 @@ export const getClients = () => async dispatch => {
     console.error(err.message);
   }
 };
+// Action for delete client from the db
 export const deleteclient = _id => async dispatch => {
   try {
     await axios.delete(`api/Nclient/${_id}`);

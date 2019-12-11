@@ -1,4 +1,4 @@
-import { SET_CLIENTS_LIST } from '../actions/typesActions';
+import { SET_CLIENTS_LIST, FIND_CLIENT } from '../actions/typesActions';
 
 const initialState = {
   getClientsList: []

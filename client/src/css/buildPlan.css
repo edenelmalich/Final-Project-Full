@@ -285,7 +285,7 @@
         outline: none;
         border: none;
         float: left;
-        width: 50px;
+        width: 35px;
     }
 
     button:not(:disabled) {
