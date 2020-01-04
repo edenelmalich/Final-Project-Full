@@ -32,3 +32,5 @@ export const SET_DAYS = 'SET_DAYS';
 export const SHOW_MUSCLES = 'SHOW_MUSCLES';
 // Modal state
 export const MODAL_TOGGLE_STATE = 'MODAL_TOGGLE_STATE';
+// Health action
+export const SET_DOCUMENTS_LIST = 'SET_DOCUMENTS_LIST';

@@ -9,40 +9,42 @@ import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
 const ExercisesList = props => {
   return (
-    <Modal
-      {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>
-          תרגילים שנבחרו
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {/* <div className='Modal-muscle-name'>{props.muscleName}</div> */}
-        <Alert />
-        {props.exercisesData.map(item => (
-          <div key={item.id}>
-            {item.selected ? (
-              <div className='ExercisesText-Att'>
-                <div className='ExercisesText'>
-                  {item.label}
-                  <div
-                    className='DeleteItem'
-                    onClick={() => props.deleteItem(item.id)}
-                  >
-                    +
+    <div className='ExercisesList'>
+      <Modal
+        {...props}
+        size='lg'
+        aria-labelledby='contained-modal-title-vcenter'
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id='contained-modal-title-vcenter'>
+            תרגילים שנבחרו
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body id='modal-padding'>
+          {/* <div className='Modal-muscle-name'>{props.muscleName}</div> */}
+          <Alert />
+          {props.exercisesdata.map(item => (
+            <div key={item.id}>
+              {item.selected ? (
+                <div className='ExercisesText-Att'>
+                  <div className='ExercisesText'>
+                    {item.label}
+                    <div
+                      className='DeleteItem'
+                      onClick={() => props.deleteitem(item.id)}
+                    >
+                      +
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : null}
-          </div>
-        ))}
-      </Modal.Body>
-      <Modal.Footer></Modal.Footer>
-    </Modal>
+              ) : null}
+            </div>
+          ))}
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
+    </div>
   );
 };
 ExercisesList.propTypes = {

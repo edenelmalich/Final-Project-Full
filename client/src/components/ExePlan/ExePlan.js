@@ -24,7 +24,8 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
     closeAll();
     closeAlerts();
   }, []);
-  // ExePlan Functions
+
+  // This function get the day name if we click some day and set the date name
   const saveDay = dayName => {
     setDays(dayName);
     localStorage.setItem('days', JSON.stringify(dayName));
@@ -61,7 +62,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                   <div className='ExeDays'>
                     <Link
                       onClick={() => saveDay('יום ראשון')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='SundayDesign'
                     >
@@ -69,7 +70,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שני')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='MondayDesign'
                     >
@@ -77,7 +78,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שלישי')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='TuesdayDesign'
                     >
@@ -85,7 +86,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום רביעי')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='WednesdayDesign'
                     >
@@ -93,7 +94,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום חמישי')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='ThursdayDesign'
                     >
@@ -101,7 +102,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שישי')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='FridayDesign'
                     >
@@ -109,7 +110,7 @@ const ExePlan = ({ closeAll, closeAlerts, setDays }) => {
                     </Link>
                     <Link
                       onClick={() => saveDay('יום שבת')}
-                      to='/buildPlan'
+                      to='/BuildPlan'
                       className='ExeBoxs'
                       id='SaturdayDesign'
                     >
@@ -150,7 +151,7 @@ const MobilePlan = ({ saveDay }) => (
         <div className='ExeDays'>
           <Link
             onClick={() => saveDay('יום ראשון')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='SundayDesign'
           >
@@ -158,7 +159,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שני')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='MondayDesign'
           >
@@ -166,7 +167,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שלישי')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='TuesdayDesign'
           >
@@ -174,7 +175,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום רביעי')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='WednesdayDesign'
           >
@@ -182,7 +183,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום חמישי')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='ThursdayDesign'
           >
@@ -190,7 +191,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שישי')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='FridayDesign'
           >
@@ -198,7 +199,7 @@ const MobilePlan = ({ saveDay }) => (
           </Link>
           <Link
             onClick={() => saveDay('יום שבת')}
-            to='/buildPlan'
+            to='/ShowBuild'
             className='ExeBoxs'
             id='SaturdayDesign'
           >

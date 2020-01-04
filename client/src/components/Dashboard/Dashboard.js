@@ -54,7 +54,6 @@ const Dashboard = ({
   const getId = id => {
     setClientData(id);
     setModalToggle(getModalState);
-    console.log('hi');
   };
   return (
     <div className='Dashboard'>

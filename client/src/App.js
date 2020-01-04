@@ -10,7 +10,7 @@ import HealthP from './components/HealthP/HealthP';
 import Nclients from './components/NewClients/NewClients';
 import ExePlan from './components/ExePlan/ExePlan';
 import LoginApp from './components/MainPage/LoginApp';
-import BuildPlan from './components/BuildPlan/BuildPlan';
+
 import Register from './components/MainPage/Register';
 import ForgotPass from './components/MainPage/ForgotPass';
 import Updates from './components/Updates/Updates';
@@ -29,6 +29,7 @@ import setAuthToken from './utils/setAuthToken';
 import { Provider } from 'react-redux';
 import store from './store';
 import { checkUser } from './actions/authAction';
+import BuildPlan from './components/BuildPlan/BuildPlan';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);

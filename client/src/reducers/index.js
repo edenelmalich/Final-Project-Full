@@ -8,6 +8,7 @@ import CalcReducer from './CalcReducer';
 import ExePlanReducer from './ExePlanReducer';
 import BuildReducer from './BuildReducer';
 import modalReducer from './modalReducer';
+import healthReducer from './healthReducer';
 
 export default combineReducers({
   alertReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   CalcReducer,
   ExePlanReducer,
   BuildReducer,
-  modalReducer
+  modalReducer,
+  healthReducer
 });

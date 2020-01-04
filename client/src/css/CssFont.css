@@ -310,6 +310,13 @@ h4 {
     width: 50%;
   }
 
+  .modal-body {
+    position: unset;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem 27% 1rem 27%;
+  }
+
   .Form-Search {
     padding: 0 0 1rem 0;
   }

@@ -239,6 +239,10 @@ const BuildPlan = ({
     );
   };
   // functions
+  const openList = e => {
+    e.preventDefault();
+    setList(!listState);
+  };
   const saveExercises = id => {
     setExercises(
       exercisesData.map(exercise => {
@@ -410,8 +414,18 @@ const BuildPlan = ({
                       {/* Code to open and close the list */}
                       <button className='Icon-List'>
                         <div className='Quantity-Exercises'>{counterData}</div>
-                        <FontAwesomeIcon icon={faClipboardList} />
+                        <FontAwesomeIcon
+                          onClick={e => openList(e)}
+                          icon={faClipboardList}
+                        />
                       </button>
+                      <ExercisesList
+                        show={listState}
+                        onHide={() => setList(false)}
+                        exercisesdata={exercisesData}
+                        deleteitem={DeleteItem}
+                        musclename={muscleName}
+                      />
                     </div>
                   </form>
                 </div>
@@ -553,9 +567,9 @@ const BuildPlanMobile = ({
       <ExercisesList
         show={listState}
         onHide={() => setList(false)}
-        exercisesData={exercisesData}
-        deleteItem={DeleteItem}
-        muscleName={muscleName}
+        exercisesdata={exercisesData}
+        deleteitem={DeleteItem}
+        musclename={muscleName}
       />
       <div className='Build-Muscle'>
         <div className='Header-Muscles'>

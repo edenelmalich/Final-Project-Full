@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_CLIENTS_LIST, FIND_CLIENT } from './typesActions';
+import { SET_CLIENTS_LIST } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const setNewClient = (
