@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // Components imports
 import Alert from '../layout/Alert';
 // Bootstrap imports
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 // Redux
 import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
@@ -22,7 +22,7 @@ const ExercisesList = props => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body id='modal-padding'>
-          {/* <div className='Modal-muscle-name'>{props.muscleName}</div> */}
+          <div className='Modal-muscle-name'>{props.muscleName}</div>
           <Alert />
           {props.exercisesdata.map(item => (
             <div key={item.id}>
@@ -42,7 +42,9 @@ const ExercisesList = props => {
             </div>
           ))}
         </Modal.Body>
-        <Modal.Footer></Modal.Footer>
+        <Modal.Footer>
+          <Button variant='outline-success'>שלח תוכנית</Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );

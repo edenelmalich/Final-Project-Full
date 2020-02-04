@@ -13,6 +13,10 @@ const UpdateSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  readMessage: {
+    type: Boolean,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

@@ -140,68 +140,63 @@ const MobileForgotPass = ({
 }) => (
   <div className='Mobile'>
     <main className='main'>
-      <div className='Mobile-container'>
-        <div className='Mobile-content'>
-          <div className='Mobile-Main-Title'>איפוס סיסמה</div>
-          <Card className='Mobile-Card-size'>
-            <Card.Header>איפוס סיסמה</Card.Header>
-            <Card.Body>
-              <FontAwesomeIcon
-                className='Mobile-Main-Icon'
-                icon={faUnlockAlt}
+      <div className='Mobile-content'>
+        <div className='Mobile-Main-Title'>איפוס סיסמה</div>
+        <Card className='Mobile-Card-size'>
+          <Card.Header>איפוס סיסמה</Card.Header>
+          <Card.Body>
+            <FontAwesomeIcon className='Mobile-Main-Icon' icon={faUnlockAlt} />
+            <header className='Main-Title'> איפוס סיסמה</header>
+            <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
+              <label>דואר אלקטרוני</label>
+              <input
+                type='text'
+                name='Email'
+                value={Email}
+                onChange={e => onChange(e)}
+                placeholder='דואר אלקטרוני'
               />
-              <header className='Main-Title'> איפוס סיסמה</header>
-              <form className='Mobile-Form' onSubmit={e => onSubmit(e)}>
-                <label>דואר אלקטרוני</label>
-                <input
-                  type='text'
-                  name='Email'
-                  value={Email}
-                  onChange={e => onChange(e)}
-                  placeholder='דואר אלקטרוני'
-                />
-                <label> סיסמה</label>
-                <input
-                  type={typeState ? 'text' : 'password'}
-                  name='Password'
-                  value={Password}
-                  onChange={e => onChange(e)}
-                  placeholder='סיסמא'
-                />
-                <label>אימות סיסמה</label>
-                <input
-                  type={typeState ? 'text' : 'password'}
-                  name='RePassword'
-                  value={RePassword}
-                  onChange={e => onChange(e)}
-                  placeholder='אימות סיסמא'
-                />
-                <label>הצג סיסמאות</label>
-                <input type='checkbox' onClick={() => setType(!typeState)} />
-                <div className='Main-Padding'></div>
-                <Alert />
-                <input
-                  className='PassButton'
-                  type='submit'
-                  name='Password'
-                  value='איפוס סיסמה'
-                />
+              <label> סיסמה</label>
+              <input
+                type={typeState ? 'text' : 'password'}
+                name='Password'
+                value={Password}
+                onChange={e => onChange(e)}
+                placeholder='סיסמא'
+              />
+              <label>אימות סיסמה</label>
+              <input
+                type={typeState ? 'text' : 'password'}
+                name='RePassword'
+                value={RePassword}
+                onChange={e => onChange(e)}
+                placeholder='אימות סיסמא'
+              />
+              <label>הצג סיסמאות</label>
+              <input type='checkbox' onClick={() => setType(!typeState)} />
+              <div className='Main-Padding'></div>
+              <Alert />
+              <input
+                className='PassButton'
+                type='submit'
+                name='Password'
+                value='איפוס סיסמה'
+              />
 
-                <div className='Main-Border'></div>
-                <div className='Mobile-Button-content '>
-                  <div className='Mobile-LoginApp-text'>
-                    משתמש רשום?
-                    <span className='Link-Color'>
-                      <Link to='/LoginApp' className='RegistarButton'>
-                        התחבר
-                      </Link>
-                    </span>
-                  </div>
+              <div className='Main-Border'></div>
+              <div className='Mobile-Button-content '>
+                <div className='Mobile-LoginApp-text'>
+                  משתמש רשום?
+                  <span className='Link-Color'>
+                    <Link to='/LoginApp' className='RegistarButton'>
+                      התחבר
+                    </Link>
+                  </span>
                 </div>
-              </form>
-            </Card.Body>
-          </Card>
-        </div>
+              </div>
+            </form>
+          </Card.Body>
+        </Card>
       </div>
     </main>
     <MobileFooter />

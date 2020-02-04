@@ -10,11 +10,11 @@ import moment from 'moment';
 import { Modal, Button } from 'react-bootstrap';
 // Redux
 import { connect } from 'react-redux';
-import { deleteclient } from '../../actions/newClientsAction';
+import { deleteHealthClient } from '../../actions/healthAction';
 import { setModalToggle } from '../../actions/modalActions';
 const HealthModal = props => {
   const {
-    deleteclient,
+    deleteHealthClient,
     getdocuments,
     getdata,
     setModalToggle,
@@ -23,7 +23,7 @@ const HealthModal = props => {
 
   // Functions
   const Delete = id => {
-    deleteclient(id);
+    deleteHealthClient(id);
     setTimeout(() => {
       setModalToggle(getModalState);
     }, 2000);
@@ -79,13 +79,13 @@ const HealthModal = props => {
 };
 HealthModal.propTypes = {
   getclientslist: PropTypes.array,
-  deleteclient: PropTypes.func.isRequired,
+  deleteHealthClient: PropTypes.func.isRequired,
   getModalState: PropTypes.bool.isRequired,
   setModalToggle: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   getModalState: state.modalReducer.getModalState
 });
-export default connect(mapStateToProps, { deleteclient, setModalToggle })(
+export default connect(mapStateToProps, { deleteHealthClient, setModalToggle })(
   HealthModal
 );

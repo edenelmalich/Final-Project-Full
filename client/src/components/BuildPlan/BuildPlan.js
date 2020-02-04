@@ -412,8 +412,8 @@ const BuildPlan = ({
                         לדף הקודם
                       </Link>
                       {/* Code to open and close the list */}
+                      <div className='Quantity-Exercises'>{counterData}</div>
                       <button className='Icon-List'>
-                        <div className='Quantity-Exercises'>{counterData}</div>
                         <FontAwesomeIcon
                           onClick={e => openList(e)}
                           icon={faClipboardList}

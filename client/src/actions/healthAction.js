@@ -1,4 +1,5 @@
 import { SET_DOCUMENTS_LIST } from '../actions/typesActions';
+import { setAlert } from '../actions/alertAction';
 import axios from 'axios';
 export const setDocuments = () => async dispatch => {
   try {
@@ -9,5 +10,15 @@ export const setDocuments = () => async dispatch => {
     });
   } catch (err) {
     console.error(err.message);
+  }
+};
+// Action for delete client from the db
+export const deleteHealthClient = _id => async dispatch => {
+  try {
+    await axios.delete(`api/health/${_id}`);
+
+    dispatch(setAlert('משתמש נמחק בהצלחה', 'success'));
+  } catch (err) {
+    dispatch(setAlert('שגיאה זמנית בשרת', 'danger'));
   }
 };

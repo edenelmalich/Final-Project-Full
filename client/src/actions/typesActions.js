@@ -34,3 +34,5 @@ export const SHOW_MUSCLES = 'SHOW_MUSCLES';
 export const MODAL_TOGGLE_STATE = 'MODAL_TOGGLE_STATE';
 // Health action
 export const SET_DOCUMENTS_LIST = 'SET_DOCUMENTS_LIST';
+// Send all the exercises to the clients
+export const SEND_EXERCISES = 'SET_EXERCISES';
