@@ -2,13 +2,18 @@ import axios from 'axios';
 import { UPDATE_SUCCESS, UPDATE_FAIL } from './typesActions';
 import { setAlert } from './alertAction';
 
-export const setUpdate = (firstname, lastname, update) => async dispatch => {
+export const setUpdate = (
+  firstname,
+  lastname,
+  update,
+  readMessage = false
+) => async dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json'
     }
   };
-  const body = JSON.stringify({ firstname, lastname, update });
+  const body = JSON.stringify({ firstname, lastname, update, readMessage });
   try {
     await axios.post('api/updates', body, config);
 

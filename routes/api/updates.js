@@ -21,12 +21,13 @@ router.post(
     if (!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() });
     }
-    const { firstname, lastname, update } = req.body;
+    const { firstname, lastname, update, readMessage } = req.body;
     try {
       updates = new Updates({
         firstname,
         lastname,
-        update
+        update,
+        readMessage
       });
       await updates.save();
       res.json(req.body);
