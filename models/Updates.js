@@ -14,7 +14,7 @@ const UpdateSchema = new mongoose.Schema({
     required: true
   },
   readMessage: {
-    type: Boolean,
+    type: false,
     required: true
   },
   date: {
