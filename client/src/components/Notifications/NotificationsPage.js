@@ -59,4 +59,7 @@ const MobileNoti = () => (
 NotificationsPage.propTypes = {
   closeAll: PropTypes.func.isRequired
 };
-export default connect(null, { closeAll })(NotificationsPage);
+const mapStateToProps = state => ({
+  getDocuments: state.healthReducer.getDocuments
+});
+export default connect(mapStateToProps, { closeAll })(NotificationsPage);

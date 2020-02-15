@@ -96,8 +96,7 @@ const AllClients = ({
 
                   <div className='Card-Pages'>
                     <Card id='Clients-Card-size'>
-                      <div className='Card-Title'> רשימת לקוחות</div>
-                      <Card.Body>
+                      <div className='Card-Title'>
                         <form className='Form-Search'>
                           <input
                             type='text'
@@ -114,6 +113,8 @@ const AllClients = ({
                           </Button>
                           <div className='Main-Padding'></div>
                         </form>
+                      </div>
+                      <Card.Body>
                         <Table id='NewClients' striped bordered hover size='sm'>
                           <thead>
                             <tr>
@@ -188,8 +189,7 @@ const MobileClients = ({
       <h2 id='Mobile-text'>לקוחות</h2>
       <div className='Client-card'>
         <Card>
-          <div className='Card-Title'>רשימת לקוחות</div>
-          <Card.Body>
+          <div className='Card-Title'>
             <form className='Form-Search'>
               <input
                 type='text'
@@ -203,6 +203,8 @@ const MobileClients = ({
               </Button>
               <div className='Main-Padding'></div>
             </form>
+          </div>
+          <Card.Body>
             <Table striped bordered hover size='sm'>
               <thead>
                 <tr>

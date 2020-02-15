@@ -91,8 +91,7 @@ const HealthP = ({
                   <h2>הצהרות בריאות</h2>
                   <div className='Card-Pages'>
                     <Card id='Health-Card-size'>
-                      <div className='Card-Title'>הצהרות בריאות</div>
-                      <Card.Body id='tableOverflow'>
+                      <div className='Card-Title'>
                         <form className='Form-Search'>
                           <input
                             type='text'
@@ -109,6 +108,8 @@ const HealthP = ({
                           </Button>
                           <div className='Main-Padding'></div>
                         </form>
+                      </div>
+                      <Card.Body id='tableOverflow'>
                         <Table id='NewClients' striped bordered hover size='sm'>
                           <thead>
                             <tr>
@@ -172,8 +173,7 @@ const MobileHealth = ({
     <main className='main'>
       <h2 id='Mobile-text'>הצהרות בריאות</h2>
       <Card id='Health-Card-size'>
-        <div className='Card-Title'>הצהרות בריאות</div>
-        <Card.Body id='tableOverflow'>
+        <div className='Card-Title'>
           <form className='Form-Search'>
             <input
               type='text'
@@ -187,6 +187,8 @@ const MobileHealth = ({
             </Button>
             <div className='Main-Padding'></div>
           </form>
+        </div>
+        <Card.Body id='tableOverflow'>
           <Table id='NewClients' striped bordered hover size='sm'>
             <thead>
               <tr>

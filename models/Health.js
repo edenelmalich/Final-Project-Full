@@ -17,6 +17,10 @@ const Health = new mongoose.Schema({
     type: String,
     required: true
   },
+  ReadMessage: {
+    type: Boolean,
+    required: true
+  },
   date: {
     type: Date
   }

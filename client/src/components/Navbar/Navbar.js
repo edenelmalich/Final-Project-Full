@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // Components imports
 import Notifications from './Notifications';
@@ -37,9 +37,17 @@ const Navbar = ({
   accountToggleState,
   user,
   setAccountToggle,
-  setNotificationToggle
+  setNotificationToggle,
+  getDocuments
 }) => {
+  useEffect(() => {
+    setNotification(
+      getDocuments.filter(update => update.readMessage === false)
+    );
+  }, [getDocuments]);
+  const [getNotification, setNotification] = useState([]);
   const { Name } = user;
+  console.log(getNotification.length);
   return (
     <div className='Navbar'>
       <div className='Pages-Wrapper'>
@@ -104,7 +112,11 @@ const Navbar = ({
             >
               <FontAwesomeIcon icon={faBell} />
             </button>
-            <div className='Quantity'>0</div>
+            {getNotification.length > 0 ? (
+              <div className='Quantity'>{getNotification.length}</div>
+            ) : (
+              0
+            )}
           </span>
           <span className='Accname'> שלום {Name}</span>
 
@@ -134,7 +146,8 @@ Navbar.propTypes = {
 const mapStateToProps = state => ({
   notificationsToggleState: state.NavReducer.notificationsToggleState,
   accountToggleState: state.NavReducer.accountToggleState,
-  user: state.authReducer.user
+  user: state.authReducer.user,
+  getDocuments: state.healthReducer.getDocuments
 });
 
 export default connect(mapStateToProps, {

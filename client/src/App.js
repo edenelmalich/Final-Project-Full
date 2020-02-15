@@ -30,6 +30,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { checkUser } from './actions/authAction';
 import BuildPlan from './components/BuildPlan/BuildPlan';
+import { setDocuments } from './actions/healthAction';
+import { connect } from 'react-redux';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,9 +39,12 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(checkUser());
+    store.dispatch(setDocuments());
   }, []);
+  useEffect(() => {
+    store.dispatch(setDocuments());
+  });
   // useState
-
   return (
     <Provider store={store}>
       <Router>
