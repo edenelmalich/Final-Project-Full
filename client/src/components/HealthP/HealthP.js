@@ -70,7 +70,16 @@ const HealthP = ({
   return (
     <div className='Healthp'>
       <MediaQuery maxDeviceWidth={1000}>
-        <MobileHealth />
+        <MobileHealth
+          clientName={clientName}
+          onChange={onChange}
+          searchClient={searchClient}
+          ClientList={ClientList}
+          getId={getId}
+          getModalState={getModalState}
+          getDocuments={getDocuments}
+          getData={getData}
+        />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
@@ -83,7 +92,7 @@ const HealthP = ({
                   <div className='Card-Pages'>
                     <Card id='Health-Card-size'>
                       <div className='Card-Title'>הצהרות בריאות</div>
-                      <Card.Body>
+                      <Card.Body id='tableOverflow'>
                         <form className='Form-Search'>
                           <input
                             type='text'
@@ -149,13 +158,69 @@ const HealthP = ({
   );
 };
 
-const MobileHealth = () => (
+const MobileHealth = ({
+  clientName,
+  onChange,
+  searchClient,
+  ClientList,
+  getData,
+  getId,
+  getModalState,
+  getDocuments
+}) => (
   <div className='Mobile'>
     <main className='main'>
       <h2 id='Mobile-text'>הצהרות בריאות</h2>
       <Card id='Health-Card-size'>
         <div className='Card-Title'>הצהרות בריאות</div>
-        <Card.Body></Card.Body>
+        <Card.Body id='tableOverflow'>
+          <form className='Form-Search'>
+            <input
+              type='text'
+              name='clientName'
+              value={clientName}
+              onChange={e => onChange(e)}
+              placeholder=' חפש הצהרת בריאות...'
+            />
+            <Button variant='outline-dark' onClick={e => searchClient(e)}>
+              חפש
+            </Button>
+            <div className='Main-Padding'></div>
+          </form>
+          <Table id='NewClients' striped bordered hover size='sm'>
+            <thead>
+              <tr>
+                <th>הצג הצהרת בריאות</th>
+                <th>שם פרטי</th>
+                <th>שם משפחה</th>
+                <th>הצהרת בריאות</th>
+                <th>תאריך שליחה</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ClientList.map(client => (
+                <tr key={client._id}>
+                  <td>
+                    <FontAwesomeIcon
+                      icon={FarEye}
+                      onClick={() => getId(client._id)}
+                    />
+                    <HealthModal
+                      show={getModalState}
+                      onHide={() => setModalToggle(getModalState)}
+                      getdocuments={getDocuments}
+                      getdata={getData}
+                    />
+                  </td>
+                  <td>{client.firstName}</td>
+                  <td>{client.lastName}</td>
+                  <td>{client.documentsText}</td>
+                  <td>{moment(client.date).format('YYYY/MM/DD')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Card.Body>
       </Card>
     </main>
     <MobileFooter />

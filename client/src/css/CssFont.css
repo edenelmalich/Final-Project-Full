@@ -140,7 +140,11 @@ h4 {
 }
 
 #Health-Card-size {
-  height: 50vh;
+  height: 60vh;
+}
+
+#tableOverflow {
+  overflow: auto;
 }
 
 .Card-Title {
