@@ -3,10 +3,10 @@ import { SET_CLIENTS_LIST } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const setNewClient = (
-  firstname,
-  lastname,
-  id,
+  Name,
+  clientId,
   phone,
+  email,
   Type,
   Time,
   Payment,
@@ -18,9 +18,9 @@ export const setNewClient = (
     }
   };
   const body = JSON.stringify({
-    firstname,
-    lastname,
-    id,
+    Name,
+    clientId,
+    email,
     phone,
     Type,
     Time,

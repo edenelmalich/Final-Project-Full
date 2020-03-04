@@ -10,7 +10,8 @@
     display: flex;
 }
 
-.Nclient-FormAtt input[type=text] {
+.Nclient-FormAtt input[type=text],
+input[type=email] {
     width: 40%;
     height: 30px;
     text-indent: 20px;

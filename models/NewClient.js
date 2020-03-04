@@ -31,12 +31,10 @@ const NclientSchema = new mongoose.Schema({
     required: true
   },
   readMessage: {
-    type: String,
-    required: true
+    type: String
   },
   subject: {
-    type: String,
-    required: true
+    type: String
   },
   Total: {
     type: String

@@ -58,13 +58,13 @@ const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
   const [calcTime, setCalcTime] = useState({});
   const [calcPayment, setCalcPayment] = useState({});
   const [formData, setFormData] = useState({
-    firstname: '',
-    lastname: '',
-    id: '',
-    Phone: ''
+    Name: '',
+    clientId: '',
+    phone: '',
+    email: ''
   });
 
-  const { firstname, lastname, id, Phone } = formData;
+  const { Name, clientId, phone, email } = formData;
   // Functions
   const SetData = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -113,10 +113,10 @@ const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
     }
     setCalculation(Total);
     setNewClient(
-      firstname,
-      lastname,
-      id,
-      Phone,
+      Name,
+      clientId,
+      phone,
+      email,
       typeName.typeName,
       timeName.timeName,
       calcPayment.calcPayment,
@@ -131,10 +131,10 @@ const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
     }, 2000);
     setFormData({
       ...formData,
-      firstname: '',
-      lastname: '',
-      id: '',
-      Phone: ''
+      Name: '',
+      clientId: '',
+      phone: '',
+      email: ''
     });
     setTimeName('');
     setTypeName('');
@@ -167,11 +167,11 @@ const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
           paymentData={paymentData}
           calculationData={calculationData}
           SetData={SetData}
-          Phone={Phone}
-          id={id}
-          firstname={firstname}
-          lastname={lastname}
+          phone={phone}
+          clientId={clientId}
+          Name={Name}
           onSubmit={onSubmit}
+          email={email}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -197,29 +197,29 @@ const NewClients = ({ setNewClient, closeAll, closeAlerts }) => {
                       <div className='Form-Flex'>
                         <input
                           type='text'
-                          name='firstname'
-                          value={firstname}
+                          name='Name'
+                          value={Name}
                           onChange={e => SetData(e)}
-                          placeholder='שם פרטי'
+                          placeholder='שם מלא'
+                        />
+                        <input
+                          type='email'
+                          name='email'
+                          value={email}
+                          onChange={e => SetData(e)}
+                          placeholder='דואר אלקטרוני'
                         />
                         <input
                           type='text'
-                          name='lastname'
-                          value={lastname}
-                          onChange={e => SetData(e)}
-                          placeholder='שם משפחה'
-                        />
-                        <input
-                          type='text'
-                          name='id'
-                          value={id}
+                          name='clientId'
+                          value={clientId}
                           onChange={e => SetData(e)}
                           placeholder='תעודת זהות'
                         />
                         <input
                           type='text'
-                          name='Phone'
-                          value={Phone}
+                          name='phone'
+                          value={phone}
                           onChange={e => SetData(e)}
                           placeholder='טלפון'
                         />
@@ -294,12 +294,12 @@ const MobileNclient = ({
   timeData,
   paymentData,
   calculationData,
-  firstname,
-  lastname,
   SetData,
-  id,
-  Phone,
-  onSubmit
+  clientId,
+  phone,
+  onSubmit,
+  Name,
+  email
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -316,29 +316,29 @@ const MobileNclient = ({
           <div className='Form-Flex'>
             <input
               type='text'
-              name='firstname'
-              value={firstname}
+              name='Name'
+              value={Name}
               onChange={e => SetData(e)}
-              placeholder='שם פרטי'
+              placeholder='שם מלא'
             />
             <input
               type='text'
-              name='lastname'
-              value={lastname}
+              name='email'
+              value={email}
               onChange={e => SetData(e)}
-              placeholder='שם משפחה'
+              placeholder='דואר אלקטרוני'
             />
             <input
               type='text'
-              name='id'
-              value={id}
+              name='clientId'
+              value={clientId}
               onChange={e => SetData(e)}
               placeholder='תעודת זהות'
             />
             <input
               type='text'
-              name='Phone'
-              value={Phone}
+              name='phone'
+              value={phone}
               onChange={e => SetData(e)}
               placeholder='טלפון'
             />

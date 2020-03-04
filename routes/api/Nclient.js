@@ -25,13 +25,14 @@ router.delete('/:id', async (req, res) => {
 router.post(
   '/',
   [
-    check('firstname', 'הכנס שם תקין')
+    check('Name', 'הכנס שם תקין')
       .not()
       .isEmpty(),
-    check('lastname', 'הכנס שם משפחה תקין')
-      .not()
-      .isEmpty(),
-    check('id', 'הכנס תעודת זהות עם 9 ספרות').isLength({ min: 9, max: 9 }),
+    check('email', 'הכנס דואר אלקטרוני תקין').isEmail(),
+    check('clientId', 'הכנס תעודת זהות עם 9 ספרות').isLength({
+      min: 9,
+      max: 9
+    }),
     check('phone', 'הכנס מספר טלפון תקין').isLength({ min: 10, max: 10 }),
 
     check('Type', 'בחר סוג מנוי')
@@ -51,16 +52,16 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const {
-      firstname,
-      lastname,
-      id,
+      Name,
+      clientId,
+      email,
       phone,
       Type,
       Time,
       Payment,
       Total
     } = req.body;
-    let Nclient = await NewClient.findOne({ id });
+    let Nclient = await NewClient.findOne({ clientId });
     if (Nclient) {
       return res
         .status(400)
@@ -68,9 +69,9 @@ router.post(
     }
     try {
       Nclient = new NewClient({
-        firstname,
-        lastname,
-        id,
+        Name,
+        email,
+        clientId,
         phone,
         Type,
         Time,

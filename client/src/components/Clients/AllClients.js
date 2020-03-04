@@ -119,9 +119,9 @@ const AllClients = ({
                           <thead>
                             <tr>
                               <th>הצג לקוח</th>
-                              <th>שם פרטי</th>
-                              <th>שם משפחה</th>
+                              <th>שם מלא</th>
                               <th>תעודת זהות</th>
+                              <th>דואר אלקטרוני</th>
                               <th>טלפון</th>
                               <th>סוג מנוי</th>
                               <th>תקופת מנוי</th>
@@ -145,9 +145,9 @@ const AllClients = ({
                                     clientdata={clientData}
                                   />
                                 </td>
-                                <td>{client.firstname}</td>
-                                <td>{client.lastname}</td>
-                                <td>{client.id}</td>
+                                <td>{client.Name}</td>
+                                <td>{client.clientId}</td>
+                                <td>{client.email}</td>
                                 <td>{client.phone}</td>
                                 <td>{client.Type}</td>
                                 <td>{client.Time}</td>
