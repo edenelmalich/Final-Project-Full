@@ -31,7 +31,10 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { closeAlerts } from '../../actions/alertAction';
-import { getClients } from '../../actions/newClientsAction';
+import {
+  getClients,
+  getReturnClientsList
+} from '../../actions/newClientsAction';
 import { closeAll } from '../../actions/navsAction';
 import { setModalToggle } from '../../actions/modalActions';
 const Dashboard = ({
@@ -40,12 +43,15 @@ const Dashboard = ({
   closeAll,
   closeAlerts,
   setModalToggle,
-  getModalState
+  getModalState,
+  getReturnClientsList,
+  getReturnClients
 }) => {
   // ComponentWillMount
   useEffect(() => {
     closeAlerts();
     getClients();
+    getReturnClientsList();
     closeAll();
   }, [getModalState]);
   // useState
@@ -64,6 +70,7 @@ const Dashboard = ({
           getModalState={getModalState}
           setModalToggle={setModalToggle}
           clientData={clientData}
+          getReturnClients={getReturnClients}
         />
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
@@ -113,7 +120,11 @@ const Dashboard = ({
                           <div className='DashBoard-Text'>
                             <span>חידוש מנויים</span>
                           </div>
-                          <div className='DashBoard-Text-info'>2</div>
+                          <div className='DashBoard-Text-info'>
+                            {getReturnClients.length > 0
+                              ? getReturnClients.length
+                              : 0}
+                          </div>
                         </Card.Body>
                       </Card>
                       <Card id='DashSubStat'>
@@ -152,8 +163,7 @@ const Dashboard = ({
                             <thead>
                               <tr>
                                 <th>הצג לקוח</th>
-                                <th>שם פרטי</th>
-                                <th>שם משפחה</th>
+                                <th>שם מלא</th>
                                 <th>תעודת זהות</th>
                                 <th>טלפון</th>
                                 <th>סוג מנוי</th>
@@ -180,9 +190,8 @@ const Dashboard = ({
                                       clientdata={clientData}
                                     />
                                   </td>
-                                  <td>{client.firstname}</td>
-                                  <td>{client.lastname}</td>
-                                  <td>{client.id}</td>
+                                  <td>{client.Name}</td>
+                                  <td>{client.clientId}</td>
                                   <td>{client.phone}</td>
                                   <td>{client.Type}</td>
                                   <td>{client.Time}</td>
@@ -214,7 +223,8 @@ const MobileDash = ({
   getId,
   getModalState,
   setModalToggle,
-  clientData
+  clientData,
+  getReturnClients
 }) => (
   <div className='Mobile'>
     <main className='main'>
@@ -242,7 +252,9 @@ const MobileDash = ({
           <FontAwesomeIcon id='Mobile-icon' icon={faUserClock} size='3x' />
 
           <div className='Mobile-DashBoard-Text'>חידוש מנויים</div>
-          <div className='Mobile-DashBoard-Text-info'>2</div>
+          <div className='Mobile-DashBoard-Text-info'>
+            {getReturnClients.length > 0 ? getReturnClients.length : 0}
+          </div>
         </Card>
         <Card id='DashSubStat' className='Dash-Card-Size'>
           <FontAwesomeIcon id='Mobile-icon' icon={faChartBar} size='3x' />
@@ -269,8 +281,7 @@ const MobileDash = ({
               <thead>
                 <tr>
                   <th>הצג לקוח</th>
-                  <th>שם פרטי</th>
-                  <th>שם משפחה</th>
+                  <th>שם מלא</th>
                   <th>תעודת זהות</th>
                   <th>טלפון</th>
                   <th>סוג מנוי</th>
@@ -295,8 +306,7 @@ const MobileDash = ({
                         clientdata={clientData}
                       />
                     </td>
-                    <td>{client.firstname}</td>
-                    <td>{client.lastname}</td>
+                    <td>{client.Name}</td>
                     <td>{client.id}</td>
                     <td>{client.phone}</td>
                     <td>{client.Type}</td>
@@ -320,16 +330,19 @@ Dashboard.propTypes = {
   getClients: PropTypes.func.isRequired,
   closeAll: PropTypes.func.isRequired,
   closeAlerts: PropTypes.func.isRequired,
-  setModalToggle: PropTypes.func.isRequired
+  setModalToggle: PropTypes.func.isRequired,
+  getReturnClientsList: PropTypes.array
 };
 const mapStateToProps = state => ({
   getClientsList: state.newClientsReducer.getClientsList,
   mobileToggleState: state.NavReducer.mobileToggleState,
-  getModalState: state.modalReducer.getModalState
+  getModalState: state.modalReducer.getModalState,
+  getReturnClients: state.newClientsReducer.getReturnClients
 });
 export default connect(mapStateToProps, {
   getClients,
   closeAll,
   closeAlerts,
-  setModalToggle
+  setModalToggle,
+  getReturnClientsList
 })(Dashboard);

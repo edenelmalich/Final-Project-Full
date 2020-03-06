@@ -17,6 +17,7 @@ app.use('/api/Nclient', require('./routes/api/Nclient'));
 app.use('/api/forgotPass', require('./routes/api/forgotPass'));
 app.use('/api/resetEmail', require('./routes/api/resetEmail'));
 app.use('/api/health', require('./routes/api/health'));
+app.use('/api/returnClient', require('./routes/api/returnClient'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

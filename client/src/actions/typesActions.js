@@ -14,6 +14,7 @@ export const UPDATE_SUCCESS = 'UPDATE_SUCCESS';
 export const UPDATE_FAIL = 'UPDATE_FAIL';
 // Actions to loading all the clients from DB
 export const SET_CLIENTS_LIST = 'GET_CLIENTS_LIST';
+export const SET_RETURN_CLIENTS_LIST = 'GET_RETURN_CLIENTS_LIST';
 export const LOGOUT = 'LOGOUT';
 // Account and Notifications Actions
 export const SET_ACCOUNT_TOGGLE = 'SET_ACCOUNT_TOGGLE';

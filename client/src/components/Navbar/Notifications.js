@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import '../../css/CssFont.css';
 // import Link from react-router
 import { Link } from 'react-router-dom';
 // Bootstrap imports
@@ -13,7 +14,6 @@ const Notifications = ({ notificationsToggleState, getDocuments }) => {
     );
   }, [getDocuments]);
   const [getNotification, setNotification] = useState([]);
-  console.log(getNotification.length);
   return (
     <Collapse in={notificationsToggleState}>
       <div className='NotiBox'>
@@ -23,7 +23,10 @@ const Notifications = ({ notificationsToggleState, getDocuments }) => {
             : 'יש לך 0 הודעות חדשות'}
         </div>
         {getNotification.map(notification => (
-          <div className='Notification-item'>
+          <div
+            className='Notification-item'
+            id={notification.readMessage ? 'readMessage' : 'noReadMessage'}
+          >
             התקבלה {notification.subject} חדשה
           </div>
         ))}

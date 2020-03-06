@@ -325,3 +325,12 @@ h4 {
     padding: 0 0 1rem 0;
   }
 }
+
+#readMessage {
+  background: #f8f9fa;
+}
+
+#noReadMessage {
+  background-color: rgba(0, 0, 0, .05);
+
+}

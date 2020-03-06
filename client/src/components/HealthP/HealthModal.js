@@ -70,7 +70,7 @@ const HealthModal = props => {
 
         <Modal.Footer>
           <Button onClick={() => Delete(getdata)} variant='outline-danger'>
-            מחק לקוח
+            מחק הצהרת בריאות
           </Button>
         </Modal.Footer>
       </Modal>

@@ -93,7 +93,8 @@ li#selected a {
     top: 80%;
     margin-top: 20px;
     margin-left: 67px;
-
+    max-height: 250px;
+    overflow: auto;
 }
 
 .NotiBox:before {
@@ -137,12 +138,15 @@ li#selected a {
     color: #353c3f;
     text-align: right;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .Notification-item {
     border-bottom: 1px solid #353c3f;
     color: #353c3f;
-    padding: 19px 22px;
+    padding: 1rem;
+    white-space: nowrap;
+    font-size: 14px;
     padding-bottom: 14px;
     display: flex;
 }

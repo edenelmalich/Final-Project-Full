@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SET_CLIENTS_LIST } from './typesActions';
+import { SET_CLIENTS_LIST, SET_RETURN_CLIENTS_LIST } from './typesActions';
 import { setAlert } from './alertAction';
 
 export const setNewClient = (
@@ -60,5 +60,18 @@ export const deleteclient = _id => async dispatch => {
     dispatch(setAlert('משתמש נמחק בהצלחה', 'success'));
   } catch (err) {
     dispatch(setAlert('שגיאה זמנית בשרת', 'danger'));
+  }
+};
+// Action to get the list of return clients
+export const getReturnClientsList = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/returnClient');
+
+    dispatch({
+      type: SET_RETURN_CLIENTS_LIST,
+      payload: res.data
+    });
+  } catch (err) {
+    console.error(err.message);
   }
 };

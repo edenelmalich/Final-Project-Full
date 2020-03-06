@@ -17,7 +17,7 @@ export const deleteHealthClient = _id => async dispatch => {
   try {
     await axios.delete(`api/health/${_id}`);
 
-    dispatch(setAlert('משתמש נמחק בהצלחה', 'success'));
+    dispatch(setAlert(' הצהרת בריאות נמחקה בהצלחה', 'success'));
   } catch (err) {
     dispatch(setAlert('שגיאה זמנית בשרת', 'danger'));
   }
