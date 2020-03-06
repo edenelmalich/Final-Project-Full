@@ -50,12 +50,10 @@ const ClientsModal = props => {
             <div key={client._id}>
               {client._id === clientdata ? (
                 <div>
-                  <header className='modal-Header'>
-                    {client.firstname} {client.lastname}
-                  </header>
+                  <header className='modal-Header'>{client.Name}</header>
                   <div className='Modal-content'>
                     <div className='clientsDetails'>תעודת זהות:</div>
-                    <div className='clientsValues'>{client.id}</div>
+                    <div className='clientsValues'>{client.clientId}</div>
                     <div className='clientsDetails'>טלפון:</div>
                     <div className='clientsValues'>{client.phone}</div>
                     <div className='clientsDetails'>סוג מנוי:</div>
