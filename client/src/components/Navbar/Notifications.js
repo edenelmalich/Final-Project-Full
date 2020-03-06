@@ -7,12 +7,15 @@ import { Link } from 'react-router-dom';
 import Collapse from 'react-bootstrap/Collapse';
 // Redux
 import { connect } from 'react-redux';
-const Notifications = ({ notificationsToggleState, getDocuments }) => {
+import { changeReadMessage } from '../../actions/notifications';
+const Notifications = ({
+  notificationsToggleState,
+  NotificationsList,
+  changeReadMessage
+}) => {
   useEffect(() => {
-    setNotification(
-      getDocuments.filter(update => update.readMessage === false)
-    );
-  }, [getDocuments]);
+    setNotification(NotificationsList);
+  }, [NotificationsList]);
   const [getNotification, setNotification] = useState([]);
   return (
     <Collapse in={notificationsToggleState}>
@@ -24,8 +27,10 @@ const Notifications = ({ notificationsToggleState, getDocuments }) => {
         </div>
         {getNotification.map(notification => (
           <div
+            key={notification._id}
             className='Notification-item'
             id={notification.readMessage ? 'readMessage' : 'noReadMessage'}
+            onClick={() => changeReadMessage(notification._id, true)}
           >
             התקבלה {notification.subject} חדשה
           </div>
@@ -38,10 +43,11 @@ const Notifications = ({ notificationsToggleState, getDocuments }) => {
   );
 };
 Notifications.propTypes = {
-  notificationsToggleState: PropTypes.bool
+  notificationsToggleState: PropTypes.bool,
+  changeReadMessage: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   notificationsToggleState: state.NavReducer.notificationsToggleState,
-  getDocuments: state.healthReducer.getDocuments
+  NotificationsList: state.NavReducer.NotificationsList
 });
-export default connect(mapStateToProps)(Notifications);
+export default connect(mapStateToProps, { changeReadMessage })(Notifications);

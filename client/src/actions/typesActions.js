@@ -37,3 +37,5 @@ export const MODAL_TOGGLE_STATE = 'MODAL_TOGGLE_STATE';
 export const SET_DOCUMENTS_LIST = 'SET_DOCUMENTS_LIST';
 // Send all the exercises to the clients
 export const SEND_EXERCISES = 'SET_EXERCISES';
+// get the notifications list
+export const SET_NOTIFICATIONS_LIST = 'SET_NOTIFICATIONS_LIST';

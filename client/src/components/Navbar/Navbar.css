@@ -149,6 +149,7 @@ li#selected a {
     font-size: 14px;
     padding-bottom: 14px;
     display: flex;
+    cursor: pointer;
 }
 
 .Notification-Footer {

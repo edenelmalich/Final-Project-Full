@@ -47,7 +47,7 @@ const ClientsModal = props => {
         </div>
         <Modal.Body>
           {getclientslist.map(client => (
-            <div key={client.id}>
+            <div key={client._id}>
               {client._id === clientdata ? (
                 <div>
                   <header className='modal-Header'>

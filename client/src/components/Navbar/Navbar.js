@@ -30,6 +30,7 @@ import {
   setNotificationToggle,
   setAccountToggle
 } from '../../actions/navsAction';
+import { getNotificationsList } from '../../actions/notifications';
 import { closeAll } from '../../actions/navsAction';
 
 const Navbar = ({
@@ -38,16 +39,17 @@ const Navbar = ({
   user,
   setAccountToggle,
   setNotificationToggle,
-  getDocuments
+  NotificationsList,
+  getNotificationsList
 }) => {
   useEffect(() => {
+    getNotificationsList();
     setNotification(
-      getDocuments.filter(update => update.readMessage === false)
+      NotificationsList.filter(update => update.readMessage === false)
     );
-  }, [getDocuments]);
+  }, [NotificationsList]);
   const [getNotification, setNotification] = useState([]);
   const { Name } = user;
-  console.log(getNotification.length);
   return (
     <div className='Navbar'>
       <div className='Pages-Wrapper'>
@@ -112,7 +114,7 @@ const Navbar = ({
             >
               <FontAwesomeIcon icon={faBell} />
             </button>
-            {getNotification.length > 0 ? (
+            {getNotification.length >= 0 ? (
               <div className='Quantity'>{getNotification.length}</div>
             ) : (
               0
@@ -147,10 +149,11 @@ const mapStateToProps = state => ({
   notificationsToggleState: state.NavReducer.notificationsToggleState,
   accountToggleState: state.NavReducer.accountToggleState,
   user: state.authReducer.user,
-  getDocuments: state.healthReducer.getDocuments
+  NotificationsList: state.NavReducer.NotificationsList
 });
 
 export default connect(mapStateToProps, {
   setNotificationToggle,
-  setAccountToggle
+  setAccountToggle,
+  getNotificationsList
 })(Navbar);

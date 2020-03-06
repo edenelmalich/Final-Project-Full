@@ -175,7 +175,7 @@ const Dashboard = ({
                             </thead>
                             <tbody>
                               {getClientsList.map(client => (
-                                <tr key={client.id}>
+                                <tr key={client._id}>
                                   <td>
                                     <FontAwesomeIcon
                                       icon={FarEye}

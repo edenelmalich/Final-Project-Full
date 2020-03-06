@@ -4,7 +4,8 @@ import {
   CLOSE,
   SET_NAV_MOBILE_TOGGLE,
   SET_NAV_SETTING_TOGGLE,
-  SET_ACCOUNT_MOBILE
+  SET_ACCOUNT_MOBILE,
+  SET_NOTIFICATIONS_LIST
 } from '../actions/typesActions';
 const initialState = {
   accountToggleState: false,
@@ -12,7 +13,8 @@ const initialState = {
   mobileToggleState: false,
   settingToggleState: false,
   Account_Mobile: false,
-  MenuState: true
+  MenuState: true,
+  NotificationsList: []
 };
 
 const NavReducer = (state = initialState, action) => {
@@ -54,6 +56,9 @@ const NavReducer = (state = initialState, action) => {
         accountToggleState: false,
         notificationsToggleState: false
       };
+    case SET_NOTIFICATIONS_LIST:
+      return { ...state, NotificationsList: payload };
+
     default:
       return state;
   }
