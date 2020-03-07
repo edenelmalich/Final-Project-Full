@@ -2,6 +2,9 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import MediaQuery from 'react-responsive';
 import '../../css/Mobile.css';
+import moment from 'moment';
+// Redux
+import { connect } from 'react-redux';
 
 class NewSub extends React.Component {
   state = {
@@ -20,10 +23,24 @@ class NewSub extends React.Component {
         'נובמבר',
         'דצמבר'
       ],
+
       datasets: [
         {
           label: 'סטטיסטיקת חידוש מנויים',
-          data: [1, 10, 3, 4, 5, 9, 7, 4, 2, 10, 11, 8],
+          data: [
+            this.props.getReturnClients.length,
+            10,
+            3,
+            4,
+            5,
+            9,
+            7,
+            4,
+            2,
+            10,
+            11,
+            8
+          ],
           backgroundColor: [
             'rgba(167, 65, 74, 1)',
             'rgba(167, 65, 74, 1)',
@@ -116,5 +133,7 @@ class NewSub extends React.Component {
     );
   }
 }
-
-export default NewSub;
+const mapStateToProps = state => ({
+  getReturnClients: state.newClientsReducer.getReturnClients
+});
+export default connect(mapStateToProps)(NewSub);

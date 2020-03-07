@@ -13,3 +13,28 @@
     padding: 10px;
     box-shadow: 0px 2px 5px 0px #353c3f;
 }
+
+
+.card {
+    position: unset;
+    max-height: 60vh;
+    overflow: auto;
+    background-color: #f8f9fa;
+}
+
+.toast {
+    width: unset;
+    max-width: unset;
+}
+
+.toast-header {
+    text-align: right;
+    background: unset;
+}
+
+.small,
+small {
+    font-size: 80%;
+    font-weight: 400;
+    margin-right: auto;
+}
