@@ -15,7 +15,7 @@
 }
 
 
-.card {
+.noti .card {
     position: unset;
     max-height: 60vh;
     overflow: auto;

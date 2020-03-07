@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import AppFooter from '../AppFooter';
 import { Toast, Card } from 'react-bootstrap';
 import moment from 'moment';
+import Alert from '../layout/Alert';
 // Mobile imports
 import '../../css/Mobile.css';
 
@@ -14,7 +15,12 @@ import MediaQuery from 'react-responsive';
 // Redux
 import { connect } from 'react-redux';
 import { closeAll } from '../../actions/navsAction';
-const NotificationsPage = ({ closeAll, NotificationsList }) => {
+import { deleteNotification } from '../../actions/notifications';
+const NotificationsPage = ({
+  closeAll,
+  NotificationsList,
+  deleteNotification
+}) => {
   useEffect(() => {
     closeAll();
   }, []);
@@ -25,35 +31,45 @@ const NotificationsPage = ({ closeAll, NotificationsList }) => {
       </MediaQuery>
       <MediaQuery minDeviceWidth={1024}>
         <Navbar />
-        <div className='Page-Container'>
-          <main className='main'>
-            <div className='Pages-Content'>
-              <div className='Att-PagesContent'>
-                <div className='PagesContainer'>
-                  <h2>התראות</h2>
-                  <div className='Noti-Main'>
-                    <div className='Noti-Header '>התראות</div>
-                    <Card>
-                      <Card.Body>
-                        {NotificationsList.map(noti => (
-                          <Toast style={{ width: 'unset' }}>
-                            <Toast.Header>
-                              <strong>התראה חדשה</strong>
-                              <small style={{ paddingLeft: '15px' }}>
-                                {moment(noti.date).format('DD/MM/YYYY')}
-                              </small>
-                            </Toast.Header>
-                            <Toast.Body>התקבלה {noti.subject} חדשה</Toast.Body>
-                          </Toast>
-                        ))}
-                      </Card.Body>
-                    </Card>
+        <div className='noti'>
+          <div className='Page-Container'>
+            <main className='main'>
+              <div className='Pages-Content'>
+                <div className='Att-PagesContent'>
+                  <div className='PagesContainer'>
+                    <h2>התראות</h2>
+                    <div className='Noti-Main'>
+                      <div className='Noti-Header '>התראות</div>
+                      <Card>
+                        <Card.Body>
+                          {NotificationsList.map(noti => (
+                            <Toast
+                              onClose={() => deleteNotification(noti._id)}
+                              style={{ width: 'unset' }}
+                            >
+                              <Toast.Header>
+                                <strong>התראה חדשה</strong>
+                                <small style={{ paddingLeft: '15px' }}>
+                                  {moment(noti.date).format('DD/MM/YYYY')}
+                                </small>
+                              </Toast.Header>
+                              <Toast.Body>
+                                {noti.subject} {noti.Name}
+                              </Toast.Body>
+                            </Toast>
+                          ))}
+                        </Card.Body>
+                        <div className='Alert'>
+                          <Alert />
+                        </div>
+                      </Card>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </main>
-          <AppFooter />
+            </main>
+            <AppFooter />
+          </div>
         </div>
       </MediaQuery>
     </Fragment>
@@ -78,4 +94,6 @@ NotificationsPage.propTypes = {
 const mapStateToProps = state => ({
   NotificationsList: state.NavReducer.NotificationsList
 });
-export default connect(mapStateToProps, { closeAll })(NotificationsPage);
+export default connect(mapStateToProps, { closeAll, deleteNotification })(
+  NotificationsPage
+);

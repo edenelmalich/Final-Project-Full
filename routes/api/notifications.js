@@ -12,7 +12,15 @@ router.get('/', async (req, res) => {
     console.error(err.message);
   }
 });
-module.exports = router;
+router.delete('/:id', async (req, res) => {
+  try {
+    await Notifications.findByIdAndDelete(req.params.id);
+    res.json(req.body);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 // update
 router.post('/', async (req, res) => {
   const { _id, readMessage } = req.body;
@@ -30,3 +38,4 @@ router.post('/', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+module.exports = router;

@@ -1,5 +1,6 @@
 import { SET_NOTIFICATIONS_LIST } from './typesActions';
 import axios from 'axios';
+import { setAlert } from '../actions/alertAction';
 // Action to get all the client from the db
 export const getNotificationsList = () => async dispatch => {
   try {
@@ -14,7 +15,6 @@ export const getNotificationsList = () => async dispatch => {
   }
 };
 export const changeReadMessage = (_id, readMessage) => async dispatch => {
-  console.log(_id, readMessage);
   try {
     const config = {
       headers: {
@@ -23,6 +23,15 @@ export const changeReadMessage = (_id, readMessage) => async dispatch => {
     };
     const body = JSON.stringify({ _id, readMessage });
     await axios.post('/api/notifications', body, config);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+export const deleteNotification = _id => async dispatch => {
+  console.log(_id);
+  try {
+    await axios.delete(`api/notifications/${_id}`);
+    dispatch(setAlert('התראה נמחקה בהצלחה', 'success'));
   } catch (err) {
     console.error(err.message);
   }

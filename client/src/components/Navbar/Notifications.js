@@ -32,7 +32,7 @@ const Notifications = ({
             id={notification.readMessage ? 'readMessage' : 'noReadMessage'}
             onClick={() => changeReadMessage(notification._id, true)}
           >
-            התקבלה {notification.subject} חדשה
+            {notification.subject} {notification.Name}
           </div>
         ))}
         <Link to='/NotificationsPage' className='Notification-Footer'>
