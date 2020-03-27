@@ -22,7 +22,7 @@ const Notifications = ({
       <div className='NotiBox'>
         <div className='Notification-Title'>
           {getNotification
-            ? `יש לך ${getNotification.length} הודעות חדשות`
+            ? `יש לך ${getNotification.length} הודעות `
             : 'יש לך 0 הודעות חדשות'}
         </div>
         {getNotification.map(notification => (

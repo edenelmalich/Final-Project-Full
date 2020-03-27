@@ -53,14 +53,7 @@ const AllClients = ({
     e.preventDefault();
     if (clientName !== '') {
       setClientName({ ...getClientName, findState: true });
-      setFindList(
-        getClientsList.filter(
-          client =>
-            clientName === client.firstname ||
-            clientName === client.lastname ||
-            clientName === client.firstname + ' ' + client.lastname
-        )
-      );
+      setFindList(getClientsList.filter(client => clientName === client.phone));
     } else {
       setClientName({ ...getClientName, findState: false });
     }
@@ -103,7 +96,7 @@ const AllClients = ({
                             name='clientName'
                             value={clientName}
                             onChange={e => onChange(e)}
-                            placeholder=' הכנס שם לקוח...'
+                            placeholder=' הכנס טלפון לקוח...'
                           />
                           <Button
                             variant='outline-dark'
@@ -196,7 +189,7 @@ const MobileClients = ({
                 name='clientName'
                 value={clientName}
                 onChange={e => onChange(e)}
-                placeholder=' הכנס שם לקוח...'
+                placeholder=' הכנס טלפון לקוח...'
               />
               <Button variant='outline-dark' onClick={e => searchClient(e)}>
                 חפש לקוח
@@ -209,9 +202,9 @@ const MobileClients = ({
               <thead>
                 <tr>
                   <th>הצג לקוח</th>
-                  <th>שם פרטי</th>
-                  <th>שם משפחה</th>
+                  <th>שם מלא</th>
                   <th>תעודת זהות</th>
+                  <th>דואר אלקטרוני</th>
                   <th>טלפון</th>
                   <th>סוג מנוי</th>
                   <th>תקופת מנוי</th>
@@ -235,9 +228,9 @@ const MobileClients = ({
                         clientdata={clientData}
                       />
                     </td>
-                    <td>{client.firstname}</td>
-                    <td>{client.lastname}</td>
-                    <td>{client.id}</td>
+                    <td>{client.Name}</td>
+                    <td>{client.clientId}</td>
+                    <td>{client.email}</td>
                     <td>{client.phone}</td>
                     <td>{client.Type}</td>
                     <td>{client.Time}</td>
